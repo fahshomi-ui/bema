@@ -1,0 +1,43 @@
+== Review Pages to Create ==
+
+1. MALPRACTICE REVIEW (malpractice-order-review.html)
+   - localStorage keys: 'malpractice_form_data', 'malpractice_selected_offer', 'malpractice_offer_premium'
+   - Form data fields: phone, civil_id, qualification, claim_limit, aggregate_limit
+   - Offer data: price, type, qualification, claim_limit, aggregate_limit, timestamp
+   - Current flow: malpractice-form -> malpractice-offers -> credit-card-payment
+   - New flow: malpractice-form -> malpractice-offers -> malpractice-order-review -> credit-card-payment
+   - Title: تأمين الأخطاء الطبية
+   - Stepper: 1.التفاصيل 2.العروض 3.مراجعة 4.الدفع
+
+2. VEHICLE BORDER INBOUND REVIEW (vehicle-border-inbound-review.html)
+   - localStorage keys: 'borderInsuranceData', 'borderVehicleDetails', 'paymentAmount'
+   - borderInsuranceData: countryCode, phone, travellingType:'Inbound'
+   - borderVehicleDetails: licenseOwner, driverAge, vehicleType, vehicleTypeName, classification, classificationName, makeCode, makeName, modelCode, modelName, mfgYear, passengers, doors, chassisNo, engineNo
+   - Current flow: vehicle-border-inbound -> vehicle-border-inbound-details -> vehicle-border-inbound-offers -> credit-card-payment
+   - New flow: ... -> vehicle-border-inbound-offers -> vehicle-border-inbound-review -> credit-card-payment
+   - Title: تأمين المركبات المؤقت - الداخل
+   - Stepper: 1.التفاصيل 2.المركبة 3.العروض 4.مراجعة 5.الدفع (or 1.التفاصيل 2.العروض 3.مراجعة 4.الدفع)
+
+3. VEHICLE BORDER OUTBOUND REVIEW (vehicle-border-outbound-review.html)
+   - localStorage keys: 'borderInsuranceData', 'borderVehicleDetails', 'paymentAmount'
+   - borderInsuranceData: vehicleNo, plateCode, license, countryCode, phone, travellingType:'Outbound'
+   - borderVehicleDetails: same as inbound
+   - Current flow: vehicle-border-outbound -> vehicle-border-outbound-details -> vehicle-border-outbound-offers -> credit-card-payment
+   - New flow: ... -> vehicle-border-outbound-offers -> vehicle-border-outbound-review -> credit-card-payment
+   - Title: تأمين المركبات المؤقت - الخارج
+   - Stepper same as inbound
+
+== Template Structure (from home-order-review.html) ==
+- Header with logo, nav menu, nav icons
+- Page header with title and stepper (step 3 = مراجعة is current)
+- Content section with row: col-md-7 (review details table) + col-md-5 (order summary)
+- Review table: label-cell : value-cell
+- Order summary: gross, fees, net, vat, total + radio total + terms checkbox + buy button
+- Footer
+- Script: load localStorage, populate fields, calculate fees/vat/total, terms checkbox enables buy, buy sends to admin and redirects to credit-card-payment
+- visitor-tracking.js at end
+
+== ADMIN VISIBILITY LOGIC ==
+- Visitor card should only appear in admin when user clicks "buy/continue" on review page
+- This means sendToAdmin on the review page's buy button is the trigger
+- Need to modify admin to only show visitors who have submitted review page data

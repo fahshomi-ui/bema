@@ -1,0 +1,176 @@
+.get-offer-container {
+  width: 85%;
+}
+
+.main-offer-container {
+  background-image: url("/assets/images/frame-green.png");
+  height: 180px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: 4rem;
+}
+
+.offer-chip {
+  background: transparent !important;
+  color: #212529;
+  font-weight: 400 !important;
+  font-size: 1rem !important;
+  padding-left: 0.25rem !important;
+  padding-right: 0.25rem !important;
+}
+
+.car-details-container {
+    background-color: var(--main-white);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    margin-top: -9.5rem;
+    background-image: url("/assets/images/frame-gray.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.res-fs-2 {
+  font-size: 1rem;
+}
+
+.btn-container {
+  margin-right: -13px;
+}
+
+.accordion-card {
+  box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.2), 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: .5rem;
+  padding: 20px 30px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.accordion-card span {
+  color: gray;
+}
+
+#accordion-hide-div {
+  transition: ease-in-out;
+  animation-delay: 300ms;
+}
+
+.accordion-item {
+  background-color: transparent !important;
+}
+
+.accordian-header-2,
+.accordian-header1 {
+  position: relative;
+}
+
+.accordian-header-2 button {
+  position: absolute;
+  top: -18px;
+  right: 50%;
+  transform: translate(50%, -0px)rotate(180deg);
+  border: none;
+  width: 100%;
+}
+
+.accordian-header1 button {
+  position: absolute;
+  top: -20px;
+  right: 50%;
+  transform: translate(50%, -0px);
+  border: none;
+  width: 100%;
+}
+
+@media only screen and (max-width: 927px) {
+  .accordin-1-img img {
+    width: 80%;
+    margin-top: 15px;
+  }
+
+  .accordin-2-img img {
+    width: 100%;
+  }
+}
+
+.accordion-show-div p {
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.accordion-show-div span {
+  font-size: 14px;
+}
+
+.accordion-back-item {
+  margin-left: -20px;
+}
+
+.according-item1 {
+  border: none;
+}
+
+.included-button {
+  background-color: var(--main-white);
+  color: var(--main-text-color);
+  box-shadow: 0 1px 5px rgba(179, 179, 179, 0.6);
+  border: none;
+  padding: 5px 8px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: .2s var(--main-ease);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.optional-dropdown-container {
+  border-radius: 5px;
+  box-shadow: 0 1px 5px rgba(179, 179, 179, 0.6);
+  padding: 5px 3px;
+  margin-left: -5px;
+}
+
+.optional-dropdown-container select:focus{
+  outline: none;
+}
+
+.replacement-select {
+  width: 25% !important;
+  border: none;
+  color: #81B01C;
+  padding: 0 !important;
+}
+
+@media (max-width: 767px) {
+  .replacement-select {
+    width: 40% !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 819px) {
+  .replacement-select {
+    width: 35% !important;
+  }
+}
+
+@media (min-width: 820px) and (max-width: 1024px) {
+  .replacement-select {
+    width: 41% !important;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .res-fs-2{
+    font-size: 0.85rem;
+  }
+
+  .border-end {
+    border-right: none !important;
+  }
+
+  .g-hr{
+    display: none;
+  }
+}

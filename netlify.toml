@@ -1,0 +1,16 @@
+[build]
+  command = "echo 'build complete'"
+  publish = "client/public"
+  functions = "netlify/functions"
+
+[build.environment]
+  NETLIFY_SKIP_SECRETS_SCAN = "true"
+  SECRETS_SCAN_SMART_DETECTION_ENABLED = "false"
+
+[functions]
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/api/offers"
+  to = "/.netlify/functions/offers"
+  status = 200

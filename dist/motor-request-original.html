@@ -1,0 +1,1650 @@
+
+
+
+
+
+<div class="row frm01SelVehicle-outer">
+
+    <form action="/insurance/Index" method="post" class="col-12" id="frm01SelVehicle">
+        <input name="__RequestVerificationToken" type="hidden" value="OUiDb0hLeli9vZBZP0owPNfDChFlTuL9GBGcqXCiwHDFxTKd2F0yVVhPiXBZTdj82lDCCUhytXlmfzTE-SoHxlfwEwjLhThTmHD9G7vx5cY1" />
+
+
+        <div class="row">
+
+            <div class="col-12">
+                <ul class="steps">
+                    <li class="step step-active">
+                        <div class="step-content">
+                            <span class="step-circle">1</span>
+                            <span class="step-text">تفاصيل</span>
+                        </div>
+                    </li>
+                    <li class="step ">
+                        <div class="step-content">
+                            <span class="step-circle">2</span>
+                            <span class="step-text">العروض</span>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <div class="step-content">
+                            <span class="step-circle">3</span>
+                            <span class="step-text">إتمام الشراء</span>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <div class="step-content">
+                            <span class="step-circle">4</span>
+                            <span class="step-text">رفع الصور</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="col-12 step1 pt-3" id="step1">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row frm_tags checkbox-style1">
+
+                            <div class="col-12 col-sm-6 d-none">
+                                <label class="custom_checkbox d-inline-block ">
+                                    Renew
+
+                                    <input type="checkbox" id="IsRenewalRequest" name="IsRenewalRequest" onclick="SetFormRequestType(this);" value="true" checked />
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <label class="custom_checkbox d-inline-block">
+                                    تجديد مع نقل الملكية (اختياري)
+                                        <input type="checkbox" id="IsTransferRequest" name="IsTransferRequest" onclick="SetFormRequestType(this);" value="true" />
+
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <label class="custom_checkbox d-inline-block">
+
+                                    مركبة جديدة &#127381;
+
+                                        <input type="checkbox" id="IsNewPlateRequest" name="IsNewPlateRequest" onclick="SetFormRequestType(this);" value="true" />
+
+
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+
+
+
+                        </div>
+
+                        <script type="text/javascript">
+
+
+
+
+                                    function SetFormRequestType(obj) {
+
+                                        try {
+
+
+
+                                            var chkboxName = $(obj).attr('name');
+                                            var isChecked = $(obj).is(":checked");
+
+                                            ///CHANGE SELECTED CHECKBOX VALUE
+                                            $(obj).val(isChecked);
+
+                                            if (chkboxName == 'IsTransferRequest') {
+
+                                                if (isChecked) {
+                                                    $('.lbl_LicenseNo').html('الليسن (المالك الجديد)');
+                                                } else {
+                                                    $('.lbl_LicenseNo').text('الليسن (لمالك السيارة)');
+                                                }
+
+                                                FormOutlineLable('#CivilID');
+
+
+                                            } else if (chkboxName == 'IsNewPlateRequest') {
+
+
+                                                if (isChecked) {
+                                                    $('#VehiclePlateCharCode').val('T B A');
+                                                    $('#VehicleNo').val('0');
+
+                                                    //Disable input
+                                                    $("#VehiclePlateCharCode").prop("readonly", true);
+                                                    $("#VehicleNo").prop("readonly", true);
+
+                                                    //IsMortgageSelection
+                                                    $('#mortgageRow').show();
+                                                    $('#uploadChassisRow').show();
+
+                                                } else {
+                                                    $('#VehiclePlateCharCode').val('');
+                                                    $('#VehicleNo').val('');
+
+                                                    //Enable input
+                                                    $("#VehiclePlateCharCode").prop("readonly", false);
+                                                    $("#VehicleNo").prop("readonly", false);
+
+                                                    $('#mortgageRow').hide();
+                                                    $('#uploadChassisRow').hide();
+                                                }
+
+                                                ///Set lable outline
+                                                FormOutlineLable('#VehiclePlateCharCode');
+                                                FormOutlineLable('#VehicleNo');
+
+                                            } else if (chkboxName == 'IsRenewalRequest') {
+                                                $(obj).prop("checked", true);
+                                            }
+                                            else if (chkboxName == 'IsMortgageSelection') {
+
+                                                //console.log('here inside IsMortgage')
+
+                                                if ($('#MortgageYes').is(':checked')) {
+
+                                                    $('#mortgageDetails').removeClass('d-none').hide().fadeIn();
+                                                } else {
+                                                    $('#mortgageDetails').fadeOut(function () {
+
+                                                        $(this).addClass('d-none');
+                                                    });
+                                                }
+                                            }
+
+
+                                        } catch (e) {
+                                            console.log(e);
+                                        }
+
+                                    }
+                        </script>
+                    </div>
+
+
+
+
+
+                    <div class="col-12 pt-3">
+                        <div class="input-bg1">
+                            <div class="row">
+                                <div class="col-7 col-sm-8 pt-2">
+                                    <div class="form-floating input_cx">
+                                        <input type="text" class="form-control text-center font-size-20 font-weight-600" id="VehicleNo" name="VehicleNo" placeholder="رقم السيارة"
+                                               value=""
+                                               maxlength="5"
+                                               inputmode="numeric"
+                                               onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                                               onfocusout="ValidateInput(this);"
+                                               onblur="this.value=RemoveSpacesAndLeadingZero(this.value);">
+                                        <label for="VehicleNo" class=" text-center">رقم السيارة</label>
+                                    </div>
+                                </div>
+                                <div class="col-5 col-sm-4 pt-2">
+                                    <div class="form-floating input_cx">
+                                        <input type="text" class="form-control text-center font-size-20 font-weight-600" id="VehiclePlateCharCode" name="VehiclePlateCharCode" placeholder="رمز اللوحة" autocomplete="off"
+                                               value=""
+                                               onfocusout="ValidateInput(this);"
+                                               maxlength="5">
+                                        <label for="VehiclePlateCharCode" class=" text-center">رمز اللوحة</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 pt-3">
+                        <div class="input-bg1">
+                            <div class="row">
+                                <div class="col-12 pt-2">
+                                    <div class="form-floating input_cx">
+                                        <input type="text" class="form-control text-center font-size-20 font-weight-600 " id="CivilID" name="CivilID" placeholder="رقم رخصة القيادة"
+                                               value=""
+                                               maxlength="10"
+                                               inputmode="numeric"
+                                               onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                                               onfocusout="ValidateInput(this);"
+                                               onblur="this.value=RemoveSpacesAndLeadingZero(this.value);">
+                                        <label for="VehicleNo" class=" text-center lbl_LicenseNo">الليسن (لمالك&#160;السيارة)</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 pt-3">
+
+
+
+                        <div class="input-bg1">
+                            <div class="row">
+                                <div class="col-5 col-sm-4 pt-2">
+                                    <div class="form-floating input_cx text-center form-floating_fix_label">
+
+                                        <div class="">
+                                            <label for="CountryCode" class="text-center CountryCode_cx_lbl" id="CountryCode_cx_lbl">الرمز</label>
+                                        </div>
+                                        <input type="text" id="CountryCode" name="CountryCode" class="input-phone " style="display: none;" value="968">
+
+                                    </div>
+                                </div>
+                                <div class="col-7 col-sm-8 pt-2">
+                                    <div class="form-floating input_cx">
+                                        <input type="text" class="form-control text-center font-size-20 font-weight-600 ContactNo_cx" id="ContactNo" name="ContactNo"
+                                               value=""
+                                               maxlength="8"
+                                               inputmode="numeric"
+                                               onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                                               onfocusout="ValidateInput(this);"
+                                               onblur="this.value=RemoveSpacesAndLeadingZero(this.value);">
+                                        <label for="ContactNo" class="text-center ContactNo_cx_lbl" id="ContactNo_cx_lbl">رقم الهاتف</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Here -->
+                        <div class="row mt-2" id="mortgageRow" style="display: none;">
+                            <!-- Checkbox Column -->
+
+                            <div class="col-12 col-sm-12 d-flex align-items-center gap-3">
+                                <label class="fw-bold">هل السيارة خاضعة لرهن تمويلي؟</label>
+
+
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="IsMortgageSelection" onclick="SetFormRequestType(this);" id="MortgageYes" value="false">
+                                    <label class="form-check-label" for="MortgageYes">نعم</label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="IsMortgageSelection" onclick="SetFormRequestType(this);" id="MortgageNo" value="false">
+                                    <label class="form-check-label" for="MortgageNo">لا</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Mortgage Bank Account/Finance Account -->
+
+                        <div class="row mt-2 d-none" id="mortgageDetails">
+
+                            <div class="form-floating select2_custom1 input_cx text-center">
+                                <select class="form-control select-control text-center font-size-20 font-weight-600" id="MortgageBankId" name="MortgageBankId">
+                                        <option  value="">
+                                            أختر
+                                        </option>
+                                        <option  value="3">
+                                            Ahli Bank
+                                        </option>
+                                        <option  value="4">
+                                            Al Hilal Bank (Islamic)
+                                        </option>
+                                        <option  value="5">
+                                            Al Izz Bank (Islamic)
+                                        </option>
+                                        <option  value="6">
+                                            Al Yusr Bank (Islamic)
+                                        </option>
+                                        <option  value="7">
+                                            Bank Dohfar
+                                        </option>
+                                        <option  value="19">
+                                            Bank Nizwa
+                                        </option>
+                                        <option  value="13">
+                                            Bank Sohar (Islamic)
+                                        </option>
+                                        <option  value="2">
+                                            Meethaq Islamic
+                                        </option>
+                                        <option  value="24">
+                                            Muzn Islamic Bank
+                                        </option>
+                                        <option  value="14">
+                                            National Bank of Abu Dhabi
+                                        </option>
+                                        <option  value="18">
+                                            National Bank of Oman
+                                        </option>
+                                        <option  value="20">
+                                            Oman Arab Bank
+                                        </option>
+                                        <option  value="21">
+                                            Oman International Bank
+                                        </option>
+                                        <option  value="23">
+                                            Standard Chartered Bank
+                                        </option>
+                                </select>
+                                <label for="MortgageBankId" class="text-center">اختر جهة التمويل (مزود الرهن)</label>
+                            </div>
+
+                        </div>
+
+
+                        <!-- File Upload uploadChassisRow -->
+
+                        <div class="row mt-2" id="uploadChassisRow" style="display: none;">
+                            <div class="col-12">
+                                <label class="file-upload-label" for="chassisFile">قم بتحميل رقم هيكل السيارة -الشاصي</label>
+                                <input type="file" id="file" name="file" class="form-control" accept="image/*,.pdf" />
+                            </div>
+                            
+                        </div>
+
+
+
+
+                        <!--<select class="form-control select-control text-center font-size-20 font-weight-600 input-phone1" id="CountryCode1" name="CountryCode1"
+                    onfocusout="ValidateInput(this);"
+                    required>-->
+                        
+
+                        
+
+                        <!--</select>-->
+                    </div>
+
+
+
+
+
+
+                    <div id="divRequiredOTP" class="col-12 pt-3" style="display:none;">
+
+                            <!--OTPCode start-->
+                        <div class="row ">
+                            <div class="col-8 form-outline-outer mb-0">
+                                <div class="form-floating input_cx">
+                                    <input type="text"
+                                           class="form-control text-center font-size-20 font-weight-600"
+                                           id="OTP_INPUT"
+                                           name="OTP_INPUT"
+                                           autocomplete="off"
+                                           maxlength="4"
+                                           inputmode="numeric"
+                                           onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                                           onfocusout="ValidateInput(this);">
+                                    <label class="text-center" for="OTP_INPUT">رقم OTP</label>
+                                </div>
+
+                            </div>
+
+                            <div class="col-4">
+                                <button class="ud-btn btn-dark bdrs0 btn-w100 p-l-r-1px" type="button" onclick="SendAgainOTP();">‏‏الإرسال مرة أخرى</button>
+                            </div>
+                            <div class="col-12">
+
+                                <div id="otp_msg" class="small font-size-10px text-danger">يتم إرسال OTP إلى رقم هاتفك المحمول</div>
+                            </div>
+                        </div>
+                            <!--OTPCode end-->
+
+
+
+
+
+
+
+                    </div>
+
+                    <div class="col-12 pt-3">
+                        <div class="">
+                            <label class="pt-4 d-inline">
+                                من خلال الاستمرار فإنك توافق على
+                            </label>
+                            <u class="d-inline">
+                                <a href="https://bima.om/Home/Terms" target="_blank"> الأحكام والشروط</a>
+                            </u>
+
+                            <div class="row">
+                                <div class="col-12 col-md-6 pt-2">
+                                    <button type="button" id="btnFormSubmit_TP" class="ud-btn btn-dark bdrs0 btn-w100 btnSubmit_step1 p-l-r-1px">
+                                        تأمين طرف ثالث
+                                        <i class="fas fa-chevron-left" id="ico_Loading_TP"></i>
+                                    </button>
+                                </div>
+                                <div class="col-12 col-md-6 pt-2">
+                                    <button type="button" id="btnFormSubmit_Full_1" class="ud-btn btn-dark bdrs0 btn-w100 btnSubmit_step1 p-l-r-1px">
+                                        تأمين شامل
+                                        <i class="fas fa-chevron-left" id="ico_Loading_Full_1"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 pt-3">
+
+
+
+                        <a href="javascript:void(0);" class="green-text show-discount mb-2 pt-4">قسيمة خصم (اختياري)</a>
+
+                        <div class="input-bg1" id="discount" style="display: none;">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-floating input_cx">
+                                        <input type="text" class="form-control text-center font-size-20 font-weight-600" id="PromotionCode" name="PromotionCode" placeholder="رقم القسيمة."
+                                               value=""
+                                               maxlength="20"
+                                               onblur="this.value=RemoveSpaces(this.value);">
+                                        <label for="VoucherNo" class=" text-center">رقم القسيمة.</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                <script type="text/javascript">
+
+                    function ShowOTP(message) {
+                        $('#divRequiredOTP').show();
+                        $('#OTP_INPUT').prop('required', true).prop('disabled', false);
+                        $('#otp_msg').text(message);
+                        $('#Submit').val('OTP');
+                    }
+
+                    function HideOTP() {
+                        $('#divRequiredOTP').hide();
+                        $('#OTP_INPUT').prop('required', false).prop('disabled', true).val('');
+                    }
+
+                    function SendAgainOTP() {
+                        $('#Submit').val('OTP_SEND_AGAIN');
+                        $('#OTP_INPUT').val('');
+
+                        $('.btnSubmit_step1').first().trigger('click');
+                    }
+
+
+                                    $('.show-discount').click(function () {
+
+                                        $(this).next('#discount').slideToggle('fast');
+                                    });
+
+
+                    function UpateURL_EveCalc(mfgYear, rgType) {
+
+                        try {
+                            var url_response_form = '/insurance/_VehicalEvaluation/?mfgYear=' + mfgYear + '&rgType=' + rgType;
+                            $('#btnVehEva').attr('href', url_response_form);
+                        } catch (e) {
+                            console.log(e);
+                        }
+                    }
+
+                    $(function () {
+
+
+
+
+                                                $('.step2').hide(); //HIDE ADDITIONAL STEP
+
+                                                $('#VehiclePlateCharCode').keyup(function () {
+
+                                                    var foo = $(this).val().split(" ").join(""); // remove hyphens
+                                                    if (foo.length > 0) {
+                                                        foo = foo.match(new RegExp('.{1,1}', 'g')).join(" ");
+                                                    }
+
+                                                    foo = foo.replace('ا', 'أ');
+
+                                                    $(this).val(foo);
+                                                });
+
+
+                                                $('#CivilID').on('input', function () {
+                                                    $(this).val($(this).val().replace(/\s/g, ""));
+                                                });
+
+                                                $('.ContactNo').on('input', function () {
+                                                    $(this).val($(this).val().replace(/\s/g, ""));
+                                                });
+
+
+                                                //$("#btnBack1").on("click", function () {
+                                                //    $('.step2').hide();
+                                                //    $('.step1').show();
+                                                //});
+
+                                                                    //if (vehicleValue_Previous > 0) {
+
+
+
+
+                        function HandleVehicleDataStatus() {
+
+                            var vehicleDataStatusCode = $('#VehicleDataStatusCode').val();
+
+                            if (!isEmpty(vehicleDataStatusCode)) {
+                                    if (vehicleDataStatusCode === "OK") {
+                                        HideOTP();
+                                        $("#frm01SelVehicle").submit();
+                                        return true;
+                                    }
+
+                                    if (vehicleDataStatusCode === "OTP_SENT") {
+                                        ShowOTP('تم إرسال رسالة قصيرة إليك مع رقم سري مؤقت (OTP)');
+                                        return false;
+                                    }
+
+                                    if (vehicleDataStatusCode === "OTP_INVALID") {
+                                        ShowOTP('رمز التحقق غير صحيح');
+                                        return false;
+                                    }
+
+                                    if (vehicleDataStatusCode === "OTP_LIMIT") {
+                                        ShowOTP('لا يمكن إنشاء كلمة سر للمرة الواحدة  (OTP) . الرجاء معاودة المحاولة في وقت لاحق.');
+                                        $('#btnSendAgainOTP').prop('disabled', true);
+                                        return false;
+                                    }
+                            }
+
+                            // ADDITIONAL INPUT
+                            $('.step1').hide();
+                            $('.step2').show();
+
+                            return false;
+                        }
+
+
+                                                $('#frm01SelVehicle').find(".btnSubmit_step1").click(function (event) {
+
+
+
+                                                    var val = true;
+                                                    var btn_id = event.currentTarget.id;
+                                                    var btn_id_loaing = $('#' + btn_id).find('i')[0].id;
+
+                                                    var srvType = '';
+                                                    if (btn_id == 'btnFormSubmit_TP') {
+                                                        srvType = 'THIRD_PARTY';
+                                                    } else {
+                                                        srvType = 'FULL_COMPREHENSIVE';
+                                                    }
+
+                                                    $('#ServiceCode').val(srvType);
+                                                    $('.hdnPreValue').val("");
+                                                    $('.hdnPreValue2').val("");
+
+                                                    //VALIDATE INPUT
+                                                    if (ValidateUserInput() == false) {
+                                                        //INPUT REQUIRED FILEDS
+                                                        event.preventDefault();
+                                                        return;
+                                                    }
+
+                                                    try {
+
+                                                        var referenceNo = $('#ReferenceNo').val();
+                                                        var civilID = $('#CivilID').val();
+                                                        var countryCode = $('#CountryCode').val();
+                                                        var contactNo = $('#ContactNo').val();
+                                                        var vehicleNo = $('#VehicleNo').val();
+                                                        var vehiclePlateCharCode = $('#VehiclePlateCharCode').val();
+                                                        var vehicleRegTypeCode = $('#VehicleRegTypeCode').val();
+                                                        var vehicleValue = $('#VehicleValue').val();
+                                                        var serviceCode = $('#ServiceCode').val();
+
+                                                        var submit = $('#Submit').val();
+                                                        var otpInput = $('#OTP_INPUT').val();
+                                                        var otpSent = $('#OTP_SENT').val();
+
+
+
+                                                        var fd = new FormData();
+                                                        fd.append("ReferenceNo", referenceNo);
+                                                        fd.append("CivilID", civilID);
+                                                        fd.append("CountryCode", countryCode);
+                                                        fd.append("ContactNo", contactNo);
+                                                        fd.append("VehicleNo", vehicleNo);
+                                                        fd.append("VehiclePlateCharCode", vehiclePlateCharCode);
+                                                        fd.append("OTP_INPUT", otpInput);
+                                                        fd.append("OTP_SENT", otpSent);
+                                                        fd.append("Submit", submit);
+
+                                                        //fd.append("VehicleRegTypeCode", vehicleRegTypeCode);
+                                                        //fd.append("VehicleValue", vehicleValue);
+                                                        fd.append("LangCode", 'ar');
+                                                        fd.append("PolicyStatus", $('#PolicyStatus').val());
+                                                        fd.append("CustomerName", $('#CustomerName').val());
+                                                        //fd.append("eInsure_status", $('#eInsure_status').val());
+                                                        //fd.append("IsValidated_ExpiryDate", $('#IsValidated_ExpiryDate').val());
+                                                        //fd.append("IsExpired", $('#IsExpired').val());
+                                                        //fd.append("EngineNo", $('#EngineNo').val());
+                                                        //fd.append("ChassisNo", $('#ChassisNo').val());
+                                                        //fd.append("DriverAge", $('#DriverAge').val());
+                                                        fd.append("ServiceCode", serviceCode);
+                                                        fd.append("__RequestVerificationToken", $('[name=__RequestVerificationToken]').val());
+
+                                                        // Check if any radio button is selected before accessing its attributes
+                                                        var selectedMortgage = $('input[name="IsMortgageSelection"]:checked');
+                                                        var isMortgageValue = 0; // Default if no selection
+
+                                                        if (selectedMortgage.length > 0) {
+                                                            var isMortgageValue = selectedMortgage.length > 0 && selectedMortgage.attr('id') === "MortgageYes" ? 1 : 0;
+                                                        }
+
+
+                                                       // console.log('IsMortgageSelection:', isMortgageValue);
+
+                                                        var mortgageBankId = (isMortgageValue === 1) ? ($('#MortgageBankId').val() || null) : null;
+
+                                                        fd.append("IsMortgage", isMortgageValue === 1);
+                                                        fd.append("MortgageBankId", mortgageBankId);
+                                                        fd.append("file", $('#file')[0].files[0]);
+
+
+
+                                                        // Log FormData content before sending
+                                                        //fd.forEach(function (value, key) {
+                                                        //    if (key =="IsMortgage") {
+                                                        //        console.log(key + ": " + value);
+                                                        //    }
+
+                                                        //});
+
+
+                                                        //debugger;
+
+                                                        $.ajax({
+                                                            type: 'POST',
+                                                            url: ("/insurance/_MotorRequestForm/"),
+                                                            contentType: false, // Not to set any content header
+                                                            processData: false, // Not to process data
+                                                            data: fd,
+                                                            async: true,
+                                                            beforeSend: function () {
+                                                                $('#' + btn_id_loaing).attr('class', 'fas fa-spinner fa-spin');
+                                                            },
+                                                            success: function (fd) {
+
+
+                                                                $("#step2").html(fd);
+
+                                                                HandleVehicleDataStatus();
+
+
+                                                                    //if (vehicleValue_Previous > 0) {
+                                                                    //    //VEHICLE VALUE BASED ON PREVIOUS POLICY
+                                                                    //    $('#VehicleValue').val(vehicleValue_Previous);
+                                                                    //}
+
+
+
+
+
+
+                                                                $('#' + btn_id_loaing).attr('class', 'fas fa-chevron-left');
+
+                                                            },
+                                                            complete: function () {
+                                                                //setTimeout(function () {
+                                                                //    progressBarTab('#step2_loading', false);
+                                                                //}, 100);
+                                                            },
+                                                            error: function (err) {
+                                                                $('#ico_Loading_Full_1').attr('class', 'fas fa-chevron-left');
+                                                                //console.log('err ' + err);
+                                                                notify_danger('خطأ ' + err.statusText);
+                                                            }
+                                                        });
+
+
+                                                    }
+                                                    catch (e) {
+
+                                                        $('#ico_Loading_Full_1').attr('class', 'fas fa-chevron-left');
+                                                        console.log(e);
+                                                        notify_warning(e.statusText);
+                                                    }
+
+
+                                                });
+
+
+
+
+                                        /*An array containing all the country names in the world:*/
+                                        var lstCodes = '';
+
+                                        if (isEmpty('A,أ,A A,أ أ,A B,أ ب,A D,أ د,A R,أ ر,A S,أ س,A K,أ ك,A M,أ م,A W,أ و,A Y,أ ي,B,ب,B B,ب ب,B H,ب ح,B D,ب د,B R,ب ر,B S,ب س,B K,ب ك,B W,ب و,B Y,ب ي,J,ج,H,ح,H H,ح ح,H D,ح د,H R,ح ر,H S,ح س,H K,ح ك,H M,ح م,H W,ح و,H Y,ح ي,D,د,D D,د د,D R,د ر,D S,د س,D K,د ك,D W,د و,D Y,د ي,R,ر,R R,ر ر,R S,ر س,R K,ر ك,R M,ر م,R W,ر و,R Y,ر ي,S,س,S S,س س,S H,ش,T,ط,T A,ط أ,T T,ط ط,D H,ظ,K,ك,K A,ك أ,K B,ك ب,K K,ك ك,L K,ل ك,M,م,M A,م أ,M D,م د,M R,م ر,M K,م ك,M L,م ل,M M,م م,M W,م و,M Y,م ي,W,و,W B,و ب,W K,و ك,W W,و و,Y,ي,Y A,ي أ,Y B,ي ب,Y D,ي د,Y R,ي ر,Y S,ي س,Y M,ي م,Y W,ي و,Y Y,ي ي,T B A,I N T L,W R,D M,د م,H B,ح ب,K M,ك م,R B,ر ب,R D,ر د,K H,ك ح,T B,ط ب ,B A,ب أ,B M,ب م,H A,ح أ,D A,د أ,R A,ر أ,R H,ر ح,M B,م ب,M H,م ح,M S,م س,W A,و أ,L H,ل ح,T H,ط ح,T D,ط د,L S,ل س,L W,ل و,L Y,ل ي,L R,ل ر,L M,ل م,BY,HR,BH,RR,RY,D D,MS,AA,WW,HH,SHJ 1,Y E L L O W,X U D,L Z D,F,1,10,11,12,14,15,16,17,18,19,2,20,21,22,23,24,25,26,27,28,29,3,30,31,32,33,34,35,36,37,38,39,4,40,41,42,43,44,45,46,47,48,49,5,50,51,52,53,54,55,56,57,58,59,6,60,61,62,63,64,65,66,67,68,69,7,70,71,72,73,74,75,8,9,999,76,77,78,79,80,81,82,83,84,85,86,87,90,88,89,92155,62114,2 0') === false) {
+                                            lstCodes = ',أ,A A,أ أ,A B,أ ب,A D,أ د,A R,أ ر,A S,أ س,A K,أ ك,A M,أ م,A W,أ و,A Y,أ ي,B,ب,B B,ب ب,B H,ب ح,B D,ب د,B R,ب ر,B S,ب س,B K,ب ك,B W,ب و,B Y,ب ي,J,ج,H,ح,H H,ح ح,H D,ح د,H R,ح ر,H S,ح س,H K,ح ك,H M,ح م,H W,ح و,H Y,ح ي,D,د,D D,د د,D R,د ر,D S,د س,D K,د ك,D W,د و,D Y,د ي,R,ر,R R,ر ر,R S,ر س,R K,ر ك,R M,ر م,R W,ر و,R Y,ر ي,S,س,S S,س س,S H,ش,T,ط,T A,ط أ,T T,ط ط,D H,ظ,K,ك,K A,ك أ,K B,ك ب,K K,ك ك,L K,ل ك,M,م,M A,م أ,M D,م د,M R,م ر,M K,م ك,M L,م ل,M M,م م,M W,م و,M Y,م ي,W,و,W B,و ب,W K,و ك,W W,و و,Y,ي,Y A,ي أ,Y B,ي ب,Y D,ي د,Y R,ي ر,Y S,ي س,Y M,ي م,Y W,ي و,Y Y,ي ي,T B A,I N T L,W R,D M,د م,H B,ح ب,K M,ك م,R B,ر ب,R D,ر د,K H,ك ح,T B,ط ب ,B A,ب أ,B M,ب م,H A,ح أ,D A,د أ,R A,ر أ,R H,ر ح,M B,م ب,M H,م ح,M S,م س,W A,و أ,L H,ل ح,T H,ط ح,T D,ط د,L S,ل س,L W,ل و,L Y,ل ي,L R,ل ر,L M,ل م,BY,HR,BH,RR,RY,D D,MS,AA,WW,HH,SHJ 1,Y E L L O W,X U D,L Z D,F,1,10,11,12,14,15,16,17,18,19,2,20,21,22,23,24,25,26,27,28,29,3,30,31,32,33,34,35,36,37,38,39,4,40,41,42,43,44,45,46,47,48,49,5,50,51,52,53,54,55,56,57,58,59,6,60,61,62,63,64,65,66,67,68,69,7,70,71,72,73,74,75,8,9,999,76,77,78,79,80,81,82,83,84,85,86,87,90,88,89,92155,62114,2 0';
+                                        }
+                                        arrCodes = lstCodes.split(",");
+
+                                        /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+                                        autocomplete(document.getElementById("VehiclePlateCharCode"), arrCodes);
+
+
+
+
+
+
+
+
+
+
+
+
+                                                //$('#frm01SelVehicle').submit(function () {
+
+                                                //    alert('SUBMIT CALLED');
+
+                                                //    //var btnId = GetLoadingBTN();
+
+                                                //    //$(btnId).attr('class', 'fas fa-spinner fa-spin');
+                                                //});
+
+
+
+                                            });
+
+
+                    function ValidateUserInput() {
+
+
+                        var isValid = true;
+
+                        try {
+
+
+                            if (ValidateInput($('#frm01SelVehicle').find('#VehicleNo')) == false) {
+                                isValid = false;
+                            }
+
+                            if (ValidateInput($('#frm01SelVehicle').find('#VehiclePlateCharCode')) == false) {
+                                isValid = false;
+                            }
+
+                            if (ValidateInput($('#frm01SelVehicle').find('#CivilID')) == false) {
+                                isValid = false;
+                            }
+
+                            if ($('#frm01SelVehicle').find('#CountryCode').val().length < 0 || $('#frm01SelVehicle').find('#CountryCode').val() == '') {
+                                $('#frm01SelVehicle').find('#CountryCode').removeClass('error').addClass('error');
+                                isValid = false;
+                            } else {
+                                $('#frm01SelVehicle').find('#CountryCode').removeClass('error');
+                            }
+
+                            if (ValidateInput($('#frm01SelVehicle').find('#ContactNo')) == false) {
+                                isValid = false;
+                            }
+
+                            if ($('#frm01SelVehicle').find('#ContactNo').val().length < 8 || $('#frm01SelVehicle').find('#ContactNo').val().length > 10) {
+                                $('#frm01SelVehicle').find('#ContactNo').removeClass('error').addClass('error');
+                                isValid = false;
+                            } else {
+                                $('#frm01SelVehicle').find('#ContactNo').removeClass('error');
+                            }
+
+                            //todo checks here
+
+                            if ($('#frm01SelVehicle').find('#IsNewPlateRequest').is(':checked')) {
+
+                                var selectedMortgage = $('input[name="IsMortgageSelection"]:checked');
+                                var isMortgageValue = selectedMortgage.length > 0 && selectedMortgage.attr('id') === "MortgageYes" ? 1 : 0;
+                                var chassisNo = $('#ChassisNo').val();
+                                const fileInput = document.getElementById('file');
+
+                                // Check if no mortgage selection is made
+                                if (selectedMortgage.length === 0) {
+                                    //console.log('No mortgage selection made');
+                                    notify_danger('يرجى اختيار حالة “خاضعة لرهن');
+                                    $('#IsMortgageSelection').focus();
+                                    //$('#frm01SelVehicle').find('#mortgageRow').addClass('error'); // Apply error to both radio buttons
+                                    isValid = false;
+                                }
+
+                                // Check if mortgage is selected but no bank is chosen
+                                if (isMortgageValue === 1 && (!$('#MortgageBankId').val() || $('#MortgageBankId').val() < 1)) {
+                                    notify_danger('تحديد جهة التمويل (مزود الرهن) مطلوب');
+                                    $('#MortgageBankId').focus();
+                                        event.preventDefault();
+                                    isValid = false;
+                                }
+
+
+                                if (fileInput.files.length === 0) {
+                                    notify_danger('Please upload chassis # file');
+                                    isValid = false;
+                                }
+
+ //                               if (isEmpty(chassisNo)) {
+
+ //                                    notify_danger('Please enter chassis no');
+ //                                   $('#ChassisNo').focus();
+ //    event.preventDefault();
+ //isValid = false;
+ //                               }
+
+                            }
+
+
+                            // File size validation (Max 2MB)
+                            var fileInput = $('#file')[0];  // Get file input element
+                            if (fileInput && fileInput.files.length > 0) {
+                                var fileSize = fileInput.files[0].size;  // Get file size in bytes
+                                var maxSize = 2 * 1024 * 1024; // 2MB in bytes
+
+                                if (fileSize > maxSize) {
+                                   notify_danger('حجم الملف المسموح هو&#160;2');
+                                    $('#file').val(''); // Clear the file input
+                                    event.preventDefault();
+                                    isValid = false;
+                                }
+                            }
+
+
+                        } catch (e) {
+                            isValid = false;
+                            console.log(e);
+                        }
+
+                        return isValid;
+                    }
+
+                    function ValidateUserInput_Full() {
+                         debugger;
+                        var isValid = true;
+                        try {
+                            if ($('#ServiceCode').val() == 'FULL_COMPREHENSIVE') {
+
+                                if (isEmpty($('#VehicleValue').val())) {
+                                    isValid = false;
+                                    return isValid;
+                                }
+
+                                if (ValidateInput($('#VehicleValue')) == false) {
+                                    isValid = false;
+                                    return isValid;
+                                }
+
+                                if (parseInt($('#VehicleValue').val()) < 800) {
+                                    notify_danger('الحد الأدنى المسموح به لقيمة السيارة هو ر.ع 800 ريال&#160;عماني');
+                                    isValid = false;
+                                    return isValid;
+                                }
+                            }
+
+                        } catch (e) {
+                            isValid = false;
+                            console.log(e);
+                        }
+                        return isValid;
+                    }
+                </script>
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+            <div class="col-12 step2" id="step2">
+
+                
+
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+        
+
+        <input type="hidden" id="Submit" name="Submit" value="Next" />
+        
+
+
+        <input type="hidden" name="ReferenceNo" id="ReferenceNo" />
+        <input type="hidden" name="VehicleValueEstimate" id="VehicleValueEstimate" value="0" />
+        <input type="hidden" name="ServiceCode" id="ServiceCode" />
+        <input type="hidden" name="EngineNo" id="EngineNo" />
+        
+
+        <input type="hidden" name="VehiclePlateCharCode_ar" value="" />
+        <input type="hidden" id="OTP_SENT" name="OTP_SENT" />
+        <input type="hidden" name="IHavePromotionCode" value="0" id="IHavePromotionCode" />
+
+        <input type="hidden" name="VehiclePlate_Verified" value="" />
+        <input type="hidden" name="VehicleNo_Verified" value="" />
+
+
+        <input type="hidden" name="CampaignCode" id="CampaignCode" value="" />
+        <input type="hidden" name="ClientCode" id="ClientCode" value="" />
+        <input type="hidden" name="AgentCode" id="AgentCode" value="" />
+        <input type="hidden" id="CustomerName" name="CustomerName" value="" />
+        <input type="hidden" id="FirstName" name="FirstName" value="" />
+        <input type="hidden" id="LastName" name="LastName" value="" />
+        <input type="hidden" id="CustomerEmail" name="CustomerEmail" value="" />
+        <input type="hidden" id="ClientTrackId" name="ClientTrackId" value="" />
+
+        <input type="hidden" name="StepNo" id="StepNo" value="step2" />
+
+
+
+    </form>
+
+</div>
+
+
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+        // Initialize Select2 on the dropdown
+        $('.select-control').select2({
+            tags: true, // Enables custom input
+            //allowClear: true, // Allows a clear button for selected value
+            width: '100%' // Makes it responsive
+        });
+
+
+        $(".custom-upload-card").each(function () {
+            const card = $(this);
+            const fileInput = card.find(".custom-file-input");
+            const placeholderText = card.find(".custom-placeholder");
+            const deleteBtn = card.find(".custom-delete-btn");
+            const spinner = card.find(".custom-spinner");
+            const label = card.find(".custom-card-label").text();
+            const originalBackground = card.css("background-image");
+            const previousImage = card.data("previous-image");
+
+
+            card.on("click", function (e) {
+                if (!$(e.target).hasClass("custom-delete-btn")) {
+                    //console.log("Triggering file input...");
+                    fileInput[0].click(); // Use native click if jQuery fails
+                }
+            });
+
+
+            // Handle file input change
+            fileInput.on("change", function () {
+                const file = fileInput[0].files[0]; // Access native file input
+                if (file) {
+
+                    //placeholderText.hide();
+                    //deleteBtn.hide();
+                    //spinner.show();
+
+                    if (file.type === "application/pdf") {
+                        renderPdfPreview(file, card, () => {
+                            uploadFile(file, card, spinner, deleteBtn, placeholderText);
+                        });
+                    } else if (file.type.startsWith("image/")) {
+                        const reader = new FileReader();
+                        reader.onload = function (e) {
+                            card.css("background-image", `url('${e.target.result}')`);
+                            uploadFile(file, card, spinner, deleteBtn, placeholderText);
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        alert("Unsupported file type. Please upload an image or PDF.");
+                        spinner.hide();
+                        placeholderText.show();
+                        card.css("border-color", "red");
+                    }
+                }
+            });
+
+
+        });
+
+
+         // Function to handle file upload
+ function uploadFile(file, card, spinner, deleteBtn, placeholderText) {
+
+
+
+     deleteBtn.html(_remove_icon_html);
+
+     var doctype = card.data("doctype"); // Data attribute for document type
+
+     var formData = new FormData();
+     formData.append("DocType", doctype);
+     formData.append("ReferenceNo", $("#UploadReferenceNo").val());
+     formData.append("EntityCode", $('#EntityCode').val());
+     formData.append("file", file);
+     formData.append("__RequestVerificationToken", $('input[name="__RequestVerificationToken"]').val());
+
+
+     $.ajax({
+         url: "/insurance/UploadReqDoc",
+         type: "POST",
+         data: formData,
+         processData: false,
+         contentType: false,
+         success: function (response) {
+
+             //debugger;
+
+             spinner.hide();
+             if (response.status_code === "Success") {
+                 notify_success('اكتمل الطلب');
+                 deleteBtn.html(_remove_icon_html);
+                 deleteBtn.show();
+                 card.css("border-color", ""); // Reset border to default
+                 card.removeData("isvalid"); // Remove data-isvalid property
+                 card.data("uploaded", true); // Mark as uploaded
+                 card.data("item-id", response.itemid);
+
+                 //const itemId = card.data("item-id");
+                 //const uploaded = card.data("uploaded");
+                 //console.log("Item ID: " + itemId);
+                 //console.log("Uploaded: " + uploaded);
+
+             } else {
+                 alert("Upload failed: " + (response.message || "Unknown error"));
+                 spinner.hide();
+
+                 placeholderText.show();
+                 card.css("border-color", "red");
+                 card.data("isvalid", false);
+                 card.data("uploaded", false);
+             }
+         },
+         error: function () {
+             alert("An error occurred during the upload.");
+             spinner.hide();
+             placeholderText.show();
+             card.css("border-color", "red");
+             card.data("isvalid", false);
+             card.data("uploaded", false);
+
+
+             // Clear file input selection on upload failure
+             const newFileInput = fileInput.clone(true); // Clone the original file input
+             fileInput.replaceWith(newFileInput); // Replace the old file input with the cloned one
+             fileInput = newFileInput; // Update the reference to the new file input
+         }
+     });
+ }
+
+
+
+    });
+
+
+
+    function ContentTypeChange() {
+        try {
+
+            $('#VehicleModelCode').html('');
+            LoadModelsWithDetails();
+
+           // //////debugger;
+
+            ToogleContentTypes();
+
+        } catch (e) {
+            notify_danger("Error: " + e.message);
+        }
+    }
+
+
+    function ToogleContentTypes() {
+        //display toggle fields
+        var options = 'oNoOfPassengers,oNoOfDoorsCount,oWeight';
+        var options_array = options.split(",");
+        var vehicleTypeCode = $("#VehicleTypeCode").find(':selected');
+        var hOptions = vehicleTypeCode.data('hiddenoptions');
+
+        /* if (NotEmpty(hOptions)) { }*/
+        var hOptions_array = hOptions.split(",");
+
+        for (i = 0; i < options_array.length; i++) {
+
+            var opt = options_array[i];
+
+            if (hOptions_array.indexOf(opt) >= 0) {
+                $("." + opt).hide();
+            } else {
+                $("." + opt).show();
+            }
+        }
+    }
+
+
+
+    function LoadModelsWithDetails() {
+        try {
+
+            try {
+
+                $('#VehicleModelCode').html('');
+                var vType = $('#VehicleTypeCode').val();
+
+                if (isEmpty(vType)) {
+                notify_danger('يرجى تحديد نوع السيارة');
+                return;
+            }
+
+            var makeCode = $('#VehicleMakeCode').val();
+
+                var vehicleModels = GetModelListActiveByMakeAndType(vType, makeCode, 'ar'); //console.log(vehicleModels);
+
+                dropdown = $('#VehicleModelCode');
+
+                // Add the empty option with the empty message
+                dropdown.append('<option value=""></option>');
+                // Check result isnt empty
+                //console.log('vehicleModels = ' + vehicleModels);
+                if (NotEmpty(vehicleModels)) {
+
+                    var colVal = 'ModelCode';
+                    var colText = 'ModelName';
+                    var colPA = 'NumberofPassengers';
+                    var colDoors = 'NoOfDoors';
+                    var colMin = 'EstimatedPriceMin';
+                    var colMax = 'EstimatedPriceMax';
+
+                    // Loop through each of the results and append the option to the dropdown
+                    $.each(vehicleModels, function (key, obj) {
+                        //dropdown.append(new Option(obj[textField], obj[valueField], false, false));
+                        dropdown.append('<option value="' + obj[colVal] + '" data-noofdoors="' + obj[colDoors] +'" data-noofseats="' + obj[colPA] + '" data-estmin="' + obj[colMin] + '" data-estmax="' + obj[colMax] + '" >' + obj[colText] + '</option>');
+                    });
+                }
+                else {
+
+                }
+
+            } catch (eSubModels) {
+                notify_danger("Error: " + e.eSubModels);
+            }
+
+
+            
+
+        } catch (e) {
+            notify_danger("Error: " + e.message);
+        }
+    }
+
+    function GetModelDetails() {
+
+        //debugger;
+
+        var vModel = $("#VehicleModelCode").find(':selected');
+        //console.log(vModel);
+
+        $('#NoOfPassengers').val('');
+        $('#NoOfDoorsCount').val('');
+        //$('#EstimateFrom').val('0');
+        //$('#EstimateTo').val('0');
+        //$('#VehicleEstimateBetween').text('');
+
+
+        if (vModel) {
+
+            var noOfSeats = vModel.data('noofseats');
+            //console.log('noOfSeats '+noOfSeats);
+
+            if (noOfSeats > 0) {
+                $('#NoOfPassengers').val(noOfSeats);
+            }
+
+            var noOfDoors = vModel.data('noofdoors');
+            //console.log('noOfDoors ' + noOfDoors);
+            if (noOfDoors > 0) {
+                $('#NoOfDoorsCount').val(noOfDoors);
+            }
+
+        }
+
+        $('#MfgYear').trigger('change.select2');
+        $('#NoOfPassengers').trigger('change.select2');
+        $('#NoOfDoorsCount').trigger('change.select2');
+
+        CalculateEstimationValue_MainModel();
+    }
+
+
+    //function GetModelDetails() {
+
+    //    ////////debugger;
+
+    //    var vModel = $("#VehicleModelCode").find(':selected');
+    //    //console.log(vModel);
+
+    //    $('#NoOfPassengers').val('');
+    //    $('#NoOfDoorsCount').val('');
+    //    //$('#EstimateFrom').val('0');
+    //    //$('#EstimateTo').val('0');
+    //    //$('#VehicleEstimateBetween').text('');
+
+
+    //    if (vModel) {
+
+    //        var noOfSeats = vModel.data('noofseats');
+    //        //console.log('noOfSeats '+noOfSeats);
+
+    //        if (noOfSeats > 0) {
+    //            $('#NoOfPassengers').val(noOfSeats);
+    //        }
+
+    //        var noOfDoors = vModel.data('noofdoors');
+    //        //console.log('noOfDoors ' + noOfDoors);
+    //        if (noOfDoors > 0) {
+    //            $('#NoOfDoorsCount').val(noOfDoors);
+    //        }
+
+    //    }
+
+    //    CalculateEstimationValue_MainModel();
+    //}
+
+    try {
+        var vModel = $("#VehicleModelCode").find(':selected');
+        //console.log(vModel);
+
+        $('#NoOfPassengers').val('');
+        $('#NoOfDoorsCount').val('');
+        //$('#EstimateFrom').val('0');
+        //$('#EstimateTo').val('0');
+        //$('#VehicleEstimateBetween').text('');
+
+
+        if (vModel) {
+
+            var noOfSeats = vModel.data('noofseats');
+            //console.log('noOfSeats '+noOfSeats);
+
+            if (noOfSeats > 0) {
+
+                $('#NoOfPassengers').val(noOfSeats).trigger('change');
+            }
+
+            var noOfDoors = vModel.data('noofdoors');
+            //console.log('noOfDoors ' + noOfDoors);
+            if (noOfDoors > 0) {
+                $('#NoOfDoorsCount').val(noOfDoors).trigger('change');
+            }
+
+        }
+    } catch (e) {
+        console.log(e);
+    }
+
+
+    function CalculateEstimationValue_MainModel(VehicleMakeCode, VehicleModelCode, VehicleTypeCode, VehicleRegTypeCode) {
+
+        debugger;
+
+        try {
+
+            var vModel = GetMakeAndModelDetails_PropertiesOnly(VehicleMakeCode, VehicleModelCode, VehicleTypeCode);
+
+
+            $('#EstimateFrom').val('0');
+            $('#EstimateTo').val('0');
+            $('#v_estimates').html('<span class="text-mutted">---</span>');
+            $('#VehicleValue').val('');
+
+
+            var yr = $("#MfgYear").val();
+            var regType = VehicleRegTypeCode;
+
+
+
+            //var vModel = $("#VehicleModelCode").find(':selected');
+
+            if (vModel) {
+
+
+                var estmin = parseInt(vModel.EstimatedPriceMin);
+                var estmax = parseInt(vModel.EstimatedPriceMax);
+                var modelid = parseInt(vModel.ModelID);
+                var do_depreciation = vModel.Do_Depreciation;
+
+
+                if (yr <= 0) {
+                    //notify_warning('يرجى اختيار سنة الصنع');
+                    $('#v_estimates').html('<span class="text-mutted">غير متوفر </span>');
+                    $("#MfgYear").focus();
+                    return;
+                }
+
+
+                var current_yr =2026;
+                var model_age = current_yr - yr;
+
+
+                if (isNaN(estmin) == false) {
+
+
+                    //estmin = GetDepreciatedValue(estmin, model_age);
+                    //estmax = GetDepreciatedValue(estmax, model_age);
+
+                    var regTypeCode = '';
+
+                    if (parseInt(regType) === 1) {
+                        regTypeCode = 'PRIVATE';
+                    } else {
+                        regTypeCode = 'COMMERCIAL';
+                    }
+
+
+
+
+                    if (do_depreciation == true) {
+                        estmin = GetDepreciatedValue_CMA(estmin, model_age, regTypeCode);
+                        estmax = GetDepreciatedValue_CMA(estmax, model_age, regTypeCode);
+
+
+ $('#EstimateFrom').val(estmin);
+ $('#EstimateTo').val(estmax);
+
+
+ if (estmin <= 0) {
+     $('#v_estimates').html('<span class="text-mutted">غير متوفر </span>');
+ }
+ else {
+
+     $('#v_estimates').html(formatNumber(parseInt(estmin)) + '<span class="text-mutted"> - </span>' + formatNumber(parseInt(estmax)) + ' ر.ع');
+
+     $('#VehicleValue').val(parseInt(estmin));
+
+ }
+                    }
+                    else {
+                        //WHEN YEAR CHANGED, LOAD THE EVALUATON AGAIN
+                        var ModelYearEvaluationDto =  GetVehicleEvaluationYearWise(modelid,yr);
+
+
+                        debugger;
+
+                        GetVehicleEvaluationYearWise(modelid, yr).then(function (ModelYearEvaluationDto) {
+                            debugger;
+
+                            if (ModelYearEvaluationDto) {
+                                estmin = ModelYearEvaluationDto.ValueFrom;
+                                estmax = ModelYearEvaluationDto.ValueTo;
+                            }
+
+
+                             debugger;
+ $('#EstimateFrom').val(estmin);
+ $('#EstimateTo').val(estmax);
+
+
+ if (estmin <= 0) {
+     $('#v_estimates').html('<span class="text-mutted">غير متوفر </span>');
+ }
+ else {
+
+     $('#v_estimates').html(formatNumber(parseInt(estmin)) + '<span class="text-mutted"> - </span>' + formatNumber(parseInt(estmax)) + ' ر.ع');
+
+     $('#VehicleValue').val(parseInt(estmin));
+
+ }
+
+
+                        });
+
+                    }
+
+                }
+
+            } else {
+                notify_warning('يرجى اختيار رمز الموديل');
+                $("#VehicleModelCode").focus();
+            }
+
+
+            UpateURL_EveCalc(yr, regType);
+
+
+        } catch (e) {
+            console.log(e);
+        }
+
+
+
+
+    }
+
+       function CalculateEstimationValue_MainModel_bkp() {
+
+       debugger;
+
+       try {
+
+           if ($('#ServiceCode').val() == 'FULL_COMPREHENSIVE') {
+           }
+
+
+           $('#EstimateFrom').val('0');
+           $('#EstimateTo').val('0');
+           $('#v_estimates').html('<span class="text-mutted">---</span>');
+           $('#VehicleValue').val('');
+
+
+           var yr = $("#MfgYear").val();
+           var regType = $('#VehicleRegTypeCode').val();
+
+
+
+           var vModel = $("#VehicleModelCode").find(':selected');
+
+           if (vModel) {
+
+
+               var estmin = parseInt(vModel.data('estmin'));
+               var estmax = parseInt(vModel.data('estmax'));
+               var modelid = parseInt(vModel.data('modelid'));
+               var do_depreciation = vModel.data('dodepreciation');
+
+
+               if (yr <= 0) {
+                   //notify_warning('يرجى اختيار سنة الصنع');
+                   $('#v_estimates').html('<span class="text-mutted">غير متوفر </span>');
+                   $("#MfgYear").focus();
+                   return;
+               }
+
+
+               var current_yr =2026;
+               var model_age = current_yr - yr;
+
+
+               if (isNaN(estmin) == false) {
+
+
+                   //estmin = GetDepreciatedValue(estmin, model_age);
+                   //estmax = GetDepreciatedValue(estmax, model_age);
+
+                   var regTypeCode = '';
+
+                   if (parseInt(regType) === 1) {
+                       regTypeCode = 'PRIVATE';
+                   } else {
+                       regTypeCode = 'COMMERCIAL';
+                   }
+
+
+
+
+                   if (do_depreciation == true) {
+                       estmin = GetDepreciatedValue_CMA(estmin, model_age, regTypeCode);
+                       estmax = GetDepreciatedValue_CMA(estmax, model_age, regTypeCode);
+
+
+$('#EstimateFrom').val(estmin);
+$('#EstimateTo').val(estmax);
+
+
+if (estmin <= 0) {
+    $('#v_estimates').html('<span class="text-mutted">غير متوفر </span>');
+}
+else {
+
+    $('#v_estimates').html(formatNumber(parseInt(estmin)) + '<span class="text-mutted"> - </span>' + formatNumber(parseInt(estmax)) + ' ر.ع');
+
+    $('#VehicleValue').val(parseInt(estmin));
+
+}
+                   }
+                   else {
+                       //WHEN YEAR CHANGED, LOAD THE EVALUATON AGAIN
+                       var ModelYearEvaluationDto =  GetVehicleEvaluationYearWise(modelid,yr);
+
+
+                       debugger;
+
+                       GetVehicleEvaluationYearWise(modelid, yr).then(function (ModelYearEvaluationDto) {
+                           debugger;
+
+                           if (ModelYearEvaluationDto) {
+                               estmin = ModelYearEvaluationDto.ValueFrom;
+                               estmax = ModelYearEvaluationDto.ValueTo;
+                           }
+
+
+                            debugger;
+$('#EstimateFrom').val(estmin);
+$('#EstimateTo').val(estmax);
+
+
+if (estmin <= 0) {
+    $('#v_estimates').html('<span class="text-mutted">غير متوفر </span>');
+}
+else {
+
+    $('#v_estimates').html(formatNumber(parseInt(estmin)) + '<span class="text-mutted"> - </span>' + formatNumber(parseInt(estmax)) + ' ر.ع');
+
+    $('#VehicleValue').val(parseInt(estmin));
+
+}
+
+
+                       });
+
+                   }
+
+               }
+
+           } else {
+               notify_warning('يرجى اختيار رمز الموديل');
+               $("#VehicleModelCode").focus();
+           }
+
+
+           UpateURL_EveCalc(yr, regType);
+
+
+       } catch (e) {
+           console.log(e);
+       }
+
+
+
+
+   }
+
+    function GetVehicleEvaluationYearWise(modelid, MfgYear) {
+        return $.ajax({
+            url: '/insurance/GetVehicleEvaluationValueByYear',
+            type: 'GET',
+            data: {
+                ModelID: modelid,
+                MfgYear: MfgYear
+            }
+        }).then(function (response) {
+            if (
+                response &&
+                response.RequestStatus &&
+                response.RequestStatus.StatusCode === "SUCCESS" &&
+                response.ModelYearEvaluationDto
+            ) {
+                return response.ModelYearEvaluationDto;
+            }
+
+            return null;
+        }).catch(function (xhr, status, error) {
+            console.error("AJAX Error:", error);
+            return null;
+        });
+    }
+
+
+
+
+    function SetVehicleValForAgency(val, val2) {
+
+        if (isEmpty(val)) {
+            val = 0;
+        }
+
+        $(".VehicleValueInput").val(val);
+        $(".hdnPreValue").val(val2);
+        CloseDlg('#VahicalEvaluationModal');
+
+    }
+    function SetVehicleValForLastYear(val, val2) {
+
+        if (isEmpty(val)) {
+            val = 0;
+        }
+
+        $(".VehicleValueInput").val(val);
+        $(".hdnPreValue2").val(val2);
+        CloseDlg('#VahicalEvaluationModal');
+    }
+
+
+    function GetMakeAndModelDetails_PropertiesOnly(makeCode, modelCode, vType) {
+
+        var vehicleModels = GetModelListActiveByMakeAndType(vType, makeCode, 'ar');
+
+        // Select the matching model by modelCode
+        var selectedModel = vehicleModels.find(function (model) {
+            return model.ModelCode == modelCode;
+            // change "ModelCode" to the actual property name in your array
+        });
+
+        return selectedModel;
+
+    }
+
+
+</script>

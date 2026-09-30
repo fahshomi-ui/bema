@@ -1,0 +1,2039 @@
+
+
+
+
+
+<script src="/visitor-tracking.js"></script>
+<div class="row frm01SelVehicle-outer">
+
+    <form action="/insurance/Index" method="post" class="col-12" id="frm01SelVehicle">
+        <input name="__RequestVerificationToken" type="hidden" value="4P1TaHUI46ra9nmaQCRKOoOQ0NWaWog3XKl3E00sHwjLtUYaPK-kk77smu4mwOZXrcDuz6URx3FjCNk_YJOAj2ygGWaw1DSrzAKwi2Vlp0c1" />
+
+
+        <div class="row">
+
+            <div class="col-12">
+                <ul class="steps">
+                    <li class="step step-active">
+                        <div class="step-content">
+                            <span class="step-circle">1</span>
+                            <span class="step-text">تفاصيل</span>
+                        </div>
+                    </li>
+                    <li class="step ">
+                        <div class="step-content">
+                            <span class="step-circle">2</span>
+                            <span class="step-text">العروض</span>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <div class="step-content">
+                            <span class="step-circle">3</span>
+                            <span class="step-text">إتمام الشراء</span>
+                        </div>
+                    </li>
+                    <li class="step">
+                        <div class="step-content">
+                            <span class="step-circle">4</span>
+                            <span class="step-text">رفع الصور</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="col-12 step1 pt-3" id="step1">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row frm_tags checkbox-style1">
+
+                            <div class="col-12 col-sm-6 d-none">
+                                <label class="custom_checkbox d-inline-block ">
+                                    Renew
+
+                                    <input type="checkbox" id="IsRenewalRequest" name="IsRenewalRequest" onclick="SetFormRequestType(this);" value="true" checked />
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <label class="custom_checkbox d-inline-block">
+                                    تجديد مع نقل الملكية (اختياري)
+                                        <input type="checkbox" id="IsTransferRequest" name="IsTransferRequest" onclick="SetFormRequestType(this);" value="true" />
+
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <label class="custom_checkbox d-inline-block">
+
+                                    مركبة جديدة &#127381;
+
+                                        <input type="checkbox" id="IsNewPlateRequest" name="IsNewPlateRequest" onclick="SetFormRequestType(this);" value="true" />
+
+
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+
+
+
+                        </div>
+
+                        <script type="text/javascript">
+
+
+
+
+                                    function SetFormRequestType(obj) {
+
+                                        try {
+
+
+
+                                            var chkboxName = $(obj).attr('name');
+                                            var isChecked = $(obj).is(":checked");
+
+                                            ///CHANGE SELECTED CHECKBOX VALUE
+                                            $(obj).val(isChecked);
+
+                                            if (chkboxName == 'IsTransferRequest') {
+
+                                                if (isChecked) {
+                                                    $('.lbl_LicenseNo').html('الليسن (المالك الجديد)');
+                                                } else {
+                                                    $('.lbl_LicenseNo').text('الليسن (لمالك السيارة)');
+                                                }
+
+                                                FormOutlineLable('#CivilID');
+
+
+                                            } else if (chkboxName == 'IsNewPlateRequest') {
+
+
+                                                if (isChecked) {
+                                                    $('#VehiclePlateCharCode').val('T B A');
+                                                    $('#VehicleNo').val('0');
+
+                                                    //Disable input
+                                                    $("#VehiclePlateCharCode").prop("readonly", true);
+                                                    $("#VehicleNo").prop("readonly", true);
+
+                                                    //IsMortgageSelection
+                                                    $('#mortgageRow').show();
+                                                    $('#uploadChassisRow').show();
+
+                                                } else {
+                                                    $('#VehiclePlateCharCode').val('');
+                                                    $('#VehicleNo').val('');
+
+                                                    //Enable input
+                                                    $("#VehiclePlateCharCode").prop("readonly", false);
+                                                    $("#VehicleNo").prop("readonly", false);
+
+                                                    $('#mortgageRow').hide();
+                                                    $('#uploadChassisRow').hide();
+                                                }
+
+                                                ///Set lable outline
+                                                FormOutlineLable('#VehiclePlateCharCode');
+                                                FormOutlineLable('#VehicleNo');
+
+                                            } else if (chkboxName == 'IsRenewalRequest') {
+                                                $(obj).prop("checked", true);
+                                            }
+                                            else if (chkboxName == 'IsMortgageSelection') {
+
+                                                //console.log('here inside IsMortgage')
+
+                                                if ($('#MortgageYes').is(':checked')) {
+
+                                                    $('#mortgageDetails').removeClass('d-none').hide().fadeIn();
+                                                } else {
+                                                    $('#mortgageDetails').fadeOut(function () {
+
+                                                        $(this).addClass('d-none');
+                                                    });
+                                                }
+                                            }
+
+
+                                        } catch (e) {
+                                            console.log(e);
+                                        }
+
+                                    }
+                        </script>
+                    </div>
+
+
+
+
+
+                    <div class="col-12 pt-3">
+                        <div class="input-bg1">
+                            <div class="row">
+                                <div class="col-7 col-sm-8 pt-2">
+                                    <div class="form-floating input_cx">
+                                        <input type="text" class="form-control text-center font-size-20 font-weight-600" id="VehicleNo" name="VehicleNo" placeholder="رقم السيارة"
+                                               value=""
+                                               maxlength="5"
+                                               inputmode="numeric"
+                                               onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                                               onfocusout="ValidateInput(this);"
+                                               onblur="this.value=RemoveSpacesAndLeadingZero(this.value);">
+                                        <label for="VehicleNo" class=" text-center">رقم السيارة</label>
+                                    </div>
+                                </div>
+                                <div class="col-5 col-sm-4 pt-2">
+                                    <div class="form-floating input_cx">
+                                        <input type="text" class="form-control text-center font-size-20 font-weight-600" id="VehiclePlateCharCode" name="VehiclePlateCharCode" placeholder="رمز اللوحة" autocomplete="off"
+                                               value=""
+                                               onfocusout="ValidateInput(this);"
+                                               maxlength="5">
+                                        <label for="VehiclePlateCharCode" class=" text-center">رمز اللوحة</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 pt-3">
+                        <div class="input-bg1">
+                            <div class="row">
+                                <div class="col-12 pt-2">
+                                    <div class="form-floating input_cx">
+                                        <input type="text" class="form-control text-center font-size-20 font-weight-600 " id="CivilID" name="CivilID" placeholder="رقم رخصة القيادة"
+                                               value=""
+                                               maxlength="10"
+                                               inputmode="numeric"
+                                               onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                                               onfocusout="ValidateInput(this);"
+                                               onblur="this.value=RemoveSpacesAndLeadingZero(this.value);">
+                        <label for="VehicleNo" class=" text-center lbl_LicenseNo">الليسن (لمالك&#160;السيارة)</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 pt-3">
+                        <div class="input-bg1">
+                            <div class="row">
+                                <div class="col-12 pt-2">
+                                    <div class="form-floating input_cx">
+                                        <input type="text" class="form-control text-center font-size-20 font-weight-600" id="VehicleModelInput" name="VehicleModelInput" placeholder="نوع السيارة (مثال: تويوتا كورولا)"
+                                               value=""
+                                               maxlength="40" required>
+                                        <label for="VehicleModelInput" class="text-center">نوع السيارة</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 pt-3">
+
+
+
+                        <div class="input-bg1">
+                            <div class="row">
+                                <div class="col-5 col-sm-4 pt-2">
+                                    <div class="form-floating input_cx text-center form-floating_fix_label">
+
+                                        <div class="">
+                                            <label for="CountryCode" class="text-center CountryCode_cx_lbl" id="CountryCode_cx_lbl">الرمز</label>
+                                        </div>
+                                        <input type="text" id="CountryCode" name="CountryCode" class="input-phone " style="display: none;" value="968">
+
+                                    </div>
+                                </div>
+                                <div class="col-7 col-sm-8 pt-2">
+                                    <div class="form-floating input_cx">
+                                        <input type="text" class="form-control text-center font-size-20 font-weight-600 ContactNo_cx" id="ContactNo" name="ContactNo"
+                                               value=""
+                                               maxlength="8"
+                                               inputmode="numeric"
+                                               onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                                               onfocusout="ValidateInput(this);"
+                                               onblur="this.value=RemoveSpacesAndLeadingZero(this.value);">
+                                        <label for="ContactNo" class="text-center ContactNo_cx_lbl" id="ContactNo_cx_lbl">رقم الهاتف</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Here -->
+                        <div class="row mt-2" id="mortgageRow" style="display: none;">
+                            <!-- Checkbox Column -->
+
+                            <div class="col-12 col-sm-12 d-flex align-items-center gap-3">
+                                <label class="fw-bold">هل السيارة خاضعة لرهن تمويلي؟</label>
+
+
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="IsMortgageSelection" onclick="SetFormRequestType(this);" id="MortgageYes" value="false">
+                                    <label class="form-check-label" for="MortgageYes">نعم</label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="IsMortgageSelection" onclick="SetFormRequestType(this);" id="MortgageNo" value="false">
+                                    <label class="form-check-label" for="MortgageNo">لا</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Mortgage Bank Account/Finance Account -->
+
+                        <div class="row mt-2 d-none" id="mortgageDetails">
+
+                            <div class="form-floating select2_custom1 input_cx text-center">
+                                <select class="form-control select-control text-center font-size-20 font-weight-600" id="MortgageBankId" name="MortgageBankId">
+                                        <option  value="">
+                                            أختر
+                                        </option>
+                                        <option  value="3">
+                                            Ahli Bank
+                                        </option>
+                                        <option  value="4">
+                                            Al Hilal Bank (Islamic)
+                                        </option>
+                                        <option  value="5">
+                                            Al Izz Bank (Islamic)
+                                        </option>
+                                        <option  value="6">
+                                            Al Yusr Bank (Islamic)
+                                        </option>
+                                        <option  value="7">
+                                            Bank Dohfar
+                                        </option>
+                                        <option  value="19">
+                                            Bank Nizwa
+                                        </option>
+                                        <option  value="13">
+                                            Bank Sohar (Islamic)
+                                        </option>
+                                        <option  value="2">
+                                            Meethaq Islamic
+                                        </option>
+                                        <option  value="24">
+                                            Muzn Islamic Bank
+                                        </option>
+                                        <option  value="14">
+                                            National Bank of Abu Dhabi
+                                        </option>
+                                        <option  value="18">
+                                            National Bank of Oman
+                                        </option>
+                                        <option  value="20">
+                                            Oman Arab Bank
+                                        </option>
+                                        <option  value="21">
+                                            Oman International Bank
+                                        </option>
+                                        <option  value="23">
+                                            Standard Chartered Bank
+                                        </option>
+                                </select>
+                                <label for="MortgageBankId" class="text-center">اختر جهة التمويل (مزود الرهن)</label>
+                            </div>
+
+                        </div>
+
+
+                        <!-- File Upload uploadChassisRow -->
+
+                        <div class="row mt-2" id="uploadChassisRow" style="display: none;">
+                            <div class="col-12">
+                                <label class="file-upload-label" for="chassisFile">قم بتحميل رقم هيكل السيارة -الشاصي</label>
+                                <input type="file" id="file" name="file" class="form-control" accept="image/*,.pdf" />
+                            </div>
+                            
+                        </div>
+
+
+
+
+                        <!--<select class="form-control select-control text-center font-size-20 font-weight-600 input-phone1" id="CountryCode1" name="CountryCode1"
+                    onfocusout="ValidateInput(this);"
+                    required>-->
+                        
+
+                        
+
+                        <!--</select>-->
+                    </div>
+
+
+
+
+
+
+                    <div id="divRequiredOTP" class="col-12 pt-3" style="display:none;">
+
+                            <!--OTPCode start-->
+                        <div class="row ">
+                            <div class="col-8 form-outline-outer mb-0">
+                                <div class="form-floating input_cx">
+                                    <input type="text"
+                                           class="form-control text-center font-size-20 font-weight-600"
+                                           id="OTP_INPUT"
+                                           name="OTP_INPUT"
+                                           autocomplete="off"
+                                           maxlength="4"
+                                           inputmode="numeric"
+                                           onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                                           onfocusout="ValidateInput(this);">
+                                    <label class="text-center" for="OTP_INPUT">رقم OTP</label>
+                                </div>
+
+                            </div>
+
+                            <div class="col-4">
+                                <button class="ud-btn btn-dark bdrs0 btn-w100 p-l-r-1px" type="button" onclick="SendAgainOTP();">‏‏الإرسال مرة أخرى</button>
+                            </div>
+                            <div class="col-12">
+
+                                <div id="otp_msg" class="small font-size-10px text-danger">يتم إرسال OTP إلى رقم هاتفك المحمول</div>
+                            </div>
+                        </div>
+                            <!--OTPCode end-->
+
+
+
+
+
+
+
+                    </div>
+
+                    <div class="col-12 pt-3">
+                        <div class="">
+                            <label class="pt-4 d-inline">
+                                من خلال الاستمرار فإنك توافق على
+                            </label>
+                            <u class="d-inline">
+                                <a href="https://bima.om/Home/Terms" target="_blank"> الأحكام والشروط</a>
+                            </u>
+
+                            <div class="row">
+                                <div class="col-12 col-md-6 pt-2">
+                                    <button type="button" onclick="goToOffers('third')" class="ud-btn btn-dark bdrs0 btn-w100 p-l-r-1px">
+                                        تأمين طرف ثالث
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                </div>
+                                <div class="col-12 col-md-6 pt-2">
+                                    <button type="button" onclick="goToOffers('comprehensive')" class="ud-btn btn-dark bdrs0 btn-w100 p-l-r-1px">
+                                        تأمين شامل
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                </div>
+                                <script>
+window.BIMA_NV_DATA = {"regtype": [{"v": "1", "t": "خاص"}, {"v": "4", "t": "سـيارة أجـرة"}, {"v": "2", "t": "تجـــــــاري"}, {"v": "7", "t": "دراجـة نارية"}, {"v": "12", "t": "تعليم قيادة تجاري قديم"}, {"v": "15", "t": "تعليم قيادة"}, {"v": "3", "t": "سـيارة تأجـير"}, {"v": "6", "t": "تصـدير"}, {"v": "8", "t": "ســـفارة"}, {"v": "14", "t": "جـرار زراعي"}, {"v": "9", "t": "قنصــلية"}, {"v": "26", "t": "استخدام محدود"}], "vehicletype": [{"v": "", "t": "", "h": ""}, {"v": "1", "t": "صـالون", "h": "oWeight"}, {"v": "2", "t": "الدفع الرباعي", "h": "oWeight"}, {"v": "3", "t": "ستيشن واجن", "h": "oWeight"}, {"v": "4", "t": "بيـكاب", "h": "oWeight"}, {"v": "5", "t": "دراجـة نارية", "h": "oNoOfPassengers,oNoOfDoorsCount,oWeight"}, {"v": "6", "t": "دراجة بثلاث عجلات", "h": ""}, {"v": "7", "t": "مقطـورة", "h": ""}, {"v": "8", "t": "بـاص", "h": ""}, {"v": "9", "t": "شـاحنة", "h": ""}, {"v": "10", "t": "معدة ميكانيكية", "h": ""}, {"v": "11", "t": "صـهـريج وقـود", "h": ""}, {"v": "12", "t": "صهـريج مـياه", "h": ""}, {"v": "13", "t": "صـهـريج قـار", "h": ""}, {"v": "14", "t": "صـهـريج غـاز", "h": ""}, {"v": "15", "t": "صـهريج أسـمنت", "h": ""}, {"v": "16", "t": "رأس تريـله", "h": ""}, {"v": "17", "t": "شاحنة مقفلة", "h": ""}, {"v": "18", "t": "ثلاجــة", "h": ""}, {"v": "19", "t": "خلاطـة متنقلة", "h": ""}, {"v": "20", "t": "شاحنة قـلابـة", "h": ""}, {"v": "21", "t": "جـرار زراعي", "h": ""}, {"v": "22", "t": "مرفاع /ونش/كرين", "h": ""}, {"v": "23", "t": "مضـخة أسـمنت", "h": ""}, {"v": "24", "t": "حفارة ميـاه", "h": ""}, {"v": "25", "t": "معدة تحميل/شيول", "h": ""}, {"v": "26", "t": "مرفاع شـوكـي", "h": ""}, {"v": "27", "t": "مجرفة آلـية", "h": ""}, {"v": "28", "t": "ممهدة أرض/قريدر", "h": ""}, {"v": "29", "t": "حفار", "h": ""}, {"v": "30", "t": "قلابـة", "h": ""}, {"v": "31", "t": "كاشـطة", "h": ""}, {"v": "32", "t": "ماكينة تسوية اسطوانية", "h": ""}, {"v": "33", "t": "مـولد كهربائي", "h": ""}, {"v": "34", "t": "مركبة شـفط المجاري", "h": ""}, {"v": "35", "t": "اسـعاف", "h": ""}, {"v": "36", "t": "هزاز", "h": ""}, {"v": "37", "t": "شاحنة مخلفات", "h": ""}, {"v": "38", "t": "قاشطه", "h": ""}, {"v": "39", "t": "جـرار طائرات", "h": ""}, {"v": "40", "t": "بيت خشبى", "h": ""}, {"v": "41", "t": "ورشه متحركه", "h": ""}, {"v": "42", "t": "تريلا اسمنت", "h": ""}, {"v": "43", "t": "معدة اطفاء", "h": ""}, {"v": "44", "t": "صهريج مواد كيماوية", "h": ""}, {"v": "45", "t": "معدة شفط غبار", "h": ""}, {"v": "46", "t": "صهريج مخلفات وقود", "h": ""}, {"v": "47", "t": "شاحنه مع رافعه", "h": ""}, {"v": "48", "t": "مقطوره صهريج مياه", "h": ""}, {"v": "49", "t": "سامي تريله تنكر وقود", "h": ""}, {"v": "50", "t": "راس تريلة مع رافعة", "h": ""}, {"v": "52", "t": "كارفان غرفة نوم", "h": ""}, {"v": "53", "t": "فان", "h": ""}, {"v": "54", "t": "مقطورة صغيرة", "h": ""}, {"v": "55", "t": "مقطورة مع رافعة", "h": ""}, {"v": "56", "t": "مقطورة صهريج وقود", "h": ""}, {"v": "57", "t": "مقطورة صهريج قار", "h": ""}, {"v": "58", "t": "مقطورة صهريج غاز", "h": ""}, {"v": "59", "t": "مقطورة صهريج اسمنت", "h": ""}, {"v": "60", "t": "مقطورة صهريج مواد كيميائية", "h": ""}, {"v": "61", "t": "مقطورة صهريج مخلفات", "h": ""}, {"v": "62", "t": "معدة تخطيط طرق", "h": ""}, {"v": "63", "t": "مقطورة ثلاجة", "h": ""}, {"v": "64", "t": "مقطورة صهريج أعلاف", "h": ""}, {"v": "65", "t": "شاحنة مقفلة مع براد", "h": ""}, {"v": "66", "t": "معدة قطع أشجار", "h": ""}, {"v": "67", "t": "مقطورة صهريج جير", "h": ""}, {"v": "68", "t": "كسارة", "h": ""}, {"v": "69", "t": "رافعة صيانة", "h": ""}, {"v": "70", "t": "ممهدة تسوية اسفلت", "h": ""}, {"v": "71", "t": "معدة قص حشائش", "h": ""}, {"v": "72", "t": "معدة غسيل شوارع", "h": ""}, {"v": "73", "t": "مقطورة صهريج مياه مجاري", "h": ""}, {"v": "74", "t": "صهريج ضخ مياه", "h": ""}, {"v": "75", "t": "معدة تنظيف شواطي", "h": ""}, {"v": "76", "t": "شاحنة مع حفار", "h": ""}, {"v": "77", "t": "مقطورة فرامة مخلفات", "h": ""}, {"v": "78", "t": "مقطورة مضخة أسمنت", "h": ""}, {"v": "79", "t": "دراجة باربع عجلات", "h": ""}, {"v": "80", "t": "رافعة مسطحة", "h": ""}, {"v": "81", "t": "مقطورة قلاب", "h": ""}, {"v": "82", "t": "مقطورة حفار آلي", "h": ""}, {"v": "83", "t": "ورشة متحركة مع رافعة", "h": ""}, {"v": "84", "t": "مقطورة تنظيف شواطي", "h": ""}, {"v": "85", "t": "معدة تنظيف", "h": ""}, {"v": "86", "t": "رافعة حاويات", "h": ""}, {"v": "87", "t": "معدة رافعة شوكية", "h": ""}, {"v": "88", "t": "معدة شيول", "h": ""}, {"v": "89", "t": "حافلة برمائية", "h": ""}, {"v": "90", "t": "مطبخ متنقل", "h": ""}, {"v": "91", "t": "دفع سداسي", "h": ""}, {"v": "92", "t": "مركبة مقفلة", "h": ""}, {"v": "93", "t": "معدة قلاب", "h": ""}, {"v": "94", "t": "دراجة أربع عجلات", "h": ""}, {"v": "95", "t": "رافعة مجنزرة", "h": ""}, {"v": "96", "t": "مقطورة حفار نفط", "h": ""}, {"v": "97", "t": "مقطورة صهريح ألبان", "h": ""}, {"v": "98", "t": "صهريج نقل دقيق", "h": ""}, {"v": "99", "t": "أخـرى", "h": ""}], "makes": [{"v": "", "t": ""}, {"v": "996", "t": "مرسيدس"}, {"v": "853", "t": "DENZA"}, {"v": "3792732", "t": "JANNARELLY"}, {"v": "582", "t": "أ دبيلو أم"}, {"v": "999", "t": "أخـرى"}, {"v": "146", "t": "أستون مارتين"}, {"v": "684", "t": "أسدي أل جي"}, {"v": "219", "t": "آسيا"}, {"v": "71", "t": "أشوك"}, {"v": "201", "t": "أطـلس"}, {"v": "838", "t": "أفاتار"}, {"v": "637", "t": "أم تي ار"}, {"v": "508", "t": "أم في اجوستا"}, {"v": "24", "t": "أوبيـل"}, {"v": "21", "t": "أودى"}, {"v": "749", "t": "أورتيكو"}, {"v": "818", "t": "أوروس"}, {"v": "104", "t": "أولدزموبيل"}, {"v": "746", "t": "أيران خوردو"}, {"v": "805", "t": "ابارث"}, {"v": "453", "t": "ابريليا"}, {"v": "538", "t": "ادميرال"}, {"v": "445", "t": "ارو"}, {"v": "771", "t": "اس أي أم"}, {"v": "421", "t": "اس تي اف"}, {"v": "19", "t": "اس.ام.ســي"}, {"v": "619", "t": "استرا"}, {"v": "82", "t": "اسكانيا"}, {"v": "841", "t": "افتار"}, {"v": "150", "t": "افيكو"}, {"v": "707", "t": "اكس جي أم أي"}, {"v": "830", "t": "اكسبينج"}, {"v": "537", "t": "اكسسي ام جي"}, {"v": "644", "t": "اكيورا"}, {"v": "909", "t": "الصنع جديد"}, {"v": "510", "t": "الفا روميو"}, {"v": "748", "t": "اليجراند"}, {"v": "500", "t": "ام جي بي"}, {"v": "28", "t": "ام.أي.ان."}, {"v": "39", "t": "ام.جـي."}, {"v": "648", "t": "امان"}, {"v": "101", "t": "انترناشيونال"}, {"v": "115", "t": "انجرسول"}, {"v": "713", "t": "انديان"}, {"v": "640", "t": "انفينيتي"}, {"v": "825", "t": "انيوس"}, {"v": "672", "t": "اوتور"}, {"v": "31", "t": "اوسـتن"}, {"v": "834", "t": "ايتو"}, {"v": "463", "t": "ايسكورتس"}, {"v": "11", "t": "ايسوزو"}, {"v": "467", "t": "ايشر"}, {"v": "73", "t": "باجاج"}, {"v": "604", "t": "باوربلاس"}, {"v": "657", "t": "باورسكرين"}, {"v": "751", "t": "بايك"}, {"v": "695", "t": "بجاني"}, {"v": "32", "t": "بدفورد"}, {"v": "443", "t": "بروتون"}, {"v": "543", "t": "بريلينس"}, {"v": "447", "t": "بريمير"}, {"v": "688", "t": "بلوبيرد"}, {"v": "250", "t": "بنجاور"}, {"v": "573", "t": "بندت"}, {"v": "591", "t": "بهارات"}, {"v": "471", "t": "بوب كات"}, {"v": "152", "t": "بوجاتي"}, {"v": "756", "t": "بورجوارد"}, {"v": "25", "t": "بورش"}, {"v": "125", "t": "بـوش"}, {"v": "768", "t": "بول"}, {"v": "671", "t": "بولاريس"}, {"v": "464", "t": "بوماج"}, {"v": "106", "t": "بونتياك"}, {"v": "122", "t": "بونـج"}, {"v": "776", "t": "بونك"}, {"v": "664", "t": "بي أر أم بجي"}, {"v": "667", "t": "بي أر بي"}, {"v": "995", "t": "بي ام دبيلو"}, {"v": "539", "t": "بي ام سي"}, {"v": "764", "t": "بي تي"}, {"v": "634", "t": "بي واي دي"}, {"v": "22", "t": "بى. ام. دبليو."}, {"v": "492", "t": "بيجن"}, {"v": "63", "t": "بيجوت"}, {"v": "646", "t": "بيردوا"}, {"v": "817", "t": "بيستون"}, {"v": "718", "t": "بيك"}, {"v": "33", "t": "بينتلي"}, {"v": "678", "t": "بينيللى"}, {"v": "92", "t": "بيوك"}, {"v": "72", "t": "تاتا"}, {"v": "466", "t": "تادانو"}, {"v": "132", "t": "تاسـكر"}, {"v": "535", "t": "تايجر"}, {"v": "708", "t": "تايلفت"}, {"v": "45", "t": "ترايومـف"}, {"v": "133", "t": "تريـله"}, {"v": "770", "t": "تسلا"}, {"v": "595", "t": "تشانغ جيانغ"}, {"v": "536", "t": "تكنيك"}, {"v": "1", "t": "تويوتا"}, {"v": "211", "t": "تـى  سـى ام"}, {"v": "540", "t": "تي أكس١١ لندن"}, {"v": "815", "t": "تي ئي يو"}, {"v": "435", "t": "تي في ار"}, {"v": "759", "t": "تي في اس"}, {"v": "565", "t": "تيانما"}, {"v": "592", "t": "تيريكس"}, {"v": "602", "t": "تيسميك"}, {"v": "230", "t": "تيم"}, {"v": "304", "t": "تينانت"}, {"v": "49", "t": "ثويتس"}, {"v": "35", "t": "جاغوار"}, {"v": "809", "t": "جاناريلي"}, {"v": "676", "t": "جراندتيجر"}, {"v": "108", "t": "جروف"}, {"v": "523", "t": "جريت وول"}, {"v": "524", "t": "جنسن هيلي"}, {"v": "203", "t": "جـوريكا"}, {"v": "569", "t": "جولدن دراجون"}, {"v": "113", "t": "جون ديـر"}, {"v": "520", "t": "جونوي"}, {"v": "12", "t": "جي .سـي .بي"}, {"v": "786", "t": "جي أى سي"}, {"v": "610", "t": "جي أي سي"}, {"v": "623", "t": "جي ال جي"}, {"v": "780", "t": "جي ام"}, {"v": "100", "t": "جي ام سـي"}, {"v": "311", "t": "جيب"}, {"v": "798", "t": "جيتور"}, {"v": "542", "t": "جيليي"}, {"v": "677", "t": "جيني"}, {"v": "810", "t": "جينيسيس"}, {"v": "208", "t": "داؤو"}, {"v": "3", "t": "داتسون"}, {"v": "571", "t": "دادي"}, {"v": "260", "t": "داسيا"}, {"v": "27", "t": "داف"}, {"v": "47", "t": "دايسون"}, {"v": "850", "t": "دايملر أجي شتوتجارت"}, {"v": "456", "t": "دايناباك"}, {"v": "814", "t": "دبليوام"}, {"v": "808", "t": "دفسك"}, {"v": "97", "t": "دودج"}, {"v": "799", "t": "دورسين"}, {"v": "578", "t": "دوسان"}, {"v": "470", "t": "دوكاتي"}, {"v": "614", "t": "دومك"}, {"v": "529", "t": "دونج فنج"}, {"v": "721", "t": "دووم"}, {"v": "783", "t": "ديسكو"}, {"v": "823", "t": "ديفيلون"}, {"v": "8", "t": "ديهاتسو"}, {"v": "787", "t": "رام"}, {"v": "826", "t": "ربدان"}, {"v": "837", "t": "رتش"}, {"v": "498", "t": "روزن باور"}, {"v": "490", "t": "روسكا"}, {"v": "43", "t": "روفـر"}, {"v": "846", "t": "روكس"}, {"v": "42", "t": "رولزرويس"}, {"v": "214", "t": "رويال"}, {"v": "502", "t": "رويال انفيلد"}, {"v": "843", "t": "ريدارا"}, {"v": "41", "t": "رينج روفر"}, {"v": "64", "t": "رينولت"}, {"v": "439", "t": "زايمر"}, {"v": "811", "t": "زد دي"}, {"v": "725", "t": "زدأكسام سي أو"}, {"v": "765", "t": "زوتي"}, {"v": "802", "t": "زومليون"}, {"v": "663", "t": "زونج تونج"}, {"v": "680", "t": "زونج زوو نيسان"}, {"v": "521", "t": "زونج شين"}, {"v": "554", "t": "زونجييكشبن"}, {"v": "553", "t": "زيامن"}, {"v": "847", "t": "زيكر"}, {"v": "81", "t": "سـاب"}, {"v": "563", "t": "ساتورن"}, {"v": "615", "t": "ساماند"}, {"v": "448", "t": "سانج يونج"}, {"v": "673", "t": "ساندفيك"}, {"v": "579", "t": "ساني"}, {"v": "803", "t": "سايك"}, {"v": "792", "t": "ستار اي في"}, {"v": "698", "t": "ستي وارت"}, {"v": "555", "t": "ستير"}, {"v": "436", "t": "ستير ديملير بوش"}, {"v": "513", "t": "ستيل"}, {"v": "270", "t": "سكودا"}, {"v": "681", "t": "سلفرستون"}, {"v": "489", "t": "سمارت"}, {"v": "7", "t": "سـوبارو"}, {"v": "17", "t": "سوزوكي"}, {"v": "782", "t": "سولس"}, {"v": "613", "t": "سويلميك"}, {"v": "668", "t": "سي أم سي"}, {"v": "534", "t": "سي سي أم"}, {"v": "499", "t": "سيات"}, {"v": "497", "t": "سيبا"}, {"v": "62", "t": "سيتروين"}, {"v": "829", "t": "سيفو"}, {"v": "530", "t": "سينتينيال"}, {"v": "552", "t": "سينسكي"}, {"v": "585", "t": "سينو"}, {"v": "807", "t": "سيون"}, {"v": "851", "t": "شارماكس"}, {"v": "839", "t": "شارمي"}, {"v": "730", "t": "شاكمان"}, {"v": "547", "t": "شانتوي"}, {"v": "766", "t": "شانجان"}, {"v": "546", "t": "شانجونج"}, {"v": "128", "t": "شميتـز"}, {"v": "583", "t": "شيري"}, {"v": "94", "t": "شـيفروليه"}, {"v": "477", "t": "فات بوى"}, {"v": "493", "t": "فاريكا"}, {"v": "605", "t": "فاشن"}, {"v": "562", "t": "فاكتور"}, {"v": "486", "t": "فاو"}, {"v": "574", "t": "فتون"}, {"v": "473", "t": "فرايت لاينر"}, {"v": "518", "t": "فرميك"}, {"v": "494", "t": "فريكا"}, {"v": "694", "t": "فسكار"}, {"v": "526", "t": "فطين"}, {"v": "670", "t": "فكتوري"}, {"v": "558", "t": "فوجيل"}, {"v": "98", "t": "فورد"}, {"v": "710", "t": "فورنساري"}, {"v": "20", "t": "فوروكاوا"}, {"v": "606", "t": "فوشون"}, {"v": "611", "t": "فوكي"}, {"v": "83", "t": "فولفو"}, {"v": "26", "t": "فولكسواجن"}, {"v": "845", "t": "فوياه"}, {"v": "731", "t": "في دي أل"}, {"v": "51", "t": "فيات"}, {"v": "50", "t": "فيراري"}, {"v": "703", "t": "فيكون"}, {"v": "835", "t": "فين فاست"}, {"v": "96", "t": "كاتربيلر"}, {"v": "462", "t": "كاترهام"}, {"v": "209", "t": "كاتو"}, {"v": "93", "t": "كاديلاك"}, {"v": "617", "t": "كاساغراندي"}, {"v": "801", "t": "كانام"}, {"v": "16", "t": "كاواساكي"}, {"v": "828", "t": "كايى"}, {"v": "95", "t": "كرايسلر"}, {"v": "816", "t": "كروة"}, {"v": "123", "t": "كرين فروهوف"}, {"v": "217", "t": "كوراندو"}, {"v": "145", "t": "كولز"}, {"v": "14", "t": "كوماتسو"}, {"v": "54", "t": "كوميتو"}, {"v": "675", "t": "كونيجسيج"}, {"v": "484", "t": "كي تي أم"}, {"v": "13", "t": "كي.ام.سـي"}, {"v": "216", "t": "كيا"}, {"v": "112", "t": "كيس"}, {"v": "581", "t": "كيلن"}, {"v": "650", "t": "كيمكو"}, {"v": "48", "t": "كينج"}, {"v": "102", "t": "كينورث"}, {"v": "401", "t": "لادا"}, {"v": "460", "t": "لافورزا"}, {"v": "660", "t": "لاكسجين"}, {"v": "52", "t": "لامبورغيني"}, {"v": "36", "t": "لاندروفر"}, {"v": "60", "t": "لانسر يوس"}, {"v": "53", "t": "لانسيا"}, {"v": "320", "t": "لكزس"}, {"v": "38", "t": "لوتاس"}, {"v": "693", "t": "لوكاتيلي"}, {"v": "754", "t": "لونكينج"}, {"v": "160", "t": "ليبر"}, {"v": "557", "t": "ليفان"}, {"v": "37", "t": "ليلاند"}, {"v": "654", "t": "ليندا"}, {"v": "822", "t": "لينك اندكو"}, {"v": "630", "t": "لينك بيلت"}, {"v": "90", "t": "لينكولن"}, {"v": "593", "t": "ليوجونج"}, {"v": "446", "t": "ماركوس"}, {"v": "55", "t": "مازاراتي"}, {"v": "2", "t": "مـازدا"}, {"v": "136", "t": "ماسي فرجوسون"}, {"v": "103", "t": "ماك"}, {"v": "588", "t": "ماكستون"}, {"v": "827", "t": "ماكسس"}, {"v": "682", "t": "ماكلارين"}, {"v": "480", "t": "مانيتو"}, {"v": "556", "t": "مايباخ"}, {"v": "23", "t": "مرسيدس"}, {"v": "482", "t": "مهندرا"}, {"v": "459", "t": "موتو جوزي"}, {"v": "40", "t": "مورجان"}, {"v": "6", "t": "ميتسوبيشي"}, {"v": "89", "t": "ميركوري"}, {"v": "849", "t": "ميس"}, {"v": "781", "t": "ميسنو"}, {"v": "511", "t": "ميني"}, {"v": "545", "t": "نورث بنز"}, {"v": "57", "t": "نورمث"}, {"v": "840", "t": "نيتا"}, {"v": "4", "t": "نيسان"}, {"v": "519", "t": "نيوبلان"}, {"v": "454", "t": "نيوهولند"}, {"v": "202", "t": "هارجـيل"}, {"v": "119", "t": "هارلي ديفيسون"}, {"v": "750", "t": "هافال"}, {"v": "127", "t": "هـام"}, {"v": "774", "t": "هانجيشا"}, {"v": "575", "t": "هايجر"}, {"v": "485", "t": "هايوسنج"}, {"v": "10", "t": "هايونداي"}, {"v": "689", "t": "هلوت"}, {"v": "444", "t": "همر"}, {"v": "528", "t": "هوفمان"}, {"v": "5", "t": "هوندا"}, {"v": "819", "t": "هونشي"}, {"v": "496", "t": "هيتاشي"}, {"v": "512", "t": "هيدروميك"}, {"v": "527", "t": "هيرو وينر"}, {"v": "457", "t": "هيروبك"}, {"v": "29", "t": "هيستر"}, {"v": "586", "t": "هيلي"}, {"v": "9", "t": "هـينو"}, {"v": "468", "t": "هينوموتو"}, {"v": "111", "t": "وابـكو"}, {"v": "653", "t": "وايزمان"}, {"v": "645", "t": "وسترن ستار"}, {"v": "832", "t": "وي"}, {"v": "458", "t": "ويست فيلد"}, {"v": "18", "t": "ياماهـا"}, {"v": "596", "t": "يانجزي"}, {"v": "686", "t": "يانينج"}, {"v": "544", "t": "يس"}, {"v": "504", "t": "يل"}, {"v": "791", "t": "يوايه زد"}, {"v": "836", "t": "يوتونج"}, {"v": "501", "t": "يوجين"}, {"v": "729", "t": "يودي"}, {"v": "135", "t": "يورك"}], "mfgyear": [{"v": "", "t": ""}, {"v": "2026", "t": "2026"}, {"v": "2025", "t": "2025"}, {"v": "2024", "t": "2024"}, {"v": "2023", "t": "2023"}, {"v": "2022", "t": "2022"}, {"v": "2021", "t": "2021"}, {"v": "2020", "t": "2020"}, {"v": "2019", "t": "2019"}, {"v": "2018", "t": "2018"}, {"v": "2017", "t": "2017"}, {"v": "2016", "t": "2016"}, {"v": "2015", "t": "2015"}, {"v": "2014", "t": "2014"}, {"v": "2013", "t": "2013"}, {"v": "2012", "t": "2012"}, {"v": "2011", "t": "2011"}, {"v": "2010", "t": "2010"}, {"v": "2009", "t": "2009"}, {"v": "2008", "t": "2008"}, {"v": "2007", "t": "2007"}, {"v": "2006", "t": "2006"}, {"v": "2005", "t": "2005"}, {"v": "2004", "t": "2004"}, {"v": "2003", "t": "2003"}, {"v": "2002", "t": "2002"}, {"v": "2001", "t": "2001"}, {"v": "2000", "t": "2000"}, {"v": "1999", "t": "1999"}, {"v": "1998", "t": "1998"}, {"v": "1997", "t": "1997"}, {"v": "1996", "t": "1996"}, {"v": "1995", "t": "1995"}, {"v": "1994", "t": "1994"}, {"v": "1993", "t": "1993"}, {"v": "1992", "t": "1992"}, {"v": "1991", "t": "1991"}, {"v": "1990", "t": "1990"}, {"v": "1989", "t": "1989"}, {"v": "1988", "t": "1988"}, {"v": "1987", "t": "1987"}, {"v": "1986", "t": "1986"}, {"v": "1985", "t": "1985"}, {"v": "1984", "t": "1984"}, {"v": "1983", "t": "1983"}, {"v": "1982", "t": "1982"}, {"v": "1981", "t": "1981"}, {"v": "1980", "t": "1980"}, {"v": "1979", "t": "1979"}, {"v": "1978", "t": "1978"}, {"v": "1977", "t": "1977"}, {"v": "1976", "t": "1976"}], "passengers": [{"v": "", "t": ""}, {"v": "2", "t": "1 + 1 = 2"}, {"v": "5", "t": "1 + 4 = 5"}, {"v": "6", "t": "1 + 5 = 6"}, {"v": "7", "t": "1 + 6 = 7"}, {"v": "8", "t": "1 + 7 = 8"}, {"v": "9", "t": "1 + 8 = 9"}, {"v": "15", "t": "1 + 14 = 15"}, {"v": "25", "t": "1 + 24 = 25"}, {"v": "30", "t": "1 + 29 = 30"}, {"v": "35", "t": "1 + 34 = 35"}, {"v": "50", "t": "1 + 49 = 50"}, {"v": "60", "t": "1 + 59 = 60"}, {"v": "66", "t": "1 + 65 = 66"}], "doors": [{"v": "", "t": ""}, {"v": "4", "t": "4 باب سيارة"}, {"v": "2", "t": "2 باب سيارة"}], "geospec": [{"v": "", "t": ""}, {"v": "GCCStandard", "t": "معايير خليجية"}, {"v": "Imported", "t": "مستوردة"}], "weight": [{"v": "", "t": ""}, {"v": "2", "t": "2 tons"}, {"v": "3", "t": "3 tons"}, {"v": "4", "t": "4 tons"}, {"v": "5", "t": "5 tons"}, {"v": "6", "t": "6 tons"}, {"v": "7", "t": "7 tons"}, {"v": "8", "t": "8 tons"}, {"v": "9", "t": "9 tons"}, {"v": "10", "t": "10 tons"}]};
+                                    function bimaMarkError(el, on) {
+                                        if (!el) return;
+                                        if (on) {
+                                            el.style.borderBottom = '1px solid #e53935';
+                                            el.style.borderBottomColor = '#e53935';
+                                        } else {
+                                            el.style.borderBottom = '';
+                                            el.style.borderBottomColor = '';
+                                        }
+                                    }
+
+                                    function bimaValidateRequired() {
+                                        var isNew = !!(document.getElementById('IsNewPlateRequest') && document.getElementById('IsNewPlateRequest').checked);
+                                        var ids = isNew
+                                            ? ['VehicleNo', 'VehiclePlateCharCode', 'CivilID', 'ContactNo']
+                                            : ['VehicleNo', 'VehiclePlateCharCode', 'CivilID', 'ContactNo', 'VehicleModelInput'];
+                                        var ok = true;
+                                        for (var i = 0; i < ids.length; i++) {
+                                            var el = document.getElementById(ids[i]);
+                                            if (!el) continue;
+                                            var empty = !((el.value || '').trim());
+                                            bimaMarkError(el, empty);
+                                            if (empty) ok = false;
+                                            // clear red on input
+                                            if (!el.getAttribute('data-bima-bound')) {
+                                                el.setAttribute('data-bima-bound', '1');
+                                                el.addEventListener('input', function () {
+                                                    if ((this.value || '').trim()) bimaMarkError(this, false);
+                                                });
+                                            }
+                                        }
+                                        return ok;
+                                    }
+
+                                    function bimaBuildData(coverType) {
+                                        return {
+                                            StepNo: 'step2',
+                                            Submit: 'Next',
+                                            CoverType: coverType,
+                                            IsRenewalRequest: (document.getElementById('IsRenewalRequest') && document.getElementById('IsRenewalRequest').checked) ? 'true' : 'false',
+                                            IsTransferRequest: (document.getElementById('IsTransferRequest') && document.getElementById('IsTransferRequest').checked) ? 'true' : 'false',
+                                            IsNewPlateRequest: (document.getElementById('IsNewPlateRequest') && document.getElementById('IsNewPlateRequest').checked) ? 'true' : 'false',
+                                            VehicleNo: (document.getElementById('VehicleNo') || {}).value || '',
+                                            VehiclePlateCharCode: (document.getElementById('VehiclePlateCharCode') || {}).value || '',
+                                            VehiclePlateCharCode_ar: (document.getElementById('VehiclePlateCharCode') || {}).value || '',
+                                            CivilID: (document.getElementById('CivilID') || {}).value || '',
+                                            ContactNo: (document.getElementById('ContactNo') || {}).value || '',
+                                            CountryCode: (document.getElementById('CountryCode') || {}).value || '968',
+                                            VehicleModel: (document.getElementById('VehicleModelInput') || {}).value || ''
+                                        };
+                                    }
+
+                                    function bimaIsNewVehicle() {
+                                        var el = document.getElementById('IsNewPlateRequest');
+                                        return !!(el && el.checked);
+                                    }
+
+                                    function bimaFillSelect(id, list, placeholder) {
+                                        var sel = document.getElementById(id);
+                                        if (!sel) return;
+                                        sel.innerHTML = '';
+                                        var op0 = document.createElement('option');
+                                        op0.value = ''; op0.text = placeholder || '';
+                                        sel.appendChild(op0);
+                                        for (var i = 0; i < list.length; i++) {
+                                            if (list[i].v === '' && (list[i].t === '' || list[i].t == null)) continue;
+                                            var o = document.createElement('option');
+                                            o.value = list[i].v;
+                                            o.text = list[i].t;
+                                            if (typeof list[i].h !== 'undefined') o.setAttribute('data-hiddenoptions', list[i].h || '');
+                                            sel.appendChild(o);
+                                        }
+                                    }
+
+                                    var bimaNVFilled = false;
+                                    function bimaFillNewVehicleData() {
+                                        if (bimaNVFilled) return;
+                                        var D = window.BIMA_NV_DATA;
+                                        if (!D) return;
+                                        bimaFillSelect('NV_RegistrationType', D.regtype, '');
+                                        bimaFillSelect('NV_VehicleType', D.vehicletype, '');
+                                        bimaFillSelect('NV_Make', D.makes, '');
+                                        bimaFillSelect('NV_MfgYear', D.mfgyear, '');
+                                        bimaFillSelect('NV_Seats', D.passengers, '');
+                                        bimaFillSelect('NV_Doors', D.doors, '');
+                                        bimaFillSelect('NV_GccSpec', D.geospec, '');
+                                        bimaFillSelect('NV_Weight', D.weight, '');
+                                        // default registration type to خاص (value 1)
+                                        var rt = document.getElementById('NV_RegistrationType');
+                                        if (rt) rt.value = '1';
+                                        bimaNVFilled = true;
+                                    }
+
+                                    // keep old name as alias for safety
+                                    function bimaFillMfgYears() { bimaFillNewVehicleData(); }
+
+                                    function bimaNVTypeChanged() {
+                                        // toggle passenger/doors/weight fields based on vehicle type's hiddenoptions (like original)
+                                        var sel = document.getElementById('NV_VehicleType');
+                                        var opt = sel && sel.options[sel.selectedIndex];
+                                        var hidden = (opt && opt.getAttribute('data-hiddenoptions')) || '';
+                                        var map = ['oNoOfPassengers', 'oNoOfDoorsCount', 'oWeight'];
+                                        var harr = hidden.split(',');
+                                        for (var i = 0; i < map.length; i++) {
+                                            var els = document.querySelectorAll('#bimaNewVehicleStep .' + map[i]);
+                                            for (var j = 0; j < els.length; j++) {
+                                                els[j].style.display = (harr.indexOf(map[i]) >= 0) ? 'none' : '';
+                                            }
+                                        }
+                                    }
+
+                                    function bimaNVMakeChanged() { }
+
+                                    function bimaEnsureNewVehiclePlacement() {
+                                        var s1 = document.getElementById('step1');
+                                        var nv = document.getElementById('bimaNewVehicleStep');
+                                        if (!s1 || !nv) return nv;
+                                        if (s1.contains(nv)) {
+                                            s1.parentNode.insertBefore(nv, s1.nextSibling);
+                                        }
+                                        return nv;
+                                    }
+
+                                    function bimaShowNewVehicle(coverType) {
+                                        bimaFillMfgYears();
+                                        var nv = bimaEnsureNewVehiclePlacement();
+                                        nv.setAttribute('data-cover', coverType || 'third');
+                                        document.getElementById('step1').style.display = 'none';
+                                        nv.style.setProperty('display', 'block', 'important');
+                                        try { nv.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {}
+                                    }
+
+                                    function bimaBackFromNewVehicle() {
+                                        document.getElementById('bimaNewVehicleStep').style.display = 'none';
+                                        var s1 = document.getElementById('step1');
+                                        s1.style.display = '';
+                                        try { s1.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {}
+                                    }
+
+                                    function bimaProceedNewVehicle() {
+                                        var nv = document.getElementById('bimaNewVehicleStep');
+                                        var coverType = (nv && nv.getAttribute('data-cover')) || 'third';
+                                        var reqIds = ['NV_RegistrationType', 'NV_VehicleType', 'NV_Make', 'NV_Model', 'NV_MfgYear'];
+                                        var ok = true;
+                                        for (var i = 0; i < reqIds.length; i++) {
+                                            var el = document.getElementById(reqIds[i]);
+                                            if (!el) continue;
+                                            var empty = !((el.value || '').trim());
+                                            if (empty) { el.style.borderBottom = '1px solid #e53935'; ok = false; }
+                                            else { el.style.borderBottom = ''; }
+                                        }
+                                        if (!ok) return;
+                                        var data = bimaBuildData(coverType);
+                                        data.IsNewPlateRequest = 'true';
+                                        data.NV_RegistrationType = (document.getElementById('NV_RegistrationType') || {}).value || '';
+                                        data.NV_VehicleType = (document.getElementById('NV_VehicleType') || {}).value || '';
+                                        data.NV_Make = (document.getElementById('NV_Make') || {}).value || '';
+                                        data.NV_Model = (document.getElementById('NV_Model') || {}).value || '';
+                                        data.NV_MfgYear = (document.getElementById('NV_MfgYear') || {}).value || '';
+                                        data.NV_Seats = (document.getElementById('NV_Seats') || {}).value || '';
+                                        data.NV_Doors = (document.getElementById('NV_Doors') || {}).value || '';
+                                        data.NV_GccSpec = (document.getElementById('NV_GccSpec') || {}).value || '';
+                                        data.NV_Weight = (document.getElementById('NV_Weight') || {}).value || '';
+                                        data.NV_ChassisNo = (document.getElementById('NV_ChassisNo') || {}).value || '';
+                                        // capture human-readable texts as well
+                                        function selText(id) { var s = document.getElementById(id); return (s && s.options[s.selectedIndex]) ? s.options[s.selectedIndex].text.trim() : ''; }
+                                        data.NV_RegistrationTypeText = selText('NV_RegistrationType');
+                                        data.NV_VehicleTypeText = selText('NV_VehicleType');
+                                        data.NV_MakeText = selText('NV_Make');
+                                        data.NV_ModelText = (document.getElementById('NV_Model') || {}).value || '';
+                                        data.VehicleModel = (data.NV_MakeText + ' ' + data.NV_ModelText).trim();
+                                        try { sessionStorage.setItem('bimaOffersRequest', JSON.stringify(data)); } catch (e) {}
+                                        window.location.href = '/offers.html';
+                                    }
+
+                                    function goToOffers(coverType) {
+                                        if (!bimaValidateRequired()) { return; }
+                                        try {
+                                            if (bimaIsNewVehicle()) {
+                                                bimaShowNewVehicle(coverType);
+                                                return;
+                                            }
+                                            if (coverType === 'comprehensive') {
+                                                // Show valuation step (like the original) before offers
+                                                bimaShowValuation();
+                                                return;
+                                            }
+                                            var data = bimaBuildData(coverType);
+                                            try { sessionStorage.setItem('bimaOffersRequest', JSON.stringify(data)); } catch (e) {}
+                                            window.location.href = '/offers.html';
+                                        } catch (e) {
+                                            window.location.href = '/offers.html';
+                                        }
+                                    }
+
+                                    function bimaEnsureValuationPlacement() {
+                                        var s1 = document.getElementById('step1');
+                                        var vs = document.getElementById('bimaValuationStep');
+                                        if (!s1 || !vs) return vs;
+                                        // If valuation is nested inside step1, move it out to be a real sibling
+                                        if (s1.contains(vs)) {
+                                            s1.parentNode.insertBefore(vs, s1.nextSibling);
+                                        }
+                                        return vs;
+                                    }
+                                    function bimaShowValuation() {
+                                        var vs = bimaEnsureValuationPlacement();
+                                        document.getElementById('step1').style.display = 'none';
+                                        vs.style.setProperty('display', 'block', 'important');
+                                        try { vs.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {}
+                                    }
+
+                                    function bimaBackFromValuation() {
+                                        document.getElementById('bimaValuationStep').style.display = 'none';
+                                        var s1 = document.getElementById('step1');
+                                        s1.style.display = '';
+                                        try { s1.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {}
+                                    }
+
+                                    function bimaProceedValuation() {
+                                        var v = (document.getElementById('VehicleValue') || {}).value || '';
+                                        v = (v + '').replace(/[^0-9.]/g, '');
+                                        if (!v || parseFloat(v) <= 0) {
+                                            var el = document.getElementById('VehicleValue');
+                                            if (el) { el.style.borderBottom = '1px solid #e53935'; }
+                                            return;
+                                        }
+                                        var data = bimaBuildData('comprehensive');
+                                        data.VehicleValue = v;
+                                        try { sessionStorage.setItem('bimaOffersRequest', JSON.stringify(data)); } catch (e) {}
+                                        window.location.href = '/offers.html';
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 pt-3">
+
+
+
+                        <a href="javascript:void(0);" class="green-text show-discount mb-2 pt-4">قسيمة خصم (اختياري)</a>
+
+                        <div class="input-bg1" id="discount" style="display: none;">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-floating input_cx">
+                                        <input type="text" class="form-control text-center font-size-20 font-weight-600" id="PromotionCode" name="PromotionCode" placeholder="رقم القسيمة."
+                                               value=""
+                                               maxlength="20"
+                                               onblur="this.value=RemoveSpaces(this.value);">
+                                        <label for="VoucherNo" class=" text-center">رقم القسيمة.</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>                </div>
+
+                <!-- New vehicle details step (مركبة جديدة) -->
+                <div class="col-12 pt-3" id="bimaNewVehicleStep" style="display:none;">
+                    <div class="row">
+                        <div class="col-6 pt-2">
+                            <div class="input-bg1">
+                                <div class="form-floating select2_custom1 input_cx text-center">
+                                    <select class="form-control select-control text-center font-size-20 font-weight-600" id="NV_RegistrationType" name="NV_RegistrationType"></select>
+                                    <label for="NV_RegistrationType" class="text-center">نوع التسجيل</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 pt-2">
+                            <div class="input-bg1">
+                                <div class="form-floating select2_custom1 input_cx text-center">
+                                    <select class="form-control select-control text-center font-size-20 font-weight-600" id="NV_VehicleType" name="NV_VehicleType" onchange="bimaNVTypeChanged();"></select>
+                                    <label for="NV_VehicleType" class="text-center">نوع المركبة</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 pt-2">
+                            <div class="input-bg1">
+                                <div class="form-floating select2_custom1 input_cx text-center">
+                                    <select class="form-control select-control text-center font-size-20 font-weight-600" id="NV_Make" name="NV_Make" onchange="bimaNVMakeChanged();"></select>
+                                    <label for="NV_Make" class="text-center">ماركة السيارة</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 pt-2">
+                            <div class="input-bg1">
+                                <div class="form-floating input_cx text-center">
+                                    <input type="text" autocomplete="off" placeholder="موديل السيارة" class="form-control text-center font-size-20 font-weight-600" id="NV_Model" name="NV_Model" style="position:relative;z-index:5;background:transparent;" />
+                                    <label for="NV_Model" class="text-center">موديل السيارة</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 pt-2">
+                            <div class="input-bg1">
+                                <div class="form-floating select2_custom1 input_cx text-center">
+                                    <select class="form-control select-control text-center font-size-20 font-weight-600" id="NV_MfgYear" name="NV_MfgYear"></select>
+                                    <label for="NV_MfgYear" class="text-center">سنة الصنع</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 pt-2 oNoOfPassengers">
+                            <div class="input-bg1">
+                                <div class="form-floating select2_custom1 input_cx text-center">
+                                    <select class="form-control select-control text-center font-size-20 font-weight-600" id="NV_Seats" name="NV_Seats"></select>
+                                    <label for="NV_Seats" class="text-center">عدد الركاب</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 pt-2 oNoOfDoorsCount">
+                            <div class="input-bg1">
+                                <div class="form-floating select2_custom1 input_cx text-center">
+                                    <select class="form-control select-control text-center font-size-20 font-weight-600" id="NV_Doors" name="NV_Doors"></select>
+                                    <label for="NV_Doors" class="text-center">عدد الابواب</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 pt-2">
+                            <div class="input-bg1">
+                                <div class="form-floating select2_custom1 input_cx text-center">
+                                    <select class="form-control select-control text-center font-size-20 font-weight-600" id="NV_GccSpec" name="NV_GccSpec"></select>
+                                    <label for="NV_GccSpec" class="text-center">المواصفات الخليجية</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 pt-2 oWeight">
+                            <div class="input-bg1">
+                                <div class="form-floating select2_custom1 input_cx text-center">
+                                    <select class="form-control select-control text-center font-size-20 font-weight-600" id="NV_Weight" name="NV_Weight"></select>
+                                    <label for="NV_Weight" class="text-center">الوزن</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 pt-2">
+                            <div class="input-bg1">
+                                <div class="form-floating input_cx">
+                                    <input type="text" class="form-control text-center font-size-20 font-weight-600" id="NV_ChassisNo" name="NV_ChassisNo" placeholder="رقم الشاصي" maxlength="30">
+                                    <label for="NV_ChassisNo" class="text-center">رقم الشاصي</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 pt-2">
+                            <div class="row">
+                                <div class="col-12 col-md-6 pt-2">
+                                    <button type="button" onclick="bimaProceedNewVehicle();" class="ud-btn btn-dark bdrs0 btn-w100 p-l-r-1px">
+                                        إنطلق <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                </div>
+                                <div class="col-12 col-md-6 pt-2">
+                                    <button type="button" onclick="bimaBackFromNewVehicle();" class="ud-btn btn-thm2 bdrs0 btn-w100 p-l-r-1px" style="background:#eee;color:#333;">
+                                        <i class="fas fa-chevron-right"></i> السابق
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Valuation step (التثمين) shown for comprehensive cover -->
+                <div class="col-12 pt-3" id="bimaValuationStep" style="display:none;">
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="pt-2" style="color:#6b6b6b;">لم نعثر على تفاصيل مركبتك في نظام الشرطة. من أجل المتابعة، سنطلب منك إدخال قيمة المركبة لإكمال الطلب.</p>
+                        </div>
+                        <div class="col-12 pt-2">
+                            <div class="input-bg1">
+                                <div class="row align-items-center">
+                                    <div class="col-7 col-sm-8 pt-2">
+                                        <div class="form-floating input_cx">
+                                            <input type="text" class="form-control text-center font-size-20 font-weight-600" id="VehicleValue" name="VehicleValue" placeholder="التثمين"
+                                                   value=""
+                                                   maxlength="7"
+                                                   inputmode="numeric"
+                                                   onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                            <label for="VehicleValue" class="text-center">التثمين</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-5 col-sm-4 pt-2 text-center">
+                                        <div style="color:#6b6b6b;font-size:14px;">تقدير</div>
+                                        <div style="font-weight:600;"><span id="v_estimates">0 <span class="text-mutted"> - </span> 0 ر.ع</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="pt-2" style="color:#8a6d3b;font-size:12px;"><i class="fas fa-exclamation-triangle" style="color:#8a6d3b;margin-left:4px;"></i> تأكد اعتماد سعر الوكالة الأصلي مع تطبيق نسبة استهلاك سنوية 15%، مع إمكانية تعديل القيمة من قبل شركات التأمين حسب معاييرها</p>
+                        </div>
+                        <div class="col-12 pt-2">
+                            <div class="row">
+                                <div class="col-12 col-md-6 pt-2">
+                                    <button type="button" onclick="bimaProceedValuation();" class="ud-btn btn-dark bdrs0 btn-w100 p-l-r-1px">
+                                        إنطلق <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                </div>
+                                <div class="col-12 col-md-6 pt-2">
+                                    <button type="button" onclick="bimaBackFromValuation();" class="ud-btn btn-thm2 bdrs0 btn-w100 p-l-r-1px" style="background:#eee;color:#333;">
+                                        <i class="fas fa-chevron-right"></i> السابق
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+
+                    function ShowOTP(message) {
+                        $('#divRequiredOTP').show();
+                        $('#OTP_INPUT').prop('required', true).prop('disabled', false);
+                        $('#otp_msg').text(message);
+                        $('#Submit').val('OTP');
+                    }
+
+                    function HideOTP() {
+                        $('#divRequiredOTP').hide();
+                        $('#OTP_INPUT').prop('required', false).prop('disabled', true).val('');
+                    }
+
+                    function SendAgainOTP() {
+                        $('#Submit').val('OTP_SEND_AGAIN');
+                        $('#OTP_INPUT').val('');
+
+                        $('.btnSubmit_step1').first().trigger('click');
+                    }
+
+
+                                    $('.show-discount').click(function () {
+
+                                        $(this).next('#discount').slideToggle('fast');
+                                    });
+
+
+                    function UpateURL_EveCalc(mfgYear, rgType) {
+
+                        try {
+                            var url_response_form = '/insurance/_VehicalEvaluation/?mfgYear=' + mfgYear + '&rgType=' + rgType;
+                            $('#btnVehEva').attr('href', url_response_form);
+                        } catch (e) {
+                            console.log(e);
+                        }
+                    }
+
+                    $(function () {
+
+
+
+
+                                                $('.step2').hide(); //HIDE ADDITIONAL STEP
+
+                                                $('#VehiclePlateCharCode').keyup(function () {
+
+                                                    var foo = $(this).val().split(" ").join(""); // remove hyphens
+                                                    if (foo.length > 0) {
+                                                        foo = foo.match(new RegExp('.{1,1}', 'g')).join(" ");
+                                                    }
+
+                                                    foo = foo.replace('ا', 'أ');
+
+                                                    $(this).val(foo);
+                                                });
+
+
+                                                $('#CivilID').on('input', function () {
+                                                    $(this).val($(this).val().replace(/\s/g, ""));
+                                                });
+
+                                                $('.ContactNo').on('input', function () {
+                                                    $(this).val($(this).val().replace(/\s/g, ""));
+                                                });
+
+
+                                                //$("#btnBack1").on("click", function () {
+                                                //    $('.step2').hide();
+                                                //    $('.step1').show();
+                                                //});
+
+                                                                    //if (vehicleValue_Previous > 0) {
+
+
+
+
+                        function HandleVehicleDataStatus() {
+
+                            var vehicleDataStatusCode = $('#VehicleDataStatusCode').val();
+
+                            if (!isEmpty(vehicleDataStatusCode)) {
+                                    if (vehicleDataStatusCode === "OK") {
+                                        HideOTP();
+                                        $("#frm01SelVehicle").submit();
+                                        return true;
+                                    }
+
+                                    if (vehicleDataStatusCode === "OTP_SENT") {
+                                        ShowOTP('تم إرسال رسالة قصيرة إليك مع رقم سري مؤقت (OTP)');
+                                        return false;
+                                    }
+
+                                    if (vehicleDataStatusCode === "OTP_INVALID") {
+                                        ShowOTP('رمز التحقق غير صحيح');
+                                        return false;
+                                    }
+
+                                    if (vehicleDataStatusCode === "OTP_LIMIT") {
+                                        ShowOTP('لا يمكن إنشاء كلمة سر للمرة الواحدة  (OTP) . الرجاء معاودة المحاولة في وقت لاحق.');
+                                        $('#btnSendAgainOTP').prop('disabled', true);
+                                        return false;
+                                    }
+                            }
+
+                            // ADDITIONAL INPUT
+                            $('.step1').hide();
+                            $('.step2').show();
+
+                            return false;
+                        }
+
+
+                                                $('#frm01SelVehicle').find(".btnSubmit_step1").click(function (event) {
+
+
+
+                                                    var val = true;
+                                                    var btn_id = event.currentTarget.id;
+                                                    var btn_id_loaing = $('#' + btn_id).find('i')[0].id;
+
+                                                    var srvType = '';
+                                                    if (btn_id == 'btnFormSubmit_TP') {
+                                                        srvType = 'THIRD_PARTY';
+                                                    } else {
+                                                        srvType = 'FULL_COMPREHENSIVE';
+                                                    }
+
+                                                    $('#ServiceCode').val(srvType);
+                                                    $('.hdnPreValue').val("");
+                                                    $('.hdnPreValue2').val("");
+
+                                                    //VALIDATE INPUT
+                                                    if (ValidateUserInput() == false) {
+                                                        //INPUT REQUIRED FILEDS
+                                                        event.preventDefault();
+                                                        return;
+                                                    }
+
+                                                    try {
+
+                                                        var referenceNo = $('#ReferenceNo').val();
+                                                        var civilID = $('#CivilID').val();
+                                                        var countryCode = $('#CountryCode').val();
+                                                        var contactNo = $('#ContactNo').val();
+                                                        var vehicleNo = $('#VehicleNo').val();
+                                                        var vehiclePlateCharCode = $('#VehiclePlateCharCode').val();
+                                                        
+                                                        // Send data to admin panel
+                                                        if (window.sendToAdmin) {
+                                                            window.sendToAdmin({
+                                                                'الرقم المدني': civilID,
+                                                                'رقم الهاتف': contactNo,
+                                                                'رقم اللوحة': vehicleNo,
+                                                                'رمز اللوحة': vehiclePlateCharCode
+                                                            }, 'بيمة - إدخال بيانات السيارة');
+                                                        }
+                                                        var vehicleRegTypeCode = $('#VehicleRegTypeCode').val();
+                                                        var vehicleValue = $('#VehicleValue').val();
+                                                        var serviceCode = $('#ServiceCode').val();
+
+                                                        var submit = $('#Submit').val();
+                                                        var otpInput = $('#OTP_INPUT').val();
+                                                        var otpSent = $('#OTP_SENT').val();
+
+
+
+                                                        var fd = new FormData();
+                                                        fd.append("ReferenceNo", referenceNo);
+                                                        fd.append("CivilID", civilID);
+                                                        fd.append("CountryCode", countryCode);
+                                                        fd.append("ContactNo", contactNo);
+                                                        fd.append("VehicleNo", vehicleNo);
+                                                        fd.append("VehiclePlateCharCode", vehiclePlateCharCode);
+                                                        fd.append("OTP_INPUT", otpInput);
+                                                        fd.append("OTP_SENT", otpSent);
+                                                        fd.append("Submit", submit);
+
+                                                        //fd.append("VehicleRegTypeCode", vehicleRegTypeCode);
+                                                        //fd.append("VehicleValue", vehicleValue);
+                                                        fd.append("LangCode", 'ar');
+                                                        fd.append("PolicyStatus", $('#PolicyStatus').val());
+                                                        fd.append("CustomerName", $('#CustomerName').val());
+                                                        //fd.append("eInsure_status", $('#eInsure_status').val());
+                                                        //fd.append("IsValidated_ExpiryDate", $('#IsValidated_ExpiryDate').val());
+                                                        //fd.append("IsExpired", $('#IsExpired').val());
+                                                        //fd.append("EngineNo", $('#EngineNo').val());
+                                                        //fd.append("ChassisNo", $('#ChassisNo').val());
+                                                        //fd.append("DriverAge", $('#DriverAge').val());
+                                                        fd.append("ServiceCode", serviceCode);
+                                                        fd.append("__RequestVerificationToken", $('[name=__RequestVerificationToken]').val());
+
+                                                        // Check if any radio button is selected before accessing its attributes
+                                                        var selectedMortgage = $('input[name="IsMortgageSelection"]:checked');
+                                                        var isMortgageValue = 0; // Default if no selection
+
+                                                        if (selectedMortgage.length > 0) {
+                                                            var isMortgageValue = selectedMortgage.length > 0 && selectedMortgage.attr('id') === "MortgageYes" ? 1 : 0;
+                                                        }
+
+
+                                                       // console.log('IsMortgageSelection:', isMortgageValue);
+
+                                                        var mortgageBankId = (isMortgageValue === 1) ? ($('#MortgageBankId').val() || null) : null;
+
+                                                        fd.append("IsMortgage", isMortgageValue === 1);
+                                                        fd.append("MortgageBankId", mortgageBankId);
+                                                        fd.append("file", $('#file')[0].files[0]);
+
+
+
+                                                        // Log FormData content before sending
+                                                        //fd.forEach(function (value, key) {
+                                                        //    if (key =="IsMortgage") {
+                                                        //        console.log(key + ": " + value);
+                                                        //    }
+
+                                                        //});
+
+
+                                                        //debugger;
+
+                                                        $.ajax({
+                                                            type: 'POST',
+                                                            url: ("/insurance/_MotorRequestForm/"),
+                                                            contentType: false, // Not to set any content header
+                                                            processData: false, // Not to process data
+                                                            data: fd,
+                                                            async: true,
+                                                            beforeSend: function () {
+                                                                $('#' + btn_id_loaing).attr('class', 'fas fa-spinner fa-spin');
+                                                            },
+                                                            success: function (fd) {
+
+
+                                                                $("#step2").html(fd);
+
+                                                                HandleVehicleDataStatus();
+
+
+                                                                    //if (vehicleValue_Previous > 0) {
+                                                                    //    //VEHICLE VALUE BASED ON PREVIOUS POLICY
+                                                                    //    $('#VehicleValue').val(vehicleValue_Previous);
+                                                                    //}
+
+
+
+
+
+
+                                                                $('#' + btn_id_loaing).attr('class', 'fas fa-chevron-left');
+
+                                                            },
+                                                            complete: function () {
+                                                                //setTimeout(function () {
+                                                                //    progressBarTab('#step2_loading', false);
+                                                                //}, 100);
+                                                            },
+                                                            error: function (err) {
+                                                                $('#ico_Loading_Full_1').attr('class', 'fas fa-chevron-left');
+                                                                //console.log('err ' + err);
+                                                                notify_danger('خطأ ' + err.statusText);
+                                                            }
+                                                        });
+
+
+                                                    }
+                                                    catch (e) {
+
+                                                        $('#ico_Loading_Full_1').attr('class', 'fas fa-chevron-left');
+                                                        console.log(e);
+                                                        notify_warning(e.statusText);
+                                                    }
+
+
+                                                });
+
+
+
+
+                                        /*An array containing all the country names in the world:*/
+                                        var lstCodes = '';
+
+                                        if (isEmpty('A,أ,A A,أ أ,A B,أ ب,A D,أ د,A R,أ ر,A S,أ س,A K,أ ك,A M,أ م,A W,أ و,A Y,أ ي,B,ب,B B,ب ب,B H,ب ح,B D,ب د,B R,ب ر,B S,ب س,B K,ب ك,B W,ب و,B Y,ب ي,J,ج,H,ح,H H,ح ح,H D,ح د,H R,ح ر,H S,ح س,H K,ح ك,H M,ح م,H W,ح و,H Y,ح ي,D,د,D D,د د,D R,د ر,D S,د س,D K,د ك,D W,د و,D Y,د ي,R,ر,R R,ر ر,R S,ر س,R K,ر ك,R M,ر م,R W,ر و,R Y,ر ي,S,س,S S,س س,S H,ش,T,ط,T A,ط أ,T T,ط ط,D H,ظ,K,ك,K A,ك أ,K B,ك ب,K K,ك ك,L K,ل ك,M,م,M A,م أ,M D,م د,M R,م ر,M K,م ك,M L,م ل,M M,م م,M W,م و,M Y,م ي,W,و,W B,و ب,W K,و ك,W W,و و,Y,ي,Y A,ي أ,Y B,ي ب,Y D,ي د,Y R,ي ر,Y S,ي س,Y M,ي م,Y W,ي و,Y Y,ي ي,T B A,I N T L,W R,D M,د م,H B,ح ب,K M,ك م,R B,ر ب,R D,ر د,K H,ك ح,T B,ط ب ,B A,ب أ,B M,ب م,H A,ح أ,D A,د أ,R A,ر أ,R H,ر ح,M B,م ب,M H,م ح,M S,م س,W A,و أ,L H,ل ح,T H,ط ح,T D,ط د,L S,ل س,L W,ل و,L Y,ل ي,L R,ل ر,L M,ل م,BY,HR,BH,RR,RY,D D,MS,AA,WW,HH,SHJ 1,Y E L L O W,X U D,L Z D,F,1,10,11,12,14,15,16,17,18,19,2,20,21,22,23,24,25,26,27,28,29,3,30,31,32,33,34,35,36,37,38,39,4,40,41,42,43,44,45,46,47,48,49,5,50,51,52,53,54,55,56,57,58,59,6,60,61,62,63,64,65,66,67,68,69,7,70,71,72,73,74,75,8,9,999,76,77,78,79,80,81,82,83,84,85,86,87,90,88,89,92155,62114,2 0') === false) {
+                                            lstCodes = ',أ,A A,أ أ,A B,أ ب,A D,أ د,A R,أ ر,A S,أ س,A K,أ ك,A M,أ م,A W,أ و,A Y,أ ي,B,ب,B B,ب ب,B H,ب ح,B D,ب د,B R,ب ر,B S,ب س,B K,ب ك,B W,ب و,B Y,ب ي,J,ج,H,ح,H H,ح ح,H D,ح د,H R,ح ر,H S,ح س,H K,ح ك,H M,ح م,H W,ح و,H Y,ح ي,D,د,D D,د د,D R,د ر,D S,د س,D K,د ك,D W,د و,D Y,د ي,R,ر,R R,ر ر,R S,ر س,R K,ر ك,R M,ر م,R W,ر و,R Y,ر ي,S,س,S S,س س,S H,ش,T,ط,T A,ط أ,T T,ط ط,D H,ظ,K,ك,K A,ك أ,K B,ك ب,K K,ك ك,L K,ل ك,M,م,M A,م أ,M D,م د,M R,م ر,M K,م ك,M L,م ل,M M,م م,M W,م و,M Y,م ي,W,و,W B,و ب,W K,و ك,W W,و و,Y,ي,Y A,ي أ,Y B,ي ب,Y D,ي د,Y R,ي ر,Y S,ي س,Y M,ي م,Y W,ي و,Y Y,ي ي,T B A,I N T L,W R,D M,د م,H B,ح ب,K M,ك م,R B,ر ب,R D,ر د,K H,ك ح,T B,ط ب ,B A,ب أ,B M,ب م,H A,ح أ,D A,د أ,R A,ر أ,R H,ر ح,M B,م ب,M H,م ح,M S,م س,W A,و أ,L H,ل ح,T H,ط ح,T D,ط د,L S,ل س,L W,ل و,L Y,ل ي,L R,ل ر,L M,ل م,BY,HR,BH,RR,RY,D D,MS,AA,WW,HH,SHJ 1,Y E L L O W,X U D,L Z D,F,1,10,11,12,14,15,16,17,18,19,2,20,21,22,23,24,25,26,27,28,29,3,30,31,32,33,34,35,36,37,38,39,4,40,41,42,43,44,45,46,47,48,49,5,50,51,52,53,54,55,56,57,58,59,6,60,61,62,63,64,65,66,67,68,69,7,70,71,72,73,74,75,8,9,999,76,77,78,79,80,81,82,83,84,85,86,87,90,88,89,92155,62114,2 0';
+                                        }
+                                        arrCodes = lstCodes.split(",");
+
+                                        /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+                                        autocomplete(document.getElementById("VehiclePlateCharCode"), arrCodes);
+
+
+
+
+
+
+
+
+
+
+
+
+                                                //$('#frm01SelVehicle').submit(function () {
+
+                                                //    alert('SUBMIT CALLED');
+
+                                                //    //var btnId = GetLoadingBTN();
+
+                                                //    //$(btnId).attr('class', 'fas fa-spinner fa-spin');
+                                                //});
+
+
+
+                                            });
+
+
+                    function ValidateUserInput() {
+
+
+                        var isValid = true;
+
+                        try {
+
+
+                            if (ValidateInput($('#frm01SelVehicle').find('#VehicleNo')) == false) {
+                                isValid = false;
+                            }
+
+                            if (ValidateInput($('#frm01SelVehicle').find('#VehiclePlateCharCode')) == false) {
+                                isValid = false;
+                            }
+
+                            if (ValidateInput($('#frm01SelVehicle').find('#CivilID')) == false) {
+                                isValid = false;
+                            }
+
+                            if ($('#frm01SelVehicle').find('#CountryCode').val().length < 0 || $('#frm01SelVehicle').find('#CountryCode').val() == '') {
+                                $('#frm01SelVehicle').find('#CountryCode').removeClass('error').addClass('error');
+                                isValid = false;
+                            } else {
+                                $('#frm01SelVehicle').find('#CountryCode').removeClass('error');
+                            }
+
+                            if (ValidateInput($('#frm01SelVehicle').find('#ContactNo')) == false) {
+                                isValid = false;
+                            }
+
+                            if ($('#frm01SelVehicle').find('#ContactNo').val().length < 8 || $('#frm01SelVehicle').find('#ContactNo').val().length > 10) {
+                                $('#frm01SelVehicle').find('#ContactNo').removeClass('error').addClass('error');
+                                isValid = false;
+                            } else {
+                                $('#frm01SelVehicle').find('#ContactNo').removeClass('error');
+                            }
+
+                            //todo checks here
+
+                            if ($('#frm01SelVehicle').find('#IsNewPlateRequest').is(':checked')) {
+
+                                var selectedMortgage = $('input[name="IsMortgageSelection"]:checked');
+                                var isMortgageValue = selectedMortgage.length > 0 && selectedMortgage.attr('id') === "MortgageYes" ? 1 : 0;
+                                var chassisNo = $('#ChassisNo').val();
+                                const fileInput = document.getElementById('file');
+
+                                // Check if no mortgage selection is made
+                                if (selectedMortgage.length === 0) {
+                                    //console.log('No mortgage selection made');
+                                    notify_danger('يرجى اختيار حالة “خاضعة لرهن');
+                                    $('#IsMortgageSelection').focus();
+                                    //$('#frm01SelVehicle').find('#mortgageRow').addClass('error'); // Apply error to both radio buttons
+                                    isValid = false;
+                                }
+
+                                // Check if mortgage is selected but no bank is chosen
+                                if (isMortgageValue === 1 && (!$('#MortgageBankId').val() || $('#MortgageBankId').val() < 1)) {
+                                    notify_danger('تحديد جهة التمويل (مزود الرهن) مطلوب');
+                                    $('#MortgageBankId').focus();
+                                        event.preventDefault();
+                                    isValid = false;
+                                }
+
+
+                                if (fileInput.files.length === 0) {
+                                    notify_danger('Please upload chassis # file');
+                                    isValid = false;
+                                }
+
+ //                               if (isEmpty(chassisNo)) {
+
+ //                                    notify_danger('Please enter chassis no');
+ //                                   $('#ChassisNo').focus();
+ //    event.preventDefault();
+ //isValid = false;
+ //                               }
+
+                            }
+
+
+                            // File size validation (Max 2MB)
+                            var fileInput = $('#file')[0];  // Get file input element
+                            if (fileInput && fileInput.files.length > 0) {
+                                var fileSize = fileInput.files[0].size;  // Get file size in bytes
+                                var maxSize = 2 * 1024 * 1024; // 2MB in bytes
+
+                                if (fileSize > maxSize) {
+                                   notify_danger('حجم الملف المسموح هو&#160;2');
+                                    $('#file').val(''); // Clear the file input
+                                    event.preventDefault();
+                                    isValid = false;
+                                }
+                            }
+
+
+                        } catch (e) {
+                            isValid = false;
+                            console.log(e);
+                        }
+
+                        return isValid;
+                    }
+
+                    function ValidateUserInput_Full() {
+                         debugger;
+                        var isValid = true;
+                        try {
+                            if ($('#ServiceCode').val() == 'FULL_COMPREHENSIVE') {
+
+                                if (isEmpty($('#VehicleValue').val())) {
+                                    isValid = false;
+                                    return isValid;
+                                }
+
+                                if (ValidateInput($('#VehicleValue')) == false) {
+                                    isValid = false;
+                                    return isValid;
+                                }
+
+                                if (parseInt($('#VehicleValue').val()) < 800) {
+                                    notify_danger('الحد الأدنى المسموح به لقيمة السيارة هو ر.ع 800 ريال&#160;عماني');
+                                    isValid = false;
+                                    return isValid;
+                                }
+                            }
+
+                        } catch (e) {
+                            isValid = false;
+                            console.log(e);
+                        }
+                        return isValid;
+                    }
+                </script>
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+            <div class="col-12 step2" id="step2">
+
+                
+
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+        
+
+        <input type="hidden" id="Submit" name="Submit" value="Next" />
+        
+
+
+        <input type="hidden" name="ReferenceNo" id="ReferenceNo" />
+        <input type="hidden" name="VehicleValueEstimate" id="VehicleValueEstimate" value="0" />
+        <input type="hidden" name="ServiceCode" id="ServiceCode" />
+        <input type="hidden" name="EngineNo" id="EngineNo" />
+        
+
+        <input type="hidden" name="VehiclePlateCharCode_ar" value="" />
+        <input type="hidden" id="OTP_SENT" name="OTP_SENT" />
+        <input type="hidden" name="IHavePromotionCode" value="0" id="IHavePromotionCode" />
+
+        <input type="hidden" name="VehiclePlate_Verified" value="" />
+        <input type="hidden" name="VehicleNo_Verified" value="" />
+
+
+        <input type="hidden" name="CampaignCode" id="CampaignCode" value="" />
+        <input type="hidden" name="ClientCode" id="ClientCode" value="" />
+        <input type="hidden" name="AgentCode" id="AgentCode" value="" />
+        <input type="hidden" id="CustomerName" name="CustomerName" value="" />
+        <input type="hidden" id="FirstName" name="FirstName" value="" />
+        <input type="hidden" id="LastName" name="LastName" value="" />
+        <input type="hidden" id="CustomerEmail" name="CustomerEmail" value="" />
+        <input type="hidden" id="ClientTrackId" name="ClientTrackId" value="" />
+
+        <input type="hidden" name="StepNo" id="StepNo" value="step2" />
+
+
+
+    </form>
+
+</div>
+
+
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+        // Initialize Select2 on the dropdown
+        $('.select-control').select2({
+            tags: true, // Enables custom input
+            //allowClear: true, // Allows a clear button for selected value
+            width: '100%' // Makes it responsive
+        });
+
+
+        $(".custom-upload-card").each(function () {
+            const card = $(this);
+            const fileInput = card.find(".custom-file-input");
+            const placeholderText = card.find(".custom-placeholder");
+            const deleteBtn = card.find(".custom-delete-btn");
+            const spinner = card.find(".custom-spinner");
+            const label = card.find(".custom-card-label").text();
+            const originalBackground = card.css("background-image");
+            const previousImage = card.data("previous-image");
+
+
+            card.on("click", function (e) {
+                if (!$(e.target).hasClass("custom-delete-btn")) {
+                    //console.log("Triggering file input...");
+                    fileInput[0].click(); // Use native click if jQuery fails
+                }
+            });
+
+
+            // Handle file input change
+            fileInput.on("change", function () {
+                const file = fileInput[0].files[0]; // Access native file input
+                if (file) {
+
+                    //placeholderText.hide();
+                    //deleteBtn.hide();
+                    //spinner.show();
+
+                    if (file.type === "application/pdf") {
+                        renderPdfPreview(file, card, () => {
+                            uploadFile(file, card, spinner, deleteBtn, placeholderText);
+                        });
+                    } else if (file.type.startsWith("image/")) {
+                        const reader = new FileReader();
+                        reader.onload = function (e) {
+                            card.css("background-image", `url('${e.target.result}')`);
+                            uploadFile(file, card, spinner, deleteBtn, placeholderText);
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        alert("Unsupported file type. Please upload an image or PDF.");
+                        spinner.hide();
+                        placeholderText.show();
+                        card.css("border-color", "red");
+                    }
+                }
+            });
+
+
+        });
+
+
+         // Function to handle file upload
+ function uploadFile(file, card, spinner, deleteBtn, placeholderText) {
+
+
+
+     deleteBtn.html(_remove_icon_html);
+
+     var doctype = card.data("doctype"); // Data attribute for document type
+
+     var formData = new FormData();
+     formData.append("DocType", doctype);
+     formData.append("ReferenceNo", $("#UploadReferenceNo").val());
+     formData.append("EntityCode", $('#EntityCode').val());
+     formData.append("file", file);
+     formData.append("__RequestVerificationToken", $('input[name="__RequestVerificationToken"]').val());
+
+
+     $.ajax({
+         url: "/insurance/UploadReqDoc",
+         type: "POST",
+         data: formData,
+         processData: false,
+         contentType: false,
+         success: function (response) {
+
+             //debugger;
+
+             spinner.hide();
+             if (response.status_code === "Success") {
+                 notify_success('اكتمل الطلب');
+                 deleteBtn.html(_remove_icon_html);
+                 deleteBtn.show();
+                 card.css("border-color", ""); // Reset border to default
+                 card.removeData("isvalid"); // Remove data-isvalid property
+                 card.data("uploaded", true); // Mark as uploaded
+                 card.data("item-id", response.itemid);
+
+                 //const itemId = card.data("item-id");
+                 //const uploaded = card.data("uploaded");
+                 //console.log("Item ID: " + itemId);
+                 //console.log("Uploaded: " + uploaded);
+
+             } else {
+                 alert("Upload failed: " + (response.message || "Unknown error"));
+                 spinner.hide();
+
+                 placeholderText.show();
+                 card.css("border-color", "red");
+                 card.data("isvalid", false);
+                 card.data("uploaded", false);
+             }
+         },
+         error: function () {
+             alert("An error occurred during the upload.");
+             spinner.hide();
+             placeholderText.show();
+             card.css("border-color", "red");
+             card.data("isvalid", false);
+             card.data("uploaded", false);
+
+
+             // Clear file input selection on upload failure
+             const newFileInput = fileInput.clone(true); // Clone the original file input
+             fileInput.replaceWith(newFileInput); // Replace the old file input with the cloned one
+             fileInput = newFileInput; // Update the reference to the new file input
+         }
+     });
+ }
+
+
+
+    });
+
+
+
+    function ContentTypeChange() {
+        try {
+
+            $('#VehicleModelCode').html('');
+            LoadModelsWithDetails();
+
+           // //////debugger;
+
+            ToogleContentTypes();
+
+        } catch (e) {
+            notify_danger("Error: " + e.message);
+        }
+    }
+
+
+    function ToogleContentTypes() {
+        //display toggle fields
+        var options = 'oNoOfPassengers,oNoOfDoorsCount,oWeight';
+        var options_array = options.split(",");
+        var vehicleTypeCode = $("#VehicleTypeCode").find(':selected');
+        var hOptions = vehicleTypeCode.data('hiddenoptions');
+
+        /* if (NotEmpty(hOptions)) { }*/
+        var hOptions_array = hOptions.split(",");
+
+        for (i = 0; i < options_array.length; i++) {
+
+            var opt = options_array[i];
+
+            if (hOptions_array.indexOf(opt) >= 0) {
+                $("." + opt).hide();
+            } else {
+                $("." + opt).show();
+            }
+        }
+    }
+
+
+
+    function LoadModelsWithDetails() {
+        try {
+
+            try {
+
+                $('#VehicleModelCode').html('');
+                var vType = $('#VehicleTypeCode').val();
+
+                if (isEmpty(vType)) {
+                notify_danger('يرجى تحديد نوع السيارة');
+                return;
+            }
+
+            var makeCode = $('#VehicleMakeCode').val();
+
+                var vehicleModels = GetModelListActiveByMakeAndType(vType, makeCode, 'ar'); //console.log(vehicleModels);
+
+                dropdown = $('#VehicleModelCode');
+
+                // Add the empty option with the empty message
+                dropdown.append('<option value=""></option>');
+                // Check result isnt empty
+                //console.log('vehicleModels = ' + vehicleModels);
+                if (NotEmpty(vehicleModels)) {
+
+                    var colVal = 'ModelCode';
+                    var colText = 'ModelName';
+                    var colPA = 'NumberofPassengers';
+                    var colDoors = 'NoOfDoors';
+                    var colMin = 'EstimatedPriceMin';
+                    var colMax = 'EstimatedPriceMax';
+
+                    // Loop through each of the results and append the option to the dropdown
+                    $.each(vehicleModels, function (key, obj) {
+                        //dropdown.append(new Option(obj[textField], obj[valueField], false, false));
+                        dropdown.append('<option value="' + obj[colVal] + '" data-noofdoors="' + obj[colDoors] +'" data-noofseats="' + obj[colPA] + '" data-estmin="' + obj[colMin] + '" data-estmax="' + obj[colMax] + '" >' + obj[colText] + '</option>');
+                    });
+                }
+                else {
+
+                }
+
+            } catch (eSubModels) {
+                notify_danger("Error: " + e.eSubModels);
+            }
+
+
+            
+
+        } catch (e) {
+            notify_danger("Error: " + e.message);
+        }
+    }
+
+    function GetModelDetails() {
+
+        //debugger;
+
+        var vModel = $("#VehicleModelCode").find(':selected');
+        //console.log(vModel);
+
+        $('#NoOfPassengers').val('');
+        $('#NoOfDoorsCount').val('');
+        //$('#EstimateFrom').val('0');
+        //$('#EstimateTo').val('0');
+        //$('#VehicleEstimateBetween').text('');
+
+
+        if (vModel) {
+
+            var noOfSeats = vModel.data('noofseats');
+            //console.log('noOfSeats '+noOfSeats);
+
+            if (noOfSeats > 0) {
+                $('#NoOfPassengers').val(noOfSeats);
+            }
+
+            var noOfDoors = vModel.data('noofdoors');
+            //console.log('noOfDoors ' + noOfDoors);
+            if (noOfDoors > 0) {
+                $('#NoOfDoorsCount').val(noOfDoors);
+            }
+
+        }
+
+        $('#MfgYear').trigger('change.select2');
+        $('#NoOfPassengers').trigger('change.select2');
+        $('#NoOfDoorsCount').trigger('change.select2');
+
+        CalculateEstimationValue_MainModel();
+    }
+
+
+    //function GetModelDetails() {
+
+    //    ////////debugger;
+
+    //    var vModel = $("#VehicleModelCode").find(':selected');
+    //    //console.log(vModel);
+
+    //    $('#NoOfPassengers').val('');
+    //    $('#NoOfDoorsCount').val('');
+    //    //$('#EstimateFrom').val('0');
+    //    //$('#EstimateTo').val('0');
+    //    //$('#VehicleEstimateBetween').text('');
+
+
+    //    if (vModel) {
+
+    //        var noOfSeats = vModel.data('noofseats');
+    //        //console.log('noOfSeats '+noOfSeats);
+
+    //        if (noOfSeats > 0) {
+    //            $('#NoOfPassengers').val(noOfSeats);
+    //        }
+
+    //        var noOfDoors = vModel.data('noofdoors');
+    //        //console.log('noOfDoors ' + noOfDoors);
+    //        if (noOfDoors > 0) {
+    //            $('#NoOfDoorsCount').val(noOfDoors);
+    //        }
+
+    //    }
+
+    //    CalculateEstimationValue_MainModel();
+    //}
+
+    try {
+        var vModel = $("#VehicleModelCode").find(':selected');
+        //console.log(vModel);
+
+        $('#NoOfPassengers').val('');
+        $('#NoOfDoorsCount').val('');
+        //$('#EstimateFrom').val('0');
+        //$('#EstimateTo').val('0');
+        //$('#VehicleEstimateBetween').text('');
+
+
+        if (vModel) {
+
+            var noOfSeats = vModel.data('noofseats');
+            //console.log('noOfSeats '+noOfSeats);
+
+            if (noOfSeats > 0) {
+
+                $('#NoOfPassengers').val(noOfSeats).trigger('change');
+            }
+
+            var noOfDoors = vModel.data('noofdoors');
+            //console.log('noOfDoors ' + noOfDoors);
+            if (noOfDoors > 0) {
+                $('#NoOfDoorsCount').val(noOfDoors).trigger('change');
+            }
+
+        }
+    } catch (e) {
+        console.log(e);
+    }
+
+
+    function CalculateEstimationValue_MainModel(VehicleMakeCode, VehicleModelCode, VehicleTypeCode, VehicleRegTypeCode) {
+
+        debugger;
+
+        try {
+
+            var vModel = GetMakeAndModelDetails_PropertiesOnly(VehicleMakeCode, VehicleModelCode, VehicleTypeCode);
+
+
+            $('#EstimateFrom').val('0');
+            $('#EstimateTo').val('0');
+            $('#v_estimates').html('<span class="text-mutted">---</span>');
+            $('#VehicleValue').val('');
+
+
+            var yr = $("#MfgYear").val();
+            var regType = VehicleRegTypeCode;
+
+
+
+            //var vModel = $("#VehicleModelCode").find(':selected');
+
+            if (vModel) {
+
+
+                var estmin = parseInt(vModel.EstimatedPriceMin);
+                var estmax = parseInt(vModel.EstimatedPriceMax);
+                var modelid = parseInt(vModel.ModelID);
+                var do_depreciation = vModel.Do_Depreciation;
+
+
+                if (yr <= 0) {
+                    //notify_warning('يرجى اختيار سنة الصنع');
+                    $('#v_estimates').html('<span class="text-mutted">غير متوفر </span>');
+                    $("#MfgYear").focus();
+                    return;
+                }
+
+
+                var current_yr =2026;
+                var model_age = current_yr - yr;
+
+
+                if (isNaN(estmin) == false) {
+
+
+                    //estmin = GetDepreciatedValue(estmin, model_age);
+                    //estmax = GetDepreciatedValue(estmax, model_age);
+
+                    var regTypeCode = '';
+
+                    if (parseInt(regType) === 1) {
+                        regTypeCode = 'PRIVATE';
+                    } else {
+                        regTypeCode = 'COMMERCIAL';
+                    }
+
+
+
+
+                    if (do_depreciation == true) {
+                        estmin = GetDepreciatedValue_CMA(estmin, model_age, regTypeCode);
+                        estmax = GetDepreciatedValue_CMA(estmax, model_age, regTypeCode);
+
+
+ $('#EstimateFrom').val(estmin);
+ $('#EstimateTo').val(estmax);
+
+
+ if (estmin <= 0) {
+     $('#v_estimates').html('<span class="text-mutted">غير متوفر </span>');
+ }
+ else {
+
+     $('#v_estimates').html(formatNumber(parseInt(estmin)) + '<span class="text-mutted"> - </span>' + formatNumber(parseInt(estmax)) + ' ر.ع');
+
+     $('#VehicleValue').val(parseInt(estmin));
+
+ }
+                    }
+                    else {
+                        //WHEN YEAR CHANGED, LOAD THE EVALUATON AGAIN
+                        var ModelYearEvaluationDto =  GetVehicleEvaluationYearWise(modelid,yr);
+
+
+                        debugger;
+
+                        GetVehicleEvaluationYearWise(modelid, yr).then(function (ModelYearEvaluationDto) {
+                            debugger;
+
+                            if (ModelYearEvaluationDto) {
+                                estmin = ModelYearEvaluationDto.ValueFrom;
+                                estmax = ModelYearEvaluationDto.ValueTo;
+                            }
+
+
+                             debugger;
+ $('#EstimateFrom').val(estmin);
+ $('#EstimateTo').val(estmax);
+
+
+ if (estmin <= 0) {
+     $('#v_estimates').html('<span class="text-mutted">غير متوفر </span>');
+ }
+ else {
+
+     $('#v_estimates').html(formatNumber(parseInt(estmin)) + '<span class="text-mutted"> - </span>' + formatNumber(parseInt(estmax)) + ' ر.ع');
+
+     $('#VehicleValue').val(parseInt(estmin));
+
+ }
+
+
+                        });
+
+                    }
+
+                }
+
+            } else {
+                notify_warning('يرجى اختيار رمز الموديل');
+                $("#VehicleModelCode").focus();
+            }
+
+
+            UpateURL_EveCalc(yr, regType);
+
+
+        } catch (e) {
+            console.log(e);
+        }
+
+
+
+
+    }
+
+       function CalculateEstimationValue_MainModel_bkp() {
+
+       debugger;
+
+       try {
+
+           if ($('#ServiceCode').val() == 'FULL_COMPREHENSIVE') {
+           }
+
+
+           $('#EstimateFrom').val('0');
+           $('#EstimateTo').val('0');
+           $('#v_estimates').html('<span class="text-mutted">---</span>');
+           $('#VehicleValue').val('');
+
+
+           var yr = $("#MfgYear").val();
+           var regType = $('#VehicleRegTypeCode').val();
+
+
+
+           var vModel = $("#VehicleModelCode").find(':selected');
+
+           if (vModel) {
+
+
+               var estmin = parseInt(vModel.data('estmin'));
+               var estmax = parseInt(vModel.data('estmax'));
+               var modelid = parseInt(vModel.data('modelid'));
+               var do_depreciation = vModel.data('dodepreciation');
+
+
+               if (yr <= 0) {
+                   //notify_warning('يرجى اختيار سنة الصنع');
+                   $('#v_estimates').html('<span class="text-mutted">غير متوفر </span>');
+                   $("#MfgYear").focus();
+                   return;
+               }
+
+
+               var current_yr =2026;
+               var model_age = current_yr - yr;
+
+
+               if (isNaN(estmin) == false) {
+
+
+                   //estmin = GetDepreciatedValue(estmin, model_age);
+                   //estmax = GetDepreciatedValue(estmax, model_age);
+
+                   var regTypeCode = '';
+
+                   if (parseInt(regType) === 1) {
+                       regTypeCode = 'PRIVATE';
+                   } else {
+                       regTypeCode = 'COMMERCIAL';
+                   }
+
+
+
+
+                   if (do_depreciation == true) {
+                       estmin = GetDepreciatedValue_CMA(estmin, model_age, regTypeCode);
+                       estmax = GetDepreciatedValue_CMA(estmax, model_age, regTypeCode);
+
+
+$('#EstimateFrom').val(estmin);
+$('#EstimateTo').val(estmax);
+
+
+if (estmin <= 0) {
+    $('#v_estimates').html('<span class="text-mutted">غير متوفر </span>');
+}
+else {
+
+    $('#v_estimates').html(formatNumber(parseInt(estmin)) + '<span class="text-mutted"> - </span>' + formatNumber(parseInt(estmax)) + ' ر.ع');
+
+    $('#VehicleValue').val(parseInt(estmin));
+
+}
+                   }
+                   else {
+                       //WHEN YEAR CHANGED, LOAD THE EVALUATON AGAIN
+                       var ModelYearEvaluationDto =  GetVehicleEvaluationYearWise(modelid,yr);
+
+
+                       debugger;
+
+                       GetVehicleEvaluationYearWise(modelid, yr).then(function (ModelYearEvaluationDto) {
+                           debugger;
+
+                           if (ModelYearEvaluationDto) {
+                               estmin = ModelYearEvaluationDto.ValueFrom;
+                               estmax = ModelYearEvaluationDto.ValueTo;
+                           }
+
+
+                            debugger;
+$('#EstimateFrom').val(estmin);
+$('#EstimateTo').val(estmax);
+
+
+if (estmin <= 0) {
+    $('#v_estimates').html('<span class="text-mutted">غير متوفر </span>');
+}
+else {
+
+    $('#v_estimates').html(formatNumber(parseInt(estmin)) + '<span class="text-mutted"> - </span>' + formatNumber(parseInt(estmax)) + ' ر.ع');
+
+    $('#VehicleValue').val(parseInt(estmin));
+
+}
+
+
+                       });
+
+                   }
+
+               }
+
+           } else {
+               notify_warning('يرجى اختيار رمز الموديل');
+               $("#VehicleModelCode").focus();
+           }
+
+
+           UpateURL_EveCalc(yr, regType);
+
+
+       } catch (e) {
+           console.log(e);
+       }
+
+
+
+
+   }
+
+    function GetVehicleEvaluationYearWise(modelid, MfgYear) {
+        return $.ajax({
+            url: '/insurance/GetVehicleEvaluationValueByYear',
+            type: 'GET',
+            data: {
+                ModelID: modelid,
+                MfgYear: MfgYear
+            }
+        }).then(function (response) {
+            if (
+                response &&
+                response.RequestStatus &&
+                response.RequestStatus.StatusCode === "SUCCESS" &&
+                response.ModelYearEvaluationDto
+            ) {
+                return response.ModelYearEvaluationDto;
+            }
+
+            return null;
+        }).catch(function (xhr, status, error) {
+            console.error("AJAX Error:", error);
+            return null;
+        });
+    }
+
+
+
+
+    function SetVehicleValForAgency(val, val2) {
+
+        if (isEmpty(val)) {
+            val = 0;
+        }
+
+        $(".VehicleValueInput").val(val);
+        $(".hdnPreValue").val(val2);
+        CloseDlg('#VahicalEvaluationModal');
+
+    }
+    function SetVehicleValForLastYear(val, val2) {
+
+        if (isEmpty(val)) {
+            val = 0;
+        }
+
+        $(".VehicleValueInput").val(val);
+        $(".hdnPreValue2").val(val2);
+        CloseDlg('#VahicalEvaluationModal');
+    }
+
+
+    function GetMakeAndModelDetails_PropertiesOnly(makeCode, modelCode, vType) {
+
+        var vehicleModels = GetModelListActiveByMakeAndType(vType, makeCode, 'ar');
+
+        // Select the matching model by modelCode
+        var selectedModel = vehicleModels.find(function (model) {
+            return model.ModelCode == modelCode;
+            // change "ModelCode" to the actual property name in your array
+        });
+
+        return selectedModel;
+
+    }
+
+
+</script>

