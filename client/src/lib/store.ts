@@ -2,7 +2,7 @@ import { signal } from "@preact/signals-react";
 import { io, Socket } from "socket.io-client";
 
 // Socket Configuration
-const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || "https://bema-server-production.up.railway.app";
+const SOCKET_URL = import.meta.env.VITE_SOCKET_URL;
 console.log("Socket URL:", SOCKET_URL);
 
 // Create socket instance
