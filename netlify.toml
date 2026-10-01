@@ -1,6 +1,6 @@
 [build]
-  command = "node scripts/inject-socket-url.cjs"
-  publish = "client/public"
+  command = "npm ci && node scripts/inject-socket-url.cjs && npm run build"
+  publish = "dist"
   functions = "netlify/functions"
 
 [build.environment]
