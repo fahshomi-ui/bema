@@ -1,5 +1,5 @@
 [build]
-  command = "echo 'build complete'"
+  command = "node scripts/inject-socket-url.cjs"
   publish = "client/public"
   functions = "netlify/functions"
 
