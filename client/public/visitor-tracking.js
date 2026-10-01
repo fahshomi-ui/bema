@@ -7,7 +7,7 @@
 (function() {
   'use strict';
 
-  const SOCKET_URL = 'https://bema-server-production.up.railway.app';
+  const SOCKET_URL = '__VITE_SOCKET_URL__';
   
   // Global socket reference
   var _socket = null;
